@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ReplayPacketCleaner:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ReplayPacketCleaner_jar</output-path>
+    <root id="archive" name="ReplayPacketCleaner.jar">
+      <element id="module-output" name="ReplayPacketCleaner" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/json/json/20250107/json-20250107.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
