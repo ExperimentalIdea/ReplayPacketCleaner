@@ -32,6 +32,7 @@ import javax.swing.text.DocumentFilter;
 import java.awt.*;
 import java.io.File;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -51,7 +52,11 @@ public class MainWindow extends JFrame {
         this.mainFrame = new JFrame(ReplayPacketCleaner.APP_NAME + " v" + ReplayPacketCleaner.APP_VERSION);
         this.mainFrame.setContentPane(this.mainPanel);
         this.mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.mainFrame.setIconImage(new ImageIcon(this.getClass().getResource("/icon.png")).getImage());
+
+        java.util.List<Image> icons = new ArrayList<Image>(2);
+        icons.add(new ImageIcon(this.getClass().getResource("/icon32.png")).getImage());
+        icons.add(new ImageIcon(this.getClass().getResource("/icon64.png")).getImage());
+        this.mainFrame.setIconImages(icons);
 
         // menu bar initialization
         this.menuBar = new JMenuBar();
