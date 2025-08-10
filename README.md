@@ -1,5 +1,5 @@
-# Replay Packet Cleaner 
-Replay Packet Cleaner (or RPC for short) is a standalone tool written in Java for editing [ReplayMod](https://github.com/ReplayMod/ReplayMod) replay archives with the primary goal of improving the timeline and rendering performance of replays in ReplayMod by removing unwanted packets.
+# ![RPC logo](https://github.com/ExperimentalIdea/ReplayPacketCleaner/blob/master/src/main/resources/icon64.png) Replay Packet Cleaner 
+Replay Packet Cleaner (or RPC for short) is a standalone tool written in Java for editing Minecraft [ReplayMod](https://github.com/ReplayMod/ReplayMod) replay archives with the primary goal of improving the timeline and rendering performance of replays in ReplayMod by removing unwanted packets.
 
 RPC can also override the time/weather and remove most particles effects, which helps in producing timelapses that are much more pleasant for viewers to watch.
 
@@ -12,7 +12,7 @@ RPC can also override the time/weather and remove most particles effects, which 
 - Remove most sounds
 
 ### Version Support
-This tool currently supports replays recorded in the following versions:
+This tool currently supports replays recorded in the following Minecraft versions:
 - 1.21
 - 1.21.1
 - 1.21.2
@@ -31,7 +31,7 @@ For overriding the time of day and removing weather from replays recorded in old
 - Java 21 or newer
 
 ## Usage
-ReplayPacketCleaner features a graphical user interface to easily drag and drop in replay archives or import them with a file browser. Then you can then configure options for how the replay(s) will be manipulated and when you are ready to export, choose the directory the replay(s) will be saved to.
+Replay Packet Cleaner features a graphical user interface to easily drag and drop in replay archives or import them with a file browser. Then you can then configure options for how the replay(s) will be manipulated and when you are ready to export, choose the directory the replay(s) will be saved to.
 
 While you are waiting for your replay(s) to finish processing, you can choose to import more replays and export those with the same or even different configured options. RPC works well with large batches of replays on many core CPUs, as each replay will be processed on their own thread concurrently from one another. 
 
