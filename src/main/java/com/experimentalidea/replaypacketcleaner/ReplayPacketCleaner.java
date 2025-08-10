@@ -36,7 +36,7 @@ public class ReplayPacketCleaner {
     }
 
     public static final String APP_NAME = "Replay Packet Cleaner";
-    public static final String APP_VERSION = "0.1.0-alpha-SNAPSHOT";
+    public static final String APP_VERSION = "0.1.0-alpha";
     public static final int APP_PROFILE_JSON_VERSION = 0;
 
     public static final String DOT_MCPR_EXTENSION = ".mcpr";
@@ -270,6 +270,9 @@ public class ReplayPacketCleaner {
         TaskTracker taskTracker = new TaskTracker(jobUUID);
         this.taskTrackerMap.put(jobUUID, taskTracker);
         this.jobQueue.add(job);
+
+        System.out.println("Job " + jobUUID.toString() + " for " + job.getSourceFile().getName() + " submitted.");
+
         return taskTracker;
     }
 

@@ -6,7 +6,7 @@
 
     <groupId>com.experimentalidea</groupId>
     <artifactId>ReplayPacketCleaner</artifactId>
-    <version>0.1.0-alpha-SNAPSHOT</version>
+    <version>0.1.0-alpha</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

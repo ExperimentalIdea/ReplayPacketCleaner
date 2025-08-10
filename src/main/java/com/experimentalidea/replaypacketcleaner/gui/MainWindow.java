@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-public class MainWindow extends JFrame {
+public class MainWindow {
 
 
     public MainWindow(ReplayPacketCleaner instance) {
@@ -76,7 +76,6 @@ public class MainWindow extends JFrame {
         this.helpMenu = new JMenu("Help");
         this.helpMenuAboutItem = new JMenuItem("About");
 
-        // Reference html "<a href=\"http://www.google.com/finance?q=NYSE:C\">C</a>, <a href=\"http://www.google.com/finance?q=NASDAQ:MSFT\">MSFT</a>\n<p style=\"text-align: center;\">This text will be centered.</p>"
         this.helpMenuAboutItem.addActionListener(new HelpMenuInformationItemListener(this, "About",
                 "<p style=\"text-align: center;\"><b>" + ReplayPacketCleaner.APP_NAME + " v" + ReplayPacketCleaner.APP_VERSION + "</b>" +
                         "<br>" +
@@ -86,17 +85,17 @@ public class MainWindow extends JFrame {
                         "<br>You can obtain a copy of this license here" +
                         "<br><a href=\"http://www.apache.org/licenses/LICENSE-2.0\">http://www.apache.org/licenses/LICENSE-2.0</a>\n" +
                         "<br>" +
-                        "<br>The source code for this project can be found on GitHub <a href=\"https://github.com/ExperimentalIdea\">here</a>." +
+                        "<br>The source code for this project can be found on GitHub <a href=\"https://github.com/ExperimentalIdea/ReplayPacketCleaner\">here</a>." +
                         "<br>" +
                         "<br>Report an issue, request a feature, or ask for help" +
-                        "<br><a href=\"https://github.com/ExperimentalIdea\">GitHub Issue Tracker</a>" +
-                        "<br><a href=\"https://github.com/ExperimentalIdea\">Placeholder Discord Server</a>" +
+                        "<br><a href=\"https://github.com/ExperimentalIdea/ReplayPacketCleaner/issues\">GitHub Issue Tracker</a>" +
+                        "<br><a href=\"https://discord.gg/dh3YyXpd2w\">ExperimentalIdea Discord Server</a>" +
                         "<br>" +
                         "<br>" +
                         "<br><b>DISCLAIMER</b>" +
                         "<br>This project is not affiliated with ReplayMod in any way. " +
                         "This tool may produce garbage replay files that fail to work properly or at all with ReplayMod. DO NOT EVER DELETE YOUR ORIGINAL REPLAY FILES! " +
-                        "Any issues arising from using this tool should be reported on this project’s GitHub Issue Tracker or the Placeholder Discord Server.</p>"));
+                        "Any issues arising from using this tool should be reported on this project’s GitHub Issue Tracker or the ExperimentalIdea Discord Server.</p>"));
 
         this.helpMenu.add(this.helpMenuAboutItem);
         this.menuBar.add(this.helpMenu);
@@ -128,7 +127,7 @@ public class MainWindow extends JFrame {
 
         this.jobTrackerMap = new HashMap<UUID, TaskTracker>();
 
-        this.jobListUpdateTimer = new Timer(50, new JobProgressUpdater(this.jobList, this.jobTrackerMap, this.jobProgressBar));
+        this.jobListUpdateTimer = new Timer(50, new JobProgressUpdater(this.jobList, this.jobTrackerMap, this.jobProgressBar, this.mainFrame));
         this.jobListUpdateTimer.setRepeats(true);
         this.jobListUpdateTimer.start();
 

@@ -27,7 +27,7 @@ import java.util.UUID;
 public class JobProgressUpdater implements ActionListener {
 
 
-    public JobProgressUpdater(ReplayList jobList, Map<UUID, TaskTracker> taskTrackerMap, JProgressBar overallProgressBar) {
+    public JobProgressUpdater(ReplayList jobList, Map<UUID, TaskTracker> taskTrackerMap, JProgressBar overallProgressBar, JFrame windowFrame) {
         if (jobList == null) {
             throw new IllegalArgumentException("jobList cannot be null");
         }
@@ -37,17 +37,24 @@ public class JobProgressUpdater implements ActionListener {
         if (overallProgressBar == null) {
             throw new IllegalArgumentException("overallProgressBar cannot be null");
         }
+        if (windowFrame == null) {
+            throw new IllegalArgumentException("windowFrame cannot be null");
+        }
 
         this.jobList = jobList;
         this.taskTrackerMap = taskTrackerMap;
         this.overallProgressBar = overallProgressBar;
+        this.windowFrame = windowFrame;
+        this.originalTitle = windowFrame.getTitle();
     }
 
     private final ReplayList jobList;
     private final Map<UUID, TaskTracker> taskTrackerMap;
     private final JProgressBar overallProgressBar;
+    private final JFrame windowFrame;
+    private final String originalTitle;
 
-    private  final DecimalFormat decimalFormat = new DecimalFormat("##0.00");
+    private final DecimalFormat decimalFormat = new DecimalFormat("##0.00");
 
 
     // Executes at a regular interval to update the UI
@@ -99,10 +106,17 @@ public class JobProgressUpdater implements ActionListener {
         if (numberOfJobs == 0) {
             this.overallProgressBar.setValue(0);
             this.overallProgressBar.setString("");
+
         } else {
             double overallPercentage = (overallProgress / ((double) TaskTracker.MAX_VALUE * numberOfJobs)) * 100.0;
             this.overallProgressBar.setValue((int) overallPercentage);
             this.overallProgressBar.setString(this.decimalFormat.format(overallPercentage) + "% - " + numberOfCompletedJobs + " of " + numberOfJobs);
+
+            if (overallPercentage < 100.0) {
+                this.windowFrame.setTitle((int) overallPercentage + "% - " + this.originalTitle);
+            } else {
+                this.windowFrame.setTitle(this.originalTitle);
+            }
         }
     }
 
