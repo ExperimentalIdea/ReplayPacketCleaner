@@ -147,10 +147,10 @@ public class ReplayReader implements Closeable, AutoCloseable {
     }
 
     /**
-     * Get the total number of bytes read by this ReplayReader since it was created.
+     * Get the total number of bytes read/skipped by this ReplayReader since it was created.
      * If any IOExceptions have occurred since the creation of this ReplayReader, the number of bytes read returned may be inaccurate.
      *
-     * @return The total number of bytes written.
+     * @return The total number of bytes that have been read/skipped.
      */
     public long bytesRead() {
         return this.bytesRead;
@@ -161,7 +161,9 @@ public class ReplayReader implements Closeable, AutoCloseable {
     }
 
     public int skip(int i) throws IOException {
-        return this.inputStream.skipBytes(i);
+        int skipped = this.inputStream.skipBytes(i);
+        this.bytesRead += skipped;
+        return skipped;
     }
 
     public void close() throws IOException {
