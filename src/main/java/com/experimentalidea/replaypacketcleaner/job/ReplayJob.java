@@ -20,7 +20,7 @@ import com.experimentalidea.replaypacketcleaner.config.Configuration;
 import com.experimentalidea.replaypacketcleaner.config.Option;
 import com.experimentalidea.replaypacketcleaner.job.listener.*;
 import com.experimentalidea.replaypacketcleaner.packet.listener.PacketListener;
-import com.experimentalidea.replaypacketcleaner.protocol.Protocol;
+import com.experimentalidea.replaypacketcleaner.protocol.ProtocolDirectory;
 
 import java.io.*;
 import java.nio.file.*;
@@ -38,7 +38,7 @@ public class ReplayJob implements Runnable, Closeable {
      * workingDir should be an uuid, as a collision is effectively impossible.
      * workingDir is deleted when the task completes
      */
-    public ReplayJob(File sourceFile, File workingDir, File targetFile, Configuration<Option> configuration, TaskTracker taskTracker) throws FileNotFoundException, NotDirectoryException {
+    public ReplayJob(File sourceFile, File workingDir, File targetFile, ProtocolDirectory protocolDirectory, Configuration<Option> configuration, TaskTracker taskTracker) throws FileNotFoundException, NotDirectoryException {
         if (sourceFile == null) {
             throw new IllegalArgumentException("sourceFile cannot be null");
         }
@@ -53,6 +53,9 @@ public class ReplayJob implements Runnable, Closeable {
         }
         if (targetFile == null) {
             throw new IllegalArgumentException("sourceFile cannot be null");
+        }
+        if (protocolDirectory == null) {
+            throw new IllegalArgumentException("protocolDirectory cannot be null");
         }
         if (sourceFile.equals(targetFile)) {
             throw new IllegalArgumentException("sourceFile path cannot be equal to targetFile path");
@@ -70,6 +73,7 @@ public class ReplayJob implements Runnable, Closeable {
         this.sourceFile = sourceFile;
         this.workingDir = workingDir;
         this.targetFile = targetFile;
+        this.protocolDirectory = protocolDirectory;
         this.configuration = configuration;
         this.taskTracker = taskTracker;
     }
@@ -79,6 +83,7 @@ public class ReplayJob implements Runnable, Closeable {
     private final File sourceFile;
     private final File workingDir;
     private final File targetFile;
+    private final ProtocolDirectory protocolDirectory;
     private final Configuration<Option> configuration;
     private final TaskTracker taskTracker;
 
@@ -97,6 +102,7 @@ public class ReplayJob implements Runnable, Closeable {
         if (this.started) {
             throw new RuntimeException("Job can only be ran once.");
         }
+        this.started = true;
 
         // The entire task is contained within a try-catch for handing cleanup & closing of io streams in the event of any unhandled exception occurring.
         try {
@@ -175,7 +181,7 @@ public class ReplayJob implements Runnable, Closeable {
                             new ReplayReader(this.sourceZipFile.getInputStream(sourceRecordingEntry)),
                             this.sourceReplaySizeBytes,
                             new ReplayWriter(this.targetZipOutputStream, false),
-                            Protocol.getProtocol(this.metadata.getMetadataJson().getInt(ReplayMetadata.KEY_PROTOCOL)),
+                            this.protocolDirectory.getProtocol(this.metadata.getMetadataJson().getInt(ReplayMetadata.KEY_PROTOCOL)),
                             this.taskTracker,
                             this.cancelFlag,
                             packetListenerList.toArray(new PacketListener[0]));
@@ -247,7 +253,7 @@ public class ReplayJob implements Runnable, Closeable {
                 int targetTries = 0;
                 while (finalTargetFile.exists()) {
                     targetTries++;
-                    finalTargetFile = new File(this.targetFile.getParent().toString() + File.separator + this.targetFile.getName().replaceAll(ReplayPacketCleaner.DOT_MCPR_EXTENSION, "") + " (" + targetTries + ")" + ReplayPacketCleaner.DOT_MCPR_EXTENSION);
+                    finalTargetFile = new File(this.targetFile.getParent() + File.separator + this.targetFile.getName().replaceAll(ReplayPacketCleaner.DOT_MCPR_EXTENSION, "") + " (" + targetTries + ")" + ReplayPacketCleaner.DOT_MCPR_EXTENSION);
                 }
                 try {
                     Files.move(targetTempFile.toPath(), finalTargetFile.toPath(), StandardCopyOption.ATOMIC_MOVE);

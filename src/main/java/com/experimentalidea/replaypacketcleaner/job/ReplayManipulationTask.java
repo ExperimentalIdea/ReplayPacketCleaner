@@ -17,6 +17,7 @@ package com.experimentalidea.replaypacketcleaner.job;
 
 import com.experimentalidea.replaypacketcleaner.packet.*;
 import com.experimentalidea.replaypacketcleaner.packet.listener.*;
+import com.experimentalidea.replaypacketcleaner.protocol.EntityType;
 import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 import com.experimentalidea.replaypacketcleaner.protocol.Protocol;
 import com.experimentalidea.replaypacketcleaner.protocol.Version;
@@ -351,7 +352,7 @@ public class ReplayManipulationTask implements Runnable {
                 long startingBytesRead = reader.bytesRead();  // current - starting = total read so far for this packet after reading the packet size.
 
                 int packetID = this.reader.readVarInt();
-                PacketType packetType = this.protocol.getPacketType(packetID);
+                PacketType.Play packetType = this.protocol.getPlayPacketType(packetID);
 
                 switch (packetType) {
 
@@ -425,8 +426,7 @@ public class ReplayManipulationTask implements Runnable {
 
                     case WORLD_EVENT -> this.handleWorldEventPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case UNDEFINED ->
-                            this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray((int) (packetSize - (reader.bytesRead() - startingBytesRead))));
+                    default -> this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray((int) (packetSize - (reader.bytesRead() - startingBytesRead))));
 
                 }
 
@@ -509,7 +509,7 @@ public class ReplayManipulationTask implements Runnable {
             this.writer.writeVarInt(packetID);
             this.writer.writeByteArray(data);
 
-            if (packetID == this.protocol.getStateChangeToPlayPacketID()) {
+            if (packetID == this.protocol.getConfigurationPacketID(PacketType.Configuration.FINISH_CONFIGURATION)) {
                 // Now at the "play" state.
                 break;
             }
@@ -522,10 +522,10 @@ public class ReplayManipulationTask implements Runnable {
     private void insertPackets(int timeStamp, Packet... packets) throws IOException {
         if (packets != null) {
             for (Packet packet : packets) {
-                switch (packet.getpacketType()) {
+                switch (packet.getPacketType()) {
 
                     case GAME_EVENT -> {
-                        int packetID = this.protocol.getPacketID(PacketType.GAME_EVENT);
+                        int packetID = this.protocol.getPlayPacketID(PacketType.Play.GAME_EVENT);
                         this.writePacketHeader(timeStamp, ReplayWriter.sizeOfVarInt(packetID) + 5, packetID);
 
                         // write out the event.
@@ -551,9 +551,9 @@ public class ReplayManipulationTask implements Runnable {
                     }
 
                     case UPDATE_TIME -> {
-                        int packetID = this.protocol.getPacketID(PacketType.UPDATE_TIME);
+                        int packetID = this.protocol.getPlayPacketID(PacketType.Play.UPDATE_TIME);
                         int packetSize = ReplayWriter.sizeOfVarInt(packetID) + 16;
-                        if (this.protocolVersion >= Version.MC_1_21_2.getProtocolVersion()) {
+                        if (this.protocolVersion >= Version.MC_1_21_2) {
                             packetSize += 1;
                         }
 
@@ -562,7 +562,7 @@ public class ReplayManipulationTask implements Runnable {
                         this.writer.writeLong(((UpdateTimePacket) packet).getWorldAge());
 
                         long timeOfDay = ((UpdateTimePacket) packet).getTimeOfDay();
-                        if (protocolVersion >= Version.MC_1_21_2.getProtocolVersion()) {
+                        if (protocolVersion >= Version.MC_1_21_2) {
                             this.writer.writeLong(timeOfDay);
                             this.writer.writeBoolean(((UpdateTimePacket) packet).doesTimeAdvance());
                         } else {
@@ -933,7 +933,7 @@ public class ReplayManipulationTask implements Runnable {
             boolean longDistance = this.reader.readBoolean();
             boolean alwaysVisible = false;
             // Versions 1.21.4 and onward have a new alwaysVisible field.
-            if (this.protocolVersion >= Version.MC_1_21_4.getProtocolVersion()) {
+            if (this.protocolVersion >= Version.MC_1_21_4) {
                 this.reader.readBoolean();
             }
             double x = this.reader.readDouble();
@@ -958,7 +958,7 @@ public class ReplayManipulationTask implements Runnable {
             if (!particlePacket.isWriteCanceled()) {
                 this.writePacketHeader(timeStamp, packetSize, packetID);
                 this.writer.writeBoolean(longDistance);
-                if (this.protocolVersion >= Version.MC_1_21_4.getProtocolVersion()) {
+                if (this.protocolVersion >= Version.MC_1_21_4) {
                     this.writer.writeBoolean(alwaysVisible);
                 }
                 this.writer.writeDouble(x);
@@ -1265,39 +1265,7 @@ public class ReplayManipulationTask implements Runnable {
             short velocityY = this.reader.readShort();
             short velocityZ = this.reader.readShort();
 
-            SpawnEntityPacket.EntityType entityType = SpawnEntityPacket.EntityType.UNKNOWN;
-            switch (this.protocol) {
-                case V_767 -> {
-                    if (entityTypeID == 128) { // 1.21 & 1.21.1 Player
-                        entityType = SpawnEntityPacket.EntityType.PLAYER;
-                    }
-                }
-                case V_768 -> {
-                    if (entityTypeID == 148) { // 1.21.2 & 1.21.3 Player
-                        entityType = SpawnEntityPacket.EntityType.PLAYER;
-                    }
-                }
-                case V_769 -> {
-                    if (entityTypeID == 147) { // 1.21.4 Player
-                        entityType = SpawnEntityPacket.EntityType.PLAYER;
-                    }
-                }
-                case V_770 -> {
-                    if (entityTypeID == 148) { // 1.21.5 Player
-                        entityType = SpawnEntityPacket.EntityType.PLAYER;
-                    }
-                }
-                case V_771 -> {
-                    if (entityTypeID == 149) { // 1.21.6 Player
-                        entityType = SpawnEntityPacket.EntityType.PLAYER;
-                    }
-                }
-                case V_772 -> {
-                    if (entityTypeID == 149) { // 1.21.7 Player
-                        entityType = SpawnEntityPacket.EntityType.PLAYER;
-                    }
-                }
-            }
+            EntityType entityType = this.protocol.getEntityType(entityTypeID);
 
             SpawnEntityPacket spawnEntityPacket = new SpawnEntityPacket(packetIndex, timeStamp, entityID, new UUID(uuidMostSignificantBits, uuidLeastSignificantBits), entityType, x, y, z, pitch, yaw, headYaw, data, velocityX, velocityY, velocityZ);
 
@@ -1413,7 +1381,7 @@ public class ReplayManipulationTask implements Runnable {
             int yawByte = 0, pitchByte = 0;
             float yaw, pitch;
 
-            boolean isProtocol_1_21_2_plus = this.protocolVersion >= Version.MC_1_21_2.getProtocolVersion();
+            boolean isProtocol_1_21_2_plus = this.protocolVersion >= Version.MC_1_21_2;
             if (isProtocol_1_21_2_plus) { // Packet structure changed in 1.21.2+ (protocol 768+)
                 velocityX = this.reader.readDouble();
                 velocityY = this.reader.readDouble();
@@ -1593,7 +1561,7 @@ public class ReplayManipulationTask implements Runnable {
             boolean timeAdvances = true;
 
             // Versions 1.21.2 and onward control whether time advances via a boolean value.
-            if (this.protocolVersion >= Version.MC_1_21_2.getProtocolVersion()) {
+            if (this.protocolVersion >= Version.MC_1_21_2) {
                 timeAdvances = this.reader.readBoolean();
             } else { // Versions before 1.21.2 control whether time advances by using a negative timeOfDay value.
                 if (timeOfDay < 0) {
@@ -1615,7 +1583,7 @@ public class ReplayManipulationTask implements Runnable {
                 this.writer.writeLong(updateTimePacket.getWorldAge());
 
                 timeOfDay = updateTimePacket.getTimeOfDay();
-                if (protocolVersion >= Version.MC_1_21_2.getProtocolVersion()) {
+                if (protocolVersion >= Version.MC_1_21_2) {
                     this.writer.writeLong(timeOfDay);
                     this.writer.writeBoolean(updateTimePacket.doesTimeAdvance());
                 } else {

@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class DamageEventPacket extends Packet {
 
     public DamageEventPacket(long packetIndex, int timestamp, int entityID, int sourceTypeID, int sourceCauseID, int sourceDirectID, boolean hasSourcePosition, double sourcePositionX, double sourcePositionY, double sourcePositionZ) {
-        super(packetIndex, timestamp, PacketType.DAMAGE_EVENT);
+        super(packetIndex, timestamp, PacketType.Play.DAMAGE_EVENT);
         this.entityID = entityID;
         this.sourceTypeID = sourceTypeID;
         this.sourceCauseID = sourceCauseID;

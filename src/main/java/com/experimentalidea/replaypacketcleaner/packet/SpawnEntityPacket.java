@@ -15,6 +15,7 @@
  * */
 package com.experimentalidea.replaypacketcleaner.packet;
 
+import com.experimentalidea.replaypacketcleaner.protocol.EntityType;
 import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 
 import java.util.UUID;
@@ -23,7 +24,7 @@ import java.util.UUID;
 public class SpawnEntityPacket extends Packet {
 
     public SpawnEntityPacket(long packetIndex, int timestamp, int entityID, UUID uuid, EntityType entityType, double x, double y, double z, int pitchByte, int yawByte, int headYawByte, int data, short velocityX, short velocityY, short velocityZ) {
-        super(packetIndex, timestamp, PacketType.SPAWN_ENTITY);
+        super(packetIndex, timestamp, PacketType.Play.SPAWN_ENTITY);
         if (uuid == null) {
             throw new IllegalArgumentException("uuid cannot be null");
         }
@@ -105,13 +106,6 @@ public class SpawnEntityPacket extends Packet {
 
     public short getVelocityZ() {
         return this.velocityZ;
-    }
-
-
-    /// TODO: implement for all entity types. Not just players.
-    public static enum EntityType {
-        UNKNOWN,
-        PLAYER,
     }
 
 }

@@ -20,7 +20,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 /// The basis of a protocol agnostic representation of a Packet.
 public abstract class Packet {
 
-    public Packet(long packetIndex, int timestamp, PacketType packetType) {
+    public Packet(long packetIndex, int timestamp, PacketType.Play packetType) {
         this.packetIndex = packetIndex;
         this.writeCanceled = false;
 
@@ -32,7 +32,7 @@ public abstract class Packet {
     private boolean writeCanceled;
 
     private int timestamp;
-    private final PacketType packetType;
+    private final PacketType.Play packetType;
 
 
     public long getPacketIndex() {
@@ -57,7 +57,7 @@ public abstract class Packet {
     }
 
 
-    public PacketType getpacketType() {
+    public PacketType.Play getPacketType() {
         return this.packetType;
     }
 

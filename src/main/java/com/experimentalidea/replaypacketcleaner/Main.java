@@ -15,8 +15,25 @@
  * */
 package com.experimentalidea.replaypacketcleaner;
 
+import com.experimentalidea.replaypacketcleaner.protocol.ProtocolDirectory;
+
+import java.io.File;
+import java.lang.module.ModuleFinder;
+import java.lang.module.ModuleReader;
+import java.lang.module.ResolvedModule;
+import java.net.URL;
+import java.util.*;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
+import java.util.stream.Stream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
+
 public class Main {
 
+    /// Show additional options in the GUI. For now, this shows options for to loading custom protocols and running the protocol file generation assistant.
+    private static String FLAG_SHOW_HIDDEN_OPTIONS = "--showHiddenOptions"; // Show the options in the GUI to load custom protocols or run the protocol file generation assistant.
 
     public static void main(String[] args) {
 
@@ -24,13 +41,24 @@ public class Main {
 
             System.out.println("Starting application...");
 
+            long startTime = System.currentTimeMillis();
+
+            boolean showHiddenOptions = false;
+            for (String entry : args) {
+                if (entry.equalsIgnoreCase(Main.FLAG_SHOW_HIDDEN_OPTIONS)) {
+                    showHiddenOptions = true;
+                    System.out.println("Detected flag: " + Main.FLAG_SHOW_HIDDEN_OPTIONS + "\nAdditional options will be shown in the GUI!");
+                    break;
+                }
+            }
+
             ReplayPacketCleaner instance = ReplayPacketCleaner.createInstance();
 
             // TODO: create and set logger
 
-            instance.createMainWindow(true);
+            instance.createMainWindow(true, showHiddenOptions);
 
-            System.out.println("Ready. Awaiting jobs...");
+            System.out.println("Ready in " + (System.currentTimeMillis() - startTime) + "ms. Awaiting jobs...");
 
             instance.processJobsAndAwaitTermination(); // Returns when the application window has closed, and any in progress jobs have been cleaned up.
 

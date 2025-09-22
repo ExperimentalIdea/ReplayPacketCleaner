@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class UpdateAttributesPacket extends Packet {
 
     public UpdateAttributesPacket(long packetIndex, int timestamp, int entityID, int[] rawDataArrayBytes) {
-        super(packetIndex, timestamp, PacketType.UPDATE_ATTRIBUTES);
+        super(packetIndex, timestamp, PacketType.Play.UPDATE_ATTRIBUTES);
         this.entityID = entityID;
         this.rawDataArrayBytes = rawDataArrayBytes;
     }

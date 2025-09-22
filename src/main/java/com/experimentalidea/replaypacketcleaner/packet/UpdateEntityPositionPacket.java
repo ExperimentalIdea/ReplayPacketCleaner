@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class UpdateEntityPositionPacket extends Packet {
 
     public UpdateEntityPositionPacket(long packetIndex, int timestamp, int entityID, short deltaX, short deltaY, short deltaZ, boolean onGround) {
-        super(packetIndex, timestamp, PacketType.UPDATE_ENTITY_POSITION);
+        super(packetIndex, timestamp, PacketType.Play.UPDATE_ENTITY_POSITION);
         this.entityID = entityID;
         this.deltaX = deltaX;
         this.deltaY = deltaY;

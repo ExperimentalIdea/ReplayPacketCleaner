@@ -22,7 +22,7 @@ public class BlockActionPacket extends Packet {
 
 
     public BlockActionPacket(long packetIndex, int timestamp, int positionX, int positionY, int positionZ, int actionIDByte, int actionParameterByte, int blockType) {
-        super(packetIndex, timestamp, PacketType.BLOCK_ACTION);
+        super(packetIndex, timestamp, PacketType.Play.BLOCK_ACTION);
         this.positionX = positionX;
         this.positionY = positionY;
         this.positionZ = positionZ;

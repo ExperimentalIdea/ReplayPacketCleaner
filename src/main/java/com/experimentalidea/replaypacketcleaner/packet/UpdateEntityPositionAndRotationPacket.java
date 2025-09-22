@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class UpdateEntityPositionAndRotationPacket extends Packet {
 
     public UpdateEntityPositionAndRotationPacket(long packetIndex, int timestamp, int entityID, short deltaX, short deltaY, short deltaZ, int yawByte, int pitchByte, boolean onGround) {
-        super(packetIndex, timestamp, PacketType.UPDATE_ENTITY_POSITION_AND_ROTATION);
+        super(packetIndex, timestamp, PacketType.Play.UPDATE_ENTITY_POSITION_AND_ROTATION);
         this.entityID = entityID;
         this.deltaX = deltaX;
         this.deltaY = deltaY;

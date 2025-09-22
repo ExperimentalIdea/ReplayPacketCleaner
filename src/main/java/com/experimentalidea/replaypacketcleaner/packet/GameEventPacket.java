@@ -22,7 +22,7 @@ public class GameEventPacket extends Packet {
 
 
     public GameEventPacket(long packetIndex, int timestamp, GameEventType eventType, float value) {
-        super(packetIndex, timestamp, PacketType.GAME_EVENT);
+        super(packetIndex, timestamp, PacketType.Play.GAME_EVENT);
         this.eventType = eventType;
         this.value = value;
     }

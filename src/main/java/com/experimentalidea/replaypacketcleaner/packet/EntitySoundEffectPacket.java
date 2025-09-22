@@ -25,7 +25,7 @@ public class EntitySoundEffectPacket extends Packet {
 
 
     public EntitySoundEffectPacket(long packetIndex, int timestamp, int[] rawDataBytes) {
-        super(packetIndex, timestamp, PacketType.ENTITY_SOUND_EFFECT);
+        super(packetIndex, timestamp, PacketType.Play.ENTITY_SOUND_EFFECT);
         this.rawDataBytes = rawDataBytes;
     }
 

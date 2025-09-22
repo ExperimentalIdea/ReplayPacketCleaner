@@ -22,7 +22,7 @@ public class TeleportEntityPacket extends Packet {
 
     /// Create a Teleport Entity Packet and specify if the velocityX/Y/Z fields are present in the source packet data and provided here.
     public TeleportEntityPacket(long packetIndex, int timestamp, int entityID, double x, double y, double z, boolean hasVelocityFields, double velocityX, double velocityY, double velocityZ, float yaw, float pitch, boolean onGround) {
-        super(packetIndex, timestamp, PacketType.TELEPORT_ENTITY);
+        super(packetIndex, timestamp, PacketType.Play.TELEPORT_ENTITY);
         this.entityID = entityID;
         this.x = x;
         this.y = y;

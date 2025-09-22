@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class PickupItemPacket extends Packet {
 
     public PickupItemPacket(long packetIndex, int timestamp, int collectedEntityID, int collectorEntityID, int pickupItemCount) {
-        super(packetIndex, timestamp, PacketType.PICKUP_ITEM);
+        super(packetIndex, timestamp, PacketType.Play.PICKUP_ITEM);
         this.collectedEntityID = collectedEntityID;
         this.collectorEntityID = collectorEntityID;
         this.pickupItemCount = pickupItemCount;

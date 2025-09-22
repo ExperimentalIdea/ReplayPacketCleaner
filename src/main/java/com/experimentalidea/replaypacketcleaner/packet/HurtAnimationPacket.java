@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class HurtAnimationPacket extends Packet {
 
     public HurtAnimationPacket(long packetIndex, int timestamp, int entityID, float yaw) {
-        super(packetIndex, timestamp, PacketType.ENTITY_ANIMATION);
+        super(packetIndex, timestamp, PacketType.Play.ENTITY_ANIMATION);
         this.entityID = entityID;
         this.yaw = yaw;
     }

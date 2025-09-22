@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class LinkEntitiesPacket extends Packet {
 
     public LinkEntitiesPacket(long packetIndex, int timestamp, int attachedEntityID, int holdingEntityID) {
-        super(packetIndex, timestamp, PacketType.LINK_ENTITIES);
+        super(packetIndex, timestamp, PacketType.Play.LINK_ENTITIES);
         this.attachedEntityID = attachedEntityID;
         this.holdingEntityID = holdingEntityID;
     }

@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class WorldEventPacket extends Packet {
 
     public WorldEventPacket(long packetIndex, int timestamp, int eventID, int positionX, int positionY, int positionZ, int data, boolean relativeVolumeDisabled) {
-        super(packetIndex, timestamp, PacketType.WORLD_EVENT);
+        super(packetIndex, timestamp, PacketType.Play.WORLD_EVENT);
         this.eventID = eventID;
         this.positionX = positionX;
         this.positionY = positionY;

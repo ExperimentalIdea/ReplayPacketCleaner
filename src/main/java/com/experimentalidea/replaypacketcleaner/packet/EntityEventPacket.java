@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class EntityEventPacket extends Packet {
 
     public EntityEventPacket(long packetIndex, int timestamp, int entityID, int entityStatusByte) {
-        super(packetIndex, timestamp, PacketType.ENTITY_EVENT);
+        super(packetIndex, timestamp, PacketType.Play.ENTITY_EVENT);
         this.entityID = entityID;
         this.entityStatusByte = entityStatusByte;
     }

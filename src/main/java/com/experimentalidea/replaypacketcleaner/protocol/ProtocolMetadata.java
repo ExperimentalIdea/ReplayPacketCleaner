@@ -15,17 +15,10 @@
  * */
 package com.experimentalidea.replaypacketcleaner.protocol;
 
-public class Version {
+public interface ProtocolMetadata {
 
+    public String name();
 
-    public static final int MC_1_21_0 = 767;
-    public static final int MC_1_21_1 = 767;
-    public static final int MC_1_21_2 = 768;
-    public static final int MC_1_21_3 = 768;
-    public static final int MC_1_21_4 = 769;
-    public static final int MC_1_21_5 = 770;
-    public static final int MC_1_21_6 = 771;
-    public static final int MC_1_21_7 = 772;
-    public static final int MC_1_21_8 = 772;
+    public TypeMetadata<?> getMetadata();
 
 }

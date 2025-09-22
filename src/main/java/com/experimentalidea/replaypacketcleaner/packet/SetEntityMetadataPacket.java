@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class SetEntityMetadataPacket extends Packet {
 
     public SetEntityMetadataPacket(long packetIndex, int timestamp, int entityID, int[] rawMetadataBytes) {
-        super(packetIndex, timestamp, PacketType.SET_ENTITY_METADATA);
+        super(packetIndex, timestamp, PacketType.Play.SET_ENTITY_METADATA);
         this.entityID = entityID;
         this.rawMetadataBytes = rawMetadataBytes;
     }

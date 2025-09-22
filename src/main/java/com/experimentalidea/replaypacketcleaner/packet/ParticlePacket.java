@@ -22,7 +22,7 @@ public class ParticlePacket extends Packet {
 
 
     public ParticlePacket(long packetIndex, int timestamp, boolean longDistance, boolean alwaysVisible, double x, double y, double z, float offsetX, float offsetY, float offsetZ, float maxSpeed, int particleCount, int particleID, int[] particleDataRawBytes) {
-        super(packetIndex, timestamp, PacketType.PARTICLE);
+        super(packetIndex, timestamp, PacketType.Play.PARTICLE);
         if (particleDataRawBytes == null) {
             throw new IllegalArgumentException("particleDataRawBytes cannot be null");
         }

@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class EntityAnimationPacket extends Packet {
 
     public EntityAnimationPacket(long packetIndex, int timestamp, int entityID, AnimationType animationType) {
-        super(packetIndex, timestamp, PacketType.ENTITY_ANIMATION);
+        super(packetIndex, timestamp, PacketType.Play.ENTITY_ANIMATION);
         this.entityID = entityID;
         this.animationType = animationType;
     }

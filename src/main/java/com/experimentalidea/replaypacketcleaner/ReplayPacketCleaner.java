@@ -19,14 +19,12 @@ import com.experimentalidea.replaypacketcleaner.gui.MainWindow;
 import com.experimentalidea.replaypacketcleaner.job.Job;
 import com.experimentalidea.replaypacketcleaner.job.ReplayJob;
 import com.experimentalidea.replaypacketcleaner.job.TaskTracker;
+import com.experimentalidea.replaypacketcleaner.protocol.ProtocolDirectory;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.*;
 
 public class ReplayPacketCleaner {
@@ -36,7 +34,7 @@ public class ReplayPacketCleaner {
     }
 
     public static final String APP_NAME = "Replay Packet Cleaner";
-    public static final String APP_VERSION = "0.1.0-alpha";
+    public static final String APP_VERSION = "0.2.0-alpha-snapshot";
     public static final int APP_PROFILE_JSON_VERSION = 0;
 
     public static final String DOT_MCPR_EXTENSION = ".mcpr";
@@ -54,6 +52,8 @@ public class ReplayPacketCleaner {
     private File tempDirectory = null;
 
     private MainWindow mainWindow = null;
+
+    private ProtocolDirectory protocolDirectory;
 
     // A job uuid to task progress map. The UI thread reads this, while the main thread adds new entries as needed.
     private Map<UUID, TaskTracker> taskTrackerMap = new ConcurrentHashMap<UUID, TaskTracker>(32, 0.75F, 1);
@@ -89,6 +89,42 @@ public class ReplayPacketCleaner {
         }
         instance.executorService = Executors.newFixedThreadPool(threads);
 
+        // Load all built-in protocols
+        long startTime = System.currentTimeMillis();
+        instance.protocolDirectory = new ProtocolDirectory();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(instance.getClass().getResourceAsStream("/resources/protocols/protocol_directory.txt"))))) {
+            List<Future<?>> taskList = new ArrayList<Future<?>>(32);
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (!line.isBlank() && !line.startsWith("#")) {
+                    String finalLine = line;
+
+                    // A bit of a bandaid solution to improve startup performance.
+                    // While only one protocol can technically be added to the ProtocolDirectory at a time,
+                    // most of the time spent is parsing the json text itself which occurs outside the synchronized portion.
+                    // Loading two protocols a combined total of 100 times took 1200ms~ on single thread, while using virtual threads or a thread pool solution took 400ms~.
+                    taskList.add(instance.executorService.submit(() -> {
+                        try {
+                            instance.protocolDirectory.loadProtocol(instance.getClass().getResourceAsStream("/resources/protocols/" + finalLine));
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }));
+                }
+            }
+            // Wait for all the executor threads to finish.
+            for (Future<?> task : taskList) {
+                try {
+                    task.get();
+                } catch (InterruptedException | ExecutionException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            System.out.println("Loaded " + instance.protocolDirectory.getSupportedProtocolVersions().size() + " protocols in " + (System.currentTimeMillis() - startTime) + "ms.");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         return instance;
     }
 
@@ -115,11 +151,16 @@ public class ReplayPacketCleaner {
     }
 
 
-    public void createMainWindow(boolean visible) throws IllegalStateException {
+    public ProtocolDirectory getProtocolDirectory() {
+        return this.protocolDirectory;
+    }
+
+
+    public void createMainWindow(boolean visible, boolean showHiddenOptions) throws IllegalStateException {
         if (mainWindow != null) {
             throw new IllegalStateException("MainWindow already exists");
         }
-        this.mainWindow = new MainWindow(this);
+        this.mainWindow = new MainWindow(this, showHiddenOptions);
         this.mainWindow.getMainFrame().setVisible(visible);
     }
 
@@ -213,6 +254,7 @@ public class ReplayPacketCleaner {
                         sourceCopy,
                         workingDirectory,
                         new File(exportDirectory.getPath() + File.separator + sourceFile.getName().replaceAll(ReplayPacketCleaner.DOT_MCPR_EXTENSION, "") + " (RPC)" + ReplayPacketCleaner.DOT_MCPR_EXTENSION),
+                        this.protocolDirectory,
                         job.getProfile(),
                         this.taskTrackerMap.get(jobUUID));
             } catch (Exception exception) {

@@ -22,9 +22,9 @@ import com.experimentalidea.replaypacketcleaner.gui.listener.*;
 import com.experimentalidea.replaypacketcleaner.job.Job;
 import com.experimentalidea.replaypacketcleaner.job.ReplayMetadata;
 import com.experimentalidea.replaypacketcleaner.job.TaskTracker;
-import com.experimentalidea.replaypacketcleaner.protocol.Protocol;
 
 import javax.swing.*;
+import javax.swing.Timer;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -32,10 +32,7 @@ import javax.swing.text.DocumentFilter;
 import java.awt.*;
 import java.io.File;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
@@ -44,7 +41,7 @@ import java.util.zip.ZipFile;
 public class MainWindow {
 
 
-    public MainWindow(ReplayPacketCleaner instance) {
+    public MainWindow(ReplayPacketCleaner instance, boolean showHiddenOptions) {
         this.replayPacketCleanerInstance = instance;
 
         this.profile = new Configuration<Option>(Option.class);
@@ -54,8 +51,8 @@ public class MainWindow {
         this.mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         java.util.List<Image> icons = new ArrayList<Image>(2);
-        icons.add(new ImageIcon(this.getClass().getResource("/icon32.png")).getImage());
-        icons.add(new ImageIcon(this.getClass().getResource("/icon64.png")).getImage());
+        icons.add(new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/resources/icon32.png"))).getImage());
+        icons.add(new ImageIcon(Objects.requireNonNull(this.getClass().getResource("/resources/icon64.png"))).getImage());
         this.mainFrame.setIconImages(icons);
 
         // menu bar initialization
@@ -64,13 +61,23 @@ public class MainWindow {
         this.fileMenu = new JMenu("File");
         this.fileMenuImportItem = new JMenuItem("Import");
         this.fileMenuExportItem = new JMenuItem("Export");
+        this.fileMenuCustomProtocolItem = new JMenuItem("Load Custom Protocol");
+        this.fileMenuGenerateProtocolItem = new JMenuItem("Protocol Generation Assistant");
 
         this.fileMenuImportItem.addActionListener(new ImportReplaysButtonListener(this));
         this.fileMenuExportItem.addActionListener(new ExportButtonListener(this));
+        this.fileMenuCustomProtocolItem.addActionListener(new LoadCustomProtocolListener(this, this.replayPacketCleanerInstance.getProtocolDirectory()));
+        this.fileMenuGenerateProtocolItem.addActionListener(new OpenProtocolGenerationListener(this, this.replayPacketCleanerInstance.getProtocolDirectory()));
+
         this.fileMenuExportItem.setEnabled(false);
 
         this.fileMenu.add(this.fileMenuImportItem);
         this.fileMenu.add(this.fileMenuExportItem);
+        if (showHiddenOptions) {
+            this.fileMenu.add(this.fileMenuCustomProtocolItem);
+            this.fileMenu.add(this.fileMenuGenerateProtocolItem);
+        }
+
         this.menuBar.add(this.fileMenu);
 
         this.helpMenu = new JMenu("Help");
@@ -264,6 +271,8 @@ public class MainWindow {
     private JMenu fileMenu;
     private JMenuItem fileMenuImportItem;
     private JMenuItem fileMenuExportItem;
+    private JMenuItem fileMenuCustomProtocolItem;
+    private JMenuItem fileMenuGenerateProtocolItem;
 
     private JMenu helpMenu;
     private JMenuItem helpMenuAboutItem;
@@ -323,7 +332,7 @@ public class MainWindow {
                 // Ensure the protocol the replay was recording in is supported
                 ReplayMetadata replayMetadata = ReplayMetadata.fromInputSteam(zipFile.getInputStream(zipEntry));
                 int protocolVersion = replayMetadata.getMetadataJson().getInt(ReplayMetadata.KEY_PROTOCOL);
-                if (Protocol.getProtocol(protocolVersion) == null) {
+                if (this.replayPacketCleanerInstance.getProtocolDirectory().getProtocol(protocolVersion) == null) {
                     errorText.append("\n  ").append(fileName).append(":  Unsupported protocol ").append(protocolVersion).append(" for ").append(replayMetadata.getMetadataJson().getString(ReplayMetadata.KEY_MC_VERSION));
                     errorOccurred = true;
                     continue;

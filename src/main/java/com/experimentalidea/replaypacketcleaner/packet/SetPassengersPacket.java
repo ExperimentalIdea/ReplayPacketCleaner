@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class SetPassengersPacket extends Packet {
 
     public SetPassengersPacket(long packetIndex, int timestamp, int entityID, int[] passengerEntityIDs) {
-        super(packetIndex, timestamp, PacketType.SET_PASSENGERS);
+        super(packetIndex, timestamp, PacketType.Play.SET_PASSENGERS);
         this.entityID = entityID;
         this.passengerEntityIDs = passengerEntityIDs;
     }

@@ -17,6 +17,7 @@ package com.experimentalidea.replaypacketcleaner.job.listener;
 
 import com.experimentalidea.replaypacketcleaner.packet.*;
 import com.experimentalidea.replaypacketcleaner.packet.listener.*;
+import com.experimentalidea.replaypacketcleaner.protocol.EntityType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,7 @@ public class EntityRemover implements SpawnEntityPacketListener, SpawnExperience
     // Track player entities ids and remove spawn packets for anything that is not a player.
     @Override
     public void onSpawnEntityPacket(SpawnEntityPacket spawnEntityPacket) {
-        if (spawnEntityPacket.getEntityType() == SpawnEntityPacket.EntityType.PLAYER) {
+        if (spawnEntityPacket.getEntityType() == EntityType.PLAYER) {
             this.exemptEntities.add(spawnEntityPacket.getEntityID());
         } else {
             spawnEntityPacket.setWriteCanceled(true);

@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class ProjectilePowerPacket extends Packet {
 
     public ProjectilePowerPacket(long packetIndex, int timestamp, int entityID, double power) {
-        super(packetIndex, timestamp, PacketType.PROJECTILE_POWER);
+        super(packetIndex, timestamp, PacketType.Play.PROJECTILE_POWER);
         this.entityID = entityID;
         this.power = power;
     }

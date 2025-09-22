@@ -22,7 +22,7 @@ public class UpdateTimePacket extends Packet {
 
 
     public UpdateTimePacket(long packetIndex, int timestamp, long worldAge, long timeOfDay, boolean timeAdvances) {
-        super(packetIndex, timestamp, PacketType.UPDATE_TIME);
+        super(packetIndex, timestamp, PacketType.Play.UPDATE_TIME);
         this.worldAge = worldAge;
         this.timeOfDay = timeOfDay;
         this.timeAdvances = timeAdvances;

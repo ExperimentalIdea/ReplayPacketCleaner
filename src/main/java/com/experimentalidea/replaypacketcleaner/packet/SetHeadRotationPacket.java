@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class SetHeadRotationPacket extends Packet {
 
     public SetHeadRotationPacket(long packetIndex, int timestamp, int entityID, int headYawByte) {
-        super(packetIndex, timestamp, PacketType.SET_HEAD_ROTATION);
+        super(packetIndex, timestamp, PacketType.Play.SET_HEAD_ROTATION);
         this.entityID = entityID;
         this.headYawByte = headYawByte;
     }

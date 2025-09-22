@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class SetEquipmentPacket extends Packet {
 
     public SetEquipmentPacket(long packetIndex, int timestamp, int entityID, int[] rawDataArrayBytes) {
-        super(packetIndex, timestamp, PacketType.SET_EQUIPMENT);
+        super(packetIndex, timestamp, PacketType.Play.SET_EQUIPMENT);
         this.entityID = entityID;
         this.rawDataArrayBytes = rawDataArrayBytes;
     }

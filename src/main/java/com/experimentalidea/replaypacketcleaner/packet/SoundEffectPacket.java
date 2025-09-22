@@ -24,7 +24,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class SoundEffectPacket extends Packet {
 
     public SoundEffectPacket(long packetIndex, int timestamp, int[] rawDataBytes) {
-        super(packetIndex, timestamp, PacketType.SOUND_EFFECT);
+        super(packetIndex, timestamp, PacketType.Play.SOUND_EFFECT);
         this.rawDataBytes = rawDataBytes;
     }
 

@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class SetEntityVelocityPacket extends Packet {
 
     public SetEntityVelocityPacket(long packetIndex, int timestamp, int entityID, short velocityX, short velocityY, short velocityZ) {
-        super(packetIndex, timestamp, PacketType.SET_ENTITY_VELOCITY);
+        super(packetIndex, timestamp, PacketType.Play.SET_ENTITY_VELOCITY);
         this.entityID = entityID;
         this.velocityX = velocityX;
         this.velocityY = velocityY;

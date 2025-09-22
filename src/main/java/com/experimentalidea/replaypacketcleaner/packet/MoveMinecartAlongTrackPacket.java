@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class MoveMinecartAlongTrackPacket extends Packet {
 
     public MoveMinecartAlongTrackPacket(long packetIndex, int timestamp, int entityID, int[] prefixedArrayRawBytes) {
-        super(packetIndex, timestamp, PacketType.MOVE_MINECART_ALONG_TRACK);
+        super(packetIndex, timestamp, PacketType.Play.MOVE_MINECART_ALONG_TRACK);
         this.entityID = entityID;
         this.prefixedArrayRawBytes = prefixedArrayRawBytes;
     }

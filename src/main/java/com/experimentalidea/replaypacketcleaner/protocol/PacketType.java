@@ -1,87 +1,484 @@
+/*
+ * Copyright 2025 ExperimentalIdea
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * */
 package com.experimentalidea.replaypacketcleaner.protocol;
 
-public enum PacketType {
+public interface PacketType {
 
-    UNDEFINED,
+    public ProtocolState getProtocolState();
 
-    /// NOTE: Packet structure changed from 1.13.x to 1.14.x. The position is encoded as XYZ in 1.13.x and older, while it is encoded as XZY in 1.14.x+
-    BLOCK_ACTION,
 
-    DAMAGE_EVENT,
+    public static enum Configuration implements ProtocolMetadata, PacketType {
 
-    ENTITY_ANIMATION,
+        UNDEFINED,
 
-    /// For all potion/status effects.
-    /// Seems this is only for the client (player) to display effect durations, removing it has no effect on potion particles.
-    /// I believe the Set Entity Metadata packet may be responsible for those particles.
-    ENTITY_EFFECT,
 
-    ENTITY_EVENT,
+        /// Add Resource Pack (configuration). Also see REMOVE_RESOURCE_PACK
+        ADD_RESOURCE_PACK,
 
-    ENTITY_SOUND_EFFECT,
+        /// Clear Dialog (configuration) <br> Supported in protocol versions 771+ (1.21.6+)
+        CLEAR_DIALOG,
 
-    GAME_EVENT,
+        /// Clientbound Keep Alive (configuration)
+        CLIENTBOUND_KEEP_ALIVE,
 
-    HURT_ANIMATION,
+        CLIENTBOUND_KNOWN_PACKS,
 
-    LINK_ENTITIES,
+        /// Clientbound Plugin Message (configuration)
+        CLIENTBOUND_PLUGIN_MESSAGE,
 
-    /// NOTE: Packet is new to protocol 768+ (1.21.2+).
-    MOVE_MINECART_ALONG_TRACK,
+        /// Cookie Request (configuration)
+        COOKIE_REQUEST,
 
-    /// NOTE: Packet structure changed since protocol 769+ (1.21.4+). New field alwaysVisible.
-    PARTICLE,
+        /// Custom Report Details (configuration)
+        CUSTOM_REPORT_DETAILS,
 
-    /// This packet is purely for the animation of an item being picked up by an entity
-    PICKUP_ITEM,
+        /// Disconnect (configuration)
+        DISCONNECT,
 
-    PROJECTILE_POWER,
+        FEATURE_FLAGS,
 
-    REMOVE_ENTITIES,
+        /// Switches the protocol state to play.
+        FINISH_CONFIGURATION,
 
-    /// For all potion/status effects
-    REMOVE_ENTITY_EFFECT,
+        /// Ping (configuration)
+        PING,
 
-    // TODO: add Set Block Destroy Stage packet
+        REGISTRY_DATA,
 
-    SET_ENTITY_METADATA,
+        /// Remove Resource Pack (configuration). Also see ADD_RESOURCE_PACK
+        REMOVE_RESOURCE_PACK,
 
-    SET_ENTITY_VELOCITY,
+        RESET_CHAT,
 
-    SET_EQUIPMENT,
+        /// Server Links (configuration)
+        SERVER_LINKS,
 
-    SET_HEAD_ROTATION,
+        /// Show Dialog (configuration) <br> Supported in protocol versions 771+ (1.21.6+)
+        SHOW_DIALOG,
 
-    SET_PASSENGERS,
+        /// Store Cookie (configuration)
+        STORE_COOKIE,
 
-    SOUND_EFFECT,
+        /// Transfer (configuration) - Tells the client to transfer to another server. (should never see this packet within replays)
+        TRANSFER,
 
-    SPAWN_ENTITY,
+        /// Update Tags (configuration)
+        UPDATE_TAGS;
 
-    /// NOTE: This packet type was removed in 770+ (1.21.5+)
-    SPAWN_EXPERIENCE_ORB,
 
-    START_CONFIGURATION,
+        Configuration() {
+            this.metadata = new TypeMetadata<Configuration>(this, new String[]{TypeMetadata.JSON_NODE_PROTOCOL, TypeMetadata.JSON_NODE_PACKETS, TypeMetadata.JSON_NODE_STATE_CONFIGURATION, this.name().toLowerCase()});
+        }
 
-    /// NOTE: Packet is new to protocol 768+ (1.21.2+).
-    SYNCHRONIZE_VEHICLE_POSITION,
 
-    /// NOTE: Packet structure changed since protocol 768+ (1.21.2+). New fields for velocity and yaw/pitch.
-    TELEPORT_ENTITY,
+        private final TypeMetadata<Configuration> metadata;
 
-    UPDATE_ATTRIBUTES,
+        @Override
+        public ProtocolState getProtocolState() {
+            return ProtocolState.CONFIGURATION;
+        }
 
-    UPDATE_ENTITY_POSITION,
+        @Override
+        public TypeMetadata<Configuration> getMetadata() {
+            return this.metadata;
+        }
 
-    UPDATE_ENTITY_POSITION_AND_ROTATION,
+    }
 
-    UPDATE_ENTITY_ROTATION,
 
-    /// NOTE: Packet structure changed since protocol 768+ (1.21.2+). New field timeAdvances (timeOfDayIncreasing)
-    UPDATE_TIME,
+    public static enum Login implements ProtocolMetadata, PacketType {
 
-    /// NOTE: Packet structure changed from 1.13.x to 1.14.x. The position is encoded as XYZ in 1.13.x and older, while it is encoded as XZY in 1.14.x+
-    WORLD_EVENT,
+        UNDEFINED,
+
+
+        /// Cookie Request (login)
+        COOKIE_REQUEST,
+
+        /// Disconnect (login)
+        DISCONNECT,
+
+        ENCRYPTION_REQUEST,
+
+        LOGIN_PLUGIN_REQUEST,
+
+        /// Switches the protocol state to play on older protocol versions. (TODO: Note which version changed this)
+        LOGIN_SUCCESS,
+
+        SET_COMPRESSION;
+
+
+        Login() {
+            this.metadata = new TypeMetadata<Login>(this, new String[]{TypeMetadata.JSON_NODE_PROTOCOL, TypeMetadata.JSON_NODE_PACKETS, TypeMetadata.JSON_NODE_STATE_LOGIN, this.name().toLowerCase()});
+        }
+
+
+        private final TypeMetadata<Login> metadata;
+
+        @Override
+        public ProtocolState getProtocolState() {
+            return ProtocolState.LOGIN;
+        }
+
+        @Override
+        public TypeMetadata<Login> getMetadata() {
+            return this.metadata;
+        }
+
+    }
+
+
+    public static enum Play implements ProtocolMetadata, PacketType {
+
+        UNDEFINED,
+
+
+        ACKNOWLEDGE_BLOCK_CHANGE,
+
+        /// Add Resource Pack (play). Also see REMOVE_RESOURCE_PACK
+        ADD_RESOURCE_PACK,
+
+        AWARD_STATISTICS,
+
+        /// NOTE: Packet structure changed from 1.13.x to 1.14.x. The position is encoded as XYZ in 1.13.x and older, while it is encoded as XZY in 1.14.x+
+        BLOCK_ACTION,
+
+        BLOCK_ENTITY_DATA,
+
+        /// TODO: note for implementing packet: The Enum fields Action, Color, & TypeOfDivision appear to be the same for all protocol versions. (when quickly comparing 1.12 to 1.21.8)
+        BOSS_BAR,
+
+        BUNDLE_DELIMITER,
+
+        BLOCK_UPDATE,
+
+        CHANGE_DIFFICULTY,
+
+        CHAT_SUGGESTIONS,
+
+        CHUNK_BATCH_FINISHED,
+
+        CHUNK_BATCH_START,
+
+        CHUNK_BIOMES,
+
+        CHUNK_DATA_AND_UPDATE_LIGHT,
+
+        /// Clientbound Keep Alive (play)
+        CLIENTBOUND_KEEP_ALIVE,
+
+        /// Clientbound Plugin Message (play)
+        CLIENTBOUND_PLUGIN_MESSAGE,
+
+        /// Clear Dialog (play) <br> Supported in protocol versions 771+ (1.21.6+)
+        CLEAR_DIALOG,
+
+        CLEAR_TITLES,
+
+        CLOSE_CONTAINER,
+
+        COMBAT_DEATH,
+
+        COMMANDS,
+
+        COMMAND_SUGGESTIONS_RESPONSE,
+
+        ///  Cookie Request (play)
+        COOKIE_REQUEST,
+
+        /// Custom Report Details (play)
+        CUSTOM_REPORT_DETAILS,
+
+        DAMAGE_EVENT,
+
+        DEBUG_SAMPLE,
+
+        DELETE_MESSAGE,
+
+        /// Disconnect (play)
+        DISCONNECT,
+
+        DISGUISED_CHAT_MESSAGE,
+
+        /// Related to the scoreboard
+        DISPLAY_OBJECTIVE,
+
+        END_COMBAT,
+
+        ENTER_COMBAT,
+
+        ENTITY_ANIMATION,
+
+        /// For all potion/status effects.
+        /// Seems this is only for the client (player) to display effect durations, removing it has no effect on potion particles.
+        /// I believe the Set Entity Metadata packet may be responsible for those particles.
+        ENTITY_EFFECT,
+
+        ENTITY_EVENT,
+
+        ENTITY_SOUND_EFFECT,
+
+        EXPLOSION,
+
+        GAME_EVENT,
+
+        HURT_ANIMATION,
+
+        INITIALIZE_WORLD_BORDER,
+
+        LINK_ENTITIES,
+
+        LOOK_AT,
+
+        ///  Login (play)
+        LOGIN,
+
+        MAP_DATA,
+
+        MERCHANT_OFFERS,
+
+        /// NOTE: Packet is new to protocol 768+ (1.21.2+).
+        MOVE_MINECART_ALONG_TRACK,
+
+        MOVE_VEHICLE,
+
+        OPEN_BOOK,
+
+        OPEN_HORSE_SCREEN,
+
+        OPEN_SIGN_EDITOR,
+
+        OPEN_SCREEN,
+
+        /// NOTE: Packet structure changed since protocol 769+ (1.21.4+). New field alwaysVisible.
+        PARTICLE,
+
+        /// This packet is purely for the animation of an item being picked up by an entity
+        PICKUP_ITEM,
+
+        /// Ping (play)
+        PING,
+
+        /// Ping Response (play)
+        PING_RESPONSE,
+
+        PLACE_GHOST_RECIPE,
+
+        /// Player Abilities (clientbound)
+        PLAYER_ABILITIES,
+
+        PLAYER_CHAT_MESSAGE,
+
+        PLAYER_INFO_REMOVE,
+
+        PLAYER_INFO_UPDATE,
+
+        PLAYER_ROTATION,
+
+        PROJECTILE_POWER,
+
+        RECIPE_BOOK_ADD,
+
+        RECIPE_BOOK_REMOVE,
+
+        RECIPE_BOOK_SETTINGS,
+
+        REMOVE_ENTITIES,
+
+        /// For all potion/status effects
+        REMOVE_ENTITY_EFFECT,
+
+        /// Remove Resource Pack (play). Also see ADD_RESOURCE_PACK
+        REMOVE_RESOURCE_PACK,
+
+        /// Related to the scoreboard
+        RESET_SCORE,
+
+        RESPAWN,
+
+        SELECT_ADVANCEMENTS_TAB,
+
+        /// Server MOTD & Icon.
+        SERVER_DATA,
+
+        /// Server Links (play)
+        SERVER_LINKS,
+
+        SET_ACTION_BAR_TEXT,
+
+        SET_BLOCK_DESTROY_STAGE,
+
+        SET_BORDER_CENTER,
+
+        SET_BORDER_LERP_SIZE,
+
+        SET_BORDER_SIZE,
+
+        SET_BORDER_WARNING_DELAY,
+
+        SET_BORDER_WARNING_DISTANCE,
+
+        /// Packet for setting the player to spectate an entity
+        SET_CAMERA,
+
+        SET_CENTER_CHUNK,
+
+        SET_CONTAINER_CONTENT,
+
+        SET_CONTAINER_PROPERTY,
+
+        SET_CONTAINER_SLOT,
+
+        SET_COOLDOWN,
+
+        SET_CURSOR_ITEM,
+
+        SET_DEFAULT_SPAWN_POSITION,
+
+        SET_ENTITY_METADATA,
+
+        SET_ENTITY_VELOCITY,
+
+        SET_EQUIPMENT,
+
+        SET_EXPERIENCE,
+
+        SET_HEAD_ROTATION,
+
+        SET_HEALTH,
+
+        /// Set Held Item (clientbound)
+        SET_HELD_ITEM,
+
+        SET_PASSENGERS,
+
+        SET_PLAYER_INVENTORY_SLOT,
+
+        SET_RENDER_DISTANCE,
+
+        SET_SIMULATION_DISTANCE,
+
+        SET_SUBTITLE_TEXT,
+
+        SET_TAB_LIST_HEADER_AND_FOOTER,
+
+        SET_TICKING_STATE,
+
+        SET_TITLE_ANIMATION_TIMES,
+
+        SET_TITLE_TEXT,
+
+        /// Show Dialog (play) <br> Supported in protocol versions 771+ (1.21.6+)
+        SHOW_DIALOG,
+
+        SOUND_EFFECT,
+
+        SPAWN_ENTITY,
+
+        /// Unsupported in protocol versions 770+ (1.21.5+)
+        SPAWN_EXPERIENCE_ORB,
+
+        /// Switches the protocol state to Configuration
+        START_CONFIGURATION,
+
+        STEP_TICK,
+
+        STOP_SOUND,
+
+        /// Store Cookie (play)
+        STORE_COOKIE,
+
+        /// TODO: Look into which protocol version this was added in. Seems to be new. (1.21.2+???)
+        SYNCHRONIZE_PLAYER_POSITION,
+
+        /// NOTE: Packet is new to protocol 768+ (1.21.2+).
+        SYNCHRONIZE_VEHICLE_POSITION,
+
+        SYSTEM_CHAT_MESSAGE,
+
+        TAG_QUERY_RESPONSE,
+
+        /// NOTE: Packet structure changed since protocol 768+ (1.21.2+). New fields for velocity and yaw/pitch.
+        TELEPORT_ENTITY,
+
+        /// Supported in protocol versions 770+ (1.21.5+)
+        TEST_INSTANCE_BLOCK_STATUS,
+
+        /// Transfer (play) - Tells the client to transfer to another server. (should never see this packet within replays)
+        TRANSFER,
+
+        UNLOAD_CHUNK,
+
+        UPDATE_ADVANCEMENTS,
+
+        UPDATE_ATTRIBUTES,
+
+        UPDATE_ENTITY_POSITION,
+
+        UPDATE_ENTITY_POSITION_AND_ROTATION,
+
+        UPDATE_ENTITY_ROTATION,
+
+        UPDATE_LIGHT,
+
+        /// Related to the scoreboard
+        UPDATE_OBJECTIVES,
+
+        UPDATE_RECIPE_BOOK,
+
+        UPDATE_RECIPES,
+
+        UPDATE_SECTION_BLOCKS,
+
+        /// Related to the scoreboard
+        UPDATE_SCORE,
+
+        /// Update Tags (play)
+        UPDATE_TAGS,
+
+        /// Related to the scoreboard (I think...)
+        UPDATE_TEAMS,
+
+        /// NOTE: Packet structure changed since protocol 768+ (1.21.2+). New field timeAdvances (timeOfDayIncreasing)
+        UPDATE_TIME,
+
+        /// Supported in protocol versions 771+
+        WAYPOINT,
+
+        /// NOTE: Packet structure changed from 1.13.x to 1.14.x. The position is encoded as XYZ in 1.13.x and older, while it is encoded as XZY in 1.14.x+
+        /// ALSO NOTE: Packet referred to as simply "Effect" for older protocols on the wiki. (around 1.19 & before)
+        WORLD_EVENT;
+
+
+        Play() {
+            this.metadata = new TypeMetadata<Play>(this, new String[]{TypeMetadata.JSON_NODE_PROTOCOL, TypeMetadata.JSON_NODE_PACKETS, TypeMetadata.JSON_NODE_STATE_PLAY, this.name().toLowerCase()});
+        }
+
+        private final TypeMetadata<Play> metadata;
+
+        @Override
+        public ProtocolState getProtocolState() {
+            return ProtocolState.PLAY;
+        }
+
+        @Override
+        public TypeMetadata<Play> getMetadata() {
+            return this.metadata;
+        }
+
+    }
 
 
 }

@@ -22,7 +22,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class SpawnExperienceOrbPacket extends Packet {
 
     public SpawnExperienceOrbPacket(long packetIndex, int timestamp, int entityID, double x, double y, double z, short count) {
-        super(packetIndex, timestamp, PacketType.SPAWN_EXPERIENCE_ORB);
+        super(packetIndex, timestamp, PacketType.Play.SPAWN_EXPERIENCE_ORB);
 
         this.entityID = entityID;
         this.x = x;

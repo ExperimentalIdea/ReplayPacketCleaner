@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class EntityEffectPacket extends Packet {
 
     public EntityEffectPacket(long packetIndex, int timestamp, int entityID, int effectID, int amplifier, int duration, boolean isAmbient, boolean showParticles, boolean showIcon, boolean blend) {
-        super(packetIndex, timestamp, PacketType.ENTITY_EFFECT);
+        super(packetIndex, timestamp, PacketType.Play.ENTITY_EFFECT);
 
         this.entityID = entityID;
         this.effectID = effectID;

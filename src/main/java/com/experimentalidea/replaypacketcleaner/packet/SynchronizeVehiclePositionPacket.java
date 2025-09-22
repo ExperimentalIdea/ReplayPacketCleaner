@@ -21,7 +21,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 public class SynchronizeVehiclePositionPacket extends Packet {
 
     public SynchronizeVehiclePositionPacket(long packetIndex, int timestamp, int entityID, double x, double y, double z, double velocityX, double velocityY, double velocityZ, float yaw, float pitch, int teleportFlags, boolean onGround) {
-        super(packetIndex, timestamp, PacketType.SYNCHRONIZE_VEHICLE_POSITION);
+        super(packetIndex, timestamp, PacketType.Play.SYNCHRONIZE_VEHICLE_POSITION);
         this.entityID = entityID;
         this.x = x;
         this.y = y;
