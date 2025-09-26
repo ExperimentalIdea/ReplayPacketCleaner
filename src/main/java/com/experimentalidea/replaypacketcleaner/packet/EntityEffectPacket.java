@@ -17,10 +17,14 @@ package com.experimentalidea.replaypacketcleaner.packet;
 
 import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 
+import java.util.Objects;
+
 /// A read-only representation of an Entity Effect Packet. Currently, I don't see a need to do anything with this packet outside deleting it.
 public class EntityEffectPacket extends Packet {
 
-    public EntityEffectPacket(long packetIndex, int timestamp, int entityID, int effectID, int amplifier, int duration, boolean isAmbient, boolean showParticles, boolean showIcon, boolean blend) {
+    /// blend flag is not present in protocol versions older than 766 (1.20.5).
+    /// has hasFactorData & factorCodecNBTRawBytes are present in protocol versions older than 766 (1.20.5).
+    public EntityEffectPacket(long packetIndex, int timestamp, int entityID, int effectID, int amplifier, int duration, boolean isAmbient, boolean showParticles, boolean showIcon, boolean blend, boolean hasFactorData, int[] factorCodecNBTRawBytes) {
         super(packetIndex, timestamp, PacketType.Play.ENTITY_EFFECT);
 
         this.entityID = entityID;
@@ -30,7 +34,11 @@ public class EntityEffectPacket extends Packet {
         this.isAmbient = isAmbient;
         this.showParticles = showParticles;
         this.showIcon = showIcon;
+
         this.blend = blend;
+
+        this.hasFactorData = hasFactorData;
+        this.factorCodecNBTRawBytes = Objects.requireNonNullElse(factorCodecNBTRawBytes, EntityEffectPacket.emptyIntArray);
     }
 
     private final int entityID;
@@ -38,6 +46,10 @@ public class EntityEffectPacket extends Packet {
     private final int amplifier;
     private final int duration;
     private final boolean isAmbient, showParticles, showIcon, blend;
+    private final boolean hasFactorData;
+    private final int[] factorCodecNBTRawBytes;
+
+    private static final int[] emptyIntArray = new int[0];
 
 
     public int getEntityID() {
@@ -75,6 +87,16 @@ public class EntityEffectPacket extends Packet {
     /// Flag blend
     public boolean shouldBlend() {
         return this.blend;
+    }
+
+    /// hasFactorData can only be present in protocol versions older than 766 (1.20.5). Will always return false in newer versions.
+    public boolean isHasFactorData() {
+        return hasFactorData;
+    }
+
+    /// Only present in protocol versions older than 766 (1.20.5). Will always return an empty array in newer versions.
+    public int[] getFactorCodecNBTRawBytes() {
+        return factorCodecNBTRawBytes;
     }
 
 }

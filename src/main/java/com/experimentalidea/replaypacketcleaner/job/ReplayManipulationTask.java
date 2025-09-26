@@ -701,6 +701,8 @@ public class ReplayManipulationTask implements Runnable {
 
     private void handleEntityEffectPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws IOException {
         if (this.entityEffectPacketListeners.length > 0) {
+            long startingBytesRead = this.reader.bytesRead() - ReplayWriter.sizeOfVarInt(packetID);
+
             // Read packet data
             int entityID = this.reader.readVarInt();
             int effectID = this.reader.readVarInt();
@@ -711,9 +713,17 @@ public class ReplayManipulationTask implements Runnable {
             boolean isAmbient = (flagsByte & 0x01) != 0;
             boolean showParticles = (flagsByte & 0x02) != 0;
             boolean showIcon = (flagsByte & 0x04) != 0;
-            boolean blend = (flagsByte & 0x08) != 0;
+            boolean blend = (flagsByte & 0x08) != 0; // blend flag is not present in protocol versions older than 766 (1.20.5)
 
-            EntityEffectPacket entityEffectPacket = new EntityEffectPacket(packetIndex, timeStamp, entityID, effectID, amplifier, duration, isAmbient, showParticles, showIcon, blend);
+            // Fields present in protocol versions before 766 (1.20.5)
+            boolean hasFactorData = false;
+            int[] factorCodecNBTRawBytes = null;
+            if (this.protocolVersion < Version.MC_1_20_5) {
+                hasFactorData = this.reader.readBoolean();
+                factorCodecNBTRawBytes = this.reader.readByteArray((int) (packetSize - (this.reader.bytesRead() - startingBytesRead)));
+            }
+
+            EntityEffectPacket entityEffectPacket = new EntityEffectPacket(packetIndex, timeStamp, entityID, effectID, amplifier, duration, isAmbient, showParticles, showIcon, blend, hasFactorData, factorCodecNBTRawBytes);
 
             // Let listener(s) cancel this packet.
             for (EntityEffectPacketListener listener : this.entityEffectPacketListeners) {
@@ -728,6 +738,10 @@ public class ReplayManipulationTask implements Runnable {
                 this.writer.writeVarInt(amplifier);
                 this.writer.writeVarInt(duration);
                 this.writer.writeByte(flagsByte);
+                if (this.protocolVersion < Version.MC_1_20_5) {
+                    this.writer.writeBoolean(hasFactorData);
+                    this.writer.writeByteArray(factorCodecNBTRawBytes);
+                }
             }
         } else {
             this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));

@@ -224,6 +224,7 @@ public interface PacketType {
         /// For all potion/status effects.
         /// Seems this is only for the client (player) to display effect durations, removing it has no effect on potion particles.
         /// I believe the Set Entity Metadata packet may be responsible for those particles.
+        /// Note: Packet structure changed in protocol 766+ (1.20.5+)
         ENTITY_EFFECT,
 
         ENTITY_EVENT,
@@ -290,6 +291,7 @@ public interface PacketType {
         PLAYER_ROTATION,
 
         /// Note: Packet structure changed since protocol 767+ (1.21.0+). Power XYZ fields reduced to single Power field.
+        /// Note: Packet is new to protocol 766+ (1.20.5+)
         PROJECTILE_POWER,
 
         RECIPE_BOOK_ADD,
@@ -426,6 +428,7 @@ public interface PacketType {
 
         UPDATE_ADVANCEMENTS,
 
+        /// Note: A data field changed in 766+ (1.20.5)
         UPDATE_ATTRIBUTES,
 
         UPDATE_ENTITY_POSITION,
