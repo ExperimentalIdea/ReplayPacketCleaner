@@ -142,7 +142,10 @@ public class ProtocolGenerationWindow {
                         String[] supportedMCVersions = mcVersionSupport.getText().split(",");
                         log.append("Generated Supported MC Version: ").append(Arrays.toString(supportedMCVersions)).append("\n");
 
-                        JSONObject packetsJSON = loadJSON(packetsJSONFile);
+                        JSONObject packetsJSON = null;
+                        if (packetsJSONFile != null) {
+                            packetsJSON = loadJSON(packetsJSONFile);
+                        }
                         JSONObject registriesJSON = loadJSON(registriesJSONFile);
                         JSONObject blocksJSON = loadJSON(blocksJSONFile);
 
@@ -170,10 +173,15 @@ public class ProtocolGenerationWindow {
                                 referenceUnsupportedTypes.add(type);
                             }
                         }
-                        try {
-                            populateJSON(rootProtocolJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Configuration.values(), log, "configuration", "clientbound");
-                        } catch (RuntimeException e) {
-                            log.append(e.getMessage()).append("\nAssuming the configuration phase is unsupported by this protocol version.\n");
+                        if (packetsJSON != null) {
+                            try {
+                                populateJSON(rootProtocolJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Configuration.values(), log, "configuration", "clientbound");
+                            } catch (RuntimeException e) {
+                                log.append(e.getMessage()).append("\nAssuming the configuration phase is unsupported by this protocol version.\n");
+                            }
+                        } else {
+                            log.append("\npackets.json not provided. Generating fields with default id value of -1 for all fields preset in reference.");
+                            populateBlankProtocolJSON(rootProtocolJSON, referenceUnsupportedTypes, PacketType.Configuration.values(), log);
                         }
                         referenceResources.clear();
                         referenceUnsupportedTypes.clear();
@@ -186,7 +194,12 @@ public class ProtocolGenerationWindow {
                                 referenceUnsupportedTypes.add(type);
                             }
                         }
-                        populateJSON(rootProtocolJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Login.values(), log, "login", "clientbound");
+                        if (packetsJSON != null) {
+                            populateJSON(rootProtocolJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Login.values(), log, "login", "clientbound");
+                        } else {
+                            log.append("\npackets.json not provided. Generating fields with default id value of -1 for all fields preset in reference.");
+                            populateBlankProtocolJSON(rootProtocolJSON, referenceUnsupportedTypes, PacketType.Login.values(), log);
+                        }
                         referenceResources.clear();
                         referenceUnsupportedTypes.clear();
 
@@ -198,7 +211,12 @@ public class ProtocolGenerationWindow {
                                 referenceUnsupportedTypes.add(type);
                             }
                         }
-                        populateJSON(rootProtocolJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Play.values(), log, "play", "clientbound");
+                        if (packetsJSON != null) {
+                            populateJSON(rootProtocolJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Play.values(), log, "play", "clientbound");
+                        } else {
+                            log.append("\npackets.json not provided. Generating fields with default id value of -1 for all fields preset in reference.");
+                            populateBlankProtocolJSON(rootProtocolJSON, referenceUnsupportedTypes, PacketType.Play.values(), log);
+                        }
                         referenceResources.clear();
                         referenceUnsupportedTypes.clear();
 
@@ -296,7 +314,7 @@ public class ProtocolGenerationWindow {
     }
 
     private void updateGenerateJSONFileButton() {
-        this.generateJSONFileButton.setEnabled(this.packetsJSONFile != null && this.registriesJSONFile != null && this.blocksJSONFile != null && !this.generatedProtocolVersion.getText().isBlank() && !this.mcVersionSupport.getText().isBlank());
+        this.generateJSONFileButton.setEnabled(this.registriesJSONFile != null && this.blocksJSONFile != null && !this.generatedProtocolVersion.getText().isBlank() && !this.mcVersionSupport.getText().isBlank());
     }
 
     private static JSONObject loadJSON(File file) throws IOException {
@@ -327,6 +345,39 @@ public class ProtocolGenerationWindow {
         } catch (IOException e) {
             throw new IOException(e);
         }
+    }
+
+    /// Below 1.21, data generators don't provide a packets.json.
+    /// Just populate all the packet fields that are present within the reference with id's set to -1 for unsupported.
+    /// For the moment, packet ids will have to be mapped by hand until another solution can be figured out.
+    private static void populateBlankProtocolJSON(JSONObject rootProtocolJSON, List<ProtocolMetadata> referenceUnsupportedTypes, ProtocolMetadata[] types, StringBuilder log) {
+
+        for (ProtocolMetadata type : types) {
+            TypeMetadata<?> metadata = type.getMetadata();
+
+            if(referenceUnsupportedTypes.contains(type)){
+                continue;
+            }
+
+            // Get the set of keys required to traverse the json object to the point where the ID & ResourceName should be.
+            String[] jsonNodePaths = type.getMetadata().getJSONNodePaths();
+
+            JSONObject currentNode = rootProtocolJSON;
+            for (int i = 0; i < jsonNodePaths.length; i++) {
+                // Traverse the jsonObject to the next node.
+                JSONObject nextNode = currentNode.optJSONObject(jsonNodePaths[i]);
+                if (nextNode == null) {
+                    nextNode = new JSONObject();
+                    currentNode.put(jsonNodePaths[i], nextNode);
+                }
+                currentNode = nextNode;
+            }
+
+            currentNode.put(TypeMetadata.JSON_NODE_ID, -1);
+            // there is no resource available. Skip adding a resource field to the json object.
+        }
+
+        log.append("\nGenerated ").append(types.length).append(" types with default id field of -1.\n");
     }
 
     private static void populateJSON(JSONObject rootProtocolJSON, JSONObject resourceJSON, Map<ProtocolMetadata, String> referenceResources, List<ProtocolMetadata> referenceUnsupportedTypes, ProtocolMetadata[] types, StringBuilder log, String resourceNode, String resourceEntriesNode) {

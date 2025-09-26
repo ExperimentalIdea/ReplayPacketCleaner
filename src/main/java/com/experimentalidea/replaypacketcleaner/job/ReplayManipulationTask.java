@@ -930,10 +930,17 @@ public class ReplayManipulationTask implements Runnable {
         if (this.particlePacketListeners.length > 0) {
             // Read packet data
             long startingBytesRead = this.reader.bytesRead() - ReplayWriter.sizeOfVarInt(packetID);
+
+            // Particle ID field is at the start of the packet for protocol versions 766 (1.20.5/6) and older.
+            // In protocol version 767+ (1.21.0+) this field is the 2nd to last field in this packet.
+            int particleID = 0;
+            if (this.protocolVersion < Version.MC_1_21_0) {
+                particleID = this.reader.readVarInt();
+            }
             boolean longDistance = this.reader.readBoolean();
             boolean alwaysVisible = false;
-            // Versions 1.21.4 and onward have a new alwaysVisible field.
-            if (this.protocolVersion >= Version.MC_1_21_4) {
+            // Versions 768+ (1.21.4+) and onward have a new alwaysVisible field.
+            if (this.protocolVersion > Version.MC_1_21_3) {
                 this.reader.readBoolean();
             }
             double x = this.reader.readDouble();
@@ -944,7 +951,9 @@ public class ReplayManipulationTask implements Runnable {
             float offsetZ = this.reader.readFloat();
             float maxSpeed = this.reader.readFloat();
             int particleCount = this.reader.readInt();
-            int particleID = this.reader.readVarInt();
+            if (this.protocolVersion > Version.MC_1_20_6) {
+                particleID = this.reader.readVarInt();
+            }
             int[] particleDataRawBytes = this.reader.readByteArray((int) (packetSize - (this.reader.bytesRead() - startingBytesRead)));
 
             ParticlePacket particlePacket = new ParticlePacket(packetIndex, timeStamp, longDistance, alwaysVisible, x, y, z, offsetX, offsetY, offsetZ, maxSpeed, particleCount, particleID, particleDataRawBytes);
@@ -957,8 +966,11 @@ public class ReplayManipulationTask implements Runnable {
             // Write out the full packet (if the packet should be written out)
             if (!particlePacket.isWriteCanceled()) {
                 this.writePacketHeader(timeStamp, packetSize, packetID);
+                if (this.protocolVersion < Version.MC_1_21_0) {
+                    this.writer.writeVarInt(particleID);
+                }
                 this.writer.writeBoolean(longDistance);
-                if (this.protocolVersion >= Version.MC_1_21_4) {
+                if (this.protocolVersion > Version.MC_1_21_4) {
                     this.writer.writeBoolean(alwaysVisible);
                 }
                 this.writer.writeDouble(x);
@@ -969,7 +981,9 @@ public class ReplayManipulationTask implements Runnable {
                 this.writer.writeFloat(offsetZ);
                 this.writer.writeFloat(maxSpeed);
                 this.writer.writeInt(particleCount);
-                this.writer.writeVarInt(particleID);
+                if (this.protocolVersion > Version.MC_1_20_6) {
+                    this.writer.writeVarInt(particleID);
+                }
                 this.writer.writeByteArray(particleDataRawBytes);
             }
         } else {
@@ -1007,9 +1021,19 @@ public class ReplayManipulationTask implements Runnable {
         if (this.projectilePowerPacketListeners.length > 0) {
             // Read packet data
             int entityID = this.reader.readVarInt();
-            double power = this.reader.readDouble();
+            double power = 0.0;
+            double powerX = 0.0;
+            double powerY = 0.0;
+            double powerZ = 0.0;
+            if (this.protocolVersion > Version.MC_1_20_6) {
+                power = this.reader.readDouble();
+            } else {
+                powerX = this.reader.readDouble();
+                powerY = this.reader.readDouble();
+                powerZ = this.reader.readDouble();
+            }
 
-            ProjectilePowerPacket projectilePowerPacket = new ProjectilePowerPacket(packetIndex, timeStamp, entityID, power);
+            ProjectilePowerPacket projectilePowerPacket = new ProjectilePowerPacket(packetIndex, timeStamp, entityID, (this.protocolVersion > Version.MC_1_20_6), power, powerX, powerY, powerZ);
 
             // Let listener(s) cancel this packet.
             for (ProjectilePowerPacketListener listener : this.projectilePowerPacketListeners) {
@@ -1020,7 +1044,13 @@ public class ReplayManipulationTask implements Runnable {
             if (!projectilePowerPacket.isWriteCanceled()) {
                 this.writePacketHeader(timeStamp, packetSize, packetID);
                 this.writer.writeVarInt(entityID);
-                this.writer.writeDouble(power);
+                if (this.protocolVersion > Version.MC_1_20_6) {
+                    this.writer.writeDouble(power);
+                } else {
+                    this.writer.writeDouble(powerX);
+                    this.writer.writeDouble(powerY);
+                    this.writer.writeDouble(powerZ);
+                }
             }
         } else {
             this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));

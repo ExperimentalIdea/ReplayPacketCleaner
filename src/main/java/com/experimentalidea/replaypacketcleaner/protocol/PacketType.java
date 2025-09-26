@@ -228,6 +228,7 @@ public interface PacketType {
 
         ENTITY_EVENT,
 
+        /// Note: Packet structure changed in protocol 767+ (1.21.0+)
         ENTITY_SOUND_EFFECT,
 
         EXPLOSION,
@@ -263,6 +264,7 @@ public interface PacketType {
         OPEN_SCREEN,
 
         /// NOTE: Packet structure changed since protocol 769+ (1.21.4+). New field alwaysVisible.
+        /// Note: Packet structure changed since protocol 767+ (1.21.0+). Particle ID field moved to the end just before the Data field
         PARTICLE,
 
         /// This packet is purely for the animation of an item being picked up by an entity
@@ -287,6 +289,7 @@ public interface PacketType {
 
         PLAYER_ROTATION,
 
+        /// Note: Packet structure changed since protocol 767+ (1.21.0+). Power XYZ fields reduced to single Power field.
         PROJECTILE_POWER,
 
         RECIPE_BOOK_ADD,
@@ -383,6 +386,7 @@ public interface PacketType {
         /// Show Dialog (play) <br> Supported in protocol versions 771+ (1.21.6+)
         SHOW_DIALOG,
 
+        /// Note: Packet structure changed in protocol 767+ (1.21.0+)
         SOUND_EFFECT,
 
         SPAWN_ENTITY,
@@ -400,7 +404,6 @@ public interface PacketType {
         /// Store Cookie (play)
         STORE_COOKIE,
 
-        /// TODO: Look into which protocol version this was added in. Seems to be new. (1.21.2+???)
         SYNCHRONIZE_PLAYER_POSITION,
 
         /// NOTE: Packet is new to protocol 768+ (1.21.2+).
