@@ -1,4 +1,4 @@
-# ![RPC logo](https://github.com/ExperimentalIdea/ReplayPacketCleaner/blob/master/src/main/resources/icon64.png) Replay Packet Cleaner 
+# ![RPC logo](https://github.com/ExperimentalIdea/ReplayPacketCleaner/blob/master/src/main/resources/resources/icon64.png) Replay Packet Cleaner 
 Replay Packet Cleaner (or RPC for short) is a standalone tool written in Java for editing Minecraft [ReplayMod](https://github.com/ReplayMod/ReplayMod) replay archives with the primary goal of improving the timeline and rendering performance of replays in ReplayMod by removing unwanted packets.
 
 RPC can also override the time/weather and remove most particles effects, which helps in producing timelapses that are much more pleasant for viewers to watch.
