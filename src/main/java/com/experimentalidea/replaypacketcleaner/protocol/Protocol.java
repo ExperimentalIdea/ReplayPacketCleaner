@@ -126,11 +126,12 @@ public class Protocol {
         if (state == ProtocolState.CONFIGURATION) {
             return this.configurationMapper == null;
         }
-        return true;
+        return state != null;
     }
 
 
     /// Get the packet type by id. An unsupported id will return the undefined type.
+    /// The Configuration phase is unsupported in protocol versions 763 (1.20.0/1) and older.
     public PacketType.Configuration getConfigurationPacketType(int id) {
         if (this.configurationMapper == null) {
             throw new IllegalStateException("This protocol version does not have a Configuration phase."); // todo add more info
@@ -139,6 +140,7 @@ public class Protocol {
     }
 
     /// returns -1 if packetType is null or unsupported by the protocol.
+    /// The Configuration phase is unsupported in protocol versions 763 (1.20.0/1) and older.
     public int getConfigurationPacketID(PacketType.Configuration packetType) {
         if (this.configurationMapper == null) {
             throw new IllegalStateException("This protocol version does not have a Configuration phase."); // todo add more info
@@ -147,6 +149,7 @@ public class Protocol {
     }
 
     /// Returns and empty string if the resource cannot be found or if a resource name doesn't exist.
+    /// The Configuration phase is unsupported in protocol versions 763 (1.20.0/1) and older.
     public String getConfigurationResourceName(PacketType.Configuration packetType) {
         if (this.configurationMapper == null) {
             throw new IllegalStateException("This protocol version does not have a Configuration phase."); // todo add more info
@@ -155,6 +158,7 @@ public class Protocol {
     }
 
     /// Get packet type by resource name. Returns the undefined type if the provided resource is unknown.
+    /// The Configuration phase is unsupported in protocol versions 763 (1.20.0/1) and older.
     public PacketType.Configuration getConfigurationPacketType(String resourceName) {
         if (this.configurationMapper == null) {
             throw new IllegalStateException("This protocol version does not have a Configuration phase."); // todo add more info

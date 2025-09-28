@@ -586,6 +586,9 @@ public class ProtocolGenerationWindow {
                             throw new RuntimeException("There are multiple nodes prefixed \"" + nodesPrefix + "\" with the id of " + refPacketID + " (for packetType " + type.name() + ") in the reference Burger json file");
                         }
                         refInstructions = refNode.optJSONArray("instructions");
+                        if (refInstructions != null && refInstructions.isEmpty()) {
+                            refInstructions = null;
+                        }
                         refFound = true;
                     }
                 }

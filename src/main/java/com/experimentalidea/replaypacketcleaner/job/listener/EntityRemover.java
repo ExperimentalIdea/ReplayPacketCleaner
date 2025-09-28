@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /// Remove all entities, except players.
-public class EntityRemover implements SpawnEntityPacketListener, SpawnExperienceOrbPacketListener, RemoveEntitiesPacketListener,
+public class EntityRemover implements SpawnEntityPacketListener, SpawnExperienceOrbPacketListener, SpawnPlayerPacketListener, RemoveEntitiesPacketListener,
         DamageEventPacketListener, EntityAnimationPacketListener, EntityEffectPacketListener, EntityEventPacketListener, HurtAnimationPacketListener,
         LinkEntitiesPacketListener, MoveMinecartAlongTrackPacketListener, PickupItemPacketListener, ProjectilePowerPacketListener,
         RemoveEntityEffectPacketListener, SetEntityMetadataPacketListener, SetEntityVelocityPacketListener, SetEquipmentPacketListener,
@@ -52,6 +52,11 @@ public class EntityRemover implements SpawnEntityPacketListener, SpawnExperience
     @Override
     public void onSpawnExperienceOrbPacket(SpawnExperienceOrbPacket spawnExperienceOrbPacket) {
         spawnExperienceOrbPacket.setWriteCanceled(true);
+    }
+
+    @Override
+    public void onSpawnPlayerPacket(SpawnPlayerPacket spawnPlayerPacket) {
+        this.exemptEntities.add(spawnPlayerPacket.getEntityID());
     }
 
     // Stop tracking a player's entity id when they are removed.

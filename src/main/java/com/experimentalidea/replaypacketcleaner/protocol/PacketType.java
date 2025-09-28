@@ -20,6 +20,7 @@ public interface PacketType {
     public ProtocolState getProtocolState();
 
 
+    /// The Configuration phase is unsupported in protocol versions 763 (1.20.0/1) and older.
     public static enum Configuration implements ProtocolMetadata, PacketType {
 
         UNDEFINED,
@@ -168,6 +169,7 @@ public interface PacketType {
 
         CHAT_SUGGESTIONS,
 
+        /// Unsupported in protocol versions 763 (1.20.0/1) and older.
         CHUNK_BATCH_FINISHED,
 
         CHUNK_BATCH_START,
@@ -234,6 +236,9 @@ public interface PacketType {
 
         EXPLOSION,
 
+        /// Unsupported in protocol versions 764+ (1.20.0+). Replaced by Configuration.FEATURE_FLAGS in protocol version 764+ (1.20.2+)
+        FEATURE_FLAGS,
+
         GAME_EVENT,
 
         HURT_ANIMATION,
@@ -275,6 +280,7 @@ public interface PacketType {
         PING,
 
         /// Ping Response (play)
+        /// Unsupported in protocol versions 763 (1.20.0/1) and older.
         PING_RESPONSE,
 
         PLACE_GHOST_RECIPE,
@@ -396,7 +402,11 @@ public interface PacketType {
         /// Unsupported in protocol versions 770+ (1.21.5+)
         SPAWN_EXPERIENCE_ORB,
 
+        /// Unsupported in protocol versions 764+ (1.20.2+)
+        SPAWN_PLAYER,
+
         /// Switches the protocol state to Configuration
+        /// Unsupported in protocol versions 763 (1.20.0/1) and older.
         START_CONFIGURATION,
 
         STEP_TICK,

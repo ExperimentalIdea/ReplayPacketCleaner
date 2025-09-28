@@ -36,7 +36,7 @@ public class GameEventPacket extends Packet {
     }
 
     public void setEventType(GameEventType eventType) {
-        // todo: prevent setting event type START_WAIT_FOR_LEVEL_CHUNKS in unsupported protocols? For now the packet just won't be written out if an invalid event type is set.
+        // todo: prevent setting unsupported event type in unsupported protocols? For now the packet just won't be written out if an invalid event type is set.
         this.eventType = eventType;
     }
 
@@ -108,6 +108,7 @@ public class GameEventPacket extends Packet {
         /**
          * <p> 0: Disable limited crafting,
          * <p> 1: Enable limited crafting
+         * <p> Note: This is unsupported in protocol versions 763 (1.20.0/1) and older.
          */
         LIMITED_CRAFTING,
 

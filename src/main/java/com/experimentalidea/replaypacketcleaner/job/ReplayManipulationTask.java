@@ -83,6 +83,7 @@ public class ReplayManipulationTask implements Runnable {
         List<SoundEffectPacketListener> soundEffectPacketListenerList = new ArrayList<SoundEffectPacketListener>(packetListeners.length);
         List<SpawnEntityPacketListener> spawnEntityPacketListenerList = new ArrayList<SpawnEntityPacketListener>(packetListeners.length);
         List<SpawnExperienceOrbPacketListener> spawnExperienceOrbPacketListenerList = new ArrayList<SpawnExperienceOrbPacketListener>(packetListeners.length);
+        List<SpawnPlayerPacketListener> spawnPlayerPacketListenerList = new ArrayList<SpawnPlayerPacketListener>(packetListeners.length);
         List<SynchronizeVehiclePositionPacketListener> synchronizeVehiclePositionPacketListenerList = new ArrayList<SynchronizeVehiclePositionPacketListener>(packetListeners.length);
         List<TeleportEntityPacketListener> teleportEntityPacketListenerList = new ArrayList<TeleportEntityPacketListener>(packetListeners.length);
         List<UpdateAttributesPacketListener> updateAttributesPacketListenerList = new ArrayList<UpdateAttributesPacketListener>(packetListeners.length);
@@ -165,6 +166,9 @@ public class ReplayManipulationTask implements Runnable {
             if (listener instanceof SpawnExperienceOrbPacketListener) {
                 spawnExperienceOrbPacketListenerList.add((SpawnExperienceOrbPacketListener) listener);
             }
+            if (listener instanceof SpawnPlayerPacketListener) {
+                spawnPlayerPacketListenerList.add((SpawnPlayerPacketListener) listener);
+            }
             if (listener instanceof SynchronizeVehiclePositionPacketListener) {
                 synchronizeVehiclePositionPacketListenerList.add((SynchronizeVehiclePositionPacketListener) listener);
             }
@@ -215,6 +219,7 @@ public class ReplayManipulationTask implements Runnable {
         this.soundEffectPacketListeners = soundEffectPacketListenerList.toArray(new SoundEffectPacketListener[0]);
         this.spawnEntityPacketListeners = spawnEntityPacketListenerList.toArray(new SpawnEntityPacketListener[0]);
         this.spawnExperienceOrbPacketListeners = spawnExperienceOrbPacketListenerList.toArray(new SpawnExperienceOrbPacketListener[0]);
+        this.spawnPlayerPacketListeners = spawnPlayerPacketListenerList.toArray(new SpawnPlayerPacketListener[0]);
         this.synchronizeVehiclePositionPacketListeners = synchronizeVehiclePositionPacketListenerList.toArray(new SynchronizeVehiclePositionPacketListener[0]);
         this.teleportEntityPacketListeners = teleportEntityPacketListenerList.toArray(new TeleportEntityPacketListener[0]);
         this.updateAttributesPacketListeners = updateAttributesPacketListenerList.toArray(new UpdateAttributesPacketListener[0]);
@@ -259,6 +264,7 @@ public class ReplayManipulationTask implements Runnable {
     private final SoundEffectPacketListener[] soundEffectPacketListeners;
     private final SpawnEntityPacketListener[] spawnEntityPacketListeners;
     private final SpawnExperienceOrbPacketListener[] spawnExperienceOrbPacketListeners;
+    private final SpawnPlayerPacketListener[] spawnPlayerPacketListeners;
     private final SynchronizeVehiclePositionPacketListener[] synchronizeVehiclePositionPacketListeners;
     private final TeleportEntityPacketListener[] teleportEntityPacketListeners;
     private final UpdateAttributesPacketListener[] updateAttributesPacketListeners;
@@ -295,7 +301,11 @@ public class ReplayManipulationTask implements Runnable {
             // end header
 
             // The login/configuration phase.
-            this.passthroughConfigurationPackets();
+            if (this.protocolVersion > Version.MC_1_20_1) {
+                this.passthroughConfigurationPackets();
+            }else {
+                this.passthroughLoginPackets();
+            }
 
             // Passthrough the login (play) packet.
             // It (should) always be the first packet after the end of the login/configuration phase. (I think...  have to confirm that as new protocols are added)
@@ -410,6 +420,8 @@ public class ReplayManipulationTask implements Runnable {
 
                     case SPAWN_EXPERIENCE_ORB -> this.handleSpawnExperienceOrbPacket(packetIndex, timeStamp, packetSize, packetID);
 
+                    case SPAWN_PLAYER -> this.handleSpawnPlayerPacket(packetIndex, timeStamp, packetSize, packetID);
+
                     case SYNCHRONIZE_VEHICLE_POSITION -> this.handleSynchronizeVehiclePositionPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case TELEPORT_ENTITY -> this.handleTeleportEntityPacket(packetIndex, timeStamp, packetSize, packetID);
@@ -497,7 +509,7 @@ public class ReplayManipulationTask implements Runnable {
      * Stops and returns upon hitting the packet that changes the state to "play".
      */
     private void passthroughConfigurationPackets() throws IOException {
-        // The login/configuration phase.
+        // The configuration phase.
         while (true) {
             int timeStamp = this.reader.readInt();
             int packetSize = this.reader.readInt();
@@ -510,6 +522,30 @@ public class ReplayManipulationTask implements Runnable {
             this.writer.writeByteArray(data);
 
             if (packetID == this.protocol.getConfigurationPacketID(PacketType.Configuration.FINISH_CONFIGURATION)) {
+                // Now at the "play" state.
+                break;
+            }
+        }
+    }
+
+    /**
+     * Passes through all the "login" phase packets from the writer to the reader.
+     * Stops and returns upon hitting the packet that changes the state to "play".
+     */
+    private void passthroughLoginPackets() throws IOException {
+        // The login  phase.
+        while (true) {
+            int timeStamp = this.reader.readInt();
+            int packetSize = this.reader.readInt();
+            int packetID = this.reader.readVarInt();
+            int[] data = this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID));
+
+            this.writer.writeInt(timeStamp);
+            this.writer.writeInt(packetSize);
+            this.writer.writeVarInt(packetID);
+            this.writer.writeByteArray(data);
+
+            if (packetID == this.protocol.getLoginPacketID(PacketType.Login.LOGIN_SUCCESS)) {
                 // Now at the "play" state.
                 break;
             }
@@ -542,7 +578,12 @@ public class ReplayManipulationTask implements Runnable {
                             case GameEventPacket.GameEventType.PLAY_PUFFERFISH_STING_SOUND -> this.writer.writeByte(9);
                             case GameEventPacket.GameEventType.PLAY_ELDER_GUARDIAN_APPEARANCE -> this.writer.writeByte(10);
                             case GameEventPacket.GameEventType.ENABLE_RESPAWN_SCREEN -> this.writer.writeByte(11);
-                            case GameEventPacket.GameEventType.LIMITED_CRAFTING -> this.writer.writeByte(12);
+                            case GameEventPacket.GameEventType.LIMITED_CRAFTING -> {
+                                if (this.protocolVersion < Version.MC_1_20_2) { // Limited crafting is unsupported in protocol versions 763 (1.20.0/1) and older.
+                                    throw new UnsupportedOperationException("GameEventPacket.GameEventType.LIMITED_CRAFTING is unsupported for this protocol version");
+                                }
+                                this.writer.writeByte(12);
+                            }
                             case GameEventPacket.GameEventType.START_WAIT_FOR_LEVEL_CHUNKS -> {
                                 if (this.protocolVersion < Version.MC_1_20_3) { // Start wait for level chunks is unsupported in protocol versions 764 (1.20.2) and older.
                                     throw new UnsupportedOperationException("GameEventPacket.GameEventType.START_WAIT_FOR_LEVEL_CHUNKS is unsupported for this protocol version");
@@ -833,31 +874,37 @@ public class ReplayManipulationTask implements Runnable {
 
             // Write out the full packet (if the packet should be written out)
             if (!gameEventPacket.isWriteCanceled()) {
+                eventType = gameEventPacket.getEventType();
+
                 // Start wait for level chunks is unsupported in protocol versions 764 (1.20.2) and older.
                 // If that scenario occurs, don't write out this packet.
-                if (!(this.protocolVersion < Version.MC_1_20_3 && gameEventPacket.getEventType() == GameEventPacket.GameEventType.START_WAIT_FOR_LEVEL_CHUNKS)) {
-                    this.writePacketHeader(timeStamp, packetSize, packetID);
+                if (!(this.protocolVersion < Version.MC_1_20_3 && eventType == GameEventPacket.GameEventType.START_WAIT_FOR_LEVEL_CHUNKS)) {
+                    // Limited crafting is unsupported in protocol versions 763 (1.20.0/1) and older.
+                    if (!(this.protocolVersion < Version.MC_1_20_2 && eventType == GameEventPacket.GameEventType.LIMITED_CRAFTING)) {
 
-                    // write out the event.
-                    switch (gameEventPacket.getEventType()) {
-                        case GameEventPacket.GameEventType.NO_RESPAWN_BLOCK_AVAILABLE -> this.writer.writeByte(0);
-                        case GameEventPacket.GameEventType.BEGIN_RAINING -> this.writer.writeByte(1);
-                        case GameEventPacket.GameEventType.END_RAINING -> this.writer.writeByte(2);
-                        case GameEventPacket.GameEventType.CHANGE_GAME_MODE -> this.writer.writeByte(3);
-                        case GameEventPacket.GameEventType.WIN_GAME -> this.writer.writeByte(4);
-                        case GameEventPacket.GameEventType.DEMO_EVENT -> this.writer.writeByte(5);
-                        case GameEventPacket.GameEventType.ARROW_HIT_PLAYER -> this.writer.writeByte(6);
-                        case GameEventPacket.GameEventType.RAIN_LEVEL_CHANGE -> this.writer.writeByte(7);
-                        case GameEventPacket.GameEventType.THUNDER_LEVEL_CHANGE -> this.writer.writeByte(8);
-                        case GameEventPacket.GameEventType.PLAY_PUFFERFISH_STING_SOUND -> this.writer.writeByte(9);
-                        case GameEventPacket.GameEventType.PLAY_ELDER_GUARDIAN_APPEARANCE -> this.writer.writeByte(10);
-                        case GameEventPacket.GameEventType.ENABLE_RESPAWN_SCREEN -> this.writer.writeByte(11);
-                        case GameEventPacket.GameEventType.LIMITED_CRAFTING -> this.writer.writeByte(12);
-                        case GameEventPacket.GameEventType.START_WAIT_FOR_LEVEL_CHUNKS -> this.writer.writeByte(13);
+                        this.writePacketHeader(timeStamp, packetSize, packetID);
+
+                        // write out the event.
+                        switch (eventType) {
+                            case GameEventPacket.GameEventType.NO_RESPAWN_BLOCK_AVAILABLE -> this.writer.writeByte(0);
+                            case GameEventPacket.GameEventType.BEGIN_RAINING -> this.writer.writeByte(1);
+                            case GameEventPacket.GameEventType.END_RAINING -> this.writer.writeByte(2);
+                            case GameEventPacket.GameEventType.CHANGE_GAME_MODE -> this.writer.writeByte(3);
+                            case GameEventPacket.GameEventType.WIN_GAME -> this.writer.writeByte(4);
+                            case GameEventPacket.GameEventType.DEMO_EVENT -> this.writer.writeByte(5);
+                            case GameEventPacket.GameEventType.ARROW_HIT_PLAYER -> this.writer.writeByte(6);
+                            case GameEventPacket.GameEventType.RAIN_LEVEL_CHANGE -> this.writer.writeByte(7);
+                            case GameEventPacket.GameEventType.THUNDER_LEVEL_CHANGE -> this.writer.writeByte(8);
+                            case GameEventPacket.GameEventType.PLAY_PUFFERFISH_STING_SOUND -> this.writer.writeByte(9);
+                            case GameEventPacket.GameEventType.PLAY_ELDER_GUARDIAN_APPEARANCE -> this.writer.writeByte(10);
+                            case GameEventPacket.GameEventType.ENABLE_RESPAWN_SCREEN -> this.writer.writeByte(11);
+                            case GameEventPacket.GameEventType.LIMITED_CRAFTING -> this.writer.writeByte(12);
+                            case GameEventPacket.GameEventType.START_WAIT_FOR_LEVEL_CHUNKS -> this.writer.writeByte(13);
+                        }
+
+                        // write out value
+                        this.writer.writeFloat(gameEventPacket.getValue());
                     }
-
-                    // write out value
-                    this.writer.writeFloat(gameEventPacket.getValue());
                 }
             }
         } else {
@@ -1373,6 +1420,43 @@ public class ReplayManipulationTask implements Runnable {
                 this.writer.writeDouble(y);
                 this.writer.writeDouble(z);
                 this.writer.writeShort(count);
+            }
+        } else {
+            this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));
+        }
+    }
+
+    /// Note: Spawn Player packet was removed in protocol version 764+ (1.20.2+)
+    private void handleSpawnPlayerPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws IOException {
+        if (this.spawnPlayerPacketListeners.length > 0) {
+            // Read packet data
+            int entityID = this.reader.readVarInt();
+            long uuidMostSignificantBits = this.reader.readLong();
+            long uuidLeastSignificantBits = this.reader.readLong();
+            double x = this.reader.readDouble();
+            double y = this.reader.readDouble();
+            double z = this.reader.readDouble();
+            int yaw = this.reader.readByte();
+            int pitch = this.reader.readByte();
+
+            SpawnPlayerPacket spawnPlayerPacket = new SpawnPlayerPacket(packetIndex, timeStamp, entityID, new UUID(uuidMostSignificantBits, uuidLeastSignificantBits), x, y, z, yaw, pitch);
+
+            // Let listener(s) cancel this packet.
+            for (SpawnPlayerPacketListener listener : this.spawnPlayerPacketListeners) {
+                listener.onSpawnPlayerPacket(spawnPlayerPacket);
+            }
+
+            // Write out the full packet (if the packet should be written out)
+            if (!spawnPlayerPacket.isWriteCanceled()) {
+                this.writePacketHeader(timeStamp, packetSize, packetID);
+                this.writer.writeVarInt(entityID);
+                this.writer.writeLong(uuidMostSignificantBits);
+                this.writer.writeLong(uuidLeastSignificantBits);
+                this.writer.writeDouble(x);
+                this.writer.writeDouble(y);
+                this.writer.writeDouble(z);
+                this.writer.writeByte(yaw);
+                this.writer.writeByte(pitch);
             }
         } else {
             this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));
