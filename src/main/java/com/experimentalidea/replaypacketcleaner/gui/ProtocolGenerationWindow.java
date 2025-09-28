@@ -86,6 +86,60 @@ public class ProtocolGenerationWindow {
             }
         });
 
+        this.packetInstructionsRefImportButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JFileChooser fileChooser = new JFileChooser() {
+                    @Override
+                    public JDialog createDialog(Component parent) {
+                        JDialog jDialog = super.createDialog(parent);
+                        jDialog.setMinimumSize(new Dimension(480, 360));
+                        return jDialog;
+                    }
+                };
+
+                fileChooser.setPreferredSize(new Dimension(640, 480));
+                fileChooser.setMultiSelectionEnabled(false);
+                fileChooser.setFileFilter(new FileNameExtensionFilter(".json", "json"));
+                fileChooser.setFileHidingEnabled(false);
+
+                int returnState = fileChooser.showOpenDialog(protocolGenerationJPanel);
+
+                if (returnState == JFileChooser.APPROVE_OPTION) {
+                    packetsInstructionsRefJSONFile = fileChooser.getSelectedFile();
+                    packetInstructionsRefStatus.setSelected(packetsInstructionsRefJSONFile != null);
+                    packetInstructionsRefStatus.setText(packetsInstructionsRefJSONFile.getName());
+                }
+            }
+        });
+
+        this.packetInstructionsGenImportButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JFileChooser fileChooser = new JFileChooser() {
+                    @Override
+                    public JDialog createDialog(Component parent) {
+                        JDialog jDialog = super.createDialog(parent);
+                        jDialog.setMinimumSize(new Dimension(480, 360));
+                        return jDialog;
+                    }
+                };
+
+                fileChooser.setPreferredSize(new Dimension(640, 480));
+                fileChooser.setMultiSelectionEnabled(false);
+                fileChooser.setFileFilter(new FileNameExtensionFilter(".json", "json"));
+                fileChooser.setFileHidingEnabled(false);
+
+                int returnState = fileChooser.showOpenDialog(protocolGenerationJPanel);
+
+                if (returnState == JFileChooser.APPROVE_OPTION) {
+                    packetsInstructionsGenJSONFile = fileChooser.getSelectedFile();
+                    packetInstructionsGenStatus.setSelected(packetsInstructionsGenJSONFile != null);
+                    packetInstructionsGenStatus.setText(packetsInstructionsGenJSONFile.getName());
+                }
+            }
+        });
+
         this.resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -95,6 +149,14 @@ public class ProtocolGenerationWindow {
                 registriesJSONStatus.setSelected(false);
                 blocksJSONFile = null;
                 blocksJSONStatus.setSelected(false);
+
+                packetsInstructionsRefJSONFile = null;
+                packetInstructionsRefStatus.setSelected(false);
+                packetInstructionsRefStatus.setText("");
+                packetsInstructionsGenJSONFile = null;
+                packetInstructionsGenStatus.setSelected(false);
+                packetInstructionsGenStatus.setText("");
+
                 generatedProtocolVersion.setText("");
                 generationLogs.setText("");
 
@@ -149,6 +211,20 @@ public class ProtocolGenerationWindow {
                         JSONObject registriesJSON = loadJSON(registriesJSONFile);
                         JSONObject blocksJSON = loadJSON(blocksJSONFile);
 
+                        JSONObject packetInstructionsRefJSON = null;
+                        JSONObject packetInstructionsGenJSON = null;
+                        boolean hasBurgerPacketInstructions = false;
+                        if (packetsInstructionsRefJSONFile != null && packetsInstructionsGenJSONFile != null && packetsJSONFile == null) {
+                            packetInstructionsRefJSON = loadJSON(packetsInstructionsRefJSONFile);
+                            packetInstructionsRefJSON = packetInstructionsRefJSON.getJSONObject("packets").getJSONObject("packet");
+                            packetInstructionsGenJSON = loadJSON(packetsInstructionsGenJSONFile);
+                            packetInstructionsGenJSON = packetInstructionsGenJSON.getJSONObject("packets").getJSONObject("packet");
+                            hasBurgerPacketInstructions = true;
+                            if (isEqual(packetInstructionsRefJSON, packetInstructionsGenJSON)) {
+                                log.append("\nNOTICE:\nAppears both the selected Burger packetInstructions files have the exact same content.\nEnsure the provided files are correct for the the reference and generated protocol!\n");
+                            }
+                        }
+
                         JSONObject rootProtocolJSON = new JSONObject();
 
                         JSONObject protocolNode = new JSONObject();
@@ -164,6 +240,7 @@ public class ProtocolGenerationWindow {
 
                         Map<ProtocolMetadata, String> referenceResources = new HashMap<ProtocolMetadata, String>();
                         List<ProtocolMetadata> referenceUnsupportedTypes = new ArrayList<ProtocolMetadata>();
+                        Map<ProtocolMetadata, Integer> referenceIds = new HashMap<ProtocolMetadata, Integer>();
 
                         // packets (configuration)
                         log.append("========\nClientbound Configuration Packets:\n");
@@ -172,6 +249,7 @@ public class ProtocolGenerationWindow {
                             if (referenceProtocol.getConfigurationPacketID(type) == -1) {
                                 referenceUnsupportedTypes.add(type);
                             }
+                            referenceIds.put(type, referenceProtocol.getConfigurationPacketID(type));
                         }
                         if (packetsJSON != null) {
                             try {
@@ -179,12 +257,15 @@ public class ProtocolGenerationWindow {
                             } catch (RuntimeException e) {
                                 log.append(e.getMessage()).append("\nAssuming the configuration phase is unsupported by this protocol version.\n");
                             }
+                        } else if (hasBurgerPacketInstructions) {
+                            populateProtocolJSONViaBurger(rootProtocolJSON, packetInstructionsRefJSON, packetInstructionsGenJSON, referenceIds, PacketType.Configuration.values(), log, "CONFIGURATION_CLIENTBOUND_");
                         } else {
                             log.append("\npackets.json not provided. Generating fields with default id value of -1 for all fields preset in reference.");
                             populateBlankProtocolJSON(rootProtocolJSON, referenceUnsupportedTypes, PacketType.Configuration.values(), log);
                         }
                         referenceResources.clear();
                         referenceUnsupportedTypes.clear();
+                        referenceIds.clear();
 
                         // packets (login)
                         log.append("========\nClientbound Login Packets:\n");
@@ -193,15 +274,19 @@ public class ProtocolGenerationWindow {
                             if (referenceProtocol.getLoginPacketID(type) == -1) {
                                 referenceUnsupportedTypes.add(type);
                             }
+                            referenceIds.put(type, referenceProtocol.getLoginPacketID(type));
                         }
                         if (packetsJSON != null) {
                             populateJSON(rootProtocolJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Login.values(), log, "login", "clientbound");
+                        } else if (hasBurgerPacketInstructions) {
+                            populateProtocolJSONViaBurger(rootProtocolJSON, packetInstructionsRefJSON, packetInstructionsGenJSON, referenceIds, PacketType.Login.values(), log, "LOGIN_CLIENTBOUND_");
                         } else {
                             log.append("\npackets.json not provided. Generating fields with default id value of -1 for all fields preset in reference.");
                             populateBlankProtocolJSON(rootProtocolJSON, referenceUnsupportedTypes, PacketType.Login.values(), log);
                         }
                         referenceResources.clear();
                         referenceUnsupportedTypes.clear();
+                        referenceIds.clear();
 
                         // packets (play)
                         log.append("========\nClientbound Play Packets:\n");
@@ -210,15 +295,19 @@ public class ProtocolGenerationWindow {
                             if (referenceProtocol.getPlayPacketID(type) == -1) {
                                 referenceUnsupportedTypes.add(type);
                             }
+                            referenceIds.put(type, referenceProtocol.getPlayPacketID(type));
                         }
                         if (packetsJSON != null) {
                             populateJSON(rootProtocolJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Play.values(), log, "play", "clientbound");
+                        } else if (hasBurgerPacketInstructions) {
+                            populateProtocolJSONViaBurger(rootProtocolJSON, packetInstructionsRefJSON, packetInstructionsGenJSON, referenceIds, PacketType.Play.values(), log, "PLAY_CLIENTBOUND_");
                         } else {
                             log.append("\npackets.json not provided. Generating fields with default id value of -1 for all fields preset in reference.");
                             populateBlankProtocolJSON(rootProtocolJSON, referenceUnsupportedTypes, PacketType.Play.values(), log);
                         }
                         referenceResources.clear();
                         referenceUnsupportedTypes.clear();
+                        referenceIds.clear();
 
                         // registries - entity type
                         log.append("========\nRegistries Entity Types:\n");
@@ -289,6 +378,9 @@ public class ProtocolGenerationWindow {
     private File registriesJSONFile = null;
     private File blocksJSONFile = null;
 
+    private File packetsInstructionsRefJSONFile = null;
+    private File packetsInstructionsGenJSONFile = null;
+
     private int[] referenceProtocolDropdownVersions;
 
     private JPanel protocolGenerationJPanel;
@@ -303,6 +395,10 @@ public class ProtocolGenerationWindow {
     private JCheckBox packetsJSONStatus;
     private JCheckBox registriesJSONStatus;
     private JCheckBox blocksJSONStatus;
+    private JCheckBox packetInstructionsRefStatus;
+    private JButton packetInstructionsRefImportButton;
+    private JCheckBox packetInstructionsGenStatus;
+    private JButton packetInstructionsGenImportButton;
 
 
     public ProtocolDirectory getProtocolDirectory() {
@@ -332,6 +428,14 @@ public class ProtocolGenerationWindow {
             throw new IOException(e);
         }
 
+        // Burger json output start with and ends with '[' & ']'. Remove this characters.
+        char[] firstChar = new char[1];
+        builder.getChars(0, 1, firstChar, 0);
+        if (firstChar[0] == '[') {
+            builder.deleteCharAt(builder.length() - 1);
+            builder.deleteCharAt(0);
+        }
+
         return new JSONObject(builder.toString());
     }
 
@@ -355,7 +459,7 @@ public class ProtocolGenerationWindow {
         for (ProtocolMetadata type : types) {
             TypeMetadata<?> metadata = type.getMetadata();
 
-            if(referenceUnsupportedTypes.contains(type)){
+            if (referenceUnsupportedTypes.contains(type)) {
                 continue;
             }
 
@@ -444,6 +548,191 @@ public class ProtocolGenerationWindow {
         } else {
             throw new RuntimeException("No \"" + resourceNode + "\" field found within the provided resource file");
         }
+    }
+
+    private static void populateProtocolJSONViaBurger(JSONObject rootProtocolJSON, JSONObject packetInstructionsRefJSON, JSONObject packetInstructionsGenJSON, Map<ProtocolMetadata, Integer> referenceIds, ProtocolMetadata[] types, StringBuilder log, String nodesPrefix) {
+        Set<String> packetInstructionsRefKeys = packetInstructionsRefJSON.keySet();
+
+        List<String> jsonGenKeys = new ArrayList<String>();
+        for (String genKey : packetInstructionsGenJSON.keySet()) {
+            if (genKey.startsWith(nodesPrefix)) {
+                jsonGenKeys.add(genKey);
+            }
+        }
+        List<String> jsonGenKeysFound = new ArrayList<String>();
+        Map<String, Integer> genKeyIDs = new HashMap<String, Integer>();
+
+        List<ProtocolMetadata> jsonGenKeysConflictTypes = new ArrayList<ProtocolMetadata>();
+        List<ProtocolMetadata> typesNotFound = new ArrayList<ProtocolMetadata>();
+
+        for (ProtocolMetadata type : types) {
+            int packetID = -1;
+
+            int refPacketID = referenceIds.get(type);
+            if (refPacketID == -1) {
+                typesNotFound.add(type);
+                continue;
+            }
+
+            JSONArray refInstructions = null;
+
+            // Find the "instructions" JSONArray field and the "id" int matching our refPacketID from the reference protocol.
+            boolean refFound = false;
+            for (String refKey : packetInstructionsRefKeys) {
+                if (refKey.startsWith(nodesPrefix)) {
+                    JSONObject refNode = packetInstructionsRefJSON.getJSONObject(refKey);
+                    if (refNode.getInt("id") == refPacketID) {
+                        if (refFound) {
+                            throw new RuntimeException("There are multiple nodes prefixed \"" + nodesPrefix + "\" with the id of " + refPacketID + " (for packetType " + type.name() + ") in the reference Burger json file");
+                        }
+                        refInstructions = refNode.optJSONArray("instructions");
+                        refFound = true;
+                    }
+                }
+            }
+
+            if (refInstructions != null) {
+
+                // Find a node that contains an "instructions" node that is equal to the refInstructions.
+                for (String genkey : jsonGenKeys) {
+                    JSONObject genNode = packetInstructionsGenJSON.getJSONObject(genkey);
+                    JSONArray genInstructions = genNode.optJSONArray("instructions");
+                    if (genInstructions != null) {
+                        if (isEqual(refInstructions, genInstructions)) {
+                            // If the packet id has been found already, then there is a conflict! Avoid mapping a packet id to this type.
+                            if (packetID != -1) {
+                                packetID = -2;
+                                jsonGenKeysFound.removeLast();
+                                break;
+                            }
+                            jsonGenKeysFound.add(genkey);
+                            packetID = genNode.getInt("id");
+                        }
+                    }
+                }
+            }
+
+            if (packetID == -2) {
+                jsonGenKeysConflictTypes.add(type);
+                packetID = -1;
+            }
+
+            if (packetID == -1) {
+                typesNotFound.add(type);
+            }
+
+            // Get the set of keys required to traverse the json object to the point where the ID & ResourceName should be.
+            String[] jsonNodePaths = type.getMetadata().getJSONNodePaths();
+
+            JSONObject currentNode = rootProtocolJSON;
+            for (int i = 0; i < jsonNodePaths.length; i++) {
+                // Traverse the jsonObject to the next node.
+                JSONObject nextNode = currentNode.optJSONObject(jsonNodePaths[i]);
+                if (nextNode == null) {
+                    nextNode = new JSONObject();
+                    currentNode.put(jsonNodePaths[i], nextNode);
+                }
+                currentNode = nextNode;
+            }
+
+            currentNode.put(TypeMetadata.JSON_NODE_ID, packetID);
+        }
+
+        log.append("\n").append(typesNotFound.size()).append(" type(s) total could not be found.\n");
+        for (ProtocolMetadata type : typesNotFound) {
+            log.append(type.name()).append(",\n");
+        }
+        for (ProtocolMetadata type : types) {
+            if (referenceIds.get(type) == -1) {
+                typesNotFound.remove(type);
+            }
+        }
+        log.append("\n").append(typesNotFound.size()).append(" type(s) could not be found that were present in the reference.\n");
+        for (ProtocolMetadata type : typesNotFound) {
+            log.append(type.name()).append(",\n");
+        }
+        log.append("\n").append(jsonGenKeysConflictTypes.size()).append(" types had more than one packetID candidate and were not assigned.\n");
+        for (ProtocolMetadata conflict : jsonGenKeysConflictTypes) {
+            log.append(conflict).append(",\n");
+        }
+        Collections.sort(jsonGenKeys);
+        log.append("\n").append(jsonGenKeys.size() - jsonGenKeysFound.size()).append(" Burger resources could not be mapped. Suggest adding these types to their respective enum?\n");
+        for (String genKey : jsonGenKeys) {
+            if (!jsonGenKeysFound.contains(genKey)) {
+                log.append(genKey).append(" = ").append(packetInstructionsGenJSON.getJSONObject(genKey).getInt("id")).append("\n");
+            }
+        }
+    }
+
+    /// Compare two JSONArray objects.
+    /// Appears the org.json library doesn't override .equals() for JSONArray or JSONObject, so we have to compare manually.
+    /// Note: If the two json arrays contain the same contents, but in a different order between them, this will return false.
+    /// Also note: Does not consider JSONArrays the possibility of a JSONArray within a JSONArray. Will always return false in that scenario.
+    private static boolean isEqual(JSONArray jsonArray1, JSONArray jsonArray2) {
+        if (jsonArray1.length() != jsonArray2.length()) {
+            return false;
+        }
+
+        // Try to prove both json arrays are not equal to each other.
+        for (int i = 0; i < jsonArray1.length(); i++) {
+            Object entry1 = jsonArray1.get(i);
+            Object entry2 = jsonArray2.opt(i);
+
+            if (entry1 instanceof JSONObject && entry2 instanceof JSONObject) {
+                if (!isEqual((JSONObject) entry1, (JSONObject) entry2)) {
+                    return false;
+                }
+                continue;
+            }
+
+            // At this point, we know that we should be dealing with Numbers or Strings.
+            if (!entry1.equals(entry2)) {
+                return false;
+            }
+        }
+
+        // At this point, the two json arrays are proven equal to each other.
+        return true;
+    }
+
+    /// Compare two JSONObject's.
+    /// Appears the org.json library doesn't override .equals() for JSONArray or JSONObject, so we have to compare manually.
+    private static boolean isEqual(JSONObject jsonObject1, JSONObject jsonObject2) {
+        if (jsonObject1.length() != jsonObject2.length()) {
+            return false;
+        }
+
+        // Try to prove both json objects are not equal to each other.
+        for (String key : jsonObject1.keySet()) {
+            Object entry1 = jsonObject1.get(key);
+            Object entry2 = jsonObject2.opt(key);
+
+            if (entry2 == null) {
+                return false;
+            }
+
+            if (entry1 instanceof JSONObject && entry2 instanceof JSONObject) {
+                if (!isEqual((JSONObject) entry1, (JSONObject) entry2)) {
+                    return false;
+                }
+                continue;
+            }
+
+            if (entry1 instanceof JSONArray && entry2 instanceof JSONArray) {
+                if (!isEqual((JSONArray) entry1, (JSONArray) entry2)) {
+                    return false;
+                }
+                continue;
+            }
+
+            // At this point, we know that we should be dealing with Numbers or Strings.
+            if (!entry1.equals(entry2)) {
+                return false;
+            }
+        }
+
+        // At this point, the two json objects are proven equal to each other.
+        return true;
     }
 
     private static void populateJSONBlocks(JSONObject rootProtocolJSON, JSONObject registriesJSON, JSONObject blocksJSON, Map<ProtocolMetadata, String> referenceResources, List<ProtocolMetadata> referenceUnsupportedTypes, StringBuilder log) {
