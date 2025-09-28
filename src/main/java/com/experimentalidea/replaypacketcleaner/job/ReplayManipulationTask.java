@@ -543,7 +543,12 @@ public class ReplayManipulationTask implements Runnable {
                             case GameEventPacket.GameEventType.PLAY_ELDER_GUARDIAN_APPEARANCE -> this.writer.writeByte(10);
                             case GameEventPacket.GameEventType.ENABLE_RESPAWN_SCREEN -> this.writer.writeByte(11);
                             case GameEventPacket.GameEventType.LIMITED_CRAFTING -> this.writer.writeByte(12);
-                            case GameEventPacket.GameEventType.START_WAIT_FOR_LEVEL_CHUNKS -> this.writer.writeByte(13);
+                            case GameEventPacket.GameEventType.START_WAIT_FOR_LEVEL_CHUNKS -> {
+                                if (this.protocolVersion < Version.MC_1_20_3) { // Start wait for level chunks is unsupported in protocol versions 764 (1.20.2) and older.
+                                    throw new UnsupportedOperationException("GameEventPacket.GameEventType.START_WAIT_FOR_LEVEL_CHUNKS is unsupported for this protocol version");
+                                }
+                                this.writer.writeByte(13);
+                            }
                         }
 
                         // write out value
@@ -828,30 +833,33 @@ public class ReplayManipulationTask implements Runnable {
 
             // Write out the full packet (if the packet should be written out)
             if (!gameEventPacket.isWriteCanceled()) {
-                this.writePacketHeader(timeStamp, packetSize, packetID);
+                // Start wait for level chunks is unsupported in protocol versions 764 (1.20.2) and older.
+                // If that scenario occurs, don't write out this packet.
+                if (!(this.protocolVersion < Version.MC_1_20_3 && gameEventPacket.getEventType() == GameEventPacket.GameEventType.START_WAIT_FOR_LEVEL_CHUNKS)) {
+                    this.writePacketHeader(timeStamp, packetSize, packetID);
 
-                // write out the event.
-                switch (gameEventPacket.getEventType()) {
-                    case GameEventPacket.GameEventType.NO_RESPAWN_BLOCK_AVAILABLE -> this.writer.writeByte(0);
-                    case GameEventPacket.GameEventType.BEGIN_RAINING -> this.writer.writeByte(1);
-                    case GameEventPacket.GameEventType.END_RAINING -> this.writer.writeByte(2);
-                    case GameEventPacket.GameEventType.CHANGE_GAME_MODE -> this.writer.writeByte(3);
-                    case GameEventPacket.GameEventType.WIN_GAME -> this.writer.writeByte(4);
-                    case GameEventPacket.GameEventType.DEMO_EVENT -> this.writer.writeByte(5);
-                    case GameEventPacket.GameEventType.ARROW_HIT_PLAYER -> this.writer.writeByte(6);
-                    case GameEventPacket.GameEventType.RAIN_LEVEL_CHANGE -> this.writer.writeByte(7);
-                    case GameEventPacket.GameEventType.THUNDER_LEVEL_CHANGE -> this.writer.writeByte(8);
-                    case GameEventPacket.GameEventType.PLAY_PUFFERFISH_STING_SOUND -> this.writer.writeByte(9);
-                    case GameEventPacket.GameEventType.PLAY_ELDER_GUARDIAN_APPEARANCE -> this.writer.writeByte(10);
-                    case GameEventPacket.GameEventType.ENABLE_RESPAWN_SCREEN -> this.writer.writeByte(11);
-                    case GameEventPacket.GameEventType.LIMITED_CRAFTING -> this.writer.writeByte(12);
-                    case GameEventPacket.GameEventType.START_WAIT_FOR_LEVEL_CHUNKS -> this.writer.writeByte(13);
+                    // write out the event.
+                    switch (gameEventPacket.getEventType()) {
+                        case GameEventPacket.GameEventType.NO_RESPAWN_BLOCK_AVAILABLE -> this.writer.writeByte(0);
+                        case GameEventPacket.GameEventType.BEGIN_RAINING -> this.writer.writeByte(1);
+                        case GameEventPacket.GameEventType.END_RAINING -> this.writer.writeByte(2);
+                        case GameEventPacket.GameEventType.CHANGE_GAME_MODE -> this.writer.writeByte(3);
+                        case GameEventPacket.GameEventType.WIN_GAME -> this.writer.writeByte(4);
+                        case GameEventPacket.GameEventType.DEMO_EVENT -> this.writer.writeByte(5);
+                        case GameEventPacket.GameEventType.ARROW_HIT_PLAYER -> this.writer.writeByte(6);
+                        case GameEventPacket.GameEventType.RAIN_LEVEL_CHANGE -> this.writer.writeByte(7);
+                        case GameEventPacket.GameEventType.THUNDER_LEVEL_CHANGE -> this.writer.writeByte(8);
+                        case GameEventPacket.GameEventType.PLAY_PUFFERFISH_STING_SOUND -> this.writer.writeByte(9);
+                        case GameEventPacket.GameEventType.PLAY_ELDER_GUARDIAN_APPEARANCE -> this.writer.writeByte(10);
+                        case GameEventPacket.GameEventType.ENABLE_RESPAWN_SCREEN -> this.writer.writeByte(11);
+                        case GameEventPacket.GameEventType.LIMITED_CRAFTING -> this.writer.writeByte(12);
+                        case GameEventPacket.GameEventType.START_WAIT_FOR_LEVEL_CHUNKS -> this.writer.writeByte(13);
+                    }
+
+                    // write out value
+                    this.writer.writeFloat(gameEventPacket.getValue());
                 }
-
-                // write out value
-                this.writer.writeFloat(gameEventPacket.getValue());
             }
-
         } else {
             this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));
         }

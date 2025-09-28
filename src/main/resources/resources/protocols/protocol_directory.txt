@@ -1,4 +1,5 @@
 # List of built-in protocol mappings to be loaded on application startup.
+protocol_764.json
 protocol_765.json
 protocol_766.json
 protocol_767.json

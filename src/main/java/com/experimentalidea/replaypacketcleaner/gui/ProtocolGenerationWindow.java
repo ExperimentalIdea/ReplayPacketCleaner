@@ -667,7 +667,7 @@ public class ProtocolGenerationWindow {
     /// Compare two JSONArray objects.
     /// Appears the org.json library doesn't override .equals() for JSONArray or JSONObject, so we have to compare manually.
     /// Note: If the two json arrays contain the same contents, but in a different order between them, this will return false.
-    /// Also note: Does not consider JSONArrays the possibility of a JSONArray within a JSONArray. Will always return false in that scenario.
+    /// Also note: Does not consider the possibility of a JSONArray within a JSONArray. Will always return false in that scenario.
     private static boolean isEqual(JSONArray jsonArray1, JSONArray jsonArray2) {
         if (jsonArray1.length() != jsonArray2.length()) {
             return false;

@@ -36,6 +36,7 @@ public class GameEventPacket extends Packet {
     }
 
     public void setEventType(GameEventType eventType) {
+        // todo: prevent setting event type START_WAIT_FOR_LEVEL_CHUNKS in unsupported protocols? For now the packet just won't be written out if an invalid event type is set.
         this.eventType = eventType;
     }
 
@@ -111,6 +112,7 @@ public class GameEventPacket extends Packet {
         LIMITED_CRAFTING,
 
         /// Float value is ignored
+        /// Note: This is unsupported in protocol versions 764 (1.20.2) and older.
         START_WAIT_FOR_LEVEL_CHUNKS;
 
     }
