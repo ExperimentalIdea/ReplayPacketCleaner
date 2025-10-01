@@ -562,7 +562,7 @@ public class ProtocolGenerationWindow {
         List<String> jsonGenKeysFound = new ArrayList<String>();
         Map<String, Integer> genKeyIDs = new HashMap<String, Integer>();
 
-        List<ProtocolMetadata> jsonGenKeysConflictTypes = new ArrayList<ProtocolMetadata>();
+        List<ProtocolMetadata> jsonKeysConflictTypes = new ArrayList<ProtocolMetadata>();
         List<ProtocolMetadata> typesNotFound = new ArrayList<ProtocolMetadata>();
 
         for (ProtocolMetadata type : types) {
@@ -590,6 +590,25 @@ public class ProtocolGenerationWindow {
                             refInstructions = null;
                         }
                         refFound = true;
+                    }
+                }
+            }
+
+            if (refInstructions != null) {
+                // Ensure if there aren't multiple matching refInstructions.
+                // This is to handle an edge case where the ref has two packet types with matching instructions, but the gen doesn't.
+                for (String refKey : packetInstructionsRefKeys) {
+                    if (refKey.startsWith(nodesPrefix)) {
+                        JSONObject refNode = packetInstructionsRefJSON.getJSONObject(refKey);
+                        if (refPacketID != refNode.getInt("id")) {
+                            JSONArray compareInstructions = refNode.optJSONArray("instructions");
+                            if (compareInstructions != null && isEqual(refInstructions, compareInstructions)) {
+                                // There are multiple matching refInstructions. dereference to prevent mapping the conflicting
+                                refInstructions = null;
+                                jsonKeysConflictTypes.add(type);
+                                break;
+                            }
+                        }
                     }
                 }
             }
