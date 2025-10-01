@@ -562,7 +562,7 @@ public class ProtocolGenerationWindow {
         List<String> jsonGenKeysFound = new ArrayList<String>();
         Map<String, Integer> genKeyIDs = new HashMap<String, Integer>();
 
-        List<ProtocolMetadata> jsonGenKeysConflictTypes = new ArrayList<ProtocolMetadata>();
+        List<ProtocolMetadata> jsonKeysConflictTypes = new ArrayList<ProtocolMetadata>();
         List<ProtocolMetadata> typesNotFound = new ArrayList<ProtocolMetadata>();
 
         for (ProtocolMetadata type : types) {
@@ -595,6 +595,25 @@ public class ProtocolGenerationWindow {
             }
 
             if (refInstructions != null) {
+                // Ensure if there aren't multiple matching refInstructions.
+                // This is to handle an edge case where the ref has two packet types with matching instructions, but the gen doesn't.
+                for (String refKey : packetInstructionsRefKeys) {
+                    if (refKey.startsWith(nodesPrefix)) {
+                        JSONObject refNode = packetInstructionsRefJSON.getJSONObject(refKey);
+                        if (refPacketID != refNode.getInt("id")) {
+                            JSONArray compareInstructions = refNode.optJSONArray("instructions");
+                            if (compareInstructions != null && isEqual(refInstructions, compareInstructions)) {
+                                // There are multiple matching refInstructions. dereference to prevent mapping the conflicting
+                                refInstructions = null;
+                                jsonKeysConflictTypes.add(type);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (refInstructions != null) {
 
                 // Find a node that contains an "instructions" node that is equal to the refInstructions.
                 for (String genkey : jsonGenKeys) {
@@ -616,7 +635,7 @@ public class ProtocolGenerationWindow {
             }
 
             if (packetID == -2) {
-                jsonGenKeysConflictTypes.add(type);
+                jsonKeysConflictTypes.add(type);
                 packetID = -1;
             }
 
@@ -654,8 +673,8 @@ public class ProtocolGenerationWindow {
         for (ProtocolMetadata type : typesNotFound) {
             log.append(type.name()).append(",\n");
         }
-        log.append("\n").append(jsonGenKeysConflictTypes.size()).append(" types had more than one packetID candidate and were not assigned.\n");
-        for (ProtocolMetadata conflict : jsonGenKeysConflictTypes) {
+        log.append("\n").append(jsonKeysConflictTypes.size()).append(" types had more than one packetID candidate and were not assigned.\n");
+        for (ProtocolMetadata conflict : jsonKeysConflictTypes) {
             log.append(conflict).append(",\n");
         }
         Collections.sort(jsonGenKeys);
