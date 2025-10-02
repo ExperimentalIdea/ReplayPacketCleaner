@@ -61,6 +61,7 @@ public class ReplayManipulationTask implements Runnable {
 
         List<StartOfReplayPacketInserter> startOfReplayPacketInserterList = new ArrayList<StartOfReplayPacketInserter>(packetListeners.length);
         List<BlockActionPacketListener> blockActionPacketListenerList = new ArrayList<BlockActionPacketListener>(packetListeners.length);
+        List<CustomSoundEffectPacketListener> customSoundEffectPacketListenerList = new ArrayList<CustomSoundEffectPacketListener>(packetListeners.length);
         List<DamageEventPacketListener> damageEventPacketListenerList = new ArrayList<DamageEventPacketListener>(packetListeners.length);
         List<EntityAnimationPacketListener> entityAnimationPacketListenerList = new ArrayList<EntityAnimationPacketListener>(packetListeners.length);
         List<EntityEffectPacketListener> entityEffectPacketListenerList = new ArrayList<EntityEffectPacketListener>(packetListeners.length);
@@ -99,6 +100,9 @@ public class ReplayManipulationTask implements Runnable {
             }
             if (listener instanceof BlockActionPacketListener) {
                 blockActionPacketListenerList.add((BlockActionPacketListener) listener);
+            }
+            if (listener instanceof CustomSoundEffectPacketListener) {
+                customSoundEffectPacketListenerList.add((CustomSoundEffectPacketListener) listener);
             }
             if (listener instanceof DamageEventPacketListener) {
                 damageEventPacketListenerList.add((DamageEventPacketListener) listener);
@@ -197,6 +201,7 @@ public class ReplayManipulationTask implements Runnable {
 
         this.startOfReplayPacketInserters = startOfReplayPacketInserterList.toArray(new StartOfReplayPacketInserter[0]);
         this.blockActionPacketListeners = blockActionPacketListenerList.toArray(new BlockActionPacketListener[0]);
+        this.customSoundEffectPacketListeners = customSoundEffectPacketListenerList.toArray(new CustomSoundEffectPacketListener[0]);
         this.damageEventPacketListeners = damageEventPacketListenerList.toArray(new DamageEventPacketListener[0]);
         this.entityAnimationPacketListeners = entityAnimationPacketListenerList.toArray(new EntityAnimationPacketListener[0]);
         this.entityEffectPacketListeners = entityEffectPacketListenerList.toArray(new EntityEffectPacketListener[0]);
@@ -242,6 +247,7 @@ public class ReplayManipulationTask implements Runnable {
 
     private final StartOfReplayPacketInserter[] startOfReplayPacketInserters;
     private final BlockActionPacketListener[] blockActionPacketListeners;
+    private final CustomSoundEffectPacketListener[] customSoundEffectPacketListeners;
     private final DamageEventPacketListener[] damageEventPacketListeners;
     private final EntityAnimationPacketListener[] entityAnimationPacketListeners;
     private final EntityEffectPacketListener[] entityEffectPacketListeners;
@@ -375,6 +381,8 @@ public class ReplayManipulationTask implements Runnable {
                     }
 
                     case BLOCK_ACTION -> this.handleBlockActionPacket(packetIndex, timeStamp, packetSize, packetID);
+
+                    case CUSTOM_SOUND_EFFECT -> this.handleCustomSoundEffectPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case DAMAGE_EVENT -> this.handleDamageEventPacket(packetIndex, timeStamp, packetSize, packetID);
 
@@ -661,6 +669,26 @@ public class ReplayManipulationTask implements Runnable {
                 this.writer.writeByte(actionIDByte);
                 this.writer.writeByte(actionParameterByte);
                 this.writer.writeVarInt(blockType);
+            }
+        } else {
+            this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));
+        }
+    }
+
+    private void handleCustomSoundEffectPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws IOException {
+        if (this.customSoundEffectPacketListeners.length > 0) {
+            // Read packet data
+            int[] rawDataBytes = this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID));
+
+            CustomSoundEffectPacket customSoundEffectPacket = new CustomSoundEffectPacket(packetIndex, timeStamp, rawDataBytes);
+
+            // Let listener(s) manipulate this packet. TODO: fully implement packet object
+            for (CustomSoundEffectPacketListener listener : this.customSoundEffectPacketListeners) {
+                listener.onCustomSoundEffectPacket(customSoundEffectPacket);
+            }
+            // Write out the full packet (if the packet should be written out)
+            if (!customSoundEffectPacket.isWriteCanceled()) {
+                this.writePacketFull(timeStamp, packetSize, packetID, rawDataBytes);
             }
         } else {
             this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));

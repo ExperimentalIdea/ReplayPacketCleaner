@@ -15,20 +15,19 @@
  * */
 package com.experimentalidea.replaypacketcleaner.job.listener;
 
-import com.experimentalidea.replaypacketcleaner.packet.listener.EntitySoundEffectPacketListener;
-import com.experimentalidea.replaypacketcleaner.packet.listener.GameEventPacketListener;
-import com.experimentalidea.replaypacketcleaner.packet.listener.SoundEffectPacketListener;
-import com.experimentalidea.replaypacketcleaner.packet.listener.WorldEventPacketListener;
-import com.experimentalidea.replaypacketcleaner.packet.EntitySoundEffectPacket;
-import com.experimentalidea.replaypacketcleaner.packet.GameEventPacket;
-import com.experimentalidea.replaypacketcleaner.packet.SoundEffectPacket;
-import com.experimentalidea.replaypacketcleaner.packet.WorldEventPacket;
+import com.experimentalidea.replaypacketcleaner.packet.*;
+import com.experimentalidea.replaypacketcleaner.packet.listener.*;
 
 /// Removes most sound effects
-public class SoundRemover implements EntitySoundEffectPacketListener, SoundEffectPacketListener, GameEventPacketListener, WorldEventPacketListener {
+public class SoundRemover implements CustomSoundEffectPacketListener, EntitySoundEffectPacketListener, SoundEffectPacketListener, GameEventPacketListener, WorldEventPacketListener {
 
     public SoundRemover() {
 
+    }
+
+    @Override
+    public void onCustomSoundEffectPacket(CustomSoundEffectPacket customSoundEffectPacket) {
+        customSoundEffectPacket.setWriteCanceled(true);
     }
 
     @Override

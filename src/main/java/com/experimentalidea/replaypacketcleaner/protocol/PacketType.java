@@ -167,6 +167,9 @@ public interface PacketType {
 
         CHANGE_DIFFICULTY,
 
+        /// Only supported in protocol versions 760 (1.19.1/2) and older.
+        CHAT_PREVIEW,
+
         CHAT_SUGGESTIONS,
 
         /// Unsupported in protocol versions 763 (1.20.0/1) and older.
@@ -203,15 +206,20 @@ public interface PacketType {
         /// Custom Report Details (play)
         CUSTOM_REPORT_DETAILS,
 
+        /// Only supported in protocol versions 760 (1.19.1/2) and older. In 761, this packet's function was merged into SOUND_EFFECT.
+        CUSTOM_SOUND_EFFECT,
+
         DAMAGE_EVENT,
 
         DEBUG_SAMPLE,
 
+        /// Also known by the name "Hide Message" on the Minecraft wiki for protocol versions 760 (1.19.1/2) and prior.
         DELETE_MESSAGE,
 
         /// Disconnect (play)
         DISCONNECT,
 
+        /// Note: Packet is new to protocol 761+ (1.19.3+)
         DISGUISED_CHAT_MESSAGE,
 
         /// Related to the scoreboard
@@ -232,11 +240,13 @@ public interface PacketType {
         ENTITY_EVENT,
 
         /// Note: Packet structure changed in protocol 767+ (1.21.0+)
+        /// Note: Packet structure changed in protocol 761+ (1.19.3+)
         ENTITY_SOUND_EFFECT,
 
         EXPLOSION,
 
         /// Unsupported in protocol versions 764+ (1.20.0+). Replaced by Configuration.FEATURE_FLAGS in protocol version 764+ (1.20.2+)
+        /// Note: Packet is new to protocol 761+ (1.19.3+)
         FEATURE_FLAGS,
 
         GAME_EVENT,
@@ -255,6 +265,9 @@ public interface PacketType {
         MAP_DATA,
 
         MERCHANT_OFFERS,
+
+        /// Only supported in protocol versions 760 (1.19.1/2) and older.
+        MESSAGE_HEADER,
 
         /// NOTE: Packet is new to protocol 768+ (1.21.2+).
         MOVE_MINECART_ALONG_TRACK,
@@ -290,8 +303,10 @@ public interface PacketType {
 
         PLAYER_CHAT_MESSAGE,
 
+        /// Note: Packet is new to protocol 761+ (1.19.3+)
         PLAYER_INFO_REMOVE,
 
+        /// Also known by the name "Player Info" on the Minecraft wiki for protocol versions 760 (1.19.1/2) and prior.
         PLAYER_INFO_UPDATE,
 
         PLAYER_ROTATION,
@@ -358,6 +373,9 @@ public interface PacketType {
 
         SET_DEFAULT_SPAWN_POSITION,
 
+        /// Only supported in protocol versions 760 (1.19.1/2) and older.
+        SET_DISPLAY_CHAT_PREVIEW,
+
         SET_ENTITY_METADATA,
 
         SET_ENTITY_VELOCITY,
@@ -395,6 +413,7 @@ public interface PacketType {
         SHOW_DIALOG,
 
         /// Note: Packet structure changed in protocol 767+ (1.21.0+)
+        /// Note: Packet structure changed in protocol 761+ (1.19.3+)
         SOUND_EFFECT,
 
         SPAWN_ENTITY,
