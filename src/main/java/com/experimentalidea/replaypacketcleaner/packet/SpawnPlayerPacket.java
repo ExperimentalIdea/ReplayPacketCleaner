@@ -25,7 +25,7 @@ import java.util.UUID;
 public class SpawnPlayerPacket extends Packet {
 
     public SpawnPlayerPacket(long packetIndex, int timestamp, int entityID, UUID uuid, double x, double y, double z, int yawByte, int pitchByte) {
-        super(packetIndex, timestamp, PacketType.Play.SPAWN_ENTITY);
+        super(packetIndex, timestamp, PacketType.Play.SPAWN_PLAYER);
         if (uuid == null) {
             throw new IllegalArgumentException("uuid cannot be null");
         }
