@@ -23,6 +23,7 @@ import com.experimentalidea.replaypacketcleaner.packet.listener.PacketListener;
 import com.experimentalidea.replaypacketcleaner.protocol.ProtocolDirectory;
 
 import java.io.*;
+import java.nio.channels.AsynchronousFileChannel;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -38,7 +39,7 @@ public class ReplayJob implements Runnable, Closeable {
      * workingDir should be an uuid, as a collision is effectively impossible.
      * workingDir is deleted when the task completes
      */
-    public ReplayJob(File sourceFile, File workingDir, File targetFile, ProtocolDirectory protocolDirectory, Configuration<Option> configuration, TaskTracker taskTracker) throws FileNotFoundException, NotDirectoryException {
+    public ReplayJob(File sourceFile, File workingDir, File targetFile, ProtocolDirectory protocolDirectory, Configuration<Option> configuration, TaskTracker taskTracker, boolean asyncWrites) throws FileNotFoundException, NotDirectoryException {
         if (sourceFile == null) {
             throw new IllegalArgumentException("sourceFile cannot be null");
         }
@@ -76,6 +77,7 @@ public class ReplayJob implements Runnable, Closeable {
         this.protocolDirectory = protocolDirectory;
         this.configuration = configuration;
         this.taskTracker = taskTracker;
+        this.asyncWrites = asyncWrites;
     }
 
     private static final Object TARGET_MOVE_LOCK = new Object();
@@ -86,6 +88,7 @@ public class ReplayJob implements Runnable, Closeable {
     private final ProtocolDirectory protocolDirectory;
     private final Configuration<Option> configuration;
     private final TaskTracker taskTracker;
+    private final boolean asyncWrites;
 
     private volatile boolean started = false;
     private final AtomicBoolean cancelFlag = new AtomicBoolean(false);
@@ -180,7 +183,7 @@ public class ReplayJob implements Runnable, Closeable {
                     new ReplayManipulationTask(
                             new ReplayReader(this.sourceZipFile.getInputStream(sourceRecordingEntry)),
                             this.sourceReplaySizeBytes,
-                            new ReplayWriter(this.targetZipOutputStream, false),
+                            new ReplayWriter(this.targetZipOutputStream, this.asyncWrites, false),
                             this.protocolDirectory.getProtocol(this.metadata.getMetadataJson().getInt(ReplayMetadata.KEY_PROTOCOL)),
                             this.taskTracker,
                             this.cancelFlag,

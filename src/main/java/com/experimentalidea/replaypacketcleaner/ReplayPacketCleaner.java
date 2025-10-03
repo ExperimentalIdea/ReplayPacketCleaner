@@ -64,6 +64,8 @@ public class ReplayPacketCleaner {
 
     private ExecutorService executorService = null;
 
+    private boolean asyncWrites = false;
+
     private volatile boolean processingJobs = false;
 
     private Thread mainThread = null;
@@ -72,9 +74,11 @@ public class ReplayPacketCleaner {
     /**
      * Creates and initialize a new instance
      */
-    public static ReplayPacketCleaner createInstance() {
+    public static ReplayPacketCleaner createInstance(boolean asyncReplayWrites) {
 
         ReplayPacketCleaner instance = new ReplayPacketCleaner();
+
+        instance.asyncWrites = asyncReplayWrites;
 
         try {
             instance.tempDirectory = Files.createTempDirectory(instance.getClass().getName()).toFile();
@@ -256,7 +260,8 @@ public class ReplayPacketCleaner {
                         new File(exportDirectory.getPath() + File.separator + sourceFile.getName().replaceAll(ReplayPacketCleaner.DOT_MCPR_EXTENSION, "") + " (RPC)" + ReplayPacketCleaner.DOT_MCPR_EXTENSION),
                         this.protocolDirectory,
                         job.getProfile(),
-                        this.taskTrackerMap.get(jobUUID));
+                        this.taskTrackerMap.get(jobUUID),
+                        this.asyncWrites);
             } catch (Exception exception) {
                 this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
                 // TODO: update logging

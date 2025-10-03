@@ -25,23 +25,31 @@ public class ReplayWriter implements Closeable, AutoCloseable, Flushable {
      * @param outputStream The output stream. Any call to this ReplayWriter's .close() method will close the provided output stream.
      */
     public ReplayWriter(OutputStream outputStream) {
-        this(outputStream, true);
+        this(outputStream, false, true);
     }
 
     /**
      * Create a replay writer
      *
      * @param outputStream The output stream.
-     * @param closeable If false, any call to this ReplayWriter's .close() method will not close the provided output stream.
+     * @param async        If true, a separate thread will handle writing out the data to the provided output stream.
+     * @param closeable    If false, any call to this ReplayWriter's .close() method will not close the provided output stream.
      */
-    public ReplayWriter(OutputStream outputStream, boolean closeable) {
+    public ReplayWriter(OutputStream outputStream, boolean async, boolean closeable) {
         if (outputStream == null) {
             throw new IllegalArgumentException("OutputStream object cannot be null");
         }
-        if (closeable) {
-            this.outputStream = new DataOutputStream(new BufferedOutputStream(outputStream, 65536));
+
+        if (async) {
+            outputStream = new AsyncBufferedOutputStream(outputStream, 3, 65536);
         } else {
-            this.outputStream = new DataOutputStream(new BufferedOutputStream(outputStream, 65536)) {
+            outputStream = new BufferedOutputStream(outputStream, 65536);
+        }
+
+        if (closeable) {
+            this.outputStream = new DataOutputStream(outputStream);
+        } else {
+            this.outputStream = new DataOutputStream(outputStream) {
                 @Override
                 public void close() throws IOException {
                     flush();
@@ -155,11 +163,12 @@ public class ReplayWriter implements Closeable, AutoCloseable, Flushable {
         this.outputStream.writeBoolean(value);
     }
 
-    /** Get the total number of bytes written by this ReplayWriter since it was created.
+    /**
+     * Get the total number of bytes written by this ReplayWriter since it was created.
      * If any IOExceptions have occurred since the creation of this ReplayWriter, the number of bytes written returned may be inaccurate.
      *
      * @return The total number of bytes written.
-     * */
+     */
     public long bytesWritten() {
         return this.bytesWritten;
     }

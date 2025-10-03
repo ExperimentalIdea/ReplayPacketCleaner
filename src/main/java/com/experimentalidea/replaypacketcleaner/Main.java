@@ -15,25 +15,13 @@
  * */
 package com.experimentalidea.replaypacketcleaner;
 
-import com.experimentalidea.replaypacketcleaner.protocol.ProtocolDirectory;
-
-import java.io.File;
-import java.lang.module.ModuleFinder;
-import java.lang.module.ModuleReader;
-import java.lang.module.ResolvedModule;
-import java.net.URL;
-import java.util.*;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
-import java.util.stream.Stream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-import java.util.zip.ZipInputStream;
-
 public class Main {
 
     /// Show additional options in the GUI. For now, this shows options for to loading custom protocols and running the protocol file generation assistant.
     private static String FLAG_SHOW_HIDDEN_OPTIONS = "--showHiddenOptions"; // Show the options in the GUI to load custom protocols or run the protocol file generation assistant.
+
+    /// Disables the use of a separate thread for writing out a replay file. Using this flag will likely result in worse performance.
+    private static String FLAG_DISABLE_ASYNC_WRITES = "--disableAsyncWrites";
 
     public static void main(String[] args) {
 
@@ -44,15 +32,18 @@ public class Main {
             long startTime = System.currentTimeMillis();
 
             boolean showHiddenOptions = false;
+            boolean disableAsyncWrites = false;
             for (String entry : args) {
-                if (entry.equalsIgnoreCase(Main.FLAG_SHOW_HIDDEN_OPTIONS)) {
+                if (entry.equalsIgnoreCase(Main.FLAG_SHOW_HIDDEN_OPTIONS) && !showHiddenOptions) {
                     showHiddenOptions = true;
-                    System.out.println("Detected flag: " + Main.FLAG_SHOW_HIDDEN_OPTIONS + "\nAdditional options will be shown in the GUI!");
-                    break;
+                    System.out.println("Detected flag: " + Main.FLAG_SHOW_HIDDEN_OPTIONS + "\n  Additional options will be shown in the GUI!");
+                } else if (entry.equalsIgnoreCase(Main.FLAG_DISABLE_ASYNC_WRITES) && !disableAsyncWrites) {
+                    disableAsyncWrites = true;
+                    System.out.println("Detected flag: " + Main.FLAG_DISABLE_ASYNC_WRITES + "\n  Only a single thread per job will be used.");
                 }
             }
 
-            ReplayPacketCleaner instance = ReplayPacketCleaner.createInstance();
+            ReplayPacketCleaner instance = ReplayPacketCleaner.createInstance(!disableAsyncWrites);
 
             // TODO: create and set logger
 
