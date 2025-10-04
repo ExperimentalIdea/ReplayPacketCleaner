@@ -25,7 +25,7 @@ public class ReplayReader implements Closeable, AutoCloseable {
      * @param inputStream The input stream. Any call to this ReplayReader's .close() method will close the provided input stream.
      */
     public ReplayReader(InputStream inputStream) {
-        this(inputStream, true);
+        this(inputStream, false, true);
     }
 
     /**
@@ -34,14 +34,21 @@ public class ReplayReader implements Closeable, AutoCloseable {
      * @param inputStream The input stream. The use of a {@link BufferedInputStream} with at least a buffer size of 16384 bytes is highly recommended.
      * @param closeable   If false, any call to this ReplayReader's .close() method will not close the provided input stream.
      */
-    public ReplayReader(InputStream inputStream, boolean closeable) {
+    public ReplayReader(InputStream inputStream, boolean async, boolean closeable) {
         if (inputStream == null) {
             throw new IllegalArgumentException("InputStream object cannot be null");
         }
-        if (closeable) {
-            this.inputStream = new DataInputStream(new BufferedInputStream(inputStream, 65536));
+
+        if (async) {
+            inputStream = new AsyncBufferedInputStream(inputStream, 3, 65536);
         } else {
-            this.inputStream = new DataInputStream(new BufferedInputStream(inputStream, 65536)) {
+            inputStream = new BufferedInputStream(inputStream, 65536);
+        }
+
+        if (closeable) {
+            this.inputStream = new DataInputStream(inputStream);
+        } else {
+            this.inputStream = new DataInputStream(inputStream) {
                 @Override
                 public void close() throws IOException {
                     // do nothing - we don't want the underlying input stream to be closed in this case

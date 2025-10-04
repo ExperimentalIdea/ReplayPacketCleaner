@@ -64,6 +64,7 @@ public class ReplayPacketCleaner {
 
     private ExecutorService executorService = null;
 
+    private boolean asyncReads = false;
     private boolean asyncWrites = false;
 
     private volatile boolean processingJobs = false;
@@ -74,10 +75,11 @@ public class ReplayPacketCleaner {
     /**
      * Creates and initialize a new instance
      */
-    public static ReplayPacketCleaner createInstance(boolean asyncReplayWrites) {
+    public static ReplayPacketCleaner createInstance(boolean asyncReplayReads, boolean asyncReplayWrites) {
 
         ReplayPacketCleaner instance = new ReplayPacketCleaner();
 
+        instance.asyncReads = asyncReplayReads;
         instance.asyncWrites = asyncReplayWrites;
 
         try {
@@ -261,6 +263,7 @@ public class ReplayPacketCleaner {
                         this.protocolDirectory,
                         job.getProfile(),
                         this.taskTrackerMap.get(jobUUID),
+                        this.asyncReads,
                         this.asyncWrites);
             } catch (Exception exception) {
                 this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
