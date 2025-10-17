@@ -23,7 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /// Remove all entities, except players.
-public class EntityRemover implements SpawnEntityPacketListener, SpawnExperienceOrbPacketListener, SpawnPlayerPacketListener, RemoveEntitiesPacketListener,
+public class EntityRemover implements SpawnEntityPacketListener, SpawnExperienceOrbPacketListener, SpawnLivingEntityPacketListener,
+        SpawnPaintingPacketListener,SpawnPlayerPacketListener, RemoveEntitiesPacketListener,
         DamageEventPacketListener, EntityAnimationPacketListener, EntityEffectPacketListener, EntityEventPacketListener, HurtAnimationPacketListener,
         LinkEntitiesPacketListener, MoveMinecartAlongTrackPacketListener, PickupItemPacketListener, ProjectilePowerPacketListener,
         RemoveEntityEffectPacketListener, SetEntityMetadataPacketListener, SetEntityVelocityPacketListener, SetEquipmentPacketListener,
@@ -48,10 +49,26 @@ public class EntityRemover implements SpawnEntityPacketListener, SpawnExperience
         }
     }
 
-    // Remove Experience Orbs. (Note: this packet type was removed in protocol 770+ / MC 1.21.5+)
+    // Spawn Experience Orbs. (Note: this packet type was removed and merged into Spawn Entity in protocol 770+ / MC 1.21.5+)
     @Override
     public void onSpawnExperienceOrbPacket(SpawnExperienceOrbPacket spawnExperienceOrbPacket) {
         spawnExperienceOrbPacket.setWriteCanceled(true);
+    }
+
+    // Spawn Living Entity. (Note: this packet type was removed and merged into Spawn Entity in protocol 759+ / MC 1.19+)
+    @Override
+    public void onSpawnLivingEntityPacket(SpawnLivingEntityPacket spawnLivingEntityPacket) {
+        if (spawnLivingEntityPacket.getEntityType() == EntityType.PLAYER) {
+            this.exemptEntities.add(spawnLivingEntityPacket.getEntityID());
+        } else {
+            spawnLivingEntityPacket.setWriteCanceled(true);
+        }
+    }
+
+    // Spawn Living Entity. (Note: this packet type was removed and merged into Spawn Entity in protocol 759+ / MC 1.19+)
+    @Override
+    public void onSpawnPaintingPacket(SpawnPaintingPacket spawnPaintingPacket) {
+        spawnPaintingPacket.setWriteCanceled(true);
     }
 
     @Override

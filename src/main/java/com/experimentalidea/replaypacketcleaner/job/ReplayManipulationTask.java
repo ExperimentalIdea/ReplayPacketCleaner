@@ -84,6 +84,8 @@ public class ReplayManipulationTask implements Runnable {
         List<SoundEffectPacketListener> soundEffectPacketListenerList = new ArrayList<SoundEffectPacketListener>(packetListeners.length);
         List<SpawnEntityPacketListener> spawnEntityPacketListenerList = new ArrayList<SpawnEntityPacketListener>(packetListeners.length);
         List<SpawnExperienceOrbPacketListener> spawnExperienceOrbPacketListenerList = new ArrayList<SpawnExperienceOrbPacketListener>(packetListeners.length);
+        List<SpawnLivingEntityPacketListener> spawnLivingEntityPacketListenerList = new ArrayList<SpawnLivingEntityPacketListener>(packetListeners.length);
+        List<SpawnPaintingPacketListener> spawnPaintingPacketListenerList = new ArrayList<SpawnPaintingPacketListener>(packetListeners.length);
         List<SpawnPlayerPacketListener> spawnPlayerPacketListenerList = new ArrayList<SpawnPlayerPacketListener>(packetListeners.length);
         List<SynchronizeVehiclePositionPacketListener> synchronizeVehiclePositionPacketListenerList = new ArrayList<SynchronizeVehiclePositionPacketListener>(packetListeners.length);
         List<TeleportEntityPacketListener> teleportEntityPacketListenerList = new ArrayList<TeleportEntityPacketListener>(packetListeners.length);
@@ -170,6 +172,12 @@ public class ReplayManipulationTask implements Runnable {
             if (listener instanceof SpawnExperienceOrbPacketListener) {
                 spawnExperienceOrbPacketListenerList.add((SpawnExperienceOrbPacketListener) listener);
             }
+            if (listener instanceof SpawnLivingEntityPacketListener) {
+                spawnLivingEntityPacketListenerList.add((SpawnLivingEntityPacketListener) listener);
+            }
+            if (listener instanceof SpawnPaintingPacketListener) {
+                spawnPaintingPacketListenerList.add((SpawnPaintingPacketListener) listener);
+            }
             if (listener instanceof SpawnPlayerPacketListener) {
                 spawnPlayerPacketListenerList.add((SpawnPlayerPacketListener) listener);
             }
@@ -224,6 +232,8 @@ public class ReplayManipulationTask implements Runnable {
         this.soundEffectPacketListeners = soundEffectPacketListenerList.toArray(new SoundEffectPacketListener[0]);
         this.spawnEntityPacketListeners = spawnEntityPacketListenerList.toArray(new SpawnEntityPacketListener[0]);
         this.spawnExperienceOrbPacketListeners = spawnExperienceOrbPacketListenerList.toArray(new SpawnExperienceOrbPacketListener[0]);
+        this.spawnLivingEntityPacketListeners = spawnLivingEntityPacketListenerList.toArray(new SpawnLivingEntityPacketListener[0]);
+        this.spawnPaintingPacketListeners = spawnPaintingPacketListenerList.toArray(new SpawnPaintingPacketListener[0]);
         this.spawnPlayerPacketListeners = spawnPlayerPacketListenerList.toArray(new SpawnPlayerPacketListener[0]);
         this.synchronizeVehiclePositionPacketListeners = synchronizeVehiclePositionPacketListenerList.toArray(new SynchronizeVehiclePositionPacketListener[0]);
         this.teleportEntityPacketListeners = teleportEntityPacketListenerList.toArray(new TeleportEntityPacketListener[0]);
@@ -270,6 +280,8 @@ public class ReplayManipulationTask implements Runnable {
     private final SoundEffectPacketListener[] soundEffectPacketListeners;
     private final SpawnEntityPacketListener[] spawnEntityPacketListeners;
     private final SpawnExperienceOrbPacketListener[] spawnExperienceOrbPacketListeners;
+    private final SpawnLivingEntityPacketListener[] spawnLivingEntityPacketListeners;
+    private final SpawnPaintingPacketListener[] spawnPaintingPacketListeners;
     private final SpawnPlayerPacketListener[] spawnPlayerPacketListeners;
     private final SynchronizeVehiclePositionPacketListener[] synchronizeVehiclePositionPacketListeners;
     private final TeleportEntityPacketListener[] teleportEntityPacketListeners;
@@ -1454,7 +1466,96 @@ public class ReplayManipulationTask implements Runnable {
         }
     }
 
-    /// Note: Spawn Player packet was removed in protocol version 764+ (1.20.2+)
+    /// Note: Spawn Living Entity packet was removed and merged with Spawn Entity packet in protocol version 759+ (1.19+)
+    private void handleSpawnLivingEntityPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws IOException {
+        if (this.spawnLivingEntityPacketListeners.length > 0) {
+            // Read packet data
+            int entityID = this.reader.readVarInt();
+            long uuidMostSignificantBits = this.reader.readLong();
+            long uuidLeastSignificantBits = this.reader.readLong();
+            int entityTypeID = this.reader.readVarInt();
+            double x = this.reader.readDouble();
+            double y = this.reader.readDouble();
+            double z = this.reader.readDouble();
+            // Read in the order of yaw, then pitch. (unlike Spawn Entity which is pitch, then yaw)
+            int yaw = this.reader.readByte();
+            int pitch = this.reader.readByte();
+            int headYaw = this.reader.readByte();
+            short velocityX = this.reader.readShort();
+            short velocityY = this.reader.readShort();
+            short velocityZ = this.reader.readShort();
+
+            EntityType entityType = this.protocol.getEntityType(entityTypeID);
+
+            SpawnLivingEntityPacket spawnLivingEntityPacket = new SpawnLivingEntityPacket(packetIndex, timeStamp, entityID, new UUID(uuidMostSignificantBits, uuidLeastSignificantBits), entityType, x, y, z, yaw, pitch, headYaw, velocityX, velocityY, velocityZ);
+
+            // Let listener(s) cancel this packet.
+            for (SpawnLivingEntityPacketListener listener : this.spawnLivingEntityPacketListeners) {
+                listener.onSpawnLivingEntityPacket(spawnLivingEntityPacket);
+            }
+
+            // Write out the full packet (if the packet should be written out)
+            if (!spawnLivingEntityPacket.isWriteCanceled()) {
+                this.writePacketHeader(timeStamp, packetSize, packetID);
+                this.writer.writeVarInt(entityID);
+                this.writer.writeLong(uuidMostSignificantBits);
+                this.writer.writeLong(uuidLeastSignificantBits);
+                this.writer.writeVarInt(entityTypeID);
+                this.writer.writeDouble(x);
+                this.writer.writeDouble(y);
+                this.writer.writeDouble(z);
+                this.writer.writeByte(yaw);
+                this.writer.writeByte(pitch);
+                this.writer.writeByte(headYaw);
+                this.writer.writeShort(velocityX);
+                this.writer.writeShort(velocityY);
+                this.writer.writeShort(velocityZ);
+            }
+        } else {
+            this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));
+        }
+    }
+
+    /// Note: Spawn Painting packet was removed and merged with Spawn Entity packet in protocol version 759+ (1.19+)
+    private void handleSpawnPaintingPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws IOException {
+        if (this.spawnPaintingPacketListeners.length > 0) {
+            // Read packet data
+            int entityID = this.reader.readVarInt();
+            long uuidMostSignificantBits = this.reader.readLong();
+            long uuidLeastSignificantBits = this.reader.readLong();
+            int motive = this.reader.readVarInt();
+
+            // Note: The position encoding has changed from 1.13 to 1.14. TODO: handle this difference when adding pre 1.14 protocol support.
+            long position = this.reader.readLong();
+            long x = position >> 38;
+            long y = position << 52 >> 52;
+            long z = position << 26 >> 38;
+
+            int byteEnumDirection = this.reader.readByte();
+
+            SpawnPaintingPacket spawnPaintingPacket = new SpawnPaintingPacket(packetIndex, timeStamp, entityID, new UUID(uuidMostSignificantBits, uuidLeastSignificantBits), motive, x, y, z, (byte) byteEnumDirection);
+
+            // Let listener(s) cancel this packet.
+            for (SpawnPaintingPacketListener listener : this.spawnPaintingPacketListeners) {
+                listener.onSpawnPaintingPacket(spawnPaintingPacket);
+            }
+
+            // Write out the full packet (if the packet should be written out)
+            if (!spawnPaintingPacket.isWriteCanceled()) {
+                this.writePacketHeader(timeStamp, packetSize, packetID);
+                this.writer.writeVarInt(entityID);
+                this.writer.writeLong(uuidMostSignificantBits);
+                this.writer.writeLong(uuidLeastSignificantBits);
+                this.writer.writeVarInt(motive);
+                this.writer.writeLong(position);
+                this.writer.writeByte(byteEnumDirection);
+            }
+        } else {
+            this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));
+        }
+    }
+
+    /// Note: Spawn Player packet was removed and merged with Spawn Entity packet in protocol version 764+ (1.20.2+)
     private void handleSpawnPlayerPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws IOException {
         if (this.spawnPlayerPacketListeners.length > 0) {
             // Read packet data
