@@ -255,6 +255,7 @@ public interface PacketType {
         /// Note: Packet structure changed in protocol 766+ (1.20.5+)
         ENTITY_EFFECT,
 
+        /// Also referred to as "Entity Status" in versions before 1.19 on the wiki.
         ENTITY_EVENT,
 
         /// Note: Packet structure changed in protocol 767+ (1.21.0+)
@@ -524,10 +525,13 @@ public interface PacketType {
         /// Also referred to as "Entity Properties" in versions before 1.19 on the wiki.
         UPDATE_ATTRIBUTES,
 
+        /// Also referred to as "Entity Position" in versions before 1.19 on the wiki.
         UPDATE_ENTITY_POSITION,
 
+        /// Also referred to as "Entity Position and Rotation" in versions before 1.19 on the wiki.
         UPDATE_ENTITY_POSITION_AND_ROTATION,
 
+        /// Also referred to as "Entity Rotation" in versions before 1.19 on the wiki.
         UPDATE_ENTITY_ROTATION,
 
         UPDATE_LIGHT,
@@ -564,7 +568,7 @@ public interface PacketType {
         WAYPOINT,
 
         /// NOTE: Packet structure changed from 1.13.x to 1.14.x. The position is encoded as XYZ in 1.13.x and older, while it is encoded as XZY in 1.14.x+
-        /// ALSO NOTE: Packet referred to as simply "Effect" for older protocols on the wiki. (around 1.19 & before)
+        /// Also referred to as "Effect" in versions before 1.19 on the wiki.
         WORLD_EVENT;
 
 

@@ -321,7 +321,7 @@ public class ReplayManipulationTask implements Runnable {
             // The login/configuration phase.
             if (this.protocolVersion > Version.MC_1_20_1) {
                 this.passthroughConfigurationPackets();
-            }else {
+            } else {
                 this.passthroughLoginPackets();
             }
 
@@ -795,7 +795,14 @@ public class ReplayManipulationTask implements Runnable {
 
             // Read packet data
             int entityID = this.reader.readVarInt();
-            int effectID = this.reader.readVarInt();
+
+            // In protocol versions before 758 (1.18.2) the effectID field is a byte instead of a VarInt.
+            int effectID;
+            if (this.protocolVersion > Version.MC_1_18_1) {
+                effectID = this.reader.readVarInt();
+            } else {
+                effectID = this.reader.readByte();
+            }
             int amplifier = this.reader.readVarInt();
             int duration = this.reader.readVarInt();
             int flagsByte = this.reader.readByte();
@@ -805,10 +812,10 @@ public class ReplayManipulationTask implements Runnable {
             boolean showIcon = (flagsByte & 0x04) != 0;
             boolean blend = (flagsByte & 0x08) != 0; // blend flag is not present in protocol versions older than 766 (1.20.5)
 
-            // Fields present in protocol versions before 766 (1.20.5)
+            // Fields present in protocol versions after 758 (1.18.2) and before 766 (1.20.5)
             boolean hasFactorData = false;
             int[] factorCodecNBTRawBytes = null;
-            if (this.protocolVersion < Version.MC_1_20_5) {
+            if (this.protocolVersion > Version.MC_1_18_2 && this.protocolVersion < Version.MC_1_20_5) {
                 hasFactorData = this.reader.readBoolean();
                 factorCodecNBTRawBytes = this.reader.readByteArray((int) (packetSize - (this.reader.bytesRead() - startingBytesRead)));
             }
@@ -824,11 +831,15 @@ public class ReplayManipulationTask implements Runnable {
             if (!entityEffectPacket.isWriteCanceled()) {
                 this.writePacketHeader(timeStamp, packetSize, packetID);
                 this.writer.writeVarInt(entityID);
-                this.writer.writeVarInt(effectID);
+                if (this.protocolVersion > Version.MC_1_18_1) {
+                    this.writer.writeVarInt(effectID);
+                } else {
+                    this.writer.writeByte(effectID);
+                }
                 this.writer.writeVarInt(amplifier);
                 this.writer.writeVarInt(duration);
                 this.writer.writeByte(flagsByte);
-                if (this.protocolVersion < Version.MC_1_20_5) {
+                if (this.protocolVersion > Version.MC_1_18_2 && this.protocolVersion < Version.MC_1_20_5) {
                     this.writer.writeBoolean(hasFactorData);
                     this.writer.writeByteArray(factorCodecNBTRawBytes);
                 }
@@ -1048,7 +1059,12 @@ public class ReplayManipulationTask implements Runnable {
             // In protocol version 767+ (1.21.0+) this field is the 2nd to last field in this packet.
             int particleID = 0;
             if (this.protocolVersion < Version.MC_1_21_0) {
-                particleID = this.reader.readVarInt();
+                // Particle ID field is a normal int (not a VarInt) in versions prior to protocol version 759 (1.19).
+                if (this.protocolVersion > Version.MC_1_18_2) {
+                    particleID = this.reader.readVarInt();
+                } else {
+                    particleID = this.reader.readInt();
+                }
             }
             boolean longDistance = this.reader.readBoolean();
             boolean alwaysVisible = false;
@@ -1062,7 +1078,11 @@ public class ReplayManipulationTask implements Runnable {
             float offsetX = this.reader.readFloat();
             float offsetY = this.reader.readFloat();
             float offsetZ = this.reader.readFloat();
+
+            // In protocol versions 758 and prior, this field is referred to as "Particle Data" (still a float value).
+            // TODO: Look into this. It might just be the case that older wiki page was just vague and this is indeed used the same as in 1.19+.
             float maxSpeed = this.reader.readFloat();
+
             int particleCount = this.reader.readInt();
             if (this.protocolVersion > Version.MC_1_20_6) {
                 particleID = this.reader.readVarInt();
@@ -1080,7 +1100,11 @@ public class ReplayManipulationTask implements Runnable {
             if (!particlePacket.isWriteCanceled()) {
                 this.writePacketHeader(timeStamp, packetSize, packetID);
                 if (this.protocolVersion < Version.MC_1_21_0) {
-                    this.writer.writeVarInt(particleID);
+                    if (this.protocolVersion > Version.MC_1_18_2) {
+                        this.writer.writeVarInt(particleID);
+                    } else {
+                        this.writer.writeInt(particleID);
+                    }
                 }
                 this.writer.writeBoolean(longDistance);
                 if (this.protocolVersion > Version.MC_1_21_4) {
@@ -1213,7 +1237,14 @@ public class ReplayManipulationTask implements Runnable {
         if (this.removeEntityEffectPacketListeners.length > 0) {
             // Read packet data
             int entityID = this.reader.readVarInt();
-            int effectID = this.reader.readVarInt();
+
+            // This protocol versions before 758 (1.18.2) the effectID field is a byte instead of a VarInt.
+            int effectID;
+            if (this.protocolVersion > Version.MC_1_18_1) {
+                effectID = this.reader.readVarInt();
+            } else {
+                effectID = this.reader.readByte();
+            }
 
             RemoveEntityEffectPacket removeEntityEffectPacket = new RemoveEntityEffectPacket(packetIndex, timeStamp, entityID, effectID);
 
@@ -1226,7 +1257,11 @@ public class ReplayManipulationTask implements Runnable {
             if (!removeEntityEffectPacket.isWriteCanceled()) {
                 this.writePacketHeader(timeStamp, packetSize, packetID);
                 this.writer.writeVarInt(entityID);
-                this.writer.writeVarInt(effectID);
+                if (this.protocolVersion > Version.MC_1_18_1) {
+                    this.writer.writeVarInt(effectID);
+                } else {
+                    this.writer.writeByte(effectID);
+                }
             }
         } else {
             this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));
@@ -1402,7 +1437,12 @@ public class ReplayManipulationTask implements Runnable {
             double z = this.reader.readDouble();
             int pitch = this.reader.readByte();
             int yaw = this.reader.readByte();
-            int headYaw = this.reader.readByte();
+
+            // headYaw field is not present in protocol versions 758 (1.18.2) and older
+            int headYaw = yaw;
+            if (this.protocolVersion > Version.MC_1_18_2) {
+                headYaw = this.reader.readByte();
+            }
             int data = this.reader.readVarInt();
             short velocityX = this.reader.readShort();
             short velocityY = this.reader.readShort();
@@ -1429,7 +1469,9 @@ public class ReplayManipulationTask implements Runnable {
                 this.writer.writeDouble(z);
                 this.writer.writeByte(pitch);
                 this.writer.writeByte(yaw);
-                this.writer.writeByte(headYaw);
+                if (this.protocolVersion > Version.MC_1_18_2) {
+                    this.writer.writeByte(headYaw);
+                }
                 this.writer.writeVarInt(data);
                 this.writer.writeShort(velocityX);
                 this.writer.writeShort(velocityY);
