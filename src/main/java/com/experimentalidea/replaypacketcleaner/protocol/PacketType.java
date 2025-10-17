@@ -145,12 +145,17 @@ public interface PacketType {
 
         UNDEFINED,
 
-
+        /// Added in protocol versions 759+ (1.19+) (likely as a replacement for ACKNOWLEDGE_PLAYER_DIGGING, although the packet structure is completely different)
         ACKNOWLEDGE_BLOCK_CHANGE,
 
+        /// Unsupported in protocol versions 759+ (1.19+)
+        ACKNOWLEDGE_PLAYER_DIGGING,
+
         /// Add Resource Pack (play). Also see REMOVE_RESOURCE_PACK
+        /// Also referred to as "Resource Pack Send" in versions before 1.19 on the wiki.
         ADD_RESOURCE_PACK,
 
+        /// Also referred to as "Statistics" in versions before 1.19 on the wiki.
         AWARD_STATISTICS,
 
         /// NOTE: Packet structure changed from 1.13.x to 1.14.x. The position is encoded as XYZ in 1.13.x and older, while it is encoded as XZY in 1.14.x+
@@ -163,11 +168,16 @@ public interface PacketType {
 
         BUNDLE_DELIMITER,
 
+        /// Also referred to as "Block Change" in versions before 1.19 on the wiki.
         BLOCK_UPDATE,
 
+        /// Also referred to as "Server Difficulty" in versions before 1.19 on the wiki.
         CHANGE_DIFFICULTY,
 
-        /// Only supported in protocol versions 760 (1.19.1/2) and older.
+        /// Unsupported in protocol versions 759+ (1.19+)
+        CHAT_MESSAGE,
+
+        /// Only supported in protocol versions 760 & 759 (1.19 & 1.19.1/2).
         CHAT_PREVIEW,
 
         CHAT_SUGGESTIONS,
@@ -192,12 +202,16 @@ public interface PacketType {
 
         CLEAR_TITLES,
 
+        /// Also referred to as "Close Window (clientbound)" in versions before 1.19 on the wiki.
         CLOSE_CONTAINER,
 
+        /// Also referred to as "Death Combat Event" in versions before 1.19 on the wiki.
         COMBAT_DEATH,
 
+        /// Also referred to as "Declare Commands" in versions before 1.19 on the wiki.
         COMMANDS,
 
+        /// Also referred to as "Tab-Complete (clientbound)" in versions before 1.19 on the wiki.
         COMMAND_SUGGESTIONS_RESPONSE,
 
         ///  Cookie Request (play)
@@ -207,6 +221,7 @@ public interface PacketType {
         CUSTOM_REPORT_DETAILS,
 
         /// Only supported in protocol versions 760 (1.19.1/2) and older. In 761, this packet's function was merged into SOUND_EFFECT.
+        /// Also referred to as "Named Sound Effect" in versions before 1.19 on the wiki.
         CUSTOM_SOUND_EFFECT,
 
         DAMAGE_EVENT,
@@ -223,10 +238,13 @@ public interface PacketType {
         DISGUISED_CHAT_MESSAGE,
 
         /// Related to the scoreboard
+        /// Also referred to as "Display Scoreboard" in versions before 1.19 on the wiki.
         DISPLAY_OBJECTIVE,
 
+        /// Also referred to as "End Combat Event" in versions before 1.19 on the wiki.
         END_COMBAT,
 
+        /// Also referred to as "Enter Combat Event" in versions before 1.19 on the wiki.
         ENTER_COMBAT,
 
         ENTITY_ANIMATION,
@@ -255,15 +273,19 @@ public interface PacketType {
 
         INITIALIZE_WORLD_BORDER,
 
+        /// Also referred to as "Attach Entity" in versions before 1.19 on the wiki.
         LINK_ENTITIES,
 
+        /// Also referred to as "Face" in versions before 1.19 on the wiki.
         LOOK_AT,
 
         ///  Login (play)
+        /// Also referred to as "Join Game" in versions before 1.19 on the wiki.
         LOGIN,
 
         MAP_DATA,
 
+        /// Also referred to as "Trade List" in versions before 1.19 on the wiki.
         MERCHANT_OFFERS,
 
         /// Only supported in protocol versions 760 (1.19.1/2) and older.
@@ -280,6 +302,7 @@ public interface PacketType {
 
         OPEN_SIGN_EDITOR,
 
+        /// Also referred to as "Open Window" in versions before 1.19 on the wiki.
         OPEN_SCREEN,
 
         /// NOTE: Packet structure changed since protocol 769+ (1.21.4+). New field alwaysVisible.
@@ -287,6 +310,7 @@ public interface PacketType {
         PARTICLE,
 
         /// This packet is purely for the animation of an item being picked up by an entity
+        /// Also referred to as "Collect Item" in versions before 1.19 on the wiki.
         PICKUP_ITEM,
 
         /// Ping (play)
@@ -301,6 +325,7 @@ public interface PacketType {
         /// Player Abilities (clientbound)
         PLAYER_ABILITIES,
 
+        /// Unsupported in protocol versions older than 759 (1.19)
         PLAYER_CHAT_MESSAGE,
 
         /// Note: Packet is new to protocol 761+ (1.19.3+)
@@ -321,6 +346,7 @@ public interface PacketType {
 
         RECIPE_BOOK_SETTINGS,
 
+        /// Also referred to as "Destroy Entities" in versions before 1.19 on the wiki.
         REMOVE_ENTITIES,
 
         /// For all potion/status effects
@@ -337,70 +363,93 @@ public interface PacketType {
         SELECT_ADVANCEMENTS_TAB,
 
         /// Server MOTD & Icon.
+        /// Unsupported in protocol versions older than 759 (1.19)
         SERVER_DATA,
 
         /// Server Links (play)
         SERVER_LINKS,
 
+        /// Also referred to as "Action Bar" in versions before 1.19 on the wiki.
         SET_ACTION_BAR_TEXT,
 
+        /// Also referred to as "Block Break Animation" in versions before 1.19 on the wiki.
         SET_BLOCK_DESTROY_STAGE,
 
+        /// Also referred to as "World Border Center" in versions before 1.19 on the wiki.
         SET_BORDER_CENTER,
 
+        /// Also referred to as "World Border Lerp Size" in versions before 1.19 on the wiki.
         SET_BORDER_LERP_SIZE,
 
+        /// Also referred to as "World Border Size" in versions before 1.19 on the wiki.
         SET_BORDER_SIZE,
 
+        /// Also referred to as "World Border Warning Delay" in versions before 1.19 on the wiki.
         SET_BORDER_WARNING_DELAY,
 
+        /// Also referred to as "World Border Warning Reach" in versions before 1.19 on the wiki.
         SET_BORDER_WARNING_DISTANCE,
 
         /// Packet for setting the player to spectate an entity
+        /// Also referred to as "Camera" in versions before 1.19 on the wiki.
         SET_CAMERA,
 
         SET_CENTER_CHUNK,
 
+        /// Also referred to as "Window Items" in versions before 1.19 on the wiki.
         SET_CONTAINER_CONTENT,
 
+        /// Also referred to as "Window Property" in versions before 1.19 on the wiki.
         SET_CONTAINER_PROPERTY,
 
+        /// Also referred to as "Set Slot" in versions before 1.19 on the wiki.
         SET_CONTAINER_SLOT,
 
         SET_COOLDOWN,
 
         SET_CURSOR_ITEM,
 
+        /// Also referred to as "Spawn Position" in versions before 1.19 on the wiki.
         SET_DEFAULT_SPAWN_POSITION,
 
-        /// Only supported in protocol versions 760 (1.19.1/2) and older.
+        /// Only supported in protocol versions 760 & 759 (1.19 & 1.19.1/2).
         SET_DISPLAY_CHAT_PREVIEW,
 
+        /// Also referred to as "Entity Metadata" in versions before 1.19 on the wiki.
         SET_ENTITY_METADATA,
 
+        /// Also referred to as "Entity Velocity" in versions before 1.19 on the wiki.
         SET_ENTITY_VELOCITY,
 
+        /// Also referred to as "Entity Equipment" in versions before 1.19 on the wiki.
         SET_EQUIPMENT,
 
         SET_EXPERIENCE,
 
+        /// Also referred to as "Entity Head Look" in versions before 1.19 on the wiki.
         SET_HEAD_ROTATION,
 
+        /// Also referred to as "Update Health" in versions before 1.19 on the wiki.
         SET_HEALTH,
 
         /// Set Held Item (clientbound)
+        /// Also referred to as "Held Item Change (clientbound)" in versions before 1.19 on the wiki.
         SET_HELD_ITEM,
 
         SET_PASSENGERS,
 
         SET_PLAYER_INVENTORY_SLOT,
 
+        /// Also referred to as "Update View Distance" in versions before 1.19 on the wiki.
         SET_RENDER_DISTANCE,
 
+        /// Also referred to as "Update Simulation Distance" in versions before 1.19 on the wiki.
         SET_SIMULATION_DISTANCE,
 
+        /// Also referred to as "Set Title SubTitle" in versions before 1.19 on the wiki.
         SET_SUBTITLE_TEXT,
 
+        /// Also referred to as "Player List Header And Footer" in versions before 1.19 on the wiki.
         SET_TAB_LIST_HEADER_AND_FOOTER,
 
         SET_TICKING_STATE,
@@ -412,6 +461,9 @@ public interface PacketType {
         /// Show Dialog (play) <br> Supported in protocol versions 771+ (1.21.6+)
         SHOW_DIALOG,
 
+        /// Unsupported in protocol versions 759+ (1.19+)
+        SCULK_VIBRATION_SIGNAL,
+
         /// Note: Packet structure changed in protocol 767+ (1.21.0+)
         /// Note: Packet structure changed in protocol 761+ (1.19.3+)
         SOUND_EFFECT,
@@ -420,6 +472,12 @@ public interface PacketType {
 
         /// Unsupported in protocol versions 770+ (1.21.5+)
         SPAWN_EXPERIENCE_ORB,
+
+        /// Unsupported in protocol versions 759+ (1.19+)
+        SPAWN_LIVING_ENTITY,
+
+        /// Unsupported in protocol versions 759+ (1.19+)
+        SPAWN_PAINTING,
 
         /// Unsupported in protocol versions 764+ (1.20.2+)
         SPAWN_PLAYER,
@@ -435,16 +493,20 @@ public interface PacketType {
         /// Store Cookie (play)
         STORE_COOKIE,
 
+        /// Also referred to as "Player Position And Look (clientbound)" in versions before 1.19 on the wiki.
         SYNCHRONIZE_PLAYER_POSITION,
 
         /// NOTE: Packet is new to protocol 768+ (1.21.2+).
         SYNCHRONIZE_VEHICLE_POSITION,
 
+        /// Unsupported in protocol older than versions 759 (1.19)
         SYSTEM_CHAT_MESSAGE,
 
+        /// Also referred to as "NBT Query Response" in versions before 1.19 on the wiki.
         TAG_QUERY_RESPONSE,
 
         /// NOTE: Packet structure changed since protocol 768+ (1.21.2+). New fields for velocity and yaw/pitch.
+        /// Also referred to as "Entity Teleport" in versions before 1.19 on the wiki.
         TELEPORT_ENTITY,
 
         /// Supported in protocol versions 770+ (1.21.5+)
@@ -455,9 +517,11 @@ public interface PacketType {
 
         UNLOAD_CHUNK,
 
+        /// Also referred to as "Advancements" in versions before 1.19 on the wiki.
         UPDATE_ADVANCEMENTS,
 
         /// Note: A data field changed in 766+ (1.20.5)
+        /// Also referred to as "Entity Properties" in versions before 1.19 on the wiki.
         UPDATE_ATTRIBUTES,
 
         UPDATE_ENTITY_POSITION,
@@ -469,24 +533,31 @@ public interface PacketType {
         UPDATE_LIGHT,
 
         /// Related to the scoreboard
+        /// Also referred to as "Scoreboard Objective" in versions before 1.19 on the wiki.
         UPDATE_OBJECTIVES,
 
+        /// Also referred to as "Unlock Recipes" in versions before 1.19 on the wiki.
         UPDATE_RECIPE_BOOK,
 
+        /// Also referred to as "Declare Recipes" in versions before 1.19 on the wiki.
         UPDATE_RECIPES,
 
+        /// Also referred to as "Multi Block Change" in versions before 1.19 on the wiki.
         UPDATE_SECTION_BLOCKS,
 
         /// Related to the scoreboard
         UPDATE_SCORE,
 
         /// Update Tags (play)
+        /// Also referred to as "Tags" in versions before 1.19 on the wiki.
         UPDATE_TAGS,
 
         /// Related to the scoreboard (I think...)
+        /// Also referred to as "Teams" in versions before 1.19 on the wiki.
         UPDATE_TEAMS,
 
         /// NOTE: Packet structure changed since protocol 768+ (1.21.2+). New field timeAdvances (timeOfDayIncreasing)
+        /// Also referred to as "Time Update" in versions before 1.19 on the wiki.
         UPDATE_TIME,
 
         /// Supported in protocol versions 771+
