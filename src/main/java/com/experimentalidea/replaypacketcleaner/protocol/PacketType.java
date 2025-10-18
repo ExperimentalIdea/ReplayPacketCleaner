@@ -189,6 +189,10 @@ public interface PacketType {
 
         CHUNK_BIOMES,
 
+        /// Unsupported in protocol versions 756 (1.17.1) and older. Replaced by CHUNK_DATA_AND_UPDATE_LIGHT.
+        CHUNK_DATA,
+
+        /// Replacement for CHUNK_DATA in protocol versions 757+ (1.18+)
         CHUNK_DATA_AND_UPDATE_LIGHT,
 
         /// Clientbound Keep Alive (play)
@@ -444,6 +448,7 @@ public interface PacketType {
         /// Also referred to as "Update View Distance" in versions before 1.19 on the wiki.
         SET_RENDER_DISTANCE,
 
+        /// Added in protocol version 757+ (1.18+)
         /// Also referred to as "Update Simulation Distance" in versions before 1.19 on the wiki.
         SET_SIMULATION_DISTANCE,
 
