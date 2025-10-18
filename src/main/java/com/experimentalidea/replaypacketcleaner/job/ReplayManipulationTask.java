@@ -1197,10 +1197,20 @@ public class ReplayManipulationTask implements Runnable {
     private void handleRemoveEntitiesPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws IOException {
         if (this.removeEntitiesPacketListeners.length > 0) {
             // Read packet data
-            int length = this.reader.readVarInt();
-            int[] entityIDs = new int[length];
-            for (int i = 0; i < entityIDs.length; i++) {
-                entityIDs[i] = this.reader.readVarInt();
+            int length;
+            int[] entityIDs;
+
+            // In protocol versions prior to 756 (1.17.1), this packet contains only a single field for removing one entity.
+            // Unlike in 1.17.1 onward, where the first field is a VarInt of the length of a VarInt array of entity ID's to be remove.
+            if (this.protocolVersion > Version.MC_1_17_0) {
+                length = this.reader.readVarInt();
+                entityIDs = new int[length];
+                for (int i = 0; i < entityIDs.length; i++) {
+                    entityIDs[i] = this.reader.readVarInt();
+                }
+            } else {
+                length = 0;
+                entityIDs = new int[]{this.reader.readVarInt()};
             }
 
             RemoveEntitiesPacket removeEntitiesPacket = new RemoveEntitiesPacket(packetIndex, timeStamp, entityIDs);
@@ -1215,16 +1225,29 @@ public class ReplayManipulationTask implements Runnable {
                 entityIDs = removeEntitiesPacket.getEntityIDs();
                 if (entityIDs.length != 0) { // If the array of entities to be remove is zero, there is no point in writing out this packet.
 
-                    // Determine the new size of this packet in bytes before writing out.
-                    int updatedPacketSize = ReplayWriter.sizeOfVarInt(packetID) + ReplayWriter.sizeOfVarInt(entityIDs.length);
-                    for (int id : entityIDs) {
-                        updatedPacketSize += ReplayWriter.sizeOfVarInt(id);
-                    }
+                    if (this.protocolVersion > Version.MC_1_17_0) {
+                        // Determine the new size of this packet in bytes before writing out.
+                        int updatedPacketSize = ReplayWriter.sizeOfVarInt(packetID) + ReplayWriter.sizeOfVarInt(entityIDs.length);
+                        for (int id : entityIDs) {
+                            updatedPacketSize += ReplayWriter.sizeOfVarInt(id);
+                        }
 
-                    this.writePacketHeader(timeStamp, updatedPacketSize, packetID);
-                    this.writer.writeVarInt(entityIDs.length);
-                    for (int id : entityIDs) {
-                        this.writer.writeVarInt(id);
+                        this.writePacketHeader(timeStamp, updatedPacketSize, packetID);
+                        this.writer.writeVarInt(entityIDs.length);
+                        for (int id : entityIDs) {
+                            this.writer.writeVarInt(id);
+                        }
+                    } else {
+                        // In addition to the difference in protocol versions prior to 756 (1.17.1),
+                        // there may be instances where a listener has added more entries of entities to be removed where only 1 at a time is supported.
+                        // In such case, write out a packet for each instance of an entity id on the array.
+                        for (int id : entityIDs) {
+                            // Determine the new size of this packet in bytes before writing out.
+                            int updatedPacketSize = ReplayWriter.sizeOfVarInt(packetID) + ReplayWriter.sizeOfVarInt(id);
+
+                            this.writePacketHeader(timeStamp, updatedPacketSize, packetID);
+                            this.writer.writeVarInt(id);
+                        }
                     }
                 }
             }
