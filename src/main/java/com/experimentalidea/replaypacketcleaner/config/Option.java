@@ -25,42 +25,47 @@ public enum Option implements ConfigurationKey {
 
 
     BLOCK_ACTION_REMOVE(
-            new String[]{"profile", "blockAction", "remove"},
+            new String[]{"profile", "block_action", "remove"},
             new ValueType[]{ValueType.JSON_OBJECT, ValueType.JSON_OBJECT, ValueType.BOOLEAN},
             Boolean.FALSE),
 
     ENTITIES_REMOVE_ALL(
-            new String[]{"profile", "entities", "removeAll"},
+            new String[]{"profile", "entities", "remove_all"},
             new ValueType[]{ValueType.JSON_OBJECT, ValueType.JSON_OBJECT, ValueType.BOOLEAN},
             Boolean.FALSE),
 
     PARTICLE_REMOVE_ALL(
-            new String[]{"profile", "particle", "removeAll"},
+            new String[]{"profile", "particle", "remove_all"},
             new ValueType[]{ValueType.JSON_OBJECT, ValueType.JSON_OBJECT, ValueType.BOOLEAN},
             Boolean.FALSE),
 
     PROFILE_METADATA_APP_VERSION(
-            new String[]{"profile", "metaData", "appVersion"},
+            new String[]{"profile", "metadata", "app_version"},
             new ValueType[]{ValueType.JSON_OBJECT, ValueType.JSON_OBJECT, ValueType.STRING},
             ReplayPacketCleaner.APP_VERSION),
 
+    /**
+     * Data versions:
+     * 0: Initial version of the json profile file.
+     * 1: Changed naming style from camelCase to snake_case to match style of protocol mapping jsons.
+     */
     PROFILE_METADATA_DATA_VERSION(
-            new String[]{"profile", "metaData", "dataVersion"},
+            new String[]{"profile", "metadata", "data_version"},
             new ValueType[]{ValueType.JSON_OBJECT, ValueType.JSON_OBJECT, ValueType.INTEGER},
             Integer.valueOf(ReplayPacketCleaner.APP_PROFILE_JSON_VERSION)),
 
     PROFILE_METADATA_GEN_DATE(
-            new String[]{"profile", "metaData", "genDate"},
+            new String[]{"profile", "metadata", "gen_date"},
             new ValueType[]{ValueType.JSON_OBJECT, ValueType.JSON_OBJECT, ValueType.LONG},
             Long.valueOf(System.currentTimeMillis())),
 
     PROFILE_METADATA_PROFILE_NAME(
-            new String[]{"profile", "metaData", "profileName"},
+            new String[]{"profile", "metadata", "profile_name"},
             new ValueType[]{ValueType.JSON_OBJECT, ValueType.JSON_OBJECT, ValueType.STRING},
             "default"),
 
     SOUND_REMOVE_ALL(
-            new String[]{"profile", "sound", "removeAll"},
+            new String[]{"profile", "sound", "remove_all"},
             new ValueType[]{ValueType.JSON_OBJECT, ValueType.JSON_OBJECT, ValueType.BOOLEAN},
             Boolean.FALSE),
 
@@ -80,22 +85,22 @@ public enum Option implements ConfigurationKey {
             Boolean.FALSE),
 
     WEATHER_IS_RAINING(
-            new String[]{"profile", "weather", "isRaining"},
+            new String[]{"profile", "weather", "is_raining"},
             new ValueType[]{ValueType.JSON_OBJECT, ValueType.JSON_OBJECT, ValueType.BOOLEAN},
             Boolean.FALSE),
 
     WEATHER_RAIN_LEVEL(
-            new String[]{"profile", "weather", "rainLevel"},
+            new String[]{"profile", "weather", "rain_level"},
             new ValueType[]{ValueType.JSON_OBJECT, ValueType.JSON_OBJECT, ValueType.FLOAT},
             Float.valueOf(0.0F)),
 
     WEATHER_THUNDER_LEVEL(
-            new String[]{"profile", "weather", "thunderLevel"},
+            new String[]{"profile", "weather", "thunder_level"},
             new ValueType[]{ValueType.JSON_OBJECT, ValueType.JSON_OBJECT, ValueType.FLOAT},
             Float.valueOf(0.0F)),
 
     WEATHER_REMOVE_LIGHTING_STRIKES(
-            new String[]{"profile", "weather", "removeLightingStrikes"},
+            new String[]{"profile", "weather", "remove_lighting_strikes"},
             new ValueType[]{ValueType.JSON_OBJECT, ValueType.JSON_OBJECT, ValueType.BOOLEAN},
             Boolean.FALSE),
 
