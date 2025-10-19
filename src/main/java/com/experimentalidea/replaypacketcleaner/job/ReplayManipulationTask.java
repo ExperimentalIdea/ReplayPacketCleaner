@@ -1070,7 +1070,7 @@ public class ReplayManipulationTask implements Runnable {
             boolean alwaysVisible = false;
             // Versions 768+ (1.21.4+) and onward have a new alwaysVisible field.
             if (this.protocolVersion > Version.MC_1_21_3) {
-                this.reader.readBoolean();
+                alwaysVisible = this.reader.readBoolean();
             }
             double x = this.reader.readDouble();
             double y = this.reader.readDouble();
@@ -1107,7 +1107,7 @@ public class ReplayManipulationTask implements Runnable {
                     }
                 }
                 this.writer.writeBoolean(longDistance);
-                if (this.protocolVersion > Version.MC_1_21_4) {
+                if (this.protocolVersion > Version.MC_1_21_3) {
                     this.writer.writeBoolean(alwaysVisible);
                 }
                 this.writer.writeDouble(x);
