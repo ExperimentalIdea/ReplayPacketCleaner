@@ -1462,11 +1462,15 @@ public class ReplayManipulationTask implements Runnable {
             int yaw = this.reader.readByte();
 
             // headYaw field is not present in protocol versions 758 (1.18.2) and older
+            // data field type was changed from an int to a VarInt in protocol versions 759+ (1.19+)
             int headYaw = yaw;
+            int data;
             if (this.protocolVersion > Version.MC_1_18_2) {
                 headYaw = this.reader.readByte();
+                data = this.reader.readVarInt();
+            } else {
+                data = this.reader.readInt();
             }
-            int data = this.reader.readVarInt();
             short velocityX = this.reader.readShort();
             short velocityY = this.reader.readShort();
             short velocityZ = this.reader.readShort();
@@ -1494,8 +1498,10 @@ public class ReplayManipulationTask implements Runnable {
                 this.writer.writeByte(yaw);
                 if (this.protocolVersion > Version.MC_1_18_2) {
                     this.writer.writeByte(headYaw);
+                    this.writer.writeVarInt(data);
+                } else {
+                    this.writer.writeInt(data);
                 }
-                this.writer.writeVarInt(data);
                 this.writer.writeShort(velocityX);
                 this.writer.writeShort(velocityY);
                 this.writer.writeShort(velocityZ);
