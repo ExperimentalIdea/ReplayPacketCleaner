@@ -172,7 +172,7 @@ public class MainWindow {
         // TODO: enable checkbox when feature is added
         this.removeLightingStrikesCheckbox.setVisible(false);
 
-        this.removeBlockActionCheckbox.addActionListener(new CheckboxListener(this.profile, Option.BLOCK_ACTION_REMOVE, this.removeBlockActionCheckbox));
+        this.removeBlockAnimationCheckbox.addActionListener(new CheckboxListener(this.profile, Option.BLOCK_ANIMATION_REMOVE, this.removeBlockAnimationCheckbox));
         this.removeEntitiesCheckbox.addActionListener(new CheckboxListener(this.profile, Option.ENTITIES_REMOVE_ALL, this.removeEntitiesCheckbox));
         this.removeParticlesCheckbox.addActionListener(new CheckboxListener(this.profile, Option.PARTICLE_REMOVE_ALL, this.removeParticlesCheckbox));
         this.removeSoundCheckbox.addActionListener(new CheckboxListener(this.profile, Option.SOUND_REMOVE_ALL, this.removeSoundCheckbox));
@@ -259,7 +259,7 @@ public class MainWindow {
     private JLabel thunderLevelSliderValueDisplay;
 
     private JPanel miscellaneousTab;
-    private JCheckBox removeBlockActionCheckbox;
+    private JCheckBox removeBlockAnimationCheckbox;
     private JCheckBox removeEntitiesCheckbox;
     private JCheckBox removeParticlesCheckbox;
     private JCheckBox removeSoundCheckbox;

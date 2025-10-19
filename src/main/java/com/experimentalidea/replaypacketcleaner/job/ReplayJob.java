@@ -160,7 +160,7 @@ public class ReplayJob implements Runnable, Closeable {
             // Create the listeners for manipulating replay packets
             List<PacketListener> packetListenerList = new ArrayList<PacketListener>();
             // TODO: Add & configure more packet listeners base on the provided configuration
-            if (this.configuration.getBoolean(Option.BLOCK_ACTION_REMOVE)) {
+            if (this.configuration.getBoolean(Option.BLOCK_ANIMATION_REMOVE)) {
                 packetListenerList.add(new BlockActionRemover());
             }
             if (this.configuration.getBoolean(Option.ENTITIES_REMOVE_ALL)) {

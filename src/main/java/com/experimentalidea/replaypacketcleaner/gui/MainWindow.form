@@ -287,12 +287,12 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="9dab6" class="javax.swing.JCheckBox" binding="removeBlockActionCheckbox">
+              <component id="9dab6" class="javax.swing.JCheckBox" binding="removeBlockAnimationCheckbox">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Remove Block Action"/>
+                  <text value="Remove Block Animations"/>
                   <toolTipText value="&lt;html&gt;Block Action packets are responsible for multiple animations related to blocks, such as:&#10;&lt;br&gt;- Note Block sound &amp; music note particle when played.&#10;&lt;br&gt;- Chest/Shulker Box opening and closing animations.&#10;&lt;br&gt;- Bell and Decorated Pot animations.&#10;&lt;br&gt;- End Gateway purple beam animations.&#10;&lt;br&gt;- And most importantly; Piston extension and retraction animations &#10;&lt;br&gt;&#10;&lt;br&gt;If your replay has a ton of pistons firing throughout it,&lt;br&gt;removing this packet can dramatically improve the timeline and rendering&lt;br&gt; performance in ReplayMod at the cost of smooth animations for pistons.&#10;&lt;br&gt;&#10;&lt;br&gt;NOTE: May cause 'ghost' piston heads within the replay&lt;/html&gt;"/>
                 </properties>
               </component>

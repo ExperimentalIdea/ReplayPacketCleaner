@@ -24,8 +24,8 @@ import com.experimentalidea.replaypacketcleaner.job.ReplayJob;
 public enum Option implements ConfigurationKey {
 
 
-    BLOCK_ACTION_REMOVE(
-            new String[]{"profile", "block_action", "remove"},
+    BLOCK_ANIMATION_REMOVE(
+            new String[]{"profile", "block_animation", "remove"},
             new ValueType[]{ValueType.JSON_OBJECT, ValueType.JSON_OBJECT, ValueType.BOOLEAN},
             Boolean.FALSE),
 
@@ -47,7 +47,7 @@ public enum Option implements ConfigurationKey {
     /**
      * Data versions:
      * 0: Initial version of the json profile file.
-     * 1: Changed naming style from camelCase to snake_case to match style of protocol mapping jsons.
+     * 1: Changed naming style from camelCase to snake_case to match style of protocol mapping jsons. Changed naming of block_action to block_animation.
      */
     PROFILE_METADATA_DATA_VERSION(
             new String[]{"profile", "metadata", "data_version"},
