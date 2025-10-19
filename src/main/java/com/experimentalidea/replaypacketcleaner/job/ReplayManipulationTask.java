@@ -1411,7 +1411,7 @@ public class ReplayManipulationTask implements Runnable {
             // Write out the full packet (if the packet should be written out)
             if (!setPassengersPacket.isWriteCanceled()) {
                 // Determine the new size of this packet in bytes before writing out.
-                int updatedPacketSize = ReplayWriter.sizeOfVarInt(packetID) + ReplayWriter.sizeOfVarInt(passengerEntityIDs.length);
+                int updatedPacketSize = ReplayWriter.sizeOfVarInt(packetID) + ReplayWriter.sizeOfVarInt(entityID) + ReplayWriter.sizeOfVarInt(passengerEntityIDs.length);
                 for (int id : passengerEntityIDs) {
                     updatedPacketSize += ReplayWriter.sizeOfVarInt(id);
                 }
