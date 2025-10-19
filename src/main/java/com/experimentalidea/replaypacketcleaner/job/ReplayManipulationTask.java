@@ -1012,7 +1012,7 @@ public class ReplayManipulationTask implements Runnable {
                 attachedEntityID = linkEntitiesPacket.getAttachedEntityID();
                 holdingEntityID = linkEntitiesPacket.getHoldingEntityID();
 
-                this.writePacketHeader(timeStamp, ReplayWriter.sizeOfVarInt(packetID) + ReplayWriter.sizeOfVarInt(attachedEntityID) + ReplayWriter.sizeOfVarInt(holdingEntityID), packetID);
+                this.writePacketHeader(timeStamp, ReplayWriter.sizeOfVarInt(packetID) + 8, packetID);
                 this.writer.writeInt(attachedEntityID);
                 this.writer.writeInt(holdingEntityID);
             }
