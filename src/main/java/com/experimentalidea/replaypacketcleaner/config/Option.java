@@ -47,7 +47,9 @@ public enum Option implements ConfigurationKey {
     /**
      * Data versions:
      * 0: Initial version of the json profile file.
-     * 1: Changed naming style from camelCase to snake_case to match style of protocol mapping jsons. Changed naming of block_action to block_animation.
+     * 1: Changed naming style from camelCase to snake_case to match style of protocol mapping jsons.
+     *    Changed naming of block_action to block_animation.
+     *    Changed profile json name saved in the replay archive to match the snake_case style (was replayPacketCleanerProfile.json, now replay_packet_cleaner_profile.json)
      */
     PROFILE_METADATA_DATA_VERSION(
             new String[]{"profile", "metadata", "data_version"},

@@ -48,7 +48,7 @@ public class ReplayPacketCleaner {
     /**
      * The file name for the profile json file saved within the replays exported by this application.
      */
-    public static final String ARCHIVE_PROFILE_JSON_FILE_NAME = "replayPacketCleanerProfile" + DOT_JSON_EXTENSION;
+    public static final String ARCHIVE_PROFILE_JSON_FILE_NAME = "replay_packet_cleaner_profile" + DOT_JSON_EXTENSION;
 
 
     private File tempDirectory = null;
