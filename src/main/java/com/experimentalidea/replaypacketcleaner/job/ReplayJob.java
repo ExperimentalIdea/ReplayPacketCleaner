@@ -176,7 +176,7 @@ public class ReplayJob implements Runnable, Closeable {
                 packetListenerList.add(new TimeChanger(this.configuration.getLong(Option.TIME_SET)));
             }
             if (this.configuration.getBoolean(Option.WEATHER_OVERRIDE)) {
-                packetListenerList.add(new WeatherChanger(this.configuration.getBoolean(Option.WEATHER_IS_RAINING), this.configuration.getFloat(Option.WEATHER_RAIN_LEVEL), this.configuration.getFloat(Option.WEATHER_THUNDER_LEVEL)));
+                packetListenerList.add(new WeatherChanger(this.configuration.getBoolean(Option.WEATHER_IS_RAINING), this.configuration.getFloat(Option.WEATHER_RAIN_LEVEL), this.configuration.getFloat(Option.WEATHER_THUNDER_LEVEL), this.configuration.getBoolean(Option.WEATHER_REMOVE_LIGHTING_STRIKES)));
             }
 
             // Replay editing stage

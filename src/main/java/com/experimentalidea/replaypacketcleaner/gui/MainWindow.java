@@ -169,9 +169,6 @@ public class MainWindow {
         this.rainLevelSlider.addChangeListener(weatherOverrideListener);
         this.thunderLevelSlider.addChangeListener(weatherOverrideListener);
 
-        // TODO: enable checkbox when feature is added
-        this.removeLightingStrikesCheckbox.setVisible(false);
-
         this.removeBlockAnimationCheckbox.addActionListener(new CheckboxListener(this.profile, Option.BLOCK_ANIMATION_REMOVE, this.removeBlockAnimationCheckbox));
         this.removeEntitiesCheckbox.addActionListener(new CheckboxListener(this.profile, Option.ENTITIES_REMOVE_ALL, this.removeEntitiesCheckbox));
         this.removeParticlesCheckbox.addActionListener(new CheckboxListener(this.profile, Option.PARTICLE_REMOVE_ALL, this.removeParticlesCheckbox));
