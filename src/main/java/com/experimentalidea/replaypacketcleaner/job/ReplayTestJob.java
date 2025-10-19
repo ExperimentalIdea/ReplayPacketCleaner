@@ -224,7 +224,7 @@ public class ReplayTestJob extends ReplayJob {
                         }
                     }
 
-                    System.out.println("Value not equal at packet index #" + packetIndex + ":");
+                    System.out.println("Value not equal at packet index #" + packetIndex + " for Test Job " + this.taskTracker.getUUID().toString() + " for " + this.sourceFile.getName() + ":");
                     System.out.println("  Source: sourceTimeStamp=" + sourceTimeStamp + ", sourcePacketSize=" + sourcePacketSize + ", sourcePacketID=" + sourcePacketID + " (" + sourcePacketType.name() + "), sourceBytesData=" + Arrays.toString(sourceBytesData));
                     System.out.println("  Target: targetTimeStamp=" + targetTimeStamp + ", targetPacketSize=" + targetPacketSize + ", targetPacketID=" + targetPacketID + " (" + targetPacketType.name() + "), targetBytesData=" + Arrays.toString(targetBytesData));
                     failed = true;
