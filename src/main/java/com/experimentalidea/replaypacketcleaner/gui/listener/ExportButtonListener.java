@@ -25,11 +25,17 @@ import java.awt.event.ActionListener;
 
 public class ExportButtonListener implements ActionListener {
 
-    public ExportButtonListener(MainWindow mainWindow) {
+    public ExportButtonListener(MainWindow mainWindow, boolean testFlag) {
         this.mainWindow = mainWindow;
+        this.testFlag = testFlag;
+    }
+
+    public ExportButtonListener(MainWindow mainWindow) {
+        this(mainWindow, false);
     }
 
     private final MainWindow mainWindow;
+    private final boolean testFlag;
 
 
     @Override
@@ -54,7 +60,7 @@ public class ExportButtonListener implements ActionListener {
         int returnState = fileChooser.showSaveDialog(this.mainWindow.getMainFrame());
 
         if (returnState == JFileChooser.APPROVE_OPTION) {
-            this.mainWindow.submitAllAvailableJobs(fileChooser.getSelectedFile());
+            this.mainWindow.submitAllAvailableJobs(fileChooser.getSelectedFile(), this.testFlag);
         }
 
     }

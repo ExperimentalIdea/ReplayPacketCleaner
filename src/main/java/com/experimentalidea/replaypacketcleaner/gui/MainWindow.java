@@ -61,19 +61,23 @@ public class MainWindow {
         this.fileMenu = new JMenu("File");
         this.fileMenuImportItem = new JMenuItem("Import");
         this.fileMenuExportItem = new JMenuItem("Export");
+        this.fileMenuExportTestItem = new JMenuItem("Export Test Run");
         this.fileMenuCustomProtocolItem = new JMenuItem("Load Custom Protocol");
         this.fileMenuGenerateProtocolItem = new JMenuItem("Protocol Generation Assistant");
 
         this.fileMenuImportItem.addActionListener(new ImportReplaysButtonListener(this));
         this.fileMenuExportItem.addActionListener(new ExportButtonListener(this));
+        this.fileMenuExportTestItem.addActionListener(new ExportButtonListener(this, true));
         this.fileMenuCustomProtocolItem.addActionListener(new LoadCustomProtocolListener(this, this.replayPacketCleanerInstance.getProtocolDirectory()));
         this.fileMenuGenerateProtocolItem.addActionListener(new OpenProtocolGenerationListener(this, this.replayPacketCleanerInstance.getProtocolDirectory()));
 
         this.fileMenuExportItem.setEnabled(false);
+        this.fileMenuExportTestItem.setEnabled(false);
 
         this.fileMenu.add(this.fileMenuImportItem);
         this.fileMenu.add(this.fileMenuExportItem);
         if (showHiddenOptions) {
+            this.fileMenu.add(this.fileMenuExportTestItem);
             this.fileMenu.add(this.fileMenuCustomProtocolItem);
             this.fileMenu.add(this.fileMenuGenerateProtocolItem);
         }
@@ -115,7 +119,7 @@ public class MainWindow {
 
 
         this.importList = new ReplayList(this.importJList);
-        this.importList.setUIUpdater(new ImportListUIUpdater(this.importList, this.removeAllButton, this.removeSelectedButton, this.exportButton, this.fileMenuExportItem));
+        this.importList.setUIUpdater(new ImportListUIUpdater(this.importList, this.removeAllButton, this.removeSelectedButton, this.exportButton, this.fileMenuExportItem, this.fileMenuExportTestItem));
         this.importJList.addListSelectionListener(new ImportListSelectionListener(this.importList));
         this.removeAllButton.addActionListener(new ImportListRemoveAllButtonListener(this.importList));
         this.removeSelectedButton.addActionListener(new ImportListRemoveSelectionListener(this.importList));
@@ -268,6 +272,7 @@ public class MainWindow {
     private JMenu fileMenu;
     private JMenuItem fileMenuImportItem;
     private JMenuItem fileMenuExportItem;
+    private JMenuItem fileMenuExportTestItem;
     private JMenuItem fileMenuCustomProtocolItem;
     private JMenuItem fileMenuGenerateProtocolItem;
 
@@ -380,7 +385,7 @@ public class MainWindow {
         return this.jobList;
     }
 
-    public void submitAllAvailableJobs(File exportDirectory) {
+    public void submitAllAvailableJobs(File exportDirectory, boolean testFlag) {
         // Set the job tab as selected.
         this.tabbedReplayPane.setSelectedIndex(MainWindow.REPLAYS_TAB_JOBS);
         this.tabbedReplayPane.setEnabledAt(MainWindow.REPLAYS_TAB_JOBS, true);
@@ -423,7 +428,7 @@ public class MainWindow {
             TaskTracker taskTracker;
 
             try {
-                taskTracker = this.replayPacketCleanerInstance.submitReplayJob(new Job(jobUUID, profileCopy, sourceFile, exportDirectory));
+                taskTracker = this.replayPacketCleanerInstance.submitReplayJob(new Job(jobUUID, profileCopy, sourceFile, exportDirectory, testFlag));
             } catch (Exception exception) {
                 // TODO: Log
                 errorText.append("\n  ").append(sourceFile.getPath()).append(":\n    Exception: ").append(exception.getMessage());

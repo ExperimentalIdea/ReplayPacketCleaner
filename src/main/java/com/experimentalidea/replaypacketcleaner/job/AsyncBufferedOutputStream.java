@@ -127,14 +127,16 @@ public class AsyncBufferedOutputStream extends OutputStream {
 
             this.closed = true;
 
-            this.writeThread.interrupt();
+            if (this.writeThread != null) {
+                this.writeThread.interrupt();
 
-            while (true) {
-                try {
-                    this.writeThread.join();
-                    break;
-                } catch (InterruptedException e) {
-                    // ignore
+                while (true) {
+                    try {
+                        this.writeThread.join();
+                        break;
+                    } catch (InterruptedException e) {
+                        // ignore
+                    }
                 }
             }
             try {

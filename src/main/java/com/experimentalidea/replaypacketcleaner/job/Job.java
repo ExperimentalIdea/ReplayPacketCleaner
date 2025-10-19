@@ -24,7 +24,7 @@ import java.util.UUID;
 /// Represents information about a given job.
 public class Job {
 
-    public Job(UUID uuid, Configuration<Option> profile, File sourceFile, File targetDirectory) {
+    public Job(UUID uuid, Configuration<Option> profile, File sourceFile, File targetDirectory, boolean testFlag) {
         if (uuid == null) {
             throw new IllegalArgumentException("uuid cannot be null");
         }
@@ -42,14 +42,19 @@ public class Job {
         this.profile = profile;
         this.sourceFile = sourceFile;
         this.targetDirectory = targetDirectory;
+        this.testFlag = testFlag;
     }
 
+    public Job(UUID uuid, Configuration<Option> profile, File sourceFile, File targetDirectory) {
+        this(uuid, profile, sourceFile, targetDirectory, false);
+    }
 
     private final UUID uuid;
     private final Configuration<Option> profile;
     private final File sourceFile;
     private final File targetDirectory;
 
+    private final boolean testFlag;
 
     public UUID getUUID() {
         return uuid;
@@ -67,5 +72,7 @@ public class Job {
         return targetDirectory;
     }
 
-
+    public boolean getTestFlag() {
+        return this.testFlag;
+    }
 }

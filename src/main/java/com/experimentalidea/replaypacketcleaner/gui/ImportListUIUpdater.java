@@ -19,21 +19,24 @@ import javax.swing.*;
 
 public class ImportListUIUpdater implements UIUpdater {
 
-    public ImportListUIUpdater(ReplayList replayImportList, JButton removeAllButton, JButton removeSelectedButton, JButton exportButton, JMenuItem fileMenuExportItem) {
-        if(replayImportList == null){
+    public ImportListUIUpdater(ReplayList replayImportList, JButton removeAllButton, JButton removeSelectedButton, JButton exportButton, JMenuItem fileMenuExportItem, JMenuItem fileMenuExportTestItem) {
+        if (replayImportList == null) {
             throw new IllegalArgumentException("replayImportList cannot be null");
         }
-        if(removeAllButton == null){
+        if (removeAllButton == null) {
             throw new IllegalArgumentException("removeAllButton cannot be null");
         }
-        if(removeSelectedButton == null){
+        if (removeSelectedButton == null) {
             throw new IllegalArgumentException("removeSelectedButton cannot be null");
         }
-        if(exportButton == null){
+        if (exportButton == null) {
             throw new IllegalArgumentException("exportButton cannot be null");
         }
-        if(fileMenuExportItem == null){
+        if (fileMenuExportItem == null) {
             throw new IllegalArgumentException("fileMenuExportItem cannot be null");
+        }
+        if (fileMenuExportTestItem == null) {
+            throw new IllegalArgumentException("fileMenuExportTestItem cannot be null");
         }
 
         this.replayImportList = replayImportList;
@@ -41,6 +44,7 @@ public class ImportListUIUpdater implements UIUpdater {
         this.removeSelectedButton = removeSelectedButton;
         this.exportButton = exportButton;
         this.fileMenuExportItem = fileMenuExportItem;
+        this.fileMenuExportTestItem = fileMenuExportTestItem;
     }
 
 
@@ -49,6 +53,7 @@ public class ImportListUIUpdater implements UIUpdater {
     private final JButton removeSelectedButton;
     private final JButton exportButton;
     private final JMenuItem fileMenuExportItem;
+    private final JMenuItem fileMenuExportTestItem;
 
 
     @Override
@@ -58,6 +63,7 @@ public class ImportListUIUpdater implements UIUpdater {
         this.removeSelectedButton.setEnabled(this.replayImportList.getSelectedIndices().length != 0);
         this.exportButton.setEnabled(listHasEntries);
         this.fileMenuExportItem.setEnabled(listHasEntries);
+        this.fileMenuExportTestItem.setEnabled(listHasEntries);
     }
 
 }

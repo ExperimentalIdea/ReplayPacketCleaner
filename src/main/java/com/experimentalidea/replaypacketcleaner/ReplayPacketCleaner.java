@@ -18,6 +18,7 @@ package com.experimentalidea.replaypacketcleaner;
 import com.experimentalidea.replaypacketcleaner.gui.MainWindow;
 import com.experimentalidea.replaypacketcleaner.job.Job;
 import com.experimentalidea.replaypacketcleaner.job.ReplayJob;
+import com.experimentalidea.replaypacketcleaner.job.ReplayTestJob;
 import com.experimentalidea.replaypacketcleaner.job.TaskTracker;
 import com.experimentalidea.replaypacketcleaner.protocol.ProtocolDirectory;
 
@@ -258,15 +259,27 @@ public class ReplayPacketCleaner {
 
             ReplayJob replayJob;
             try {
-                replayJob = new ReplayJob(
-                        sourceCopy,
-                        workingDirectory,
-                        new File(exportDirectory.getPath() + File.separator + sourceFile.getName().replaceAll(ReplayPacketCleaner.DOT_MCPR_EXTENSION, "") + " (RPC)" + ReplayPacketCleaner.DOT_MCPR_EXTENSION),
-                        this.protocolDirectory,
-                        job.getProfile(),
-                        this.taskTrackerMap.get(jobUUID),
-                        this.asyncReads,
-                        this.asyncWrites);
+                if (job.getTestFlag()) {
+                    // test
+                    replayJob = new ReplayTestJob(
+                            sourceCopy,
+                            workingDirectory,
+                            this.protocolDirectory,
+                            this.taskTrackerMap.get(jobUUID),
+                            this.asyncReads,
+                            this.asyncWrites);
+                } else {
+                    // normal use
+                    replayJob = new ReplayJob(
+                            sourceCopy,
+                            workingDirectory,
+                            new File(exportDirectory.getPath() + File.separator + sourceFile.getName().replaceAll(ReplayPacketCleaner.DOT_MCPR_EXTENSION, "") + " (RPC)" + ReplayPacketCleaner.DOT_MCPR_EXTENSION),
+                            this.protocolDirectory,
+                            job.getProfile(),
+                            this.taskTrackerMap.get(jobUUID),
+                            this.asyncReads,
+                            this.asyncWrites);
+                }
             } catch (Exception exception) {
                 this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
                 // TODO: update logging
