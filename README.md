@@ -5,23 +5,19 @@ RPC can also override the time/weather and remove most particles effects, which 
 
 ### This tool can
 - Override the time of day
-- Override the weather
-- Remove Block Action packets
+- Override the weather (can remove lighting strikes too)
+- Remove block animations (piston extension/retraction, bells, decorated pots, chests, shulkers, etc.)
 - Remove all entities (except players)
 - Remove most particles
 - Remove most sounds
 
 ### Version Support
 This tool currently supports replays recorded in the following Minecraft versions:
-- 1.21
-- 1.21.1
-- 1.21.2
-- 1.21.3
-- 1.21.4
-- 1.21.5
-- 1.21.6
-- 1.21.7
-- 1.21.8
+- 1.21-1.21.8
+- 1.20.x
+- 1.19.x
+- 1.18.x
+- 1.17.x
 
 With support for older versions planned to be added in future releases.
 
