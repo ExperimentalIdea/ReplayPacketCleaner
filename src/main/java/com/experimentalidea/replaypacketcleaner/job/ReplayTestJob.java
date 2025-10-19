@@ -209,10 +209,10 @@ public class ReplayTestJob extends ReplayJob {
 
                     int targetTimeStamp = targetReader.readInt();
                     int targetPacketSize = targetReader.readInt();
-                    long targetStartingBytesRead = sourceReader.bytesRead();  // current - starting = total read so far for this packet after reading the packet size.
+                    long targetStartingBytesRead = targetReader.bytesRead();  // current - starting = total read so far for this packet after reading the packet size.
                     int targetPacketID = targetReader.readVarInt();
                     PacketType.Play targetPacketType = protocol.getPlayPacketType(sourcePacketID);
-                    int[] targetBytesData = sourceReader.readByteArray((int) (targetPacketSize - (targetReader.bytesRead() - targetStartingBytesRead)));
+                    int[] targetBytesData = targetReader.readByteArray((int) (targetPacketSize - (targetReader.bytesRead() - targetStartingBytesRead)));
 
                     if (sourceTimeStamp == targetTimeStamp) {
                         if (sourcePacketSize == targetPacketSize) {
