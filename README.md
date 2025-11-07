@@ -13,11 +13,11 @@ RPC can also override the time/weather and remove most particles effects, which 
 
 ### Version Support
 This tool currently supports replays recorded in the following Minecraft versions:
-- 1.21-1.21.8
-- 1.20.x
-- 1.19.x
-- 1.18.x
 - 1.17.x
+- 1.18.x
+- 1.19.x
+- 1.20.x
+- 1.21-1.21.10
 
 With support for older versions planned to be added in future releases.
 
