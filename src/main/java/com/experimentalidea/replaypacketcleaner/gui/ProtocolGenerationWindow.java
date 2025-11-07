@@ -15,6 +15,7 @@
  * */
 package com.experimentalidea.replaypacketcleaner.gui;
 
+import com.experimentalidea.replaypacketcleaner.ReplayPacketCleaner;
 import com.experimentalidea.replaypacketcleaner.protocol.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -234,7 +235,7 @@ public class ProtocolGenerationWindow {
                         JSONObject metadataNode = new JSONObject();
                         protocolNode.put(TypeMetadata.JSON_NODE_METADATA, metadataNode);
 
-                        metadataNode.put(TypeMetadata.JSON_NODE_FILE_FORMAT_VERSION, 0);
+                        metadataNode.put(TypeMetadata.JSON_NODE_FILE_FORMAT_VERSION, ReplayPacketCleaner.APP_PROTOCOL_JSON_VERSION);
                         metadataNode.put(TypeMetadata.JSON_NODE_PROTOCOL_VERSION, protocolVersion);
                         metadataNode.put(TypeMetadata.JSON_NODE_MC_VERSIONS, new JSONArray(supportedMCVersions));
 

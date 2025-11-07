@@ -1,7 +1,7 @@
 {"protocol": {
   "metadata": {
     "protocol_version": 763,
-    "file_format_version": 0,
+    "file_format_version": 1,
     "mc_versions": [
       "1.20.0",
       "1.20.1"
@@ -2223,7 +2223,7 @@
         "resource": "minecraft:barrel",
         "id": 1154
       },
-      "chain": {
+      "iron_chain": {
         "resource": "minecraft:chain",
         "id": 334
       },
@@ -16878,7 +16878,7 @@
           18278
         ]
       },
-      "chain": {
+      "iron_chain": {
         "resource": "minecraft:chain",
         "id": 310,
         "blockstates": [

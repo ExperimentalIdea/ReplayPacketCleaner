@@ -15,6 +15,7 @@
  * */
 package com.experimentalidea.replaypacketcleaner.protocol;
 
+import com.experimentalidea.replaypacketcleaner.ReplayPacketCleaner;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -52,6 +53,8 @@ public class ProtocolDirectory {
     }
 
     public Protocol loadProtocol(JSONObject jsonObject) {
+        this.ensureCurrentFormat(jsonObject);
+
         Protocol protocol = Protocol.fromJson(jsonObject);
         int protocolVersion = protocol.getProtocolVersion();
 
@@ -110,6 +113,44 @@ public class ProtocolDirectory {
         return protocol;
     }
 
+    /// Ensures the provided json file conforms to the currently expected format.
+    public void ensureCurrentFormat(JSONObject jsonObject) {
+        JSONObject emptyJSON = new JSONObject();
+
+        JSONObject metadataNode = jsonObject.optJSONObject(TypeMetadata.JSON_NODE_METADATA, emptyJSON);
+        int fileFormatVersion = jsonObject.optJSONObject(TypeMetadata.JSON_NODE_METADATA, emptyJSON).optInt(TypeMetadata.JSON_NODE_FILE_FORMAT_VERSION, -1);
+
+        if (fileFormatVersion == -1 || fileFormatVersion == ReplayPacketCleaner.APP_PROTOCOL_JSON_VERSION) {
+            return;
+        }
+
+        switch (fileFormatVersion) {
+            case 0: { // Update from version 0 to version 1
+                JSONObject blockNode = jsonObject.optJSONObject(TypeMetadata.JSON_NODE_REGISTRIES, emptyJSON).optJSONObject(TypeMetadata.JSON_NODE_BLOCK, emptyJSON);
+                JSONObject itemNode = jsonObject.optJSONObject(TypeMetadata.JSON_NODE_REGISTRIES, emptyJSON).optJSONObject(TypeMetadata.JSON_NODE_ITEM, emptyJSON);
+
+                JSONObject chainBlockNode = blockNode.optJSONObject("chain");
+                if (chainBlockNode != null) {
+                    blockNode.remove("chain");
+                    blockNode.put("iron_chain", chainBlockNode);
+                }
+
+                JSONObject chainItemNode = itemNode.optJSONObject("chain");
+                if (chainBlockNode != null) {
+                    itemNode.remove("chain");
+                    itemNode.put("iron_chain", chainItemNode);
+                }
+
+                metadataNode.put(TypeMetadata.JSON_NODE_FILE_FORMAT_VERSION, 1);
+
+                this.ensureCurrentFormat(jsonObject);
+            }
+
+            // case 1: etc...
+
+            // default: return;
+        }
+    }
 
     public boolean unloadProtocol(int protocolVersion) {
         synchronized (this.changeRecordsLock) {

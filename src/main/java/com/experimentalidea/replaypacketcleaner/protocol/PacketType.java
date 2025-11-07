@@ -40,6 +40,9 @@ public interface PacketType {
         /// Clientbound Plugin Message (configuration)
         CLIENTBOUND_PLUGIN_MESSAGE,
 
+        /// Note: Packet is new to protocol 773+ (1.21.9/10+)
+        CODE_OF_CONDUCT,
+
         /// Cookie Request (configuration)
         COOKIE_REQUEST,
 
@@ -230,6 +233,18 @@ public interface PacketType {
 
         DAMAGE_EVENT,
 
+        /// Note: Packet is new to protocol 773+ (1.21.9/10+)
+        DEBUG_BLOCK_VALUE,
+
+        /// Note: Packet is new to protocol 773+ (1.21.9/10+)
+        DEBUG_CHUNK_VALUE,
+
+        /// Note: Packet is new to protocol 773+ (1.21.9/10+)
+        DEBUG_ENTITY_VALUE,
+
+        /// Note: Packet is new to protocol 773+ (1.21.9/10+)
+        DEBUG_EVENT,
+
         DEBUG_SAMPLE,
 
         /// Also known by the name "Hide Message" on the Minecraft wiki for protocol versions 760 (1.19.1/2) and prior.
@@ -266,6 +281,7 @@ public interface PacketType {
         /// Note: Packet structure changed in protocol 761+ (1.19.3+)
         ENTITY_SOUND_EFFECT,
 
+        /// Note: Packet structure changed in protocol 773+ (1.21.9+).
         EXPLOSION,
 
         /// Unsupported in protocol versions 764+ (1.20.0+). Replaced by Configuration.FEATURE_FLAGS in protocol version 764+ (1.20.2+)
@@ -273,6 +289,9 @@ public interface PacketType {
         FEATURE_FLAGS,
 
         GAME_EVENT,
+
+        /// Note: Packet is new to protocol 773+ (1.21.9/10+)
+        GAME_TEST_HIGHLIGHT_POS,
 
         HURT_ANIMATION,
 
@@ -339,6 +358,7 @@ public interface PacketType {
         /// Also known by the name "Player Info" on the Minecraft wiki for protocol versions 760 (1.19.1/2) and prior.
         PLAYER_INFO_UPDATE,
 
+        /// Note: Packet structure changed in protocol 773+ (1.21.9+).
         PLAYER_ROTATION,
 
         /// Note: Packet structure changed since protocol 767+ (1.21.0+). Power XYZ fields reduced to single Power field.
@@ -424,6 +444,7 @@ public interface PacketType {
         SET_ENTITY_METADATA,
 
         /// Also referred to as "Entity Velocity" in versions before 1.19 on the wiki.
+        /// Note: Packet structure changed in protocol 773+ (1.21.9+).
         SET_ENTITY_VELOCITY,
 
         /// Also referred to as "Entity Equipment" in versions before 1.19 on the wiki.
@@ -474,6 +495,8 @@ public interface PacketType {
         /// Note: Packet structure changed in protocol 761+ (1.19.3+)
         SOUND_EFFECT,
 
+        /// Note: Packet structure changed in protocol 773+ (1.21.9+).
+        /// Note: Packet structure changed in protocol 759+ (1.19.0+)
         SPAWN_ENTITY,
 
         /// Unsupported in protocol versions 770+ (1.21.5+)

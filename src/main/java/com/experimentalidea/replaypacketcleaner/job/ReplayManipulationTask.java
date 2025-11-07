@@ -1319,9 +1319,35 @@ public class ReplayManipulationTask implements Runnable {
         if (this.setEntityVelocityPacketListeners.length > 0) {
             // Read packet data
             int entityID = this.reader.readVarInt();
-            short velocityX = this.reader.readShort();
-            short velocityY = this.reader.readShort();
-            short velocityZ = this.reader.readShort();
+
+            short velocityX = 0;
+            short velocityY = 0;
+            short velocityZ = 0;
+
+            // In protocol version 773+ (1.21.9+), this packet's structure has changed.
+            // Currently, the Minecraft wiki hasn't updated with details on changes to the packet structure.
+            // Below is by my best attempt to pass through this data, based on reading the decompiled Minecraft source code.
+            // See also handleSpawnEntityPacket(...)
+            // TODO: Replace and parse for the SetEntityVelocityPacket later.
+            int vec3Field1_unsignedByte = 0;
+            int vec3Field2_unsignedByte = 0;
+            int vec3Field3_unsignedInt = 0;
+            int vec3Field4_varInt = 0;
+            if (this.protocolVersion > Version.MC_1_21_8) {
+                vec3Field1_unsignedByte = this.reader.readByte();
+                if (vec3Field1_unsignedByte != 0) {
+                    vec3Field2_unsignedByte = this.reader.readByte();
+                    vec3Field3_unsignedInt = this.reader.readInt();
+                    if ((vec3Field1_unsignedByte & 4) == 4) { // hasContinuationBit
+                        vec3Field4_varInt = this.reader.readVarInt();
+                    }
+                }
+            } else {
+                // Pre protocol version 773+ (1.21.9+).
+                velocityX = this.reader.readShort();
+                velocityY = this.reader.readShort();
+                velocityZ = this.reader.readShort();
+            }
 
             SetEntityVelocityPacket setEntityVelocityPacket = new SetEntityVelocityPacket(packetIndex, timeStamp, entityID, velocityX, velocityY, velocityZ);
 
@@ -1334,9 +1360,20 @@ public class ReplayManipulationTask implements Runnable {
             if (!setEntityVelocityPacket.isWriteCanceled()) {
                 this.writePacketHeader(timeStamp, packetSize, packetID);
                 this.writer.writeVarInt(entityID);
-                this.writer.writeShort(velocityX);
-                this.writer.writeShort(velocityY);
-                this.writer.writeShort(velocityZ);
+                if (this.protocolVersion > Version.MC_1_21_8) {
+                    this.writer.writeByte(vec3Field1_unsignedByte);
+                    if (vec3Field1_unsignedByte != 0) {
+                        this.writer.writeByte(vec3Field2_unsignedByte);
+                        this.writer.writeInt(vec3Field3_unsignedInt);
+                        if ((vec3Field1_unsignedByte & 4) == 4) { // hasContinuationBit
+                            this.writer.writeVarInt(vec3Field4_varInt);
+                        }
+                    }
+                } else {
+                    this.writer.writeShort(velocityX);
+                    this.writer.writeShort(velocityY);
+                    this.writer.writeShort(velocityZ);
+                }
             }
         } else {
             this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));
@@ -1458,6 +1495,27 @@ public class ReplayManipulationTask implements Runnable {
             double x = this.reader.readDouble();
             double y = this.reader.readDouble();
             double z = this.reader.readDouble();
+
+            // In protocol version 773+ (1.21.9+), this packet's structure has changed.
+            // Currently, the Minecraft wiki hasn't updated with details on changes to the packet structure.
+            // Below is by my best attempt to pass through this data, based on reading the decompiled Minecraft source code.
+            // See also handleSetEntityVelocityPacket(...)
+            // TODO: Replace and parse for the SpawnEntityPacket later.
+            int vec3Field1_unsignedByte = 0;
+            int vec3Field2_unsignedByte = 0;
+            int vec3Field3_unsignedInt = 0;
+            int vec3Field4_varInt = 0;
+            if (this.protocolVersion > Version.MC_1_21_8) {
+                vec3Field1_unsignedByte = this.reader.readByte();
+                if (vec3Field1_unsignedByte != 0) {
+                    vec3Field2_unsignedByte = this.reader.readByte();
+                    vec3Field3_unsignedInt = this.reader.readInt();
+                    if ((vec3Field1_unsignedByte & 4) == 4) { // hasContinuationBit
+                        vec3Field4_varInt = this.reader.readVarInt();
+                    }
+                }
+            }
+
             int pitch = this.reader.readByte();
             int yaw = this.reader.readByte();
 
@@ -1471,9 +1529,17 @@ public class ReplayManipulationTask implements Runnable {
             } else {
                 data = this.reader.readInt();
             }
-            short velocityX = this.reader.readShort();
-            short velocityY = this.reader.readShort();
-            short velocityZ = this.reader.readShort();
+
+            // In protocol version 773+ (1.21.9+), this packet's structure has changed;
+            // This field was removed, and it appears the new field above takes it's place.
+            short velocityX = 0;
+            short velocityY = 0;
+            short velocityZ = 0;
+            if (this.protocolVersion < Version.MC_1_21_9) {
+                velocityX = this.reader.readShort();
+                velocityY = this.reader.readShort();
+                velocityZ = this.reader.readShort();
+            }
 
             EntityType entityType = this.protocol.getEntityType(entityTypeID);
 
@@ -1494,6 +1560,16 @@ public class ReplayManipulationTask implements Runnable {
                 this.writer.writeDouble(x);
                 this.writer.writeDouble(y);
                 this.writer.writeDouble(z);
+                if (this.protocolVersion > Version.MC_1_21_8) {
+                    this.writer.writeByte(vec3Field1_unsignedByte);
+                    if (vec3Field1_unsignedByte != 0) {
+                        this.writer.writeByte(vec3Field2_unsignedByte);
+                        this.writer.writeInt(vec3Field3_unsignedInt);
+                        if ((vec3Field1_unsignedByte & 4) == 4) { // hasContinuationBit
+                            this.writer.writeVarInt(vec3Field4_varInt);
+                        }
+                    }
+                }
                 this.writer.writeByte(pitch);
                 this.writer.writeByte(yaw);
                 if (this.protocolVersion > Version.MC_1_18_2) {
@@ -1502,9 +1578,11 @@ public class ReplayManipulationTask implements Runnable {
                 } else {
                     this.writer.writeInt(data);
                 }
-                this.writer.writeShort(velocityX);
-                this.writer.writeShort(velocityY);
-                this.writer.writeShort(velocityZ);
+                if (this.protocolVersion < Version.MC_1_21_9) {
+                    this.writer.writeShort(velocityX);
+                    this.writer.writeShort(velocityY);
+                    this.writer.writeShort(velocityZ);
+                }
             }
         } else {
             this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));
