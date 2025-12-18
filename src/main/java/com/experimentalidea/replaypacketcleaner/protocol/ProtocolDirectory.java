@@ -274,18 +274,33 @@ public class ProtocolDirectory {
         return this.getProtocol(mcVersion) != null;
     }
 
-    /// Compiles a list of all supported protocol versions
-    public List<Integer> getSupportedProtocolVersions() {
-        List<Integer> supportedList = new ArrayList<Integer>();
+    /// Compiles a list of all supported protocols. Ordered from oldest to newest.
+    public List<Protocol> getSupportedProtocols() {
+        List<Protocol> supportedList = new ArrayList<Protocol>();
         for (Protocol protocol : this.records.protocols()) {
-            supportedList.add(protocol.getProtocolVersion());
+            if (protocol != null) {
+                supportedList.add(protocol);
+            }
         }
         return supportedList;
     }
 
-    /// Compiles a list of all supported MC versions
+    /// Compiles a list of all supported protocol versions. Ordered from oldest to newest.
+    public List<Integer> getSupportedProtocolVersions() {
+        List<Integer> supportedList = new ArrayList<Integer>();
+        for (Protocol protocol : this.records.protocols()) {
+            if (protocol != null) {
+                supportedList.add(protocol.getProtocolVersion());
+            }
+        }
+        return supportedList;
+    }
+
+    /// Compiles a list of all supported MC versions. Ordered from oldest to newest.
     public List<String> getSupportedMCVersions() {
-        return new ArrayList<String>(this.records.mcVersionToProtocolMap.keySet());
+        List<String> supportedList = new ArrayList<String>(this.records.mcVersionToProtocolMap.keySet());
+        Collections.sort(supportedList);
+        return supportedList;
     }
 
 

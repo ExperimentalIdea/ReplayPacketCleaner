@@ -18,6 +18,9 @@ package com.experimentalidea.replaypacketcleaner.protocol;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
 public class Protocol {
 
 
@@ -96,6 +99,35 @@ public class Protocol {
                 throw new IllegalArgumentException("The provided json contains an invalid " + TypeMetadata.JSON_NODE_MC_VERSIONS + " entry: " + mcVersions[i]);
             }
         }
+
+        // Ensure the Array of supported mc versions is order from oldest to newest version.
+        Arrays.sort(mcVersions, (str1, str2) -> {
+            StringTokenizer tokenizer1 = new StringTokenizer(str1, "."); // Should always be 3 tokens
+            int majorVersion1 = Integer.parseInt(tokenizer1.nextToken());
+            int minorVersion1 = Integer.parseInt(tokenizer1.nextToken());
+            int patchVersion1 = Integer.parseInt(tokenizer1.nextToken());
+
+            StringTokenizer tokenizer2 = new StringTokenizer(str2, "."); // Should always be 3 tokens
+            int majorVersion2 = Integer.parseInt(tokenizer2.nextToken());
+            int minorVersion2 = Integer.parseInt(tokenizer2.nextToken());
+            int patchVersion2 = Integer.parseInt(tokenizer2.nextToken());
+
+            if (majorVersion1 < majorVersion2) {
+                return -1;
+            }
+            if (majorVersion1 > majorVersion2) {
+                return 1;
+            }
+
+            if (minorVersion1 < minorVersion2) {
+                return -1;
+            }
+            if (minorVersion1 > minorVersion2) {
+                return 1;
+            }
+
+            return Integer.compare(patchVersion1, patchVersion2);
+        });
 
         // TODO: The configuration phase is somewhat new. in future for old versions, don't try loading it since it doesn't exist
         ProtocolMapper<PacketType.Configuration> configurationMapper = new ProtocolMapper<PacketType.Configuration>(PacketType.Configuration.UNDEFINED, protocolVersion, jsonProtocolMappings);
