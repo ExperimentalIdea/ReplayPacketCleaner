@@ -129,8 +129,13 @@ public class Protocol {
             return Integer.compare(patchVersion1, patchVersion2);
         });
 
-        // TODO: The configuration phase is somewhat new. in future for old versions, don't try loading it since it doesn't exist
-        ProtocolMapper<PacketType.Configuration> configurationMapper = new ProtocolMapper<PacketType.Configuration>(PacketType.Configuration.UNDEFINED, protocolVersion, jsonProtocolMappings);
+        // Only load Configuration packet mappings if they are supported by the protocol.
+        ProtocolMapper<PacketType.Configuration> configurationMapper;
+        if (protocolVersion > Version.MC_1_20_1) {
+            configurationMapper = new ProtocolMapper<PacketType.Configuration>(PacketType.Configuration.UNDEFINED, protocolVersion, jsonProtocolMappings);
+        } else {
+            configurationMapper = null;
+        }
         ProtocolMapper<PacketType.Login> loginMapper = new ProtocolMapper<PacketType.Login>(PacketType.Login.UNDEFINED, protocolVersion, jsonProtocolMappings);
         ProtocolMapper<PacketType.Play> playMapper = new ProtocolMapper<PacketType.Play>(PacketType.Play.UNDEFINED, protocolVersion, jsonProtocolMappings);
 

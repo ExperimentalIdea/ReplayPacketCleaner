@@ -244,13 +244,16 @@ public class ProtocolGenerationWindow {
                         Map<ProtocolMetadata, Integer> referenceIds = new HashMap<ProtocolMetadata, Integer>();
 
                         // packets (configuration)
-                        log.append("========\nClientbound Configuration Packets:\n");
-                        for (PacketType.Configuration type : PacketType.Configuration.values()) {
-                            referenceResources.put(type, referenceProtocol.getConfigurationResourceName(type));
-                            if (referenceProtocol.getConfigurationPacketID(type) == -1) {
-                                referenceUnsupportedTypes.add(type);
+                        // Only supported in protocol versions 764+ (1.20.2+)
+                        if (protocolVersion > Version.MC_1_20_1) {
+                            log.append("========\nClientbound Configuration Packets:\n");
+                            for (PacketType.Configuration type : PacketType.Configuration.values()) {
+                                referenceResources.put(type, referenceProtocol.getConfigurationResourceName(type));
+                                if (referenceProtocol.getConfigurationPacketID(type) == -1) {
+                                    referenceUnsupportedTypes.add(type);
+                                }
+                                referenceIds.put(type, referenceProtocol.getConfigurationPacketID(type));
                             }
-                            referenceIds.put(type, referenceProtocol.getConfigurationPacketID(type));
                         }
                         if (packetsJSON != null) {
                             try {
