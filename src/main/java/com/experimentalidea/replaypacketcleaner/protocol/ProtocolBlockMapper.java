@@ -20,11 +20,27 @@ import org.json.JSONObject;
 
 import java.util.*;
 
+/**
+ * Extends {@link ProtocolMapper}.
+ * Adds translation of a protocol version specific block state to the associated {@link Block} type.
+ * Typically, instances of this class are wrapped by {@link Protocol}.
+ */
 public class ProtocolBlockMapper extends ProtocolMapper<Block> {
 
-    public ProtocolBlockMapper(int protocolVersion, JSONObject jsonProtocolMappings) throws IllegalArgumentException, IllegalStateException {
-        super(Block.UNDEFINED, protocolVersion, jsonProtocolMappings);
 
+    /**
+     * Creates a Protocol Mapper for the specified protocol enum type.
+     * Using Internally creates arrays mapping each enum type to/from their protocol version specific id.
+     * <p>
+     * Supported protocol enums are {@link PacketType.Login}, {@link PacketType.Configuration}, {@link PacketType.Play},
+     * {@link EntityType}, {@link Block}, {@link BlockEntity}, and {@link Item}.
+     *
+     * @param jsonProtocolMappings The {@link JSONObject} containing the relevant protocol mappings.
+     * @throws NullPointerException  If undefinedType or jsonProtocolMappings is null.
+     * @throws IllegalStateException If more than one type is linked to the same id or vise versa.
+     */
+    public ProtocolBlockMapper(JSONObject jsonProtocolMappings) throws NullPointerException, IllegalStateException {
+        super(Block.UNDEFINED, jsonProtocolMappings);
 
         Block[] enumConstants = Block.values();
 
@@ -33,7 +49,7 @@ public class ProtocolBlockMapper extends ProtocolMapper<Block> {
 
         // Set up the array that will be used to map to block type from blockstates
         for (Block block : enumConstants) {
-            if(block == Block.UNDEFINED){
+            if (block == Block.UNDEFINED) {
                 continue;
             }
 
@@ -87,15 +103,20 @@ public class ProtocolBlockMapper extends ProtocolMapper<Block> {
     }
 
 
-
     /// Where the index number is the blockstate and the Block corresponds to the blockstate. (undefined type for unsupported)
     private Block[] blockstateLookup;
 
 
-
-    /// Get the type by state. An unsupported state will return the undefined type.
+    /**
+     * Get the block by the state.
+     *
+     * @param state The state number of the block.
+     * @return The id associated with the provided state number. If the state number is not supported by this protocol,
+     * Or if the state number is not recognized, Block.UNDEFINED will be returned instead.
+     * @see Block
+     */
     public Block getBlockByState(int state) {
-        /// Check if the provided id is within range and return the undefined type for a value of -1.
+        // Check if the provided id is within range and if not return the undefined type for a value of -1.
         if (state >= this.blockstateLookup.length || state < 0) {
             return Block.UNDEFINED;
         }

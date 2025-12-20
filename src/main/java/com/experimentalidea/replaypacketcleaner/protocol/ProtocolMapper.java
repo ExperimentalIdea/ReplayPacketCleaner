@@ -21,20 +21,37 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.HashMap;
+import java.util.Objects;
 
+/**
+ * Protocol Mapper translates a protocol enum type to/from their protocol version specific id.
+ * Typically, instances of this class are wrapped by {@link Protocol}.
+ * <p>
+ * Supported protocol enums are {@link PacketType.Login}, {@link PacketType.Configuration}, {@link PacketType.Play},
+ * {@link EntityType}, {@link Block}, {@link BlockEntity}, and {@link Item}.
+ * <p>
+ * For {@link Block}, {@link ProtocolBlockMapper} should be used instead to support getting the block from a block state number.
+ */
 public class ProtocolMapper<E extends Enum<E> & ProtocolMetadata> {
 
 
-    public ProtocolMapper(E undefinedType, int protocolVersion, JSONObject jsonProtocolMappings) throws IllegalArgumentException, IllegalStateException {
-        if (undefinedType == null) {
-            throw new IllegalArgumentException("undefinedType cannot be null");
-        }
-        if (jsonProtocolMappings == null) {
-            throw new IllegalArgumentException("jsonProtocolMappings cannot be null");
-        }
+    /**
+     * Creates a Protocol Mapper for the specified protocol enum type.
+     * Using Internally creates arrays mapping each enum type to/from their protocol version specific id.
+     * <p>
+     * Supported protocol enums are {@link PacketType.Login}, {@link PacketType.Configuration}, {@link PacketType.Play},
+     * {@link EntityType}, {@link Block}, {@link BlockEntity}, and {@link Item}.
+     *
+     * @param undefinedType        Provide the type which will be used in places where no type is applicable.
+     * @param jsonProtocolMappings The {@link JSONObject} containing the relevant protocol mappings.
+     * @throws NullPointerException  If undefinedType or jsonProtocolMappings is null.
+     * @throws IllegalStateException If more than one type is linked to the same id or vise versa.
+     */
+    public ProtocolMapper(E undefinedType, JSONObject jsonProtocolMappings) throws NullPointerException, IllegalStateException {
+        Objects.requireNonNull(undefinedType, "undefinedType cannot be null");
+        Objects.requireNonNull(jsonProtocolMappings, "jsonProtocolMappings cannot be null");
 
         this.undefinedType = undefinedType;
-        this.protocolVersion = protocolVersion;
 
         E[] enumConstants = undefinedType.getDeclaringClass().getEnumConstants();
 
@@ -50,11 +67,11 @@ public class ProtocolMapper<E extends Enum<E> & ProtocolMetadata> {
 
         // Populate the protocol mapping arrays.
         for (E type : enumConstants) {
-            if(type == this.undefinedType){
+            if (type == this.undefinedType) {
                 continue;
             }
 
-            TypeMetadata metadata = type.getMetadata();
+            TypeMetadata<?> metadata = type.getMetadata();
 
             // Get the set of keys required to traverse the json object to the point where the ID & ResourceName should be.
             String[] jsonNodePaths = metadata.getJSONNodePaths();
@@ -117,12 +134,13 @@ public class ProtocolMapper<E extends Enum<E> & ProtocolMetadata> {
     }
 
 
+    /// When a resource name isn't available for a type, this empty string is used instead.
     public static final String UNDEFINED_RESOURCE_NAME = "";
+
+    /// When an id isn't available for a type, a value of -1 is used instead.
     public static final int UNDEFINED_ID = -1;
 
     private final E undefinedType;
-
-    private final int protocolVersion;
 
     /// Where the index number is the ID and the Type corresponds to the ID. (undefined type for unsupported)
     private E[] typeLookup;
@@ -134,21 +152,29 @@ public class ProtocolMapper<E extends Enum<E> & ProtocolMetadata> {
     private HashMap<String, E> reverseResourceNameLookup;
 
 
-    public int getProtocolVersion() {
-        return this.protocolVersion;
-    }
-
-
-    /// Get the type by id. An unsupported id will return the undefined type.
+    /**
+     * Get the type by the id.
+     *
+     * @param id The id.
+     * @return The type associated with the provided id.
+     * Or if the id is unknown, returns the undefinedType defined when this ProtocolMapper was created.
+     */
     public E getType(int id) {
-        /// Check if the provided id is within range and return the undefined type for a value of -1.
+        // Check if the provided id is within range and if not return the undefined type for a value of -1.
         if (id >= this.idLookup.length || id < 0) {
             return this.undefinedType;
         }
         return this.typeLookup[id];
     }
 
-    /// returns -1 if type is null or unsupported by the protocol.
+    /**
+     * Get the id by the type.
+     *
+     * @param type The type.
+     * @return The id associated with the provided type. If the type is not supported by this protocol,
+     * or the type is equal to the undefinedType defined when this ProtocolMapper was created,
+     * ProtocolMapper.UNDEFINED_ID (-1) will be returned instead.
+     */
     public int getID(E type) {
         if (type == null) {
             return ProtocolMapper.UNDEFINED_ID;
@@ -156,7 +182,15 @@ public class ProtocolMapper<E extends Enum<E> & ProtocolMetadata> {
         return this.idLookup[type.ordinal()];
     }
 
-    /// Returns and empty string if the resource cannot be found or if a resource name doesn't exist.
+    /**
+     * Get the resource name by the type.
+     *
+     * @param type The type.
+     * @return The resource associated with the provided type. If the type is not supported by this protocol,
+     * or the type is equal to the undefinedType defined when this ProtocolMapper was created,
+     * or the type doesn't have a resource associated with this type,
+     * ProtocolMapper.UNDEFINED_RESOURCE_NAME (empty string) will be returned instead.
+     */
     public String getResourceName(E type) {
         String resourceName = this.resourceNameLookup.get(type);
         if (resourceName == null) {
@@ -165,7 +199,13 @@ public class ProtocolMapper<E extends Enum<E> & ProtocolMetadata> {
         return resourceName;
     }
 
-    /// Get type by resource name. Returns the undefined type if the provided resource is unknown.
+    /**
+     * Get the type by the resource name.
+     *
+     * @param resourceName The resource name.
+     * @return The type associated with the provided resource.
+     * Or if the resource is unknown, returns the undefinedType defined when this ProtocolMapper was created.
+     */
     public E getType(String resourceName) {
         E packetType = this.reverseResourceNameLookup.get(resourceName);
         if (packetType == null) {

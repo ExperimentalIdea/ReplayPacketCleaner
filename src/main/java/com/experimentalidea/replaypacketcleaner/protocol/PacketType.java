@@ -17,22 +17,41 @@ package com.experimentalidea.replaypacketcleaner.protocol;
 
 /**
  * Contains enum classes for representing all clientbound packet types for the Login, Configuration, and Play connection states.
- * <br>
- * <br> In cases where a type doesn't exist, the UNDEFINED type for that connection state should be used instead.
- * <br>
- * <br> Documentation for each type created with {@link DocumentationGenerator}.
+ * <p>
+ * The <a href=https://minecraft.wiki/w/Java_Edition_protocol/Packets">Minecraft Wiki Java Edition protocol/Packets</a> page
+ * is a key resource in the ongoing development of Replay Packet Cleaner.
+ * Names of the enum packet types are typically the same names used on the Minecraft Wiki.
+ * <p>
+ * When an enum packet type doesn't exist to represent a packet, the UNDEFINED type for that connection state should be (and is) used instead of null in all cases.
+ * <p>
+ * Documentation for each type created with {@link DocumentationGenerator}.
  * Supported Protocol(s) & Resource(s) documented are only inclusive of the protocol versions Replay Packet Cleaner itself currently supports.
+ *
  * @see Protocol
  * @see Login
  * @see Configuration
  * @see Play
- * */
+ */
 public interface PacketType {
 
+    /**
+     * Get the protocol state the packet type is associated with.
+     * @return The protocol state.
+     * */
     public ProtocolState getProtocolState();
 
 
-    /// The Configuration phase is unsupported in protocol versions 763 (1.20.0/1) and older.
+    /**
+     * Representation of all clientbound Configuration phase packet types.
+     * <p>
+     * Replays recorded in protocol version 764 (1.20.2) and newer begin in this protocol state.
+     * After hitting PacketType.Configuration.FINISH_CONFIGURATION, the protocol switches the state to PLAY.
+     * <p>
+     * Protocol version 763 (1.20.1) and older do not support the Configuration connection state.
+     *
+     * @see Login
+     * @see Play
+     */
     public static enum Configuration implements ProtocolMetadata, PacketType {
 
         /**
@@ -205,6 +224,15 @@ public interface PacketType {
     }
 
 
+    /**
+     * Representation of all clientbound Login phase packet types.
+     * <p>
+     * Replays recorded in protocol version 763 (1.20.1) and older begin in this protocol state.
+     * After PacketType.Login.LOGIN_SUCCESS, the protocol switches the state to PLAY.
+     *
+     * @see Configuration
+     * @see Play
+     */
     public static enum Login implements ProtocolMetadata, PacketType {
 
         /**
@@ -279,6 +307,17 @@ public interface PacketType {
     }
 
 
+    /**
+     * Representation of all clientbound Play phase packet types.
+     * <p>
+     * This is the phase where RPC will monitor, alter, and delete packets from a replay.
+     * <p>
+     * Replays recorded in protocol versions 764 (1.20.2) and newer can switch the protocol state
+     * from PLAY to CONFIGURATION upon hitting PacketType.Play.START_CONFIGURATION.
+     *
+     * @see Login
+     * @see Configuration
+     */
     public static enum Play implements ProtocolMetadata, PacketType {
 
         /**

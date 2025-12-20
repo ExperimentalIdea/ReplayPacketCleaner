@@ -25,19 +25,40 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+/**
+ * Serves as a directory to load, get, and manage {@link Protocol} objects.
+ */
 public class ProtocolDirectory {
 
+    /**
+     * Create a new Protocol Directory.
+     * See loadProtocol(...) methods to load protocol mappings.
+     */
     public ProtocolDirectory() {
         this.records = new ProtocolRecords(0, new Protocol[0], new HashMap<String, Integer>());
     }
 
+    /// This object is synchronized on whenever the protocol records are being replaced.
     private final Object changeRecordsLock = new Object();
 
+    /// Holds all currently loaded protocols.
     private volatile ProtocolRecords records;
 
 
+    /**
+     * Load a protocol from an input stream of JSON text.
+     *
+     * @param inputStream The input stream of JSON text.
+     * @return The newly loaded {@link Protocol}. If this protocol version is already loaded, it will be replaced with the new one created from the input stream.
+     * @throws IOException              If an I/O error occurs.
+     * @throws NullPointerException     If inputStream is null.
+     * @throws org.json.JSONException   If there is a syntax error or a duplicated key in the string of JSON text.
+     * @throws IllegalArgumentException If the JSON text is not valid as protocol mappings.
+     * @throws IllegalStateException    If more than one protocol enum type is linked to the same id for that category or vise versa.
+     */
     public Protocol loadProtocol(InputStream inputStream) throws IOException {
-        StringBuilder builder = new StringBuilder(800000); // 800,000 characters - About 9,000 more than the current largest protocol json file. (as of protocol 772 for 1.21.7/8)
+        Objects.requireNonNull(inputStream, "inputStream cannot be null");
+        StringBuilder builder = new StringBuilder(900000); // 900,000 characters - About 60,000 more than the current largest protocol json file. (as of protocol 773 for 1.21.9/10)
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -48,11 +69,33 @@ public class ProtocolDirectory {
         return this.loadProtocol(builder.toString());
     }
 
+    /**
+     * Load a protocol from a string of JSON text.
+     *
+     * @param jsonString The string of JSON text.
+     * @return The newly loaded {@link Protocol}. If this protocol version is already loaded, it will be replaced with the new one created from the JSON text.
+     * @throws NullPointerException     If jsonString is null.
+     * @throws org.json.JSONException   If there is a syntax error or a duplicated key in the string of JSON text.
+     * @throws IllegalArgumentException If the JSON text is not valid as protocol mappings.
+     * @throws IllegalStateException    If more than one protocol enum type is linked to the same id for that category or vise versa.
+     */
     public Protocol loadProtocol(String jsonString) {
+        Objects.requireNonNull(jsonString, "jsonString cannot be null");
         return this.loadProtocol(new JSONObject(jsonString));
     }
 
+    /**
+     * Load a protocol from a {@link JSONObject}.
+     *
+     * @param jsonObject The JSON Object containing protocol mappings.
+     * @return The newly loaded {@link Protocol}. If this protocol version is already loaded, it will be replaced with the new one created from the JSON text.
+     * @throws NullPointerException     If jsonObject is null.
+     * @throws IllegalArgumentException If the JSON text is not valid as protocol mappings.
+     * @throws IllegalStateException    If more than one protocol enum type is linked to the same id for that category or vise versa.
+     */
     public Protocol loadProtocol(JSONObject jsonObject) {
+        Objects.requireNonNull(jsonObject, "jsonObject cannot be null");
+
         this.ensureCurrentFormat(jsonObject);
 
         Protocol protocol = Protocol.fromJson(jsonObject);
@@ -113,7 +156,9 @@ public class ProtocolDirectory {
         return protocol;
     }
 
-    /// Ensures the provided json file conforms to the currently expected format.
+    /**
+     * Ensures the provided JSON Object conforms to the currently expected format & layout for protocol mappings and updating it where necessary.
+     */
     public void ensureCurrentFormat(JSONObject jsonObject) {
         JSONObject emptyJSON = new JSONObject();
 
@@ -152,6 +197,12 @@ public class ProtocolDirectory {
         }
     }
 
+    /**
+     * Unload a Protocol in this Protocol Directory.
+     *
+     * @param protocolVersion The version of the protocol to be unloaded.
+     * @return True if the protocol was found and removed, false otherwise.
+     */
     public boolean unloadProtocol(int protocolVersion) {
         synchronized (this.changeRecordsLock) {
 
@@ -211,7 +262,13 @@ public class ProtocolDirectory {
         }
     }
 
-    /// throws IllegalStateException if two or more protocols claim support for the same MC version.
+    /**
+     * Build a Minecraft version string to protocol version map.
+     *
+     * @param protocols The array of protocols to use in creating an Minecraft version to protocol version map.
+     * @return A fully populated map of Minecraft version strings to protocol version.
+     * @throws IllegalStateException If more than one protocol claims support for the same Minecraft version.
+     */
     private Map<String, Integer> buildMCVersionMap(Protocol[] protocols) throws IllegalStateException {
         Map<String, Integer> mcVersionToProtocolMap = new HashMap<String, Integer>(protocols.length);
         for (Protocol protocol : protocols) {
@@ -232,7 +289,17 @@ public class ProtocolDirectory {
     }
 
 
-    /// Get the protocol version for a Minecraft version via a version string (such as "1.21.8" for example)
+    /**
+     * Get the protocol version associated with a Minecraft version string.
+     *
+     * @param mcVersion The Minecraft version as a string.
+     *                  The version string must be 3 numbers separated by periods.
+     *                  Providing "1.20" for example would always return null.
+     *                  Whereas providing the version formated as "1.20.0" will return
+     *                  a Protocol object if that version is supported & loaded.
+     * @return The protocol version.
+     * Or if the protocol isn't loaded & supported by this Protocol Directory, returns -1.
+     */
     public int getProtocolVersion(String mcVersion) {
         Integer protocolVersion = this.records.mcVersionToProtocolMap().get(mcVersion);
         if (protocolVersion == null) {
@@ -242,10 +309,28 @@ public class ProtocolDirectory {
     }
 
 
+    /**
+     * Get a loaded {@link Protocol} by a Minecraft version string.
+     *
+     * @param mcVersion The Minecraft version as a string.
+     *                  The version string must be 3 numbers separated by periods.
+     *                  Providing "1.20" for example would always return null.
+     *                  Whereas providing the version formated as "1.20.0" will return
+     *                  a Protocol object if that version is supported & loaded.
+     * @return The loaded Protocol.
+     * Or if the protocol isn't loaded & supported by this Protocol Directory, returns null.
+     */
     public Protocol getProtocol(String mcVersion) {
         return this.getProtocol(this.getProtocolVersion(mcVersion));
     }
 
+    /**
+     * Get a loaded {@link Protocol} by protocol version number.
+     *
+     * @param protocolVersion The networking protocol version.
+     * @return The loaded Protocol.
+     * Or if the protocol isn't loaded & supported by this Protocol Directory, returns null.
+     */
     public Protocol getProtocol(int protocolVersion) {
         // To allow the records to be updated during runtime without thread synchronization,
         // the reference to the protocol records could be replaced with a new ProtocolMapRecords object at any time.
@@ -265,16 +350,36 @@ public class ProtocolDirectory {
     }
 
 
+    /**
+     * Check if a protocol version is supported.
+     *
+     * @param protocolVersion The networking protocol version.
+     * @return True if supported & loaded by this Protocol Directory instance.
+     */
     public boolean isSupported(int protocolVersion) {
         return this.getProtocol(protocolVersion) != null;
     }
 
-
+    /**
+     * Check if a protocol version is supported & loaded by Minecraft version.
+     *
+     * @param mcVersion The Minecraft version as a string.
+     *                  The version string must be 3 numbers separated by periods.
+     *                  Providing "1.20" for example would always return false.
+     *                  Whereas providing the version formated as "1.20.0" will return
+     *                  true or false based on if the protocol is loaded by this Protocol Directory.
+     * @return True if supported & loaded by this Protocol Directory instance.
+     */
     public boolean isSupported(String mcVersion) {
         return this.getProtocol(mcVersion) != null;
     }
 
-    /// Compiles a list of all supported protocols. Ordered from oldest to newest.
+
+    /**
+     * Creates a list of all supports and loaded protocols.
+     *
+     * @return A list of loaded protocols. Ordered by oldest protocol version to the newest.
+     */
     public List<Protocol> getSupportedProtocols() {
         List<Protocol> supportedList = new ArrayList<Protocol>();
         for (Protocol protocol : this.records.protocols()) {
@@ -285,7 +390,11 @@ public class ProtocolDirectory {
         return supportedList;
     }
 
-    /// Compiles a list of all supported protocol versions. Ordered from oldest to newest.
+    /**
+     * Creates a list of all supports and loaded protocol versions.
+     *
+     * @return A list of loaded protocol versions. Ordered by oldest protocol version to the newest.
+     */
     public List<Integer> getSupportedProtocolVersions() {
         List<Integer> supportedList = new ArrayList<Integer>();
         for (Protocol protocol : this.records.protocols()) {
@@ -296,7 +405,11 @@ public class ProtocolDirectory {
         return supportedList;
     }
 
-    /// Compiles a list of all supported MC versions. Ordered from oldest to newest.
+    /**
+     * Creates a list of all Minecraft versions protocols that are supports and loaded.
+     *
+     * @return A list of supported Minecraft versions. Ordered by oldest Minecraft version to the newest.
+     */
     public List<String> getSupportedMCVersions() {
         List<String> supportedList = new ArrayList<String>(this.records.mcVersionToProtocolMap.keySet());
         Collections.sort(supportedList);
@@ -304,7 +417,15 @@ public class ProtocolDirectory {
     }
 
 
+    /**
+     * Protocol Record is used by the {@link ProtocolDirectory} to hold all currently loaded protocols.
+     *
+     * @param offsetIndex            The offset used to index into the protocols array. (index = protocolVersion - offset)
+     * @param protocols              The array of protocols.
+     * @param mcVersionToProtocolMap A map of Minecraft version strings to protocol version numbers.
+     */
     private record ProtocolRecords(int offsetIndex, Protocol[] protocols, Map<String, Integer> mcVersionToProtocolMap) {
 
     }
+
 }
