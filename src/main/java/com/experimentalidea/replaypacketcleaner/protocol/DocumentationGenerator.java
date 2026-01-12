@@ -57,14 +57,14 @@ public class DocumentationGenerator {
             // Begin Comment
             enumWithDocumentation.append("\n/**");
             enumWithDocumentation.append("\n* ").append(formatedName(type));
-            enumWithDocumentation.append("\n* <br> ").append(getSupportedRangeFormated(protocolList, type, PrefixType.SUPPORTED_PROTOCOLS, false));
+            enumWithDocumentation.append("\n* <p>\n* ").append(getSupportedRangeFormated(protocolList, type, PrefixType.SUPPORTED_PROTOCOLS, false));
             String resources = getSupportedRangeFormated(protocolList, type, PrefixType.RESOURCE, true);
             if (resources != null) {
-                enumWithDocumentation.append("\n* <br> ").append(resources);
+                enumWithDocumentation.append("\n* <br>\n* ").append(resources);
             }
             String customComment = getCustomComment(type);
             if (customComment != null) {
-                enumWithDocumentation.append("\n* <br>\n* <br> ").append(customComment.replaceAll("\n", "\n* "));
+                enumWithDocumentation.append("\n* <p>\n* ").append(customComment.replaceAll("\n", "\n* "));
             }
             enumWithDocumentation.append("\n*/");
             // End of Comment
@@ -88,7 +88,7 @@ public class DocumentationGenerator {
      * @param type              The enum type.
      * @param prefixType        Type of prefix the returned string should have.
      * @param formatForResource Include resource name.
-     * @return Returns the formated string, or null if there is no infomation.
+     * @return Returns the formated string, or null if there is no information.
      */
     private static String getSupportedRangeFormated(List<Protocol> protocolList, Enum<?> type, PrefixType prefixType, boolean formatForResource) {
         List<SupportedRangeToken> tokenList = getSupportedVersionRange(protocolList, type, formatForResource);

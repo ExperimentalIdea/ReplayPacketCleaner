@@ -22,18 +22,17 @@ import java.util.*;
 
 /**
  * Extends {@link ProtocolMapper}.
- * Adds translation of a protocol version specific block state to the associated {@link Block} type.
+ * Adds translation of a protocol version specific block states to the associated {@link Block} type.
  * Typically, instances of this class are wrapped by {@link Protocol}.
  */
 public class ProtocolBlockMapper extends ProtocolMapper<Block> {
 
 
     /**
-     * Creates a Protocol Mapper for the specified protocol enum type.
-     * Using Internally creates arrays mapping each enum type to/from their protocol version specific id.
+     * Creates a Protocol Mapper for the {@link Block} protocol enum type.
+     * Using internally created arrays mapping each enum type to/from their protocol version specific id.
      * <p>
-     * Supported protocol enums are {@link PacketType.Login}, {@link PacketType.Configuration}, {@link PacketType.Play},
-     * {@link EntityType}, {@link Block}, {@link BlockEntity}, and {@link Item}.
+     * Adds the capability of mapping of block state numbers to their respective block type vs just using {@link ProtocolMapper}.
      *
      * @param jsonProtocolMappings The {@link JSONObject} containing the relevant protocol mappings.
      * @throws NullPointerException  If undefinedType or jsonProtocolMappings is null.
@@ -47,7 +46,7 @@ public class ProtocolBlockMapper extends ProtocolMapper<Block> {
         this.blockstateLookup = new Block[enumConstants.length];
         Arrays.fill(this.blockstateLookup, Block.UNDEFINED);
 
-        // Set up the array that will be used to map to block type from blockstates
+        // Set up the array that will be used to map block types from blockstates.
         for (Block block : enumConstants) {
             if (block == Block.UNDEFINED) {
                 continue;
@@ -86,7 +85,7 @@ public class ProtocolBlockMapper extends ProtocolMapper<Block> {
                 }
 
                 // Before mapping the blockstate to the block type,
-                // check if the blockstate value would be out of bounds of the blockstateLookup array and expand said array if necessary.
+                // check if the blockstate value would be out of bounds of the blockstate lookup array and expand said array if necessary.
                 if (value >= this.blockstateLookup.length) {
                     Block[] expandedArray = new Block[value + 1];
                     System.arraycopy(this.blockstateLookup, 0, expandedArray, 0, this.blockstateLookup.length);
@@ -111,7 +110,7 @@ public class ProtocolBlockMapper extends ProtocolMapper<Block> {
      * Get the block by the state.
      *
      * @param state The state number of the block.
-     * @return The id associated with the provided state number. If the state number is not supported by this protocol,
+     * @return The block associated with the provided state number. If the state number is not supported by this protocol,
      * Or if the state number is not recognized, Block.UNDEFINED will be returned instead.
      * @see Block
      */

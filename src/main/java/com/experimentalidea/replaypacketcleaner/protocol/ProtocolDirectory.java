@@ -391,7 +391,7 @@ public class ProtocolDirectory {
     }
 
     /**
-     * Creates a list of all supports and loaded protocol versions.
+     * Creates a list of all supported and loaded protocol versions.
      *
      * @return A list of loaded protocol versions. Ordered by oldest protocol version to the newest.
      */
@@ -406,7 +406,7 @@ public class ProtocolDirectory {
     }
 
     /**
-     * Creates a list of all Minecraft versions protocols that are supports and loaded.
+     * Creates a list of all Minecraft versions protocols that are supported and loaded.
      *
      * @return A list of supported Minecraft versions. Ordered by oldest Minecraft version to the newest.
      */

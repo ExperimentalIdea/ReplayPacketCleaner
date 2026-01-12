@@ -37,7 +37,7 @@ public class ProtocolMapper<E extends Enum<E> & ProtocolMetadata> {
 
     /**
      * Creates a Protocol Mapper for the specified protocol enum type.
-     * Using Internally creates arrays mapping each enum type to/from their protocol version specific id.
+     * Using internally created arrays mapping each enum type to/from their protocol version specific id.
      * <p>
      * Supported protocol enums are {@link PacketType.Login}, {@link PacketType.Configuration}, {@link PacketType.Play},
      * {@link EntityType}, {@link Block}, {@link BlockEntity}, and {@link Item}.
