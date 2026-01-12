@@ -32,9 +32,12 @@ import java.util.List;
 
 /**
  * This window is used for assisting in adding new protocol version support to Replay Packet Cleaner.
- * Not intended for use by normal users.
+ * It's intended as an internal tool to aid in adding version support and isn't something normal users are expected to interact with.
  * <p>
  * This window is only accessible via the File menu when --showHiddenOptions flag is detected on startup.
+ * <p>
+ * The code written here isn't up to the standard I'd like it to be at and is pretty much in an unmaintainable condition.
+ * A code rewrite plus adding documentation for the protocol generation assistant is something that should probably be done before RPC hits a full 1.0 release.
  */
 public class ProtocolGenerationWindow {
 
@@ -239,6 +242,8 @@ public class ProtocolGenerationWindow {
                         metadataNode.put(TypeMetadata.JSON_NODE_PROTOCOL_VERSION, protocolVersion);
                         metadataNode.put(TypeMetadata.JSON_NODE_MC_VERSIONS, new JSONArray(supportedMCVersions));
 
+                        JSONObject undefinedProtocolResourcesJSON = new JSONObject(rootProtocolJSON.toString());
+
                         Map<ProtocolMetadata, String> referenceResources = new HashMap<ProtocolMetadata, String>();
                         List<ProtocolMetadata> referenceUnsupportedTypes = new ArrayList<ProtocolMetadata>();
                         Map<ProtocolMetadata, Integer> referenceIds = new HashMap<ProtocolMetadata, Integer>();
@@ -257,7 +262,7 @@ public class ProtocolGenerationWindow {
                         }
                         if (packetsJSON != null) {
                             try {
-                                populateJSON(rootProtocolJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Configuration.values(), log, "configuration", "clientbound");
+                                populateJSON(rootProtocolJSON, undefinedProtocolResourcesJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Configuration.values(), log, "configuration", "clientbound");
                             } catch (RuntimeException e) {
                                 log.append(e.getMessage()).append("\nAssuming the configuration phase is unsupported by this protocol version.\n");
                             }
@@ -281,7 +286,7 @@ public class ProtocolGenerationWindow {
                             referenceIds.put(type, referenceProtocol.getLoginPacketID(type));
                         }
                         if (packetsJSON != null) {
-                            populateJSON(rootProtocolJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Login.values(), log, "login", "clientbound");
+                            populateJSON(rootProtocolJSON, undefinedProtocolResourcesJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Login.values(), log, "login", "clientbound");
                         } else if (hasBurgerPacketInstructions) {
                             populateProtocolJSONViaBurger(rootProtocolJSON, packetInstructionsRefJSON, packetInstructionsGenJSON, referenceIds, PacketType.Login.values(), log, "LOGIN_CLIENTBOUND_");
                         } else {
@@ -302,7 +307,7 @@ public class ProtocolGenerationWindow {
                             referenceIds.put(type, referenceProtocol.getPlayPacketID(type));
                         }
                         if (packetsJSON != null) {
-                            populateJSON(rootProtocolJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Play.values(), log, "play", "clientbound");
+                            populateJSON(rootProtocolJSON, undefinedProtocolResourcesJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Play.values(), log, "play", "clientbound");
                         } else if (hasBurgerPacketInstructions) {
                             populateProtocolJSONViaBurger(rootProtocolJSON, packetInstructionsRefJSON, packetInstructionsGenJSON, referenceIds, PacketType.Play.values(), log, "PLAY_CLIENTBOUND_");
                         } else {
@@ -321,7 +326,7 @@ public class ProtocolGenerationWindow {
                                 referenceUnsupportedTypes.add(type);
                             }
                         }
-                        populateJSON(rootProtocolJSON, registriesJSON, referenceResources, referenceUnsupportedTypes, EntityType.values(), log, "minecraft:entity_type", "entries");
+                        populateJSON(rootProtocolJSON, undefinedProtocolResourcesJSON, registriesJSON, referenceResources, referenceUnsupportedTypes, EntityType.values(), log, "minecraft:entity_type", "entries");
                         referenceResources.clear();
                         referenceUnsupportedTypes.clear();
 
@@ -333,7 +338,7 @@ public class ProtocolGenerationWindow {
                                 referenceUnsupportedTypes.add(type);
                             }
                         }
-                        populateJSONBlocks(rootProtocolJSON, registriesJSON, blocksJSON, referenceResources, referenceUnsupportedTypes, log);
+                        populateJSONBlocks(rootProtocolJSON, undefinedProtocolResourcesJSON, registriesJSON, blocksJSON, referenceResources, referenceUnsupportedTypes, log);
                         referenceResources.clear();
                         referenceUnsupportedTypes.clear();
 
@@ -345,7 +350,7 @@ public class ProtocolGenerationWindow {
                                 referenceUnsupportedTypes.add(type);
                             }
                         }
-                        populateJSON(rootProtocolJSON, registriesJSON, referenceResources, referenceUnsupportedTypes, BlockEntity.values(), log, "minecraft:block_entity_type", "entries");
+                        populateJSON(rootProtocolJSON, undefinedProtocolResourcesJSON, registriesJSON, referenceResources, referenceUnsupportedTypes, BlockEntity.values(), log, "minecraft:block_entity_type", "entries");
                         referenceResources.clear();
                         referenceUnsupportedTypes.clear();
 
@@ -357,13 +362,14 @@ public class ProtocolGenerationWindow {
                                 referenceUnsupportedTypes.add(type);
                             }
                         }
-                        populateJSON(rootProtocolJSON, registriesJSON, referenceResources, referenceUnsupportedTypes, Item.values(), log, "minecraft:item", "entries");
+                        populateJSON(rootProtocolJSON, undefinedProtocolResourcesJSON, registriesJSON, referenceResources, referenceUnsupportedTypes, Item.values(), log, "minecraft:item", "entries");
                         referenceResources.clear();
                         referenceUnsupportedTypes.clear();
 
 
                         // At the end. output the file and show the log.
                         saveJSON(rootProtocolJSON, new File(fileChooser.getSelectedFile(), "protocol_" + protocolVersion + ".json"));
+                        saveJSON(undefinedProtocolResourcesJSON, new File(fileChooser.getSelectedFile(), "protocol_" + protocolVersion + "_unknown_resource_mappings.json"));
                         log.append("========\nGenerated protocol file in ").append(System.currentTimeMillis() - startTime).append("ms.\n");
                         generationLogs.setText(log.toString());
 
@@ -488,7 +494,7 @@ public class ProtocolGenerationWindow {
         log.append("\nGenerated ").append(types.length).append(" types with default id field of -1.\n");
     }
 
-    private static void populateJSON(JSONObject rootProtocolJSON, JSONObject resourceJSON, Map<ProtocolMetadata, String> referenceResources, List<ProtocolMetadata> referenceUnsupportedTypes, ProtocolMetadata[] types, StringBuilder log, String resourceNode, String resourceEntriesNode) {
+    private static void populateJSON(JSONObject rootProtocolJSON, JSONObject undefinedProtocolResourcesJSON, JSONObject resourceJSON, Map<ProtocolMetadata, String> referenceResources, List<ProtocolMetadata> referenceUnsupportedTypes, ProtocolMetadata[] types, StringBuilder log, String resourceNode, String resourceEntriesNode) {
         if (resourceJSON.optJSONObject(resourceNode) != null) {
             JSONObject entriesNode = resourceJSON.getJSONObject(resourceNode).getJSONObject(resourceEntriesNode);
 
@@ -540,7 +546,27 @@ public class ProtocolGenerationWindow {
             }
             log.append("\n").append(jsonKeys.size()).append(" resources could not be mapped.\n");
             Collections.sort(jsonKeys);
+
+            String[] jsonNodePaths = types[0].getMetadata().getJSONNodePaths(); // ignore the last entry - only need a path to the json object containing all mappings for these types.
             for (String unknownResourceKey : jsonKeys) {
+                JSONObject currentNode = undefinedProtocolResourcesJSON;
+                for (int i = 0; i < (jsonNodePaths.length - 1); i++) {
+                    // Traverse the jsonObject to the next node.
+                    JSONObject nextNode = currentNode.optJSONObject(jsonNodePaths[i]);
+                    if (nextNode == null) {
+                        nextNode = new JSONObject();
+                        currentNode.put(jsonNodePaths[i], nextNode);
+                    }
+                    currentNode = nextNode;
+                }
+                JSONObject entrySource = entriesNode.getJSONObject(unknownResourceKey);
+                JSONObject entryTarget = new JSONObject();
+                entryTarget.put(TypeMetadata.JSON_NODE_ID, entrySource.getInt("protocol_id"));
+                entryTarget.put(TypeMetadata.JSON_NODE_RESOURCE, unknownResourceKey);
+
+                currentNode.put("*" + unknownResourceKey.replaceAll("minecraft:", ""), entryTarget);
+
+
                 log.append(unknownResourceKey).append(" = ").append(entriesNode.getJSONObject(unknownResourceKey).getInt("protocol_id")).append("\n");
             }
             if (!jsonKeys.isEmpty()) {
@@ -761,7 +787,7 @@ public class ProtocolGenerationWindow {
         return true;
     }
 
-    private static void populateJSONBlocks(JSONObject rootProtocolJSON, JSONObject registriesJSON, JSONObject blocksJSON, Map<ProtocolMetadata, String> referenceResources, List<ProtocolMetadata> referenceUnsupportedTypes, StringBuilder log) {
+    private static void populateJSONBlocks(JSONObject rootProtocolJSON, JSONObject undefinedProtocolResourcesJSON, JSONObject registriesJSON, JSONObject blocksJSON, Map<ProtocolMetadata, String> referenceResources, List<ProtocolMetadata> referenceUnsupportedTypes, StringBuilder log) {
         if (registriesJSON.optJSONObject("minecraft:block") != null) {
             JSONObject entriesNode = registriesJSON.getJSONObject("minecraft:block").getJSONObject("entries");
 
@@ -828,8 +854,30 @@ public class ProtocolGenerationWindow {
                 log.append(type.name()).append(",\n");
             }
             log.append("\n").append(jsonKeys.size()).append(" resources could not be mapped.\n");
+
+            String[] jsonNodePaths = Block.UNDEFINED.getMetadata().getJSONNodePaths(); // ignore the last entry - only need a path to the json object containing all mappings for these types.
             for (int i = 0; i < jsonKeys.size(); i++) {
+                JSONObject currentNode = undefinedProtocolResourcesJSON;
+                for (int n = 0; n < (jsonNodePaths.length - 1); n++) {
+                    // Traverse the jsonObject to the next node.
+                    JSONObject nextNode = currentNode.optJSONObject(jsonNodePaths[n]);
+                    if (nextNode == null) {
+                        nextNode = new JSONObject();
+                        currentNode.put(jsonNodePaths[n], nextNode);
+                    }
+                    currentNode = nextNode;
+                }
                 String unknownResourceKey = jsonKeys.get(i);
+
+                JSONObject entrySource = entriesNode.getJSONObject(unknownResourceKey);
+                JSONObject entryTarget = new JSONObject();
+                entryTarget.put(TypeMetadata.JSON_NODE_ID, entrySource.getInt("protocol_id"));
+                entryTarget.put(TypeMetadata.JSON_NODE_RESOURCE, entrySource.getString("resource"));
+                entryTarget.put(TypeMetadata.JSON_NODE_BLOCKSTATES, blockStates.get(i));
+
+                currentNode.put("*" + jsonKeys.get(i).toUpperCase(), entryTarget);
+
+
                 log.append(unknownResourceKey).append(" = ").append(entriesNode.getJSONObject(unknownResourceKey).getInt("protocol_id")).append("\n    blockstates: ").append(Arrays.toString(blockStates.get(i))).append("\n");
             }
             if (!jsonKeys.isEmpty()) {
