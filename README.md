@@ -17,7 +17,7 @@ This tool currently supports replays recorded in the following Minecraft version
 - 1.18.x
 - 1.19.x
 - 1.20.x
-- 1.21-1.21.10
+- 1.21.x
 
 With support for older versions planned to be added in future releases.
 

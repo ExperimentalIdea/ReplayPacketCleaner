@@ -220,7 +220,7 @@ public class Protocol {
      */
     public boolean isSupported(ProtocolState state) {
         if (state == ProtocolState.CONFIGURATION) {
-            return this.configurationMapper == null;
+            return this.configurationMapper != null;
         }
         return state != null;
     }
