@@ -592,7 +592,7 @@ public class DocumentationGenerator {
                 return protocol.getLoginPacketID(login) != ProtocolMapper.UNDEFINED_ID;
             }
             case PacketType.Configuration configuration -> {
-                if(!protocol.isSupported(ProtocolState.CONFIGURATION)){
+                if (!protocol.isSupported(ProtocolState.CONFIGURATION)) {
                     return false;
                 }
                 return protocol.getConfigurationPacketID(configuration) != ProtocolMapper.UNDEFINED_ID;
@@ -622,7 +622,7 @@ public class DocumentationGenerator {
                 return protocol.getLoginResourceName(login);
             }
             case PacketType.Configuration configuration -> {
-                if(protocol.isSupported(ProtocolState.CONFIGURATION)) {
+                if (protocol.isSupported(ProtocolState.CONFIGURATION)) {
                     return protocol.getConfigurationResourceName(configuration);
                 }
                 return ProtocolMapper.UNDEFINED_RESOURCE_NAME;

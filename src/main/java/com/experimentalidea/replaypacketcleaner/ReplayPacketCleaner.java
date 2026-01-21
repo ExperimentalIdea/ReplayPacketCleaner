@@ -35,7 +35,7 @@ public class ReplayPacketCleaner {
     }
 
     public static final String APP_NAME = "Replay Packet Cleaner";
-    public static final String APP_VERSION = "0.2.2-alpha";
+    public static final String APP_VERSION = "0.2.3-alpha-snapshot";
 
     /// @see com.experimentalidea.replaypacketcleaner.config.Option
     public static final int APP_PROFILE_JSON_VERSION = 1;
