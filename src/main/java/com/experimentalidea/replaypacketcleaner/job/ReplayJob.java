@@ -117,7 +117,6 @@ public class ReplayJob implements Runnable, Closeable {
                 return;
             }
 
-            // TODO: Remove later. Used for performance benchmarking.
             long taskStartingMilliseconds = System.currentTimeMillis();
 
             this.taskTracker.setStatus(TaskTracker.TaskStatus.IN_PROGRESS);
@@ -273,9 +272,8 @@ public class ReplayJob implements Runnable, Closeable {
             this.taskTracker.setProgress(TaskTracker.MAX_VALUE);
             this.taskTracker.setStatus(TaskTracker.TaskStatus.COMPLETED);
 
-            // TODO: Remove later. Used for performance benchmarking.
             long finishTimeSeconds = (System.currentTimeMillis() - taskStartingMilliseconds) / 1000;
-            System.out.println("Job " + this.taskTracker.getUUID().toString() + " for " + this.targetFile.getName() + " finished in " + (finishTimeSeconds / 60) + " minute(s), " + (finishTimeSeconds % 60) + " second(s).");
+            Log.info("Job " + this.taskTracker.getUUID().toString() + " for \"" + this.sourceFile.getName() + "\" finished in " + (finishTimeSeconds / 60) + " minute(s), " + (finishTimeSeconds % 60) + " second(s).");
 
         } catch (Exception exception) {
             try {
@@ -294,9 +292,7 @@ public class ReplayJob implements Runnable, Closeable {
                 this.taskTracker.setStatus(TaskTracker.TaskStatus.CANCELED);
             } else {
                 this.taskTracker.setStatus(TaskTracker.TaskStatus.FAILED);
-                // TODO: Log and handle differently. Throwing a new exception here doesn't really serve any purpose.
-                exception.printStackTrace();
-                throw new RuntimeException(exception);
+                Log.severe("A problem occurred during processing of Job " + this.taskTracker.getUUID().toString() + ":", exception);
             }
         }
     }

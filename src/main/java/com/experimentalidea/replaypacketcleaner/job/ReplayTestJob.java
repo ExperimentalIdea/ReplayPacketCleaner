@@ -15,6 +15,7 @@
  * */
 package com.experimentalidea.replaypacketcleaner.job;
 
+import com.experimentalidea.replaypacketcleaner.Log;
 import com.experimentalidea.replaypacketcleaner.ReplayPacketCleaner;
 import com.experimentalidea.replaypacketcleaner.config.Configuration;
 import com.experimentalidea.replaypacketcleaner.config.Option;
@@ -183,8 +184,7 @@ public class ReplayTestJob extends ReplayJob {
                     // It's possible that if a replay recording crashed and was recovered, that the last packet may not be fully written.
                     // In such case, the incomplete packet data from the source replay should be disregarded.
                     if ((this.sourceReplaySizeBytes - sourceReader.bytesRead()) < 9) {
-                        // TODO: Update Logging this event to console.
-                        System.out.println("Job " + this.taskTracker.getUUID().toString() + ": Last packet is missing data. Expected at least another 9 bytes, only " + (this.sourceReplaySizeBytes - sourceReader.bytesRead()) + " bytes remain. Disregarding the last packet.");
+                        Log.warning("Job " + this.taskTracker.getUUID().toString() + ": Last packet is missing data. Expected at least another 9 bytes, only " + (this.sourceReplaySizeBytes - sourceReader.bytesRead()) + " bytes remaining. Disregarding the last packet.");
                         break;
                     }
 
@@ -197,7 +197,7 @@ public class ReplayTestJob extends ReplayJob {
                     // Checking again - See above for explanation.
                     if ((this.sourceReplaySizeBytes - sourceReader.bytesRead()) < sourcePacketSize) {
                         // TODO: Update Logging this event to console.
-                        System.out.println("Job " + this.taskTracker.getUUID().toString() + ": Last packet is missing data. Expected another " + sourcePacketSize + " bytes, only " + (this.sourceReplaySizeBytes - sourceReader.bytesRead()) + " bytes remain. Disregarding the last packet.");
+                        Log.warning("Job " + this.taskTracker.getUUID().toString() + ": Last packet is missing data. Expected another " + sourcePacketSize + " bytes, only " + (this.sourceReplaySizeBytes - sourceReader.bytesRead()) + " bytes remaining. Disregarding the last packet.");
                         break;
                     }
 
@@ -224,9 +224,9 @@ public class ReplayTestJob extends ReplayJob {
                         }
                     }
 
-                    System.out.println("Value not equal at packet index #" + packetIndex + " for Test Job " + this.taskTracker.getUUID().toString() + " for " + this.sourceFile.getName() + ":");
-                    System.out.println("  Source: sourceTimeStamp=" + sourceTimeStamp + ", sourcePacketSize=" + sourcePacketSize + ", sourcePacketID=" + sourcePacketID + " (" + sourcePacketType.name() + "), sourceBytesData=" + Arrays.toString(sourceBytesData));
-                    System.out.println("  Target: targetTimeStamp=" + targetTimeStamp + ", targetPacketSize=" + targetPacketSize + ", targetPacketID=" + targetPacketID + " (" + targetPacketType.name() + "), targetBytesData=" + Arrays.toString(targetBytesData));
+                    Log.severe("Value not equal at packet index #" + packetIndex + " for Test Job " + this.taskTracker.getUUID().toString() + " for " + this.sourceFile.getName() + ":");
+                    Log.severe("  Source: sourceTimeStamp=" + sourceTimeStamp + ", sourcePacketSize=" + sourcePacketSize + ", sourcePacketID=" + sourcePacketID + " (" + sourcePacketType.name() + "), sourceBytesData=" + Arrays.toString(sourceBytesData));
+                    Log.severe("  Target: targetTimeStamp=" + targetTimeStamp + ", targetPacketSize=" + targetPacketSize + ", targetPacketID=" + targetPacketID + " (" + targetPacketType.name() + "), targetBytesData=" + Arrays.toString(targetBytesData));
                     failed = true;
                     break;
                 }
@@ -243,11 +243,10 @@ public class ReplayTestJob extends ReplayJob {
                 this.taskTracker.setProgress(TaskTracker.MAX_VALUE);
                 this.taskTracker.setStatus(TaskTracker.TaskStatus.COMPLETED);
 
-                // TODO: Remove later. Used for performance benchmarking.
                 long finishTimeSeconds = (System.currentTimeMillis() - taskStartingMilliseconds) / 1000;
-                System.out.println("Test Job " + this.taskTracker.getUUID().toString() + " for " + targetTempFile.getName() + " finished in " + (finishTimeSeconds / 60) + " minute(s), " + (finishTimeSeconds % 60) + " second(s).");
+                Log.info("Test Job " + this.taskTracker.getUUID().toString() + " for " + targetTempFile.getName() + " finished in " + (finishTimeSeconds / 60) + " minute(s), " + (finishTimeSeconds % 60) + " second(s).");
             } else {
-                System.out.println("Test Job " + this.taskTracker.getUUID().toString() + " for " + targetTempFile.getName() + " failed.");
+                Log.info("Test Job " + this.taskTracker.getUUID().toString() + " for " + targetTempFile.getName() + " failed.");
             }
         } catch (Exception exception) {
             try {
@@ -266,9 +265,7 @@ public class ReplayTestJob extends ReplayJob {
                 this.taskTracker.setStatus(TaskTracker.TaskStatus.CANCELED);
             } else {
                 this.taskTracker.setStatus(TaskTracker.TaskStatus.FAILED);
-                // TODO: Log and handle differently. Throwing a new exception here doesn't really serve any purpose.
-                exception.printStackTrace();
-                throw new RuntimeException(exception);
+                Log.severe("A problem occurred during processing of Test Job " + this.taskTracker.getUUID().toString() + ":", exception);
             }
         }
     }

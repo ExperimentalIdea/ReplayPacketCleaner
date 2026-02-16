@@ -523,11 +523,11 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="a7b9" class="javax.swing.JTextArea" binding="thisIsATestTextArea" default-binding="true">
+                  <component id="a7b9" class="javax.swing.JTextArea" binding="logsTabTextArea">
                     <constraints/>
                     <properties>
                       <editable value="false"/>
-                      <font/>
+                      <font size="10"/>
                       <text value="This is a test"/>
                     </properties>
                   </component>

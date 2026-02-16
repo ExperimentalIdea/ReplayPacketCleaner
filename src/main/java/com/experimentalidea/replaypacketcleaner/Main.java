@@ -23,6 +23,9 @@ import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
 
 public class Main {
 
@@ -42,10 +45,22 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-
-            System.out.println("Starting application...");
-
             long startTime = System.currentTimeMillis();
+
+            // Start by setting up the logger
+            System.setProperty("java.util.logging.SimpleFormatter.format", "[%1$tF %1$tT] [%4$s] %5$s%6$s%n");
+            Logger logger = Logger.getLogger(ReplayPacketCleaner.class.getName());
+
+            // log queue to be used by the GUI Logs tab
+            LinkedBlockingDeque<LogRecord> logQueue = new LinkedBlockingDeque<>(256);
+
+            Log.LogCollectionHandler logCollectionHandler = new Log.LogCollectionHandler(logQueue);
+            logger.addHandler(logCollectionHandler);
+            Log.setLogger(logger);
+
+
+            // Start up application
+            Log.info("Starting application...");
 
             boolean showHiddenOptions = false;
             boolean disableAsyncReads = false;
@@ -58,27 +73,28 @@ public class Main {
                 String entry = argsIter.next();
                 if (entry.equalsIgnoreCase(Main.FLAG_SHOW_HIDDEN_OPTIONS) && !showHiddenOptions) {
                     showHiddenOptions = true;
-                    System.out.println("Detected flag: " + Main.FLAG_SHOW_HIDDEN_OPTIONS + "\n  Additional options will be shown in the GUI!");
+                    Log.info("Detected flag: " + Main.FLAG_SHOW_HIDDEN_OPTIONS + "\n  Additional options will be shown in the GUI!");
                 } else if (entry.equalsIgnoreCase(Main.FLAG_DISABLE_ASYNC_READS) && !disableAsyncReads) {
                     disableAsyncReads = true;
-                    System.out.println("Detected flag: " + Main.FLAG_DISABLE_ASYNC_READS + "\n  A separate thread from the job thread won't be used for reading in data.");
+                    Log.info("Detected flag: " + Main.FLAG_DISABLE_ASYNC_READS + "\n  A separate thread from the job thread won't be used for reading in data.");
                 } else if (entry.equalsIgnoreCase(Main.FLAG_DISABLE_ASYNC_WRITES) && !disableAsyncWrites) {
                     disableAsyncWrites = true;
-                    System.out.println("Detected flag: " + Main.FLAG_DISABLE_ASYNC_WRITES + "\n  A separate thread from the job thread won't be used for writing out data.");
+                    Log.info("Detected flag: " + Main.FLAG_DISABLE_ASYNC_WRITES + "\n  A separate thread from the job thread won't be used for writing out data.");
                 } else if (entry.toLowerCase().startsWith(Main.FLAG_OUTPUT_TYPE_DOCUMENTATION.toLowerCase()) && !outputTypeDocumentation) {
                     outputTypeDocumentation = true;
-                    System.out.println("Detected flag: " + Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + "\n  Will attempt to output documentation for updating all protocol enum types.");
+                    Log.info("Detected flag: " + Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + "\n  Will attempt to output documentation for updating all protocol enum types.");
                     int index = entry.indexOf('=');
                     if (index == -1) {
-                        System.out.println("Error: Missing file path to write out documentation." + "\n  Expected " + Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + "=\"" + File.separator + "path" + File.separator + "to" + File.separator + "dir\"");
+                        Log.info("Error: Missing file path to write out documentation." + "\n  Expected " + Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + "=\"" + File.separator + "path" + File.separator + "to" + File.separator + "dir\"");
                         outputTypeDocumentation = false;
                     } else {
                         outputTypeDocumentationTargetDir = new File(Main.parseMultiArgValue(entry.substring(index + 1), argsIter));
                         if (!outputTypeDocumentationTargetDir.exists()) {
-                            System.out.println(Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + ": Error: File path \"" + outputTypeDocumentationTargetDir.getPath() + "\" does not exist.");
+                            Log.info(Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + ": Error: File path \"" + outputTypeDocumentationTargetDir.getPath() + "\" does not exist.");
                             outputTypeDocumentation = false;
                         } else if (!outputTypeDocumentationTargetDir.isDirectory()) {
-                            System.out.println(Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + ": Error: File path \"" + outputTypeDocumentationTargetDir.getPath() + "\" is not a directory.");
+                            Log.info(Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + ": Error: File path \"" + outputTypeDocumentationTargetDir.getPath() + "\" is not a directory.");
+                            outputTypeDocumentation = false;
                         }
                     }
                 }
@@ -86,20 +102,18 @@ public class Main {
 
             ReplayPacketCleaner instance = ReplayPacketCleaner.createInstance(!disableAsyncReads, !disableAsyncWrites);
 
-            // TODO: create and set logger
-
             if (outputTypeDocumentation) {
                 File childDirectory = Main.saveTypeDocumentation(instance.getProtocolDirectory(), outputTypeDocumentationTargetDir);
-                System.out.println(Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + ": Documentation saved to " + childDirectory.getPath());
+                Log.info(Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + ": Documentation saved to " + childDirectory.getPath());
             }
 
-            instance.createMainWindow(true, showHiddenOptions);
+            instance.createMainWindow(logQueue, true, showHiddenOptions);
 
-            System.out.println("Ready in " + (System.currentTimeMillis() - startTime) + "ms. Awaiting jobs...");
+            Log.info("Ready in " + (System.currentTimeMillis() - startTime) + "ms. Awaiting jobs...");
 
             instance.processJobsAndAwaitTermination(); // Returns when the application window has closed, and any in progress jobs have been cleaned up.
 
-            System.out.println("Application has closed.");
+            Log.info("Application has closed.");
 
         } catch (
                 Exception exception) {

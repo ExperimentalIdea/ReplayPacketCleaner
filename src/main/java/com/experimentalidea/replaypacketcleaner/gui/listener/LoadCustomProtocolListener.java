@@ -15,6 +15,7 @@
  * */
 package com.experimentalidea.replaypacketcleaner.gui.listener;
 
+import com.experimentalidea.replaypacketcleaner.Log;
 import com.experimentalidea.replaypacketcleaner.gui.MainWindow;
 import com.experimentalidea.replaypacketcleaner.protocol.Protocol;
 import com.experimentalidea.replaypacketcleaner.protocol.ProtocolDirectory;
@@ -69,8 +70,7 @@ public class LoadCustomProtocolListener implements ActionListener {
 
                 } catch (Exception exception) {
                     log.append("Failed to load \"").append(file.getName()).append("\" as custom protocol: ").append(exception.getMessage()).append("\n");
-                    System.out.println("Failed to load \"" + file.getName() + "\" as custom protocol: " + exception.getMessage());
-                    exception.printStackTrace();
+                    Log.severe("Failed to load \"" + file.getName() + "\" as custom protocol:", exception);
                 }
                 log.append("\n");
             }

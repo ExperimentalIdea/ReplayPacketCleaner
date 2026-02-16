@@ -33,6 +33,8 @@ import java.awt.*;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.*;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.logging.LogRecord;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
@@ -41,7 +43,7 @@ import java.util.zip.ZipFile;
 public class MainWindow {
 
 
-    public MainWindow(ReplayPacketCleaner instance, boolean showHiddenOptions) {
+    public MainWindow(ReplayPacketCleaner instance, LinkedBlockingDeque<LogRecord> logQueue, boolean showHiddenOptions) {
         this.replayPacketCleanerInstance = instance;
 
         this.profile = new Configuration<Option>(Option.class);
@@ -131,7 +133,6 @@ public class MainWindow {
         this.importButton.addActionListener(new ImportReplaysButtonListener(this));
 
         this.tabbedReplayPane.setEnabledAt(MainWindow.REPLAYS_TAB_JOBS, false);
-        this.tabbedReplayPane.setEnabledAt(MainWindow.REPLAYS_TAB_LOGS, false);
 
         this.jobList = new ReplayList(this.jobJList);
         this.jobJList.setSelectionModel(new ListSelectionModelFix());
@@ -143,6 +144,12 @@ public class MainWindow {
         this.jobListUpdateTimer.start();
 
         this.jobErrorTextField.setForeground(Color.RED);
+
+        this.tabbedReplayPane.setEnabledAt(MainWindow.REPLAYS_TAB_LOGS, true);
+
+        this.logTabUpdateTimer = new Timer(50, new LogsUpdater(this.tabbedReplayPane, this.logsTabTextArea, logQueue));
+        this.logTabUpdateTimer.setRepeats(true);
+        this.logTabUpdateTimer.start();
 
         this.exportButton.addActionListener(new ExportButtonListener(this));
 
@@ -189,7 +196,7 @@ public class MainWindow {
 
 
         // Add this listener to ensure the application will terminate when the window is closed.
-        this.mainFrame.addWindowListener(new CloseApplicationWindowListener(this.replayPacketCleanerInstance, this.jobListUpdateTimer));
+        this.mainFrame.addWindowListener(new CloseApplicationWindowListener(this.replayPacketCleanerInstance, this.jobListUpdateTimer, this.logTabUpdateTimer));
 
     }
 
@@ -216,7 +223,6 @@ public class MainWindow {
 
     private JButton exportButton;
     private JTabbedPane tabbedReplayPane;
-    private JTextArea thisIsATestTextArea;
 
     /// The importJList should NEVER be used directly.
     private JList<String> importJList;
@@ -240,6 +246,9 @@ public class MainWindow {
     private JProgressBar jobProgressBar;
 
     private JTextArea jobErrorTextField;
+
+    private JTextArea logsTabTextArea;
+    private final Timer logTabUpdateTimer;
 
     // TODO: Implement job cancel function later
     private JButton cancelAllButton;
@@ -366,8 +375,7 @@ public class MainWindow {
     private void displayImportError(String text) {
         this.importErrorTextField.setText(text);
         this.importErrorTextField.setVisible(true);
-        // TODO: Log to log tab
-        System.out.println(text);
+        Log.warning(text);
 
         // After 15 seconds, hide the import error text field.
         Timer timer = new Timer(15000, actionEvent -> {
@@ -430,7 +438,7 @@ public class MainWindow {
             try {
                 taskTracker = this.replayPacketCleanerInstance.submitReplayJob(new Job(jobUUID, profileCopy, sourceFile, exportDirectory, testFlag));
             } catch (Exception exception) {
-                // TODO: Log
+                Log.severe("A problem occurred when attempting to submit job for file \"" + sourceFile.getPath() + "\":", exception);
                 errorText.append("\n  ").append(sourceFile.getPath()).append(":\n    Exception: ").append(exception.getMessage());
                 errorOccurred = true;
                 continue;
@@ -453,8 +461,7 @@ public class MainWindow {
     private void displayJobError(String text) {
         this.jobErrorTextField.setText(text);
         this.jobErrorTextField.setVisible(true);
-        // TODO: Log to log tab
-        System.out.println(text);
+        Log.warning(text);
 
         // After 15 seconds, hide the export error text field.
         Timer timer = new Timer(15000, actionEvent -> {

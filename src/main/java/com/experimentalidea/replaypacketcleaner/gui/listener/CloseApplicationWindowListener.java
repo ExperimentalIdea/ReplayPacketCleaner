@@ -23,20 +23,20 @@ import java.awt.event.WindowListener;
 
 public class CloseApplicationWindowListener implements WindowListener {
 
-    public CloseApplicationWindowListener(ReplayPacketCleaner instance, Timer jobListUpdateTimer) {
+    public CloseApplicationWindowListener(ReplayPacketCleaner instance, Timer... timers) {
         if (instance == null) {
             throw new IllegalArgumentException("replayPacketCleanerInstance cannot be null");
         }
-        if (jobListUpdateTimer == null) {
-            throw new IllegalArgumentException("replayPacketCleanerInstance cannot be null");
+        if (timers == null) {
+            throw new IllegalArgumentException("timers cannot be null");
         }
         this.replayPacketCleanerInstance = instance;
-        this.jobListUpdateTimer = jobListUpdateTimer;
+        this.timers = timers;
     }
 
 
     private final ReplayPacketCleaner replayPacketCleanerInstance;
-    private final Timer jobListUpdateTimer;
+    private final Timer[] timers;
 
 
     @Override
@@ -56,7 +56,9 @@ public class CloseApplicationWindowListener implements WindowListener {
         this.replayPacketCleanerInstance.interruptMainThread();
 
         // The repeating task on the UI thread would also prevent the application from terminating. Stop it here.
-        this.jobListUpdateTimer.stop();
+        for (Timer timer : timers) {
+            timer.stop();
+        }
     }
 
     @Override

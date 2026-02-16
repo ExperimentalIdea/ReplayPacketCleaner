@@ -15,6 +15,7 @@
  * */
 package com.experimentalidea.replaypacketcleaner.job;
 
+import com.experimentalidea.replaypacketcleaner.Log;
 import com.experimentalidea.replaypacketcleaner.packet.*;
 import com.experimentalidea.replaypacketcleaner.packet.listener.*;
 import com.experimentalidea.replaypacketcleaner.protocol.EntityType;
@@ -359,8 +360,7 @@ public class ReplayManipulationTask implements Runnable {
                 // It's possible that if a replay recording crashed and was recovered, that the last packet may not be fully written.
                 // In such case, the incomplete packet data from the source replay should be disregarded.
                 if ((this.sourceReplaySizeBytes - this.reader.bytesRead()) < 9) {
-                    // TODO: Update Logging this event to console.
-                    System.out.println("Job " + this.taskTracker.getUUID().toString() + ": Last packet is missing data. Expected at least another 9 bytes, only " + (this.sourceReplaySizeBytes - this.reader.bytesRead()) + " bytes remain. Disregarding the last packet.");
+                    Log.warning("Job " + this.taskTracker.getUUID().toString() + ": Last packet is missing data. Expected at least another 9 bytes, only " + (this.sourceReplaySizeBytes - this.reader.bytesRead()) + " bytes remain. Disregarding the last packet.");
                     break;
                 }
 
@@ -372,8 +372,7 @@ public class ReplayManipulationTask implements Runnable {
 
                 // Checking again - See above for explanation.
                 if ((this.sourceReplaySizeBytes - this.reader.bytesRead()) < packetSize) {
-                    // TODO: Update Logging this event to console.
-                    System.out.println("Job " + this.taskTracker.getUUID().toString() + ": Last packet is missing data. Expected another " + packetSize + " bytes, only " + (this.sourceReplaySizeBytes - this.reader.bytesRead()) + " bytes remain. Disregarding the last packet.");
+                    Log.warning("Job " + this.taskTracker.getUUID().toString() + ": Last packet is missing data. Expected another " + packetSize + " bytes, only " + (this.sourceReplaySizeBytes - this.reader.bytesRead()) + " bytes remain. Disregarding the last packet.");
                     break;
                 }
 
@@ -387,7 +386,7 @@ public class ReplayManipulationTask implements Runnable {
                     case START_CONFIGURATION -> {
                         // Not sure if this packet would ever occur during a replay.
                         // Just in case, we'll handle this case if it occurs.
-                        System.out.println(this.taskTracker.getUUID() + ": Hit a Start Configuration packet during \"play\" phase."); // TODO: Remove this log sometime later.
+                        Log.info("Job " + this.taskTracker.getUUID() + ": Hit a Start Configuration packet during \"play\" phase."); // TODO: Remove this log sometime later.
                         this.writePacketHeader(timeStamp, packetSize, packetID); // There is no data with this packet.
                         this.passthroughConfigurationPackets(); // passthrough all the "configuration" phase packets to the writer.
                     }
@@ -493,7 +492,7 @@ public class ReplayManipulationTask implements Runnable {
             } catch (IOException ioException) {
                 exception.addSuppressed(ioException);
             }
-            throw new RuntimeException(exception);
+            Log.severe("A problem occurred during processing of Job " + this.taskTracker.getUUID().toString() + ":", exception);
         }
     }
 

@@ -27,6 +27,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.logging.LogRecord;
 
 public class ReplayPacketCleaner {
 
@@ -130,7 +131,7 @@ public class ReplayPacketCleaner {
                     throw new RuntimeException(e);
                 }
             }
-            System.out.println("Loaded " + instance.protocolDirectory.getSupportedProtocolVersions().size() + " protocols in " + (System.currentTimeMillis() - startTime) + "ms.");
+            Log.info("Loaded " + instance.protocolDirectory.getSupportedProtocolVersions().size() + " protocols in " + (System.currentTimeMillis() - startTime) + "ms.");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -166,12 +167,14 @@ public class ReplayPacketCleaner {
     }
 
 
-    public void createMainWindow(boolean visible, boolean showHiddenOptions) throws IllegalStateException {
+    public void createMainWindow(LinkedBlockingDeque<LogRecord> logQueue, boolean visible, boolean showHiddenOptions) throws IllegalStateException {
+        long startTime = System.currentTimeMillis();
         if (mainWindow != null) {
             throw new IllegalStateException("MainWindow already exists");
         }
-        this.mainWindow = new MainWindow(this, showHiddenOptions);
+        this.mainWindow = new MainWindow(this, logQueue, showHiddenOptions);
         this.mainWindow.getMainFrame().setVisible(visible);
+        Log.info("GUI initialized in " + (System.currentTimeMillis() - startTime) + "ms.");
     }
 
 
@@ -195,8 +198,7 @@ public class ReplayPacketCleaner {
 
             if (this.submittedJobs.containsKey(jobUUID)) {
                 this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                // TODO: update logging
-                System.out.println("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Job already submitted");
+                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Job already submitted");
                 continue;
             }
 
@@ -204,15 +206,13 @@ public class ReplayPacketCleaner {
 
             if (!sourceFile.exists()) {
                 this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                // TODO: update logging
-                System.out.println("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Source replay file does not exist");
+                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Source replay file does not exist");
                 continue;
             }
 
             if (!Files.isReadable(sourceFile.toPath())) {
                 this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                // TODO: update logging
-                System.out.println("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Permission denied - Cannot read source replay file");
+                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Permission denied - Cannot read source replay file");
                 continue;
             }
 
@@ -220,20 +220,17 @@ public class ReplayPacketCleaner {
 
             if (!exportDirectory.exists()) {
                 this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                // TODO: update logging
-                System.out.println("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Target output directory " + exportDirectory.getPath() + " does not exist");
+                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Target output directory " + exportDirectory.getPath() + " does not exist");
                 continue;
             }
             if (!exportDirectory.isDirectory()) {
                 this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                // TODO: update logging
-                System.out.println("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Target output directory " + exportDirectory.getPath() + " is not a directory");
+                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Target output directory " + exportDirectory.getPath() + " is not a directory");
                 continue;
             }
             if (!Files.isWritable(exportDirectory.toPath())) {
                 this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                // TODO: update logging
-                System.out.println("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Permission denied - Cannot write to " + exportDirectory.getPath());
+                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Permission denied - Cannot write to " + exportDirectory.getPath());
                 continue;
             }
 
@@ -251,8 +248,7 @@ public class ReplayPacketCleaner {
                 Files.copy(sourceFile.toPath(), sourceCopy.toPath(), StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException ioException) {
                 this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                // TODO: update logging
-                System.out.println("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Could not copy source replay to working directory - IOException: " + ioException.getMessage());
+                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Could not copy source replay to working directory - IOException: " + ioException.getMessage());
                 continue;
             }
             // Same as above with workingDirectory. Mark for deletion on exit.
@@ -283,8 +279,7 @@ public class ReplayPacketCleaner {
                 }
             } catch (Exception exception) {
                 this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                // TODO: update logging
-                System.out.println("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Could not create job - Exception: " + exception.getMessage());
+                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Could not create job - Exception: " + exception.getMessage());
                 continue;
             }
 
@@ -300,7 +295,7 @@ public class ReplayPacketCleaner {
             if (status == TaskTracker.TaskStatus.WAITING || status == TaskTracker.TaskStatus.IN_PROGRESS) {
                 ReplayJob replayJob = this.submittedJobs.get(taskTracker.getUUID());
                 if (replayJob != null) {
-                    System.out.println("Canceling job " + taskTracker.getUUID().toString() + ".");
+                    Log.info("Canceling job " + taskTracker.getUUID().toString() + ".");
                     replayJob.cancelJob();
                 }
             }
@@ -312,10 +307,10 @@ public class ReplayPacketCleaner {
             terminationSuccessful = this.executorService.awaitTermination(60, TimeUnit.SECONDS);
         } catch (InterruptedException ignored) {
             // should never happen...
-            System.out.println("Main thread interrupted while awaiting tasks to end.");
+            Log.info("Main thread interrupted while awaiting tasks to end.");
         }
         if (!terminationSuccessful) {
-            System.out.println("Failed to terminate all active tasks.");
+            Log.info("Failed to terminate all active tasks.");
         }
 
         // Goodbye!
@@ -337,7 +332,7 @@ public class ReplayPacketCleaner {
         this.taskTrackerMap.put(jobUUID, taskTracker);
         this.jobQueue.add(job);
 
-        System.out.println("Job " + jobUUID.toString() + " for " + job.getSourceFile().getName() + " submitted.");
+        Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getName() + " submitted.");
 
         return taskTracker;
     }
