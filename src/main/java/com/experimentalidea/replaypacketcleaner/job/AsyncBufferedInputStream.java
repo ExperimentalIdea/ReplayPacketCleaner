@@ -17,15 +17,14 @@ package com.experimentalidea.replaypacketcleaner.job;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 import java.util.concurrent.ArrayBlockingQueue;
 
 public class AsyncBufferedInputStream extends InputStream {
 
     /// Create an AsyncBufferedInputStream. Ideal numberOfBuffers is assumed 3.
     public AsyncBufferedInputStream(InputStream inputStream, int numberOfBuffers, int sizeOfBuffer) {
-        if (inputStream == null) {
-            throw new IllegalArgumentException("inputStream cannot be null.");
-        }
+        Objects.requireNonNull(inputStream, "inputStream cannot be null.");
         if (numberOfBuffers < 1) {
             throw new IllegalArgumentException("numberOfBuffers cannot be less than 1. Recommend a value of 3.");
         }

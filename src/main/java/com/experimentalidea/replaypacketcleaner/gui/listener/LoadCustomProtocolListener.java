@@ -28,10 +28,14 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class LoadCustomProtocolListener implements ActionListener {
 
     public LoadCustomProtocolListener(MainWindow mainWindow, ProtocolDirectory protocolDirectory) {
+        Objects.requireNonNull(mainWindow, "mainWindow cannot be null");
+        Objects.requireNonNull(protocolDirectory, "protocolDirectory cannot be null");
+
         this.mainWindow = mainWindow;
         this.protocolDirectory = protocolDirectory;
     }

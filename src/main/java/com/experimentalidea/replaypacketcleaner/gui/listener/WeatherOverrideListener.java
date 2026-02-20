@@ -23,6 +23,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class WeatherOverrideListener implements ActionListener, ChangeListener {
 
@@ -30,33 +31,15 @@ public class WeatherOverrideListener implements ActionListener, ChangeListener {
     public WeatherOverrideListener(Configuration<Option> profile, JComboBox overrideWeatherDropdown, JCheckBox removeLightingStrikesCheckbox,
                                    JSlider rainLevelSlider, JLabel rainLevelSliderLabel, JLabel rainLevelSliderValueDisplay,
                                    JSlider thunderLevelSlider, JLabel thunderLevelSliderLabel, JLabel thunderLevelSliderValueDisplay) {
-        if (profile == null) {
-            throw new IllegalArgumentException("profile cannot be null");
-        }
-        if (overrideWeatherDropdown == null) {
-            throw new IllegalArgumentException("overrideWeatherDropdown cannot be null");
-        }
-        if (removeLightingStrikesCheckbox == null) {
-            throw new IllegalArgumentException("removeLightingStrikesCheckbox cannot be null");
-        }
-        if (rainLevelSlider == null) {
-            throw new IllegalArgumentException("rainLevelSlider cannot be null");
-        }
-        if (rainLevelSliderLabel == null) {
-            throw new IllegalArgumentException("rainLevelSliderLabel cannot be null");
-        }
-        if (rainLevelSliderValueDisplay == null) {
-            throw new IllegalArgumentException("rainLevelSliderValueDisplay cannot be null");
-        }
-        if (thunderLevelSlider == null) {
-            throw new IllegalArgumentException("thunderLevelSlider cannot be null");
-        }
-        if (thunderLevelSliderLabel == null) {
-            throw new IllegalArgumentException("thunderLevelSliderLabel cannot be null");
-        }
-        if (thunderLevelSliderValueDisplay == null) {
-            throw new IllegalArgumentException("thunderLevelSliderValueDisplay cannot be null");
-        }
+        Objects.requireNonNull(profile, "profile cannot be null");
+        Objects.requireNonNull(overrideWeatherDropdown, "overrideWeatherDropdown cannot be null");
+        Objects.requireNonNull(removeLightingStrikesCheckbox, "removeLightingStrikesCheckbox cannot be null");
+        Objects.requireNonNull(rainLevelSlider, "rainLevelSlider cannot be null");
+        Objects.requireNonNull(rainLevelSliderLabel, "rainLevelSliderLabel cannot be null");
+        Objects.requireNonNull(rainLevelSliderValueDisplay, "rainLevelSliderValueDisplay cannot be null");
+        Objects.requireNonNull(thunderLevelSlider, "thunderLevelSlider cannot be null");
+        Objects.requireNonNull(thunderLevelSliderLabel, "thunderLevelSliderLabel cannot be null");
+        Objects.requireNonNull(thunderLevelSliderValueDisplay, "thunderLevelSliderValueDisplay cannot be null");
 
         this.profile = profile;
         this.overrideWeatherDropdown = overrideWeatherDropdown;

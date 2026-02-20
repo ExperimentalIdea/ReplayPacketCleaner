@@ -16,6 +16,7 @@
 package com.experimentalidea.replaypacketcleaner.job;
 
 import java.io.*;
+import java.util.Objects;
 
 public class ReplayWriter implements Closeable, AutoCloseable, Flushable {
 
@@ -36,9 +37,7 @@ public class ReplayWriter implements Closeable, AutoCloseable, Flushable {
      * @param closeable    If false, any call to this ReplayWriter's .close() method will not close the provided output stream.
      */
     public ReplayWriter(OutputStream outputStream, boolean async, boolean closeable) {
-        if (outputStream == null) {
-            throw new IllegalArgumentException("OutputStream object cannot be null");
-        }
+        Objects.requireNonNull(outputStream, "outputStream cannot be null");
 
         if (async) {
             outputStream = new AsyncBufferedOutputStream(outputStream, 3, 65536);

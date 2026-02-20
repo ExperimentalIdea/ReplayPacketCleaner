@@ -22,7 +22,9 @@ import com.experimentalidea.replaypacketcleaner.job.ReplayTestJob;
 import com.experimentalidea.replaypacketcleaner.job.TaskTracker;
 import com.experimentalidea.replaypacketcleaner.protocol.ProtocolDirectory;
 
+import javax.swing.*;
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
@@ -100,10 +102,18 @@ public class ReplayPacketCleaner {
         }
         instance.executorService = Executors.newFixedThreadPool(threads);
 
-        // Load all built-in protocols
-        long startTime = System.currentTimeMillis();
         instance.protocolDirectory = new ProtocolDirectory();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(instance.getClass().getResourceAsStream("/resources/protocols/protocol_directory.txt"))))) {
+
+        return instance;
+    }
+
+    /**
+     * Loads all protocol mappings bundled in with the jar file.
+     */
+    public void loadBuiltinProtocols() {
+        Log.info("Loading builtin protocols...");
+        long startTime = System.currentTimeMillis();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(this.getClass().getResourceAsStream("/resources/protocols/protocol_directory.txt"))))) {
             List<Future<?>> taskList = new ArrayList<Future<?>>(32);
             String line;
             while ((line = reader.readLine()) != null) {
@@ -114,11 +124,12 @@ public class ReplayPacketCleaner {
                     // While only one protocol can technically be added to the ProtocolDirectory at a time,
                     // most of the time spent is parsing the json text itself which occurs outside the synchronized portion.
                     // Loading two protocols a combined total of 100 times took 1200ms~ on single thread, while using virtual threads or a thread pool solution took 400ms~.
-                    taskList.add(instance.executorService.submit(() -> {
+                    taskList.add(this.executorService.submit(() -> {
                         try {
-                            instance.protocolDirectory.loadProtocol(instance.getClass().getResourceAsStream("/resources/protocols/" + finalLine));
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
+                            this.protocolDirectory.loadProtocol(this.getClass().getResourceAsStream("/resources/protocols/" + finalLine));
+                        } catch (IOException ex) {
+                            Log.severe("A problem occurred while trying to load a built-in protocol file: " + finalLine, ex);
+                            throw new RuntimeException(ex);
                         }
                     }));
                 }
@@ -131,12 +142,10 @@ public class ReplayPacketCleaner {
                     throw new RuntimeException(e);
                 }
             }
-            Log.info("Loaded " + instance.protocolDirectory.getSupportedProtocolVersions().size() + " protocols in " + (System.currentTimeMillis() - startTime) + "ms.");
+            Log.info("Loaded " + this.protocolDirectory.getSupportedProtocolVersions().size() + " protocols in " + (System.currentTimeMillis() - startTime) + "ms.");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        return instance;
     }
 
     /**
@@ -167,14 +176,18 @@ public class ReplayPacketCleaner {
     }
 
 
-    public void createMainWindow(LinkedBlockingDeque<LogRecord> logQueue, boolean visible, boolean showHiddenOptions) throws IllegalStateException {
+    public void createMainWindow(LinkedBlockingDeque<LogRecord> logQueue, boolean visible, boolean showHiddenOptions) throws IllegalStateException, InterruptedException, InvocationTargetException {
+        Log.info("Initializing GUI...");
         long startTime = System.currentTimeMillis();
-        if (mainWindow != null) {
+        if (this.mainWindow != null) {
             throw new IllegalStateException("MainWindow already exists");
         }
-        this.mainWindow = new MainWindow(this, logQueue, showHiddenOptions);
-        this.mainWindow.getMainFrame().setVisible(visible);
-        Log.info("GUI initialized in " + (System.currentTimeMillis() - startTime) + "ms.");
+        ReplayPacketCleaner instance = this;
+        SwingUtilities.invokeAndWait(() -> {
+            mainWindow = new MainWindow(instance, logQueue, showHiddenOptions);
+            mainWindow.getMainFrame().setVisible(visible);
+            Log.info("GUI initialized in " + (System.currentTimeMillis() - startTime) + "ms.");
+        });
     }
 
 
@@ -324,9 +337,8 @@ public class ReplayPacketCleaner {
 
 
     public TaskTracker submitReplayJob(Job job) {
-        if (job == null) {
-            throw new IllegalArgumentException("job cannot be null");
-        }
+        Objects.requireNonNull(job, "job cannot be null");
+
         UUID jobUUID = job.getUUID();
         TaskTracker taskTracker = new TaskTracker(jobUUID);
         this.taskTrackerMap.put(jobUUID, taskTracker);

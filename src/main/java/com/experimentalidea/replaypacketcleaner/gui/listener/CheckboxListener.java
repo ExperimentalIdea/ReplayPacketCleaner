@@ -22,6 +22,7 @@ import com.experimentalidea.replaypacketcleaner.config.ValueType;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class CheckboxListener implements ActionListener {
 
@@ -29,15 +30,9 @@ public class CheckboxListener implements ActionListener {
      * Updates a boolean value within the configuration profile to match checkbox.isSelected() whenever this listener triggers.
      */
     public CheckboxListener(Configuration<Option> profile, Option key, JCheckBox checkbox) {
-        if (profile == null) {
-            throw new IllegalArgumentException("profile cannot be null");
-        }
-        if (key == null) {
-            throw new IllegalArgumentException("key cannot be null");
-        }
-        if (checkbox == null) {
-            throw new IllegalArgumentException("checkbox cannot be null");
-        }
+        Objects.requireNonNull(profile, "profile cannot be null");
+        Objects.requireNonNull(key, "key cannot be null");
+        Objects.requireNonNull(checkbox, "checkbox cannot be null");
         if (key.getMetadata().getValueType() != ValueType.BOOLEAN) {
             throw new IllegalArgumentException("key is not applicable to value type boolean");
         }

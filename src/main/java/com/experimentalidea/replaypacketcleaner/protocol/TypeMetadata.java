@@ -15,6 +15,8 @@
  * */
 package com.experimentalidea.replaypacketcleaner.protocol;
 
+import java.util.Objects;
+
 public class TypeMetadata<E extends Enum<E> & ProtocolMetadata> {
 
     /**
@@ -26,12 +28,9 @@ public class TypeMetadata<E extends Enum<E> & ProtocolMetadata> {
      */
     public TypeMetadata(E type, String[] jsonNodePaths) throws IllegalArgumentException {
         // Confirm none of the provided parameters are null.
-        if (type == null) {
-            throw new IllegalArgumentException("type cannot be null");
-        }
-        if (jsonNodePaths == null) {
-            throw new IllegalArgumentException("jsonNodePaths[] cannot be null");
-        }
+        Objects.requireNonNull(type, "type cannot be null");
+        Objects.requireNonNull(jsonNodePaths, "jsonNodePaths cannot be null");
+
         if (jsonNodePaths.length == 0) {
             throw new IllegalArgumentException("jsonNodePaths[] cannot be empty");
         }

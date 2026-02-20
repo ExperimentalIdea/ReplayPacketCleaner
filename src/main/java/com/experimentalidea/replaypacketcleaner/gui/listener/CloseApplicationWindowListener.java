@@ -20,16 +20,14 @@ import com.experimentalidea.replaypacketcleaner.ReplayPacketCleaner;
 import javax.swing.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.Objects;
 
 public class CloseApplicationWindowListener implements WindowListener {
 
     public CloseApplicationWindowListener(ReplayPacketCleaner instance, Timer... timers) {
-        if (instance == null) {
-            throw new IllegalArgumentException("replayPacketCleanerInstance cannot be null");
-        }
-        if (timers == null) {
-            throw new IllegalArgumentException("timers cannot be null");
-        }
+        Objects.requireNonNull(instance, "instance cannot be null");
+        Objects.requireNonNull(timers, "timers cannot be null");
+
         this.replayPacketCleanerInstance = instance;
         this.timers = timers;
     }

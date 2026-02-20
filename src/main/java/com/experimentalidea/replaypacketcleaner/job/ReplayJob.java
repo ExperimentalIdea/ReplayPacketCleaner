@@ -27,6 +27,7 @@ import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.zip.*;
 
@@ -39,36 +40,24 @@ public class ReplayJob implements Runnable, Closeable {
      * workingDir is deleted when the task completes
      */
     public ReplayJob(File sourceFile, File workingDir, File targetFile, ProtocolDirectory protocolDirectory, Configuration<Option> configuration, TaskTracker taskTracker, boolean asyncReads, boolean asyncWrites) throws FileNotFoundException, NotDirectoryException {
-        if (sourceFile == null) {
-            throw new IllegalArgumentException("sourceFile cannot be null");
-        }
+        Objects.requireNonNull(sourceFile, "sourceFile cannot be null");
         if (!sourceFile.exists()) {
             throw new FileNotFoundException("The file at \"" + sourceFile.getPath() + "\" does not exist");
         }
-        if (workingDir == null) {
-            throw new IllegalArgumentException("workingDir cannot be null");
-        }
+        Objects.requireNonNull(workingDir, "workingDir cannot be null");
         if (!workingDir.isDirectory()) {
             throw new NotDirectoryException("The path at \"" + sourceFile.getPath() + "\" is not a directory");
         }
-        if (targetFile == null) {
-            throw new IllegalArgumentException("sourceFile cannot be null");
-        }
-        if (protocolDirectory == null) {
-            throw new IllegalArgumentException("protocolDirectory cannot be null");
-        }
+        Objects.requireNonNull(targetFile, "sourceFile cannot be null");
+        Objects.requireNonNull(protocolDirectory, "protocolDirectory cannot be null");
         if (sourceFile.equals(targetFile)) {
             throw new IllegalArgumentException("sourceFile path cannot be equal to targetFile path");
         }
         if (sourceFile.getName().equals(targetFile.getName())) {
             throw new IllegalArgumentException("sourceFile name cannot be equal to targetFile name");
         }
-        if (configuration == null) {
-            throw new IllegalArgumentException("taskProgress cannot be null");
-        }
-        if (taskTracker == null) {
-            throw new IllegalArgumentException("taskProgress cannot be null");
-        }
+        Objects.requireNonNull(configuration, "taskProgress cannot be null");
+        Objects.requireNonNull(taskTracker, "taskProgress cannot be null");
 
         this.sourceFile = sourceFile;
         this.workingDir = workingDir;

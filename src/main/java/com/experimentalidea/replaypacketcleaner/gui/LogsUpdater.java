@@ -1,9 +1,12 @@
 package com.experimentalidea.replaypacketcleaner.gui;
 
+import com.experimentalidea.replaypacketcleaner.Main;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
@@ -12,6 +15,9 @@ import java.util.logging.SimpleFormatter;
 public class LogsUpdater implements ActionListener {
 
     public LogsUpdater(JTabbedPane tabbedReplayPane, JTextArea logsTabTextArea, LinkedBlockingDeque<LogRecord> logQueue) {
+        Objects.requireNonNull(tabbedReplayPane, "tabbedReplayPane cannot be null");
+        Objects.requireNonNull(logsTabTextArea, "logsTabTextArea cannot be null");
+        Objects.requireNonNull(logQueue, "logQueue cannot be null");
         this.tabbedReplayPane = tabbedReplayPane;
         this.logsTabTextArea = logsTabTextArea;
         this.logQueue = logQueue;
@@ -53,7 +59,7 @@ public class LogsUpdater implements ActionListener {
             this.logEntries.forEach(builder::append);
             this.logsTabTextArea.setText(builder.toString());
             if (this.severeCount > 0) {
-                this.tabbedReplayPane.setTitleAt(MainWindow.REPLAYS_TAB_LOGS,"Logs (" + severeCount + ")");
+                this.tabbedReplayPane.setTitleAt(MainWindow.REPLAYS_TAB_LOGS, "Logs (" + severeCount + ")");
             }
         }
     }

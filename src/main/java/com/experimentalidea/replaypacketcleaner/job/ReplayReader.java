@@ -16,6 +16,7 @@
 package com.experimentalidea.replaypacketcleaner.job;
 
 import java.io.*;
+import java.util.Objects;
 
 public class ReplayReader implements Closeable, AutoCloseable {
 
@@ -35,9 +36,7 @@ public class ReplayReader implements Closeable, AutoCloseable {
      * @param closeable   If false, any call to this ReplayReader's .close() method will not close the provided input stream.
      */
     public ReplayReader(InputStream inputStream, boolean async, boolean closeable) {
-        if (inputStream == null) {
-            throw new IllegalArgumentException("InputStream object cannot be null");
-        }
+        Objects.requireNonNull(inputStream, "inputStream cannot be null");
 
         if (async) {
             inputStream = new AsyncBufferedInputStream(inputStream, 3, 65536);

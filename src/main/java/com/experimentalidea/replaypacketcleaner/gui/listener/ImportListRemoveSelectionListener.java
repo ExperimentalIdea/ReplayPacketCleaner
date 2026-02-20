@@ -19,10 +19,13 @@ import com.experimentalidea.replaypacketcleaner.gui.ReplayList;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class ImportListRemoveSelectionListener implements ActionListener {
 
     public ImportListRemoveSelectionListener(ReplayList replayImportList) {
+        Objects.requireNonNull(replayImportList, "replayImportList cannot be null");
+
         this.replayImportList = replayImportList;
     }
 

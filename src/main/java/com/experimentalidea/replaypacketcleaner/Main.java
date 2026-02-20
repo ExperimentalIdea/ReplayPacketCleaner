@@ -17,8 +17,11 @@ package com.experimentalidea.replaypacketcleaner;
 
 import com.experimentalidea.replaypacketcleaner.protocol.*;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -43,6 +46,9 @@ public class Main {
 
 
     public static void main(String[] args) {
+
+        // Any unhandled exceptions will cause the program to terminate.
+        Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> Main.crash(throwable));
 
         try {
             long startTime = System.currentTimeMillis();
@@ -102,23 +108,27 @@ public class Main {
 
             ReplayPacketCleaner instance = ReplayPacketCleaner.createInstance(!disableAsyncReads, !disableAsyncWrites);
 
+            // Load the protocol mapping and initialize the GUI simultaneously.
+            // TODO: This "optimization" doesn't really speed up application startup much. Might want to implement lazy loading for builtin protocols and possibly for parts of the GUI as well.
+            Thread protocolLoading = Thread.startVirtualThread(instance::loadBuiltinProtocols);
+            instance.createMainWindow(logQueue, false, showHiddenOptions);
+            protocolLoading.join();
+
+            SwingUtilities.invokeAndWait(() -> instance.getMainWindow().getMainFrame().setVisible(true));
+
             if (outputTypeDocumentation) {
                 File childDirectory = Main.saveTypeDocumentation(instance.getProtocolDirectory(), outputTypeDocumentationTargetDir);
                 Log.info(Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + ": Documentation saved to " + childDirectory.getPath());
             }
 
-            instance.createMainWindow(logQueue, true, showHiddenOptions);
-
-            Log.info("Ready in " + (System.currentTimeMillis() - startTime) + "ms. Awaiting jobs...");
+            Log.info("Ready in " + (System.currentTimeMillis() - startTime) + "ms total. Awaiting jobs...");
 
             instance.processJobsAndAwaitTermination(); // Returns when the application window has closed, and any in progress jobs have been cleaned up.
 
             Log.info("Application has closed.");
 
-        } catch (
-                Exception exception) {
-            // TODO: log exception & shutdown
-            throw new RuntimeException(exception);
+        } catch (Exception exception) {
+            Main.crash(exception);
         }
     }
 
@@ -151,6 +161,37 @@ public class Main {
         }
         return builder.toString();
     }
+
+
+    /**
+     * Forcefully exit the program.
+     * Before exiting, an error dialog will be displayed to the user with a stack trace.
+     * Termination occurs when the user presses the OK button.
+     *
+     * @param throwable The exception that caused this crash.
+     */
+    public static void crash(Throwable throwable) {
+        try {
+            Log.severe("A fatal error has occurred and " + ReplayPacketCleaner.APP_NAME + " v" + ReplayPacketCleaner.APP_VERSION + " will now exit.", throwable);
+
+            StringWriter sWriter = new StringWriter();
+            PrintWriter pWriter = new PrintWriter(sWriter);
+            throwable.printStackTrace(pWriter);
+
+            SwingUtilities.invokeLater(() -> {
+                JOptionPane.showOptionDialog(null,
+                        "A fatal error has occurred and " + ReplayPacketCleaner.APP_NAME + " v" + ReplayPacketCleaner.APP_VERSION + " will now exit.\n\n" + sWriter.toString(),
+                        "That wasn't supposed to happen...",
+                        JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.ERROR_MESSAGE,
+                        null, null, null);
+                System.exit(1);
+            });
+        } catch (Exception ignored) {
+            System.exit(2);
+        }
+    }
+
 
     /// Generate and write out all protocol enum type documentation to the given directory.
     /// Returns the child directory (within the target directory) that contains all saved text files.

@@ -24,10 +24,12 @@ import java.awt.dnd.DropTargetDropEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 public class ReplayFileDropTarget extends DropTarget {
 
     public ReplayFileDropTarget(MainWindow mainWindow) {
+        Objects.requireNonNull(mainWindow, "mainWindow cannot be null");
         this.mainWindow = mainWindow;
     }
 

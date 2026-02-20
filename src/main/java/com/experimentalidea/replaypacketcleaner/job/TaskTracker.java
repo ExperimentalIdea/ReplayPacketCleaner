@@ -15,6 +15,7 @@
  * */
 package com.experimentalidea.replaypacketcleaner.job;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class TaskTracker {
@@ -23,9 +24,7 @@ public class TaskTracker {
      * Creates a new TaskStatus object with progress set to TaskProgress.MIN_VALUE and status set to TaskStatus.WAITING.
      */
     public TaskTracker(UUID uuid) {
-        if (uuid == null) {
-            throw new IllegalArgumentException("provided uuid cannot be null");
-        }
+        Objects.requireNonNull(uuid, "provided uuid cannot be null");
         this.uuid = uuid;
         this.progress = TaskTracker.MIN_VALUE;
         this.status = TaskStatus.PREPARING;

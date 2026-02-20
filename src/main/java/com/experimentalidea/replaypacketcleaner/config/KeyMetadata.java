@@ -17,6 +17,8 @@ package com.experimentalidea.replaypacketcleaner.config;
 
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 /**
  * Used in conjunction with an enum that implements {@link ConfigurationKey}.
  * Provides metadata for a {@link Configuration} object to map the enum keys to and from values in a {@link JSONObject}.
@@ -39,18 +41,11 @@ public class KeyMetadata {
      */
     public KeyMetadata(ConfigurationKey key, String[] jsonNodePaths, ValueType[] jsonNodeTypes, Object defaultValue) throws IllegalArgumentException {
         // Confirm none of the provided parameters are null.
-        if (key == null) {
-            throw new IllegalArgumentException("key cannot be null");
-        }
-        if (jsonNodePaths == null) {
-            throw new IllegalArgumentException("jsonNodePaths for key " + key.getClass().getName() + "." + key.toString() + " cannot be null");
-        }
-        if (jsonNodeTypes == null) {
-            throw new IllegalArgumentException("jsonNodeTypes for key " + key.getClass().getName() + "." + key.toString() + " cannot be null");
-        }
-        if (defaultValue == null) {
-            throw new IllegalArgumentException("defaultValue for key " + key.getClass().getName() + "." + key.toString() + " cannot be null");
-        }
+        Objects.requireNonNull(key, "key cannot be null");
+        Objects.requireNonNull(jsonNodePaths, "jsonNodePaths cannot be null");
+        Objects.requireNonNull(jsonNodeTypes, "jsonNodeTypes cannot be null");
+        Objects.requireNonNull(defaultValue, "defaultValue cannot be null");
+
         for (int i = 0; i < jsonNodePaths.length; i++) {
             if (jsonNodePaths[i] == null) {
                 throw new IllegalArgumentException("Entry jsonNodePaths[" + i + "] for key " + key.getClass().getName() + "." + key.toString() + " cannot be null");

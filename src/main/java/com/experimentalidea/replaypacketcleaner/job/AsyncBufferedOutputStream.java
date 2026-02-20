@@ -17,6 +17,7 @@ package com.experimentalidea.replaypacketcleaner.job;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Objects;
 import java.util.concurrent.ArrayBlockingQueue;
 
 /// A buffered output stream that writes the buffer on a separate thread.
@@ -24,9 +25,7 @@ public class AsyncBufferedOutputStream extends OutputStream {
 
     /// Create an AsyncBufferedOutputStream. Ideal numberOfBuffers is 3.
     public AsyncBufferedOutputStream(OutputStream outputStream, int numberOfBuffers, int sizeOfBuffer) {
-        if (outputStream == null) {
-            throw new IllegalArgumentException("outputStream cannot be null.");
-        }
+        Objects.requireNonNull(outputStream, "outputStream cannot be null.");
         if (numberOfBuffers < 1) {
             throw new IllegalArgumentException("numberOfBuffers cannot be less than 1. Recommend a value of 3.");
         }

@@ -19,6 +19,7 @@ import com.experimentalidea.replaypacketcleaner.gui.ReplayList;
 
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import java.util.Objects;
 
 /**
  * This listener is purely for enabling and disabling buttons base on if the list has elements and/or those elements are currently selected.
@@ -26,6 +27,8 @@ import javax.swing.event.ListSelectionListener;
 public class ImportListSelectionListener implements ListSelectionListener {
 
     public ImportListSelectionListener(ReplayList replayImportList) {
+        Objects.requireNonNull(replayImportList, "replayImportList cannot be null");
+
         this.replayImportList = replayImportList;
     }
 

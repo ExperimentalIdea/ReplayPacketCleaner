@@ -19,6 +19,7 @@ import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -27,9 +28,7 @@ import java.util.UUID;
 public class ReplayList {
 
     public ReplayList(JList<String> jList) {
-        if (jList == null) {
-            throw new IllegalArgumentException("jList cannot be null");
-        }
+        Objects.requireNonNull(jList, "jList cannot be null");
 
         this.uuidList = new ArrayList<UUID>();
 

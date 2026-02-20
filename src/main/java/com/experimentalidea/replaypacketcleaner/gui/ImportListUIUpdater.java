@@ -16,28 +16,17 @@
 package com.experimentalidea.replaypacketcleaner.gui;
 
 import javax.swing.*;
+import java.util.Objects;
 
 public class ImportListUIUpdater implements UIUpdater {
 
     public ImportListUIUpdater(ReplayList replayImportList, JButton removeAllButton, JButton removeSelectedButton, JButton exportButton, JMenuItem fileMenuExportItem, JMenuItem fileMenuExportTestItem) {
-        if (replayImportList == null) {
-            throw new IllegalArgumentException("replayImportList cannot be null");
-        }
-        if (removeAllButton == null) {
-            throw new IllegalArgumentException("removeAllButton cannot be null");
-        }
-        if (removeSelectedButton == null) {
-            throw new IllegalArgumentException("removeSelectedButton cannot be null");
-        }
-        if (exportButton == null) {
-            throw new IllegalArgumentException("exportButton cannot be null");
-        }
-        if (fileMenuExportItem == null) {
-            throw new IllegalArgumentException("fileMenuExportItem cannot be null");
-        }
-        if (fileMenuExportTestItem == null) {
-            throw new IllegalArgumentException("fileMenuExportTestItem cannot be null");
-        }
+        Objects.requireNonNull(replayImportList, "replayImportList cannot be null");
+        Objects.requireNonNull(removeAllButton, "removeAllButton cannot be null");
+        Objects.requireNonNull(removeSelectedButton, "removeSelectedButton cannot be null");
+        Objects.requireNonNull(exportButton, "exportButton cannot be null");
+        Objects.requireNonNull(fileMenuExportItem, "fileMenuExportItem cannot be null");
+        Objects.requireNonNull(fileMenuExportTestItem, "fileMenuExportTestItem cannot be null");
 
         this.replayImportList = replayImportList;
         this.removeAllButton = removeAllButton;

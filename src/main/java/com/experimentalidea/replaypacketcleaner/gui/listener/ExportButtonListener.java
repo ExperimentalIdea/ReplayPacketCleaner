@@ -22,10 +22,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class ExportButtonListener implements ActionListener {
 
     public ExportButtonListener(MainWindow mainWindow, boolean testFlag) {
+        Objects.requireNonNull(mainWindow, "mainWindow cannot be null");
+
         this.mainWindow = mainWindow;
         this.testFlag = testFlag;
     }

@@ -15,6 +15,7 @@
  * */
 package com.experimentalidea.replaypacketcleaner.gui;
 
+import com.experimentalidea.replaypacketcleaner.Main;
 import com.experimentalidea.replaypacketcleaner.job.TaskTracker;
 
 import javax.swing.*;
@@ -22,24 +23,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 public class JobProgressUpdater implements ActionListener {
 
 
     public JobProgressUpdater(ReplayList jobList, Map<UUID, TaskTracker> taskTrackerMap, JProgressBar overallProgressBar, JFrame windowFrame) {
-        if (jobList == null) {
-            throw new IllegalArgumentException("jobList cannot be null");
-        }
-        if (taskTrackerMap == null) {
-            throw new IllegalArgumentException("taskTrackerMap cannot be null");
-        }
-        if (overallProgressBar == null) {
-            throw new IllegalArgumentException("overallProgressBar cannot be null");
-        }
-        if (windowFrame == null) {
-            throw new IllegalArgumentException("windowFrame cannot be null");
-        }
+        Objects.requireNonNull(jobList, "jobList cannot be null");
+        Objects.requireNonNull(taskTrackerMap, "taskTrackerMap cannot be null");
+        Objects.requireNonNull(overallProgressBar, "overallProgressBar cannot be null");
+        Objects.requireNonNull(windowFrame, "windowFrame cannot be null");
 
         this.jobList = jobList;
         this.taskTrackerMap = taskTrackerMap;

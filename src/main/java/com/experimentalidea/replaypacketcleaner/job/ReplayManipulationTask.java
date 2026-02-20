@@ -26,6 +26,7 @@ import com.experimentalidea.replaypacketcleaner.protocol.Version;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -33,24 +34,12 @@ public class ReplayManipulationTask implements Runnable {
 
 
     public ReplayManipulationTask(ReplayReader replayReader, long sourceReplaySizeBytes, ReplayWriter replayWriter, Protocol protocol, TaskTracker taskTracker, AtomicBoolean cancelFlag, PacketListener... packetListeners) {
-        if (replayReader == null) {
-            throw new IllegalArgumentException("replayReader cannot be null");
-        }
-        if (replayWriter == null) {
-            throw new IllegalArgumentException("replayWriter cannot be null");
-        }
-        if (protocol == null) {
-            throw new IllegalArgumentException("protocol cannot be null");
-        }
-        if (taskTracker == null) {
-            throw new IllegalArgumentException("taskProgress cannot be null");
-        }
-        if (cancelFlag == null) {
-            throw new IllegalArgumentException("cancelFlag cannot be null");
-        }
-        if (packetListeners == null) {
-            throw new IllegalArgumentException("The PacketListener[] cannot be null");
-        }
+        Objects.requireNonNull(replayReader, "replayReader cannot be null");
+        Objects.requireNonNull(replayWriter, "replayWriter cannot be null");
+        Objects.requireNonNull(protocol, "protocol cannot be null");
+        Objects.requireNonNull(taskTracker, "taskProgress cannot be null");
+        Objects.requireNonNull(cancelFlag, "cancelFlag cannot be null");
+        Objects.requireNonNull(packetListeners, "The PacketListener[] cannot be null");
 
         this.reader = replayReader;
         this.sourceReplaySizeBytes = sourceReplaySizeBytes;

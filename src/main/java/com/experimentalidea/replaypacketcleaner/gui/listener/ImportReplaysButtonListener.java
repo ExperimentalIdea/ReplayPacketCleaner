@@ -23,10 +23,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class ImportReplaysButtonListener implements ActionListener {
 
     public ImportReplaysButtonListener(MainWindow mainWindow) {
+        Objects.requireNonNull(mainWindow, "mainWindow cannot be null");
+
         this.mainWindow = mainWindow;
     }
 

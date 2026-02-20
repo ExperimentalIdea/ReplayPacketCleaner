@@ -21,6 +21,7 @@ import org.json.JSONObject;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * A general purpose object for getting and setting configuration options/settings.
@@ -57,9 +58,8 @@ public class Configuration<K extends Enum<K> & ConfigurationKey> {
      * @param keyClass The enum class that acts as keys for this configuration.
      */
     public Configuration(Class<K> keyClass) {
-        if (keyClass == null) {
-            throw new IllegalArgumentException("keyClass cannot be null");
-        }
+        Objects.requireNonNull(keyClass, "keyClass cannot be null");
+
         this.keyClass = keyClass;
 
         this.configurationMap = new EnumMap<K, Object>(keyClass);

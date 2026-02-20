@@ -23,11 +23,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 /// @see ProtocolGenerationWindow
 public class OpenProtocolGenerationListener implements ActionListener {
 
     public OpenProtocolGenerationListener(MainWindow mainWindow, ProtocolDirectory protocolDirectory) {
+        Objects.requireNonNull(mainWindow, "mainWindow cannot be null");
+        Objects.requireNonNull(protocolDirectory, "protocolDirectory cannot be null");
+
         this.mainWindow = mainWindow;
         this.protocolDirectory = protocolDirectory;
     }

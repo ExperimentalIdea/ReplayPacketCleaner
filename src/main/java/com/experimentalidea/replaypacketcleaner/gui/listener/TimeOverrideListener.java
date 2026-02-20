@@ -22,22 +22,15 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.event.*;
+import java.util.Objects;
 
 public class TimeOverrideListener implements ActionListener, DocumentListener, Runnable, FocusListener {
 
     public TimeOverrideListener(Configuration<Option> profile, JCheckBox overrideTimeCheckbox, JTextField setTimeTextField, JLabel setTimeTipText) {
-        if (profile == null) {
-            throw new IllegalArgumentException("profile cannot be null");
-        }
-        if (overrideTimeCheckbox == null) {
-            throw new IllegalArgumentException("checkbox cannot be null");
-        }
-        if (setTimeTextField == null) {
-            throw new IllegalArgumentException("setTimeTextField cannot be null");
-        }
-        if (setTimeTipText == null) {
-            throw new IllegalArgumentException("setTimeTipText cannot be null");
-        }
+        Objects.requireNonNull(profile, "profile cannot be null");
+        Objects.requireNonNull(overrideTimeCheckbox, "overrideTimeCheckbox cannot be null");
+        Objects.requireNonNull(setTimeTextField, "setTimeTextField cannot be null");
+        Objects.requireNonNull(setTimeTipText, "setTimeTipText cannot be null");
 
 
         this.profile = profile;

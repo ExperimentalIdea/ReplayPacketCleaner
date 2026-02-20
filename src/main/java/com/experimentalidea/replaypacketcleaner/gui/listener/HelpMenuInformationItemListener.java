@@ -22,10 +22,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class HelpMenuInformationItemListener implements ActionListener {
 
     public HelpMenuInformationItemListener(MainWindow mainWindow, String title, String htmlText) {
+        Objects.requireNonNull(mainWindow, "mainWindow cannot be null");
+        Objects.requireNonNull(title, "title cannot be null");
+        Objects.requireNonNull(htmlText, "htmlText cannot be null");
+
         this.mainWindow = mainWindow;
         this.title = title;
         this.htmlText = htmlText;

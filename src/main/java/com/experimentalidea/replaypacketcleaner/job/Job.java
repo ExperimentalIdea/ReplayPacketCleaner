@@ -19,24 +19,17 @@ import com.experimentalidea.replaypacketcleaner.config.Configuration;
 import com.experimentalidea.replaypacketcleaner.config.Option;
 
 import java.io.File;
+import java.util.Objects;
 import java.util.UUID;
 
 /// Represents information about a given job.
 public class Job {
 
     public Job(UUID uuid, Configuration<Option> profile, File sourceFile, File targetDirectory, boolean testFlag) {
-        if (uuid == null) {
-            throw new IllegalArgumentException("uuid cannot be null");
-        }
-        if (profile == null) {
-            throw new IllegalArgumentException("profile cannot be null");
-        }
-        if (sourceFile == null) {
-            throw new IllegalArgumentException("sourceFile cannot be null");
-        }
-        if (targetDirectory == null) {
-            throw new IllegalArgumentException("targetDirectory cannot be null");
-        }
+        Objects.requireNonNull(uuid, "uuid cannot be null");
+        Objects.requireNonNull(profile, "profile cannot be null");
+        Objects.requireNonNull(sourceFile, "sourceFile cannot be null");
+        Objects.requireNonNull(targetDirectory, "targetDirectory cannot be null");
 
         this.uuid = uuid;
         this.profile = profile;
