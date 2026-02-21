@@ -212,6 +212,10 @@ public class ReplayPacketCleaner {
                 Log.warning("Job #" + job.getJobNumber() + " for \"" + job.getName() + "\" FAILED: " + exception.getMessage());
             }
 
+            if (job.getStatus() == Job.Status.CANCELED) {
+                continue;
+            }
+
             this.executorService.submit(job);
         }
 

@@ -84,6 +84,11 @@ public class ReplayJob extends Job implements Runnable, Closeable {
         this.prepared = true;
 
         try {
+            // If the job has been canceled already, don't prepare it for execution.
+            if (this.isCanceled()) {
+                this.setStatus(Status.CANCELED);
+                return;
+            }
 
             // Source replay file checks.
             if (!this.sourceFile.exists()) {
