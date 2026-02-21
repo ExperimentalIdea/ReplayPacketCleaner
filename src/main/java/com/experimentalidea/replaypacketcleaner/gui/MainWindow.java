@@ -20,8 +20,8 @@ import com.experimentalidea.replaypacketcleaner.config.Configuration;
 import com.experimentalidea.replaypacketcleaner.config.Option;
 import com.experimentalidea.replaypacketcleaner.gui.listener.*;
 import com.experimentalidea.replaypacketcleaner.job.Job;
+import com.experimentalidea.replaypacketcleaner.job.Replay;
 import com.experimentalidea.replaypacketcleaner.job.ReplayMetadata;
-import com.experimentalidea.replaypacketcleaner.job.TaskTracker;
 
 import javax.swing.*;
 import javax.swing.Timer;
@@ -137,7 +137,7 @@ public class MainWindow {
         this.jobList = new ReplayList(this.jobJList);
         this.jobJList.setSelectionModel(new ListSelectionModelFix());
 
-        this.jobTrackerMap = new HashMap<UUID, TaskTracker>();
+        this.jobTrackerMap = new HashMap<UUID, Job>();
 
         this.jobListUpdateTimer = new Timer(50, new JobProgressUpdater(this.jobList, this.jobTrackerMap, this.jobProgressBar, this.mainFrame));
         this.jobListUpdateTimer.setRepeats(true);
@@ -238,8 +238,8 @@ public class MainWindow {
     private JList<String> jobJList;
     /// Quarries should only go through this jobList.
     private final ReplayList jobList;
-    /// Map of job uuids to task trackers
-    private final Map<UUID, TaskTracker> jobTrackerMap;
+    /// Map of job uuids to jobs for tracking
+    private final Map<UUID, Job> jobTrackerMap;
 
     private final Timer jobListUpdateTimer;
 
@@ -364,7 +364,7 @@ public class MainWindow {
             }
 
             // Verified valid replay file
-            this.importList.add(file);
+            this.importList.add(new Replay(file));
         }
 
         if (errorOccurred) {
@@ -424,8 +424,8 @@ public class MainWindow {
 
         // Submit replay jobs
         for (int i = 0; i < this.importList.size(); i++) {
-            UUID jobUUID = this.importList.getUUID(i);
-            File sourceFile = this.importList.getFile(i);
+            Replay replay = this.importList.getReplay(i);
+            File sourceFile = replay.getSourceFile();
 
             if (!sourceFile.exists()) {
                 errorText.append("\n  ").append(sourceFile.getPath()).append(":\n    Replay archive file does not exist");
@@ -433,10 +433,17 @@ public class MainWindow {
                 continue;
             }
 
-            TaskTracker taskTracker;
+            replay.setExportDirectory(exportDirectory);
+            replay.setConfiguration(profileCopy);
+
+            Job job;
 
             try {
-                taskTracker = this.replayPacketCleanerInstance.submitReplayJob(new Job(jobUUID, profileCopy, sourceFile, exportDirectory, testFlag));
+                if (testFlag) {
+                    job = this.replayPacketCleanerInstance.submitReplayTestJob(replay);
+                } else {
+                    job = this.replayPacketCleanerInstance.submitReplayJob(replay);
+                }
             } catch (Exception exception) {
                 Log.severe("A problem occurred when attempting to submit job for file \"" + sourceFile.getPath() + "\":", exception);
                 errorText.append("\n  ").append(sourceFile.getPath()).append(":\n    Exception: ").append(exception.getMessage());
@@ -444,9 +451,9 @@ public class MainWindow {
                 continue;
             }
 
-            this.jobTrackerMap.put(jobUUID, taskTracker);
+            this.jobTrackerMap.put(job.getUUID(), job);
 
-            this.jobList.add(jobUUID, sourceFile, this.importList.getLabel(i));
+            this.jobList.add(replay);
 
         }
 

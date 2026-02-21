@@ -15,8 +15,7 @@
  * */
 package com.experimentalidea.replaypacketcleaner.gui;
 
-import com.experimentalidea.replaypacketcleaner.Main;
-import com.experimentalidea.replaypacketcleaner.job.TaskTracker;
+import com.experimentalidea.replaypacketcleaner.job.Job;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -29,21 +28,21 @@ import java.util.UUID;
 public class JobProgressUpdater implements ActionListener {
 
 
-    public JobProgressUpdater(ReplayList jobList, Map<UUID, TaskTracker> taskTrackerMap, JProgressBar overallProgressBar, JFrame windowFrame) {
+    public JobProgressUpdater(ReplayList jobList, Map<UUID, Job> jobTrackerMap, JProgressBar overallProgressBar, JFrame windowFrame) {
         Objects.requireNonNull(jobList, "jobList cannot be null");
-        Objects.requireNonNull(taskTrackerMap, "taskTrackerMap cannot be null");
+        Objects.requireNonNull(jobTrackerMap, "jobTrackerMap cannot be null");
         Objects.requireNonNull(overallProgressBar, "overallProgressBar cannot be null");
         Objects.requireNonNull(windowFrame, "windowFrame cannot be null");
 
         this.jobList = jobList;
-        this.taskTrackerMap = taskTrackerMap;
+        this.jobTrackerMap = jobTrackerMap;
         this.overallProgressBar = overallProgressBar;
         this.windowFrame = windowFrame;
         this.originalTitle = windowFrame.getTitle();
     }
 
     private final ReplayList jobList;
-    private final Map<UUID, TaskTracker> taskTrackerMap;
+    private final Map<UUID, Job> jobTrackerMap;
     private final JProgressBar overallProgressBar;
     private final JFrame windowFrame;
     private final String originalTitle;
@@ -58,40 +57,39 @@ public class JobProgressUpdater implements ActionListener {
         int numberOfJobs = 0;
         int overallProgress = 0;
         for (int i = 0; i < this.jobList.size(); i++) {
-            UUID jobUUID = this.jobList.getUUID(i);
-            TaskTracker taskTracker = this.taskTrackerMap.get(jobUUID);
+            Job job = this.jobTrackerMap.get(this.jobList.getReplay(i).getUUID());
 
-            if (taskTracker != null) {
-                switch (taskTracker.getStatus()) {
+            if (job != null) {
+                switch (job.getStatus()) {
                     case PREPARING:
                         numberOfJobs++;
-                        this.jobList.updateLabel(i, "[PREPARING]   " + this.jobList.getFile(i).getName());
+                        this.jobList.updateLabel(i, "[PREPARING]   " + job.getName());
                         break;
 
                     case WAITING:
                         numberOfJobs++;
-                        this.jobList.updateLabel(i, "[WAITING]   " + this.jobList.getFile(i).getName());
+                        this.jobList.updateLabel(i, "[WAITING]   " + job.getName());
                         break;
 
                     case IN_PROGRESS:
                         numberOfJobs++;
-                        overallProgress += taskTracker.getProgress();
-                        this.jobList.updateLabel(i, "[" + this.decimalFormat.format((taskTracker.getProgress() / (double) TaskTracker.MAX_VALUE) * 100.0) + "%]   " + this.jobList.getFile(i).getName());
+                        overallProgress += job.getProgress();
+                        this.jobList.updateLabel(i, "[" + this.decimalFormat.format((job.getProgress() / (double) Job.MAX_PROGRESS_VALUE) * 100.0) + "%]   " + job.getName());
                         break;
 
                     case COMPLETED:
                         numberOfJobs++;
                         numberOfCompletedJobs++;
-                        overallProgress += taskTracker.getProgress();
-                        this.jobList.updateLabel(i, "[COMPLETED]   " + this.jobList.getFile(i).getName());
+                        overallProgress += job.getProgress();
+                        this.jobList.updateLabel(i, "[COMPLETED]   " + job.getName());
                         break;
 
                     case CANCELED:
-                        this.jobList.updateLabel(i, "[CANCELED]   " + this.jobList.getFile(i).getName());
+                        this.jobList.updateLabel(i, "[CANCELED]   " + job.getName());
                         break;
 
                     case FAILED:
-                        this.jobList.updateLabel(i, "[FAILED]   " + this.jobList.getFile(i).getName());
+                        this.jobList.updateLabel(i, "[FAILED]   " + job.getName());
                         break;
                 }
             }
@@ -102,7 +100,7 @@ public class JobProgressUpdater implements ActionListener {
             this.overallProgressBar.setString("");
 
         } else {
-            double overallPercentage = (overallProgress / ((double) TaskTracker.MAX_VALUE * numberOfJobs)) * 100.0;
+            double overallPercentage = (overallProgress / ((double) Job.MAX_PROGRESS_VALUE * numberOfJobs)) * 100.0;
             this.overallProgressBar.setValue((int) overallPercentage);
             this.overallProgressBar.setString(this.decimalFormat.format(overallPercentage) + "% - " + numberOfCompletedJobs + " of " + numberOfJobs);
 

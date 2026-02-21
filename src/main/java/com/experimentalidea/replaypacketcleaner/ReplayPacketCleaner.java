@@ -17,18 +17,18 @@ package com.experimentalidea.replaypacketcleaner;
 
 import com.experimentalidea.replaypacketcleaner.gui.MainWindow;
 import com.experimentalidea.replaypacketcleaner.job.Job;
+import com.experimentalidea.replaypacketcleaner.job.Replay;
 import com.experimentalidea.replaypacketcleaner.job.ReplayJob;
 import com.experimentalidea.replaypacketcleaner.job.ReplayTestJob;
-import com.experimentalidea.replaypacketcleaner.job.TaskTracker;
 import com.experimentalidea.replaypacketcleaner.protocol.ProtocolDirectory;
 
 import javax.swing.*;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.LogRecord;
 
 public class ReplayPacketCleaner {
@@ -62,12 +62,11 @@ public class ReplayPacketCleaner {
 
     private ProtocolDirectory protocolDirectory;
 
-    // A job uuid to task progress map. The UI thread reads this, while the main thread adds new entries as needed.
-    private Map<UUID, TaskTracker> taskTrackerMap = new ConcurrentHashMap<UUID, TaskTracker>(32, 0.75F, 1);
+    private LinkedBlockingQueue<ReplayJob> jobPreprocessingQueue = new LinkedBlockingQueue<ReplayJob>();
 
-    private LinkedBlockingQueue<Job> jobQueue = new LinkedBlockingQueue<Job>();
+    private Map<UUID, ReplayJob> jobs = new ConcurrentHashMap<UUID, ReplayJob>(32, 0.75F, 1);
 
-    private Map<UUID, ReplayJob> submittedJobs = new HashMap<UUID, ReplayJob>(32);
+    private final AtomicInteger jobCounter = new AtomicInteger(1);
 
     private ExecutorService executorService = null;
 
@@ -200,117 +199,28 @@ public class ReplayPacketCleaner {
         this.mainThread = Thread.currentThread();
 
         while (this.mainWindow.getMainFrame().isDisplayable()) {
-            Job job;
+            ReplayJob job;
             try {
-                job = this.jobQueue.take();
+                job = this.jobPreprocessingQueue.take();
             } catch (InterruptedException ignored) {
                 continue;
             }
 
-            UUID jobUUID = job.getUUID();
-
-            if (this.submittedJobs.containsKey(jobUUID)) {
-                this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Job already submitted");
-                continue;
-            }
-
-            File sourceFile = job.getSourceFile();
-
-            if (!sourceFile.exists()) {
-                this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Source replay file does not exist");
-                continue;
-            }
-
-            if (!Files.isReadable(sourceFile.toPath())) {
-                this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Permission denied - Cannot read source replay file");
-                continue;
-            }
-
-            File exportDirectory = job.getTargetDirectory();
-
-            if (!exportDirectory.exists()) {
-                this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Target output directory " + exportDirectory.getPath() + " does not exist");
-                continue;
-            }
-            if (!exportDirectory.isDirectory()) {
-                this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Target output directory " + exportDirectory.getPath() + " is not a directory");
-                continue;
-            }
-            if (!Files.isWritable(exportDirectory.toPath())) {
-                this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Permission denied - Cannot write to " + exportDirectory.getPath());
-                continue;
-            }
-
-            File workingDirectory = new File(this.tempDirectory, jobUUID.toString());
-            if (!workingDirectory.exists()) {
-                workingDirectory.mkdirs();
-            }
-            // Normally, the job itself will clean up temp files when done.
-            // But just in case of some unforeseen issue, we'll mark it for deletion on exit.
-            workingDirectory.deleteOnExit();
-
-            File sourceCopy = new File(workingDirectory.getPath() + File.separator + sourceFile.getName().replaceAll(ReplayPacketCleaner.DOT_MCPR_EXTENSION, "") + " (copy)" + ReplayPacketCleaner.DOT_MCPR_EXTENSION);
-
             try {
-                Files.copy(sourceFile.toPath(), sourceCopy.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            } catch (IOException ioException) {
-                this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Could not copy source replay to working directory - IOException: " + ioException.getMessage());
-                continue;
-            }
-            // Same as above with workingDirectory. Mark for deletion on exit.
-            sourceCopy.deleteOnExit();
-
-            ReplayJob replayJob;
-            try {
-                if (job.getTestFlag()) {
-                    // test
-                    replayJob = new ReplayTestJob(
-                            sourceCopy,
-                            workingDirectory,
-                            this.protocolDirectory,
-                            this.taskTrackerMap.get(jobUUID),
-                            this.asyncReads,
-                            this.asyncWrites);
-                } else {
-                    // normal use
-                    replayJob = new ReplayJob(
-                            sourceCopy,
-                            workingDirectory,
-                            new File(exportDirectory.getPath() + File.separator + sourceFile.getName().replaceAll(ReplayPacketCleaner.DOT_MCPR_EXTENSION, "") + " (RPC)" + ReplayPacketCleaner.DOT_MCPR_EXTENSION),
-                            this.protocolDirectory,
-                            job.getProfile(),
-                            this.taskTrackerMap.get(jobUUID),
-                            this.asyncReads,
-                            this.asyncWrites);
-                }
+                job.prepareJob();
             } catch (Exception exception) {
-                this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.FAILED);
-                Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getPath() + " FAILED: Could not create job - Exception: " + exception.getMessage());
-                continue;
+                Log.warning("Job #" + job.getJobNumber() + " for \"" + job.getName() + "\" FAILED: " + exception.getMessage());
             }
 
-            this.taskTrackerMap.get(jobUUID).setStatus(TaskTracker.TaskStatus.WAITING);
-            this.submittedJobs.put(jobUUID, replayJob);
-            this.executorService.submit(replayJob);
-
+            this.executorService.submit(job);
         }
 
         // GUI Window has been closed at this point. Clean up
-        for (TaskTracker taskTracker : this.taskTrackerMap.values()) {
-            TaskTracker.TaskStatus status = taskTracker.getStatus();
-            if (status == TaskTracker.TaskStatus.WAITING || status == TaskTracker.TaskStatus.IN_PROGRESS) {
-                ReplayJob replayJob = this.submittedJobs.get(taskTracker.getUUID());
-                if (replayJob != null) {
-                    Log.info("Canceling job " + taskTracker.getUUID().toString() + ".");
-                    replayJob.cancelJob();
-                }
+        for (ReplayJob job : this.jobs.values()) {
+            Job.Status status = job.getStatus();
+            if (status == Job.Status.PREPARING || status == Job.Status.WAITING || status == Job.Status.IN_PROGRESS) {
+                Log.info("Canceling job #" + job.getJobNumber() + " for " + job.getName() + ".");
+                job.cancel();
             }
         }
 
@@ -320,10 +230,10 @@ public class ReplayPacketCleaner {
             terminationSuccessful = this.executorService.awaitTermination(60, TimeUnit.SECONDS);
         } catch (InterruptedException ignored) {
             // should never happen...
-            Log.info("Main thread interrupted while awaiting tasks to end.");
+            Log.warning("Main thread interrupted while awaiting tasks to end.");
         }
         if (!terminationSuccessful) {
-            Log.info("Failed to terminate all active tasks.");
+            Log.warning("Failed to terminate all active tasks.");
         }
 
         // Goodbye!
@@ -336,17 +246,53 @@ public class ReplayPacketCleaner {
     }
 
 
-    public TaskTracker submitReplayJob(Job job) {
-        Objects.requireNonNull(job, "job cannot be null");
+    public Job submitReplayJob(Replay replay) {
+        Objects.requireNonNull(replay.getConfiguration(), "Replay object doesn't have a configuration set");
+        Objects.requireNonNull(replay.getExportDirectory(), "Replay object doesn't have an Export Directory set");
+        if (this.jobs.containsKey(replay.getUUID())) {
+            throw new IllegalStateException("Could not submit job " + replay.getUUID() + " for " + replay.getName() + ": Job by this UUID is already submitted.");
+        }
 
-        UUID jobUUID = job.getUUID();
-        TaskTracker taskTracker = new TaskTracker(jobUUID);
-        this.taskTrackerMap.put(jobUUID, taskTracker);
-        this.jobQueue.add(job);
+        ReplayJob job = new ReplayJob(
+                this.jobCounter.getAndIncrement(),
+                replay,
+                new File(this.tempDirectory, replay.getUUID().toString()),
+                replay.getExportDirectory(),
+                this.protocolDirectory,
+                this.asyncReads,
+                this.asyncWrites);
 
-        Log.info("Job " + jobUUID.toString() + " for " + job.getSourceFile().getName() + " submitted.");
+        this.jobs.put(job.getUUID(), job);
+        this.jobPreprocessingQueue.add(job);
 
-        return taskTracker;
+        Log.info("Job #" + job.getJobNumber() + " for " + job.getName() + " submitted.");
+
+        return job;
+    }
+
+    // todo: implement a better way of handling test jobs
+    public Job submitReplayTestJob(Replay replay) {
+        Objects.requireNonNull(replay.getConfiguration(), "Replay object doesn't have a configuration set");
+        Objects.requireNonNull(replay.getExportDirectory(), "Replay object doesn't have an Export Directory set");
+        if (this.jobs.containsKey(replay.getUUID())) {
+            throw new IllegalStateException("Could not submit job " + replay.getUUID() + " for " + replay.getName() + ": Job by this UUID is already submitted.");
+        }
+
+        ReplayJob job = new ReplayTestJob(
+                this.jobCounter.getAndIncrement(),
+                replay,
+                new File(this.tempDirectory, replay.getUUID().toString()),
+                replay.getExportDirectory(),
+                this.protocolDirectory,
+                this.asyncReads,
+                this.asyncWrites);
+
+        this.jobs.put(job.getUUID(), job);
+        this.jobPreprocessingQueue.add(job);
+
+        Log.info("Test Job #" + job.getJobNumber() + " for " + job.getName() + " submitted.");
+
+        return job;
     }
 
 

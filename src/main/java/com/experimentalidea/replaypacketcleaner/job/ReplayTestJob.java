@@ -31,6 +31,7 @@ import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -45,23 +46,31 @@ public class ReplayTestJob extends ReplayJob {
      * workingDir should be an uuid, as a collision is effectively impossible.
      * workingDir is deleted when the task completes
      */
-    public ReplayTestJob(File sourceFile, File workingDir, ProtocolDirectory protocolDirectory, TaskTracker taskTracker, boolean asyncReads, boolean asyncWrites) throws FileNotFoundException, NotDirectoryException {
-        super(sourceFile, workingDir, sourceFile.getParentFile(), protocolDirectory, new Configuration<Option>(Option.class), taskTracker, asyncReads, asyncWrites);
+    public ReplayTestJob(int jobNumber, Replay replay, File workingTmpDir, File exportDir, ProtocolDirectory protocolDirectory, boolean asyncReads, boolean asyncWrites) {
+        super(jobNumber, replay, workingTmpDir, exportDir, protocolDirectory, asyncReads, asyncWrites);
 
-        this.sourceFile = sourceFile;
-        this.workingDir = workingDir;
+        this.sourceFile = replay.getSourceFile();
+        this.exportDir = replay.getExportDirectory();
+        Objects.requireNonNull(this.exportDir, "exportDir within Replay object cannot be null");
+
+        this.configuration = replay.getConfiguration();
+        Objects.requireNonNull(this.configuration, "configuration within Replay object cannot be null");
+
+        this.workingTmpDir = workingTmpDir;
+        this.targetExportFile = new File(this.workingTmpDir, this.sourceFile.getName().replaceAll(ReplayPacketCleaner.DOT_MCPR_EXTENSION, "") + " (RPC)" + ReplayPacketCleaner.DOT_MCPR_EXTENSION);
+
         this.protocolDirectory = protocolDirectory;
-        this.taskTracker = taskTracker;
         this.asyncReads = asyncReads;
         this.asyncWrites = asyncWrites;
     }
 
-    private static final Object TARGET_MOVE_LOCK = new Object();
 
-    private final File sourceFile;
-    private final File workingDir;
+    private File sourceFile;
+    private final File exportDir;
+    private final File workingTmpDir;
+    private final File targetExportFile;
     private final ProtocolDirectory protocolDirectory;
-    private final TaskTracker taskTracker;
+    private final Configuration<Option> configuration;
     private final boolean asyncReads;
     private final boolean asyncWrites;
 
@@ -85,17 +94,16 @@ public class ReplayTestJob extends ReplayJob {
         // The entire task is contained within a try-catch for handing cleanup & closing of io streams in the event of any unhandled exception occurring.
         try {
             // Check if this job has been canceled. Cleanup this replay job if so.
-            if (this.cancelFlag.get()) {
-                ReplayPacketCleaner.deleteFilesRecursively(this.workingDir);
-                this.taskTracker.setStatus(TaskTracker.TaskStatus.CANCELED);
+            if (this.isCanceled()) {
+                ReplayPacketCleaner.deleteFilesRecursively(this.workingTmpDir);
+                this.setStatus(Status.CANCELED);
                 return;
             }
 
-            // TODO: Remove later. Used for performance benchmarking.
             long taskStartingMilliseconds = System.currentTimeMillis();
 
-            this.taskTracker.setStatus(TaskTracker.TaskStatus.IN_PROGRESS);
-            this.taskTracker.setProgress(TaskTracker.MIN_VALUE + 1);
+            this.setStatus(Status.IN_PROGRESS);
+            this.setProgress(Job.MIN_PROGRESS_VALUE + 1);
 
             // Task Initialization
 
@@ -119,15 +127,15 @@ public class ReplayTestJob extends ReplayJob {
             }
 
             // Create the OutputStream that will be used to write-out to the target replay archive.
-            File targetTempFile = new File(this.workingDir.getPath() + File.separator + ReplayPacketCleaner.RECORDING_TMCPR_FILE_NAME);
-            if (!targetTempFile.createNewFile()) {
-                throw new FileAlreadyExistsException("The file for the target output replay at \"" + targetTempFile.getPath() + "\" already exists!");
+            File targetTmpFile = new File(this.workingTmpDir.getPath() + File.separator + ReplayPacketCleaner.RECORDING_TMCPR_FILE_NAME);
+            if (!targetTmpFile.createNewFile()) {
+                throw new FileAlreadyExistsException("The file for the target output replay at \"" + targetTmpFile.getPath() + "\" already exists!");
             }
             // Normally, this job will clean up temp files when done.
             // The target temp will be moved to the target output directory upon successful completion.
             // But just in case of some unforeseen issue, we'll mark the temp target file for deletion on exit.
-            targetTempFile.deleteOnExit();
-            this.targetOutputStream = new FileOutputStream(targetTempFile);
+            targetTmpFile.deleteOnExit();
+            this.targetOutputStream = new FileOutputStream(targetTmpFile);
 
             // Create the listeners for manipulating replay packets
             List<PacketListener> packetListenerList = new ArrayList<PacketListener>();
@@ -136,12 +144,11 @@ public class ReplayTestJob extends ReplayJob {
             // Replay editing stage
             ReplayManipulationTask replayManipulationTask =
                     new ReplayManipulationTask(
+                            this,
                             new ReplayReader(this.sourceZipFile.getInputStream(sourceRecordingEntry), this.asyncReads, true),
                             this.sourceReplaySizeBytes,
                             new ReplayWriter(this.targetOutputStream, this.asyncWrites, true),
                             this.protocolDirectory.getProtocol(this.metadata.getMetadataJson().getInt(ReplayMetadata.KEY_PROTOCOL)),
-                            this.taskTracker,
-                            this.cancelFlag,
                             packetListenerList.toArray(new PacketListener[0]));
 
             replayManipulationTask.run();
@@ -149,7 +156,7 @@ public class ReplayTestJob extends ReplayJob {
             // Start comparing the contents of the source vs the passthrough output. Verify they are both the same.
             boolean failed = false;
             try (ReplayReader sourceReader = new ReplayReader(this.sourceZipFile.getInputStream(sourceRecordingEntry), this.asyncReads, true);
-                 ReplayReader targetReader = new ReplayReader(new FileInputStream(targetTempFile), this.asyncReads, true)) {
+                 ReplayReader targetReader = new ReplayReader(new FileInputStream(targetTmpFile), this.asyncReads, true)) {
 
                 Protocol protocol = this.protocolDirectory.getProtocol(this.metadata.getMetadataJson().getInt(ReplayMetadata.KEY_PROTOCOL));
 
@@ -178,13 +185,13 @@ public class ReplayTestJob extends ReplayJob {
 
                     // Update the task progress tracker every X number of packets.
                     if (packetIndex % 512 == 0) {
-                        this.taskTracker.setProgress((int) ((sourceReader.bytesRead() * TaskTracker.MAX_VALUE) / this.sourceReplaySizeBytes));
+                        this.setProgress((int) ((sourceReader.bytesRead() * Job.MAX_PROGRESS_VALUE) / this.sourceReplaySizeBytes));
                     }
 
                     // It's possible that if a replay recording crashed and was recovered, that the last packet may not be fully written.
                     // In such case, the incomplete packet data from the source replay should be disregarded.
                     if ((this.sourceReplaySizeBytes - sourceReader.bytesRead()) < 9) {
-                        Log.warning("Job " + this.taskTracker.getUUID().toString() + ": Last packet is missing data. Expected at least another 9 bytes, only " + (this.sourceReplaySizeBytes - sourceReader.bytesRead()) + " bytes remaining. Disregarding the last packet.");
+                        Log.warning("Job #" + this.getJobNumber() + ": Last packet is missing data. Expected at least another 9 bytes, only " + (this.sourceReplaySizeBytes - sourceReader.bytesRead()) + " bytes remaining. Disregarding the last packet.");
                         break;
                     }
 
@@ -196,8 +203,7 @@ public class ReplayTestJob extends ReplayJob {
 
                     // Checking again - See above for explanation.
                     if ((this.sourceReplaySizeBytes - sourceReader.bytesRead()) < sourcePacketSize) {
-                        // TODO: Update Logging this event to console.
-                        Log.warning("Job " + this.taskTracker.getUUID().toString() + ": Last packet is missing data. Expected another " + sourcePacketSize + " bytes, only " + (this.sourceReplaySizeBytes - sourceReader.bytesRead()) + " bytes remaining. Disregarding the last packet.");
+                        Log.warning("Job #" + this.getJobNumber() + ": Last packet is missing data. Expected another " + sourcePacketSize + " bytes, only " + (this.sourceReplaySizeBytes - sourceReader.bytesRead()) + " bytes remaining. Disregarding the last packet.");
                         break;
                     }
 
@@ -224,7 +230,7 @@ public class ReplayTestJob extends ReplayJob {
                         }
                     }
 
-                    Log.severe("Value not equal at packet index #" + packetIndex + " for Test Job " + this.taskTracker.getUUID().toString() + " for " + this.sourceFile.getName() + ":");
+                    Log.severe("Value not equal at packet index #" + packetIndex + " for Test Job #" + this.getJobNumber() + " (" + this.getUUID().toString() + ") for " + this.sourceFile.getName() + ":");
                     Log.severe("  Source: sourceTimeStamp=" + sourceTimeStamp + ", sourcePacketSize=" + sourcePacketSize + ", sourcePacketID=" + sourcePacketID + " (" + sourcePacketType.name() + "), sourceBytesData=" + Arrays.toString(sourceBytesData));
                     Log.severe("  Target: targetTimeStamp=" + targetTimeStamp + ", targetPacketSize=" + targetPacketSize + ", targetPacketID=" + targetPacketID + " (" + targetPacketType.name() + "), targetBytesData=" + Arrays.toString(targetBytesData));
                     failed = true;
@@ -237,16 +243,16 @@ public class ReplayTestJob extends ReplayJob {
             this.close();
 
             // Clean up
-            ReplayPacketCleaner.deleteFilesRecursively(this.workingDir);
+            ReplayPacketCleaner.deleteFilesRecursively(this.workingTmpDir);
 
             if (!failed) {
-                this.taskTracker.setProgress(TaskTracker.MAX_VALUE);
-                this.taskTracker.setStatus(TaskTracker.TaskStatus.COMPLETED);
+                this.setProgress(Job.MAX_PROGRESS_VALUE);
+                this.setStatus(Status.COMPLETED);
 
                 long finishTimeSeconds = (System.currentTimeMillis() - taskStartingMilliseconds) / 1000;
-                Log.info("Test Job " + this.taskTracker.getUUID().toString() + " for " + targetTempFile.getName() + " finished in " + (finishTimeSeconds / 60) + " minute(s), " + (finishTimeSeconds % 60) + " second(s).");
+                Log.info("Test Job #" + this.getJobNumber() + " for \"" + this.getName() + "\" finished in " + (finishTimeSeconds / 60) + " minute(s), " + (finishTimeSeconds % 60) + " second(s).");
             } else {
-                Log.info("Test Job " + this.taskTracker.getUUID().toString() + " for " + targetTempFile.getName() + " failed.");
+                Log.info("Test Job #" + this.getJobNumber() + " for \"" + this.getName() + "\" failed.");
             }
         } catch (Exception exception) {
             try {
@@ -256,16 +262,16 @@ public class ReplayTestJob extends ReplayJob {
             }
 
             try {
-                ReplayPacketCleaner.deleteFilesRecursively(this.workingDir);
+                ReplayPacketCleaner.deleteFilesRecursively(this.workingTmpDir);
             } catch (IOException ioException) {
                 exception.addSuppressed(ioException);
             }
 
-            if (this.cancelFlag.get()) {
-                this.taskTracker.setStatus(TaskTracker.TaskStatus.CANCELED);
+            if (this.isCanceled()) {
+                this.setStatus(Status.CANCELED);
             } else {
-                this.taskTracker.setStatus(TaskTracker.TaskStatus.FAILED);
-                Log.severe("A problem occurred during processing of Test Job " + this.taskTracker.getUUID().toString() + ":", exception);
+                this.setStatus(Status.FAILED);
+                Log.severe("A problem occurred during processing of Test Job #" + this.getJobNumber() + " (" + this.getUUID().toString() + ") for \"" + this.getName() + "\":", exception);
             }
         }
     }
@@ -297,18 +303,6 @@ public class ReplayTestJob extends ReplayJob {
         if (exception != null) {
             throw exception;
         }
-    }
-
-    /**
-     * Sets a flag to cancel this job at the earliest opportunity. (should typically be within 1000 milliseconds)
-     */
-    public void cancelJob() {
-        this.cancelFlag.set(true);
-    }
-
-
-    public boolean flaggedAsCanceled() {
-        return this.cancelFlag.get();
     }
 
 

@@ -15,6 +15,8 @@
  * */
 package com.experimentalidea.replaypacketcleaner.gui;
 
+import com.experimentalidea.replaypacketcleaner.job.Replay;
+
 import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
@@ -30,9 +32,7 @@ public class ReplayList {
     public ReplayList(JList<String> jList) {
         Objects.requireNonNull(jList, "jList cannot be null");
 
-        this.uuidList = new ArrayList<UUID>();
-
-        this.fileList = new ArrayList<File>();
+        this.replayList = new ArrayList<Replay>();
 
         this.jList = jList;
         this.jListModel = new DefaultListModel<String>();
@@ -40,11 +40,12 @@ public class ReplayList {
 
     }
 
-    // All three lists are kept consistent with each other.
-    // i.e. uuidList.get(index) corresponds with fileList.get(index) & jListModel.get(index)
-    private final List<UUID> uuidList;
-    private final List<File> fileList;
+
     private final JList<String> jList;
+
+    // These two lists are kept consistent with each other.
+    // i.e. replayList.get(index) corresponds with jListModel.get(index)
+    private final List<Replay> replayList;
     private final DefaultListModel<String> jListModel;
 
     private UIUpdater uiUpdater = new DefaultUIUpdater();
@@ -65,50 +66,28 @@ public class ReplayList {
     /**
      * Add an entry to the job list
      */
-    public void add(UUID uuid, File file, String label) {
-        if (uuid == null) {
-            throw new IllegalArgumentException("uuid cannot be null");
-        }
-        if (file == null) {
-            throw new IllegalArgumentException("file cannot be null");
-        }
-        if (label == null) {
-            throw new IllegalArgumentException("label cannot be null");
-        }
-        if (this.uuidList.contains(uuid)) {
-            throw new IllegalArgumentException("uuid already exists");
+    public void add(Replay replay) {
+        Objects.requireNonNull(replay, "Replay object cannot be null");
+
+        for (Replay entry : this.replayList) {
+            if (entry.getUUID().equals(replay.getUUID())) {
+                throw new IllegalStateException("UUID " + replay.getUUID() + " already exists");
+            }
         }
 
-        this.uuidList.add(uuid);
-        this.fileList.add(file);
-        this.jListModel.addElement(label);
+        this.replayList.add(replay);
+        this.jListModel.addElement(replay.getName());
 
         this.uiUpdater.updateUI();
     }
 
-    /**
-     * Generates a new UUID on add and returns that uuid.
-     */
-    public UUID add(File file, String label) {
-        UUID uuid = UUID.randomUUID();
-        this.add(uuid, file, label);
-        return uuid;
-    }
-
-    /**
-     * Generates a new UUID on add and returns that uuid. The label is derived from the result of file.getName().
-     */
-    public UUID add(File file) {
-        return this.add(file, file.getName());
-    }
-
 
     public int indexOf(Object object) {
-        int index = this.indexOfUUID(object);
+        int index = this.indexOfByUUID(object);
         if (index == -1) {
-            index = this.indexOfFile(object);
+            index = this.indexOfByFile(object);
             if (index == -1) {
-                index = this.indexOfFileNamed(object);
+                index = this.indexOfByFileNamed(object);
                 if (index == -1) {
                     index = this.indexOfLabel(object);
                 }
@@ -117,27 +96,27 @@ public class ReplayList {
         return index;
     }
 
-    public int indexOfUUID(Object object) {
-        for (int i = 0; i < this.uuidList.size(); i++) {
-            if (this.uuidList.get(i).equals(object)) {
+    public int indexOfByUUID(Object object) {
+        for (int i = 0; i < this.replayList.size(); i++) {
+            if (this.replayList.get(i).getUUID().equals(object)) {
                 return i;
             }
         }
         return -1;
     }
 
-    public int indexOfFile(Object object) {
-        for (int i = 0; i < this.fileList.size(); i++) {
-            if (this.fileList.get(i).equals(object)) {
+    public int indexOfByFile(Object object) {
+        for (int i = 0; i < this.replayList.size(); i++) {
+            if (this.replayList.get(i).getSourceFile().equals(object)) {
                 return i;
             }
         }
         return -1;
     }
 
-    public int indexOfFileNamed(Object object) {
-        for (int i = 0; i < this.fileList.size(); i++) {
-            if (this.fileList.get(i).equals(object)) {
+    public int indexOfByFileNamed(Object object) {
+        for (int i = 0; i < this.replayList.size(); i++) {
+            if (this.replayList.get(i).getSourceFile().getName().equals(object)) {
                 return i;
             }
         }
@@ -162,60 +141,20 @@ public class ReplayList {
     }
 
     /**
-     * Get the currently selected UUIDs of the entries within the jList
+     * Get the currently selected Replays of the entries within the jList
      */
-    public UUID[] getSelectedUUIDs() {
+    public Replay[] getSelectedReplays() {
         int[] selectedIndices = this.getSelectedIndices();
-        UUID[] selectedUUIDs = new UUID[selectedIndices.length];
+        Replay[] selectedReplays = new Replay[selectedIndices.length];
         for (int i = 0; i < selectedIndices.length; i++) {
-            selectedUUIDs[i] = this.uuidList.get(selectedIndices[i]);
+            selectedReplays[i] = this.replayList.get(selectedIndices[i]);
         }
-        return selectedUUIDs;
-    }
-
-    /**
-     * Get the currently selected Files of the entries within the jList
-     */
-    public File[] getSelectedFiles() {
-        int[] selectedIndices = this.getSelectedIndices();
-        File[] selectedFiles = new File[selectedIndices.length];
-        for (int i = 0; i < selectedIndices.length; i++) {
-            selectedFiles[i] = this.fileList.get(selectedIndices[i]);
-        }
-        return selectedFiles;
-    }
-
-    /**
-     * Get the currently selected File Names of the entries within the jList
-     */
-    public String[] getSelectedFileNames() {
-        int[] selectedIndices = this.getSelectedIndices();
-        String[] selectedFileNames = new String[selectedIndices.length];
-        for (int i = 0; i < selectedIndices.length; i++) {
-            selectedFileNames[i] = this.fileList.get(selectedIndices[i]).getName();
-        }
-        return selectedFileNames;
-    }
-
-    /**
-     * Get the currently selected File Names of the entries within the jList
-     */
-    public String[] getSelectedLabels() {
-        int[] selectedIndices = this.getSelectedIndices();
-        String[] selectedFileNames = new String[selectedIndices.length];
-        for (int i = 0; i < selectedIndices.length; i++) {
-            selectedFileNames[i] = this.fileList.get(selectedIndices[i]).getName();
-        }
-        return selectedFileNames;
+        return selectedReplays;
     }
 
 
-    public UUID getUUID(int index) {
-        return this.uuidList.get(index);
-    }
-
-    public File getFile(int index) {
-        return this.fileList.get(index);
+    public Replay getReplay(int index) {
+        return this.replayList.get(index);
     }
 
     public String getLabel(int index) {
@@ -230,33 +169,31 @@ public class ReplayList {
     }
 
     public void updateLabel(UUID uuid, String label) {
-        this.jListModel.set(this.indexOfUUID(uuid), label);
+        this.jListModel.set(this.indexOfByUUID(uuid), label);
 
         this.uiUpdater.updateUI();
     }
 
 
-    public UUID remove(int index) {
-        UUID removedUUID = this.uuidList.remove(index);
-        this.fileList.remove(index);
+    public Replay remove(int index) {
+        Replay removedReplay = this.replayList.remove(index);
         this.jListModel.remove(index);
 
         this.uiUpdater.updateUI();
 
-        return removedUUID;
+        return removedReplay;
     }
 
-    public UUID[] removeAll(int[] indices) {
-        UUID[] removedUUIDs = new UUID[indices.length];
+    public Replay[] removeAll(int[] indices) {
+        Replay[] removedReplays = new Replay[indices.length];
         for (int i = indices.length - 1; i >= 0; i--) {
-            removedUUIDs[i] = this.remove(indices[i]);
+            removedReplays[i] = this.remove(indices[i]);
         }
-        return removedUUIDs;
+        return removedReplays;
     }
 
     public void clear() {
-        this.uuidList.clear();
-        this.fileList.clear();
+        this.replayList.clear();
         this.jListModel.clear();
 
         this.uiUpdater.updateUI();
@@ -264,16 +201,26 @@ public class ReplayList {
 
 
     public boolean containsUUID(UUID uuid) {
-        return this.uuidList.contains(uuid);
+        for (Replay replay : this.replayList) {
+            if (replay.getUUID().equals(uuid)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean containsFile(File file) {
-        return this.fileList.contains(file);
+        for (Replay replay : this.replayList) {
+            if (replay.getSourceFile().equals(file)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean containsFileNamed(String fileName) {
-        for (File file : this.fileList) {
-            if (file.getName().equals(fileName)) {
+        for (Replay replay : this.replayList) {
+            if (replay.getSourceFile().getName().equals(fileName)) {
                 return true;
             }
         }
@@ -286,7 +233,7 @@ public class ReplayList {
 
 
     public int size() {
-        return this.uuidList.size();
+        return this.replayList.size();
     }
 
 

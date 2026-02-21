@@ -28,26 +28,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ReplayManipulationTask implements Runnable {
 
 
-    public ReplayManipulationTask(ReplayReader replayReader, long sourceReplaySizeBytes, ReplayWriter replayWriter, Protocol protocol, TaskTracker taskTracker, AtomicBoolean cancelFlag, PacketListener... packetListeners) {
+    public ReplayManipulationTask(Job job, ReplayReader replayReader, long sourceReplaySizeBytes, ReplayWriter replayWriter, Protocol protocol, PacketListener... packetListeners) {
+        Objects.requireNonNull(job, "job cannot be null");
         Objects.requireNonNull(replayReader, "replayReader cannot be null");
         Objects.requireNonNull(replayWriter, "replayWriter cannot be null");
         Objects.requireNonNull(protocol, "protocol cannot be null");
-        Objects.requireNonNull(taskTracker, "taskProgress cannot be null");
-        Objects.requireNonNull(cancelFlag, "cancelFlag cannot be null");
         Objects.requireNonNull(packetListeners, "The PacketListener[] cannot be null");
 
+        this.job = job;
         this.reader = replayReader;
         this.sourceReplaySizeBytes = sourceReplaySizeBytes;
         this.writer = replayWriter;
         this.protocol = protocol;
         this.protocolVersion = this.protocol.getProtocolVersion();
-        this.taskTracker = taskTracker;
-        this.cancelFlag = cancelFlag;
 
         List<StartOfReplayPacketInserter> startOfReplayPacketInserterList = new ArrayList<StartOfReplayPacketInserter>(packetListeners.length);
         List<BlockActionPacketListener> blockActionPacketListenerList = new ArrayList<BlockActionPacketListener>(packetListeners.length);
@@ -240,10 +237,10 @@ public class ReplayManipulationTask implements Runnable {
     private final Protocol protocol;
     private final int protocolVersion;
 
+    private final Job job;
+
     private final ReplayReader reader;
     private final ReplayWriter writer;
-
-    private final TaskTracker taskTracker;
 
     private final StartOfReplayPacketInserter[] startOfReplayPacketInserters;
     private final BlockActionPacketListener[] blockActionPacketListeners;
@@ -283,7 +280,6 @@ public class ReplayManipulationTask implements Runnable {
     private final WorldEventPacketListener[] worldEventPacketListeners;
 
     private volatile boolean started = false;
-    private final AtomicBoolean cancelFlag;
 
     private int totalSizeOfLastPacketWritten = 0; // For some basic error checking
 
@@ -315,8 +311,6 @@ public class ReplayManipulationTask implements Runnable {
                 this.passthroughLoginPackets();
             }
 
-            // Passthrough the login (play) packet.
-            // It (should) always be the first packet after the end of the login/configuration phase. (I think...  have to confirm that as new protocols are added)
             int startingReplayTimeStamp = this.reader.readInt();
             this.writer.writeInt(startingReplayTimeStamp); // timeStamp
             int loginPacketSize = this.reader.readInt();
@@ -331,7 +325,7 @@ public class ReplayManipulationTask implements Runnable {
             long packetIndex = 0; // May use useful for something if I need to target a specific packet within the sequence.
 
             // Only continue reading so long as data is available and this job isn't canceled.
-            while ((this.sourceReplaySizeBytes - this.reader.bytesRead()) != 0 && !this.cancelFlag.get()) {
+            while ((this.sourceReplaySizeBytes - this.reader.bytesRead()) != 0 && !this.job.isCanceled()) {
                 packetIndex++;
 
                 // Used for some basic error checking.
@@ -343,13 +337,13 @@ public class ReplayManipulationTask implements Runnable {
                     // Like "610860.0 / 4086648608L = 1.4947700636756093E-4" instead of "0.000149477" for example.
                     // Not sure why at this time. Maybe some sort of precision or overflow issue?
                     // Anyways, going for this below as it doesn't require conversion of value types back and forth.
-                    this.taskTracker.setProgress((int) ((this.reader.bytesRead() * TaskTracker.MAX_VALUE) / this.sourceReplaySizeBytes));
+                    this.job.setProgress((int) ((this.reader.bytesRead() * Job.MAX_PROGRESS_VALUE) / this.sourceReplaySizeBytes));
                 }
 
                 // It's possible that if a replay recording crashed and was recovered, that the last packet may not be fully written.
                 // In such case, the incomplete packet data from the source replay should be disregarded.
                 if ((this.sourceReplaySizeBytes - this.reader.bytesRead()) < 9) {
-                    Log.warning("Job " + this.taskTracker.getUUID().toString() + ": Last packet is missing data. Expected at least another 9 bytes, only " + (this.sourceReplaySizeBytes - this.reader.bytesRead()) + " bytes remain. Disregarding the last packet.");
+                    Log.warning("Job #" + this.job.getJobNumber() + ": Last packet is missing data. Expected at least another 9 bytes, only " + (this.sourceReplaySizeBytes - this.reader.bytesRead()) + " bytes remain. Disregarding the last packet.");
                     break;
                 }
 
@@ -361,7 +355,7 @@ public class ReplayManipulationTask implements Runnable {
 
                 // Checking again - See above for explanation.
                 if ((this.sourceReplaySizeBytes - this.reader.bytesRead()) < packetSize) {
-                    Log.warning("Job " + this.taskTracker.getUUID().toString() + ": Last packet is missing data. Expected another " + packetSize + " bytes, only " + (this.sourceReplaySizeBytes - this.reader.bytesRead()) + " bytes remain. Disregarding the last packet.");
+                    Log.warning("Job #" + this.job.getJobNumber() + ": Last packet is missing data. Expected another " + packetSize + " bytes, only " + (this.sourceReplaySizeBytes - this.reader.bytesRead()) + " bytes remain. Disregarding the last packet.");
                     break;
                 }
 
@@ -375,7 +369,7 @@ public class ReplayManipulationTask implements Runnable {
                     case START_CONFIGURATION -> {
                         // Not sure if this packet would ever occur during a replay.
                         // Just in case, we'll handle this case if it occurs.
-                        Log.info("Job " + this.taskTracker.getUUID() + ": Hit a Start Configuration packet during \"play\" phase."); // TODO: Remove this log sometime later.
+                        Log.info("Job #" + this.job.getJobNumber() + ": Hit a Start Configuration packet during \"play\" phase."); // TODO: Remove this log sometime later.
                         this.writePacketHeader(timeStamp, packetSize, packetID); // There is no data with this packet.
                         this.passthroughConfigurationPackets(); // passthrough all the "configuration" phase packets to the writer.
                     }
@@ -469,8 +463,8 @@ public class ReplayManipulationTask implements Runnable {
             this.writer.close();
             this.reader.close();
 
-            if (!this.cancelFlag.get()) {
-                this.taskTracker.setProgress(TaskTracker.MAX_VALUE - 1);
+            if (!this.job.isCanceled()) {
+                this.job.setProgress(Job.MAX_PROGRESS_VALUE - 1);
             }
 
         } catch (Exception exception) {
@@ -481,7 +475,9 @@ public class ReplayManipulationTask implements Runnable {
             } catch (IOException ioException) {
                 exception.addSuppressed(ioException);
             }
-            Log.severe("A problem occurred during processing of Job " + this.taskTracker.getUUID().toString() + ":", exception);
+            // Rethrow the exception. To be handled by the ReplayJob instance caller.
+            // Logging and setting job status to FAILED is handled over there too.
+            throw new RuntimeException(exception);
         }
     }
 
