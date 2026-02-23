@@ -23,12 +23,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.nio.file.Files;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.logging.FileHandler;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class Main {
 
@@ -44,11 +46,15 @@ public class Main {
     /// Write out all protocol enum type documentation to a directory. Intended to aid in development of RPC. Usage --outputTypeDocumentation="/path/to/the directory".
     private static String FLAG_OUTPUT_TYPE_DOCUMENTATION = "--outputTypeDocumentation";
 
+    private static File logFile = null;
+
 
     public static void main(String[] args) {
 
         // Any unhandled exceptions will cause the program to terminate.
         Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> Main.crash(throwable));
+
+        FileHandler fileLogHandler = null;
 
         try {
             long startTime = System.currentTimeMillis();
@@ -59,9 +65,24 @@ public class Main {
 
             // log queue to be used by the GUI Logs tab
             LinkedBlockingDeque<LogRecord> logQueue = new LinkedBlockingDeque<>(256);
-
             Log.LogCollectionHandler logCollectionHandler = new Log.LogCollectionHandler(logQueue);
             logger.addHandler(logCollectionHandler);
+
+            if (!ReplayPacketCleaner.APP_LOGS_FOLDER.exists()) {
+                ReplayPacketCleaner.APP_LOGS_FOLDER.mkdirs();
+            }
+
+            LocalDateTime localDateTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            int todaysLogNumber = 0;
+            do {
+                logFile = new File(ReplayPacketCleaner.APP_LOGS_FOLDER, formatter.format(localDateTime) + "_" + todaysLogNumber++ + ".log");
+            } while (logFile.exists());
+
+            fileLogHandler = new FileHandler(logFile.toString());
+            fileLogHandler.setFormatter(new SimpleFormatter());
+            logger.addHandler(fileLogHandler);
+
             Log.setLogger(logger);
 
 
@@ -178,9 +199,16 @@ public class Main {
             PrintWriter pWriter = new PrintWriter(sWriter);
             throwable.printStackTrace(pWriter);
 
+            StringBuilder message = new StringBuilder();
+            message.append("A fatal error has occurred and " + ReplayPacketCleaner.APP_NAME + " v" + ReplayPacketCleaner.APP_VERSION + " will now exit.\n\n");
+            if (logFile.exists()) {
+                message.append("Please include the log file at \"").append(logFile.toString()).append("\" when reporting this issue.\n\n");
+            }
+            message.append(sWriter.toString());
+
             SwingUtilities.invokeLater(() -> {
                 JOptionPane.showOptionDialog(null,
-                        "A fatal error has occurred and " + ReplayPacketCleaner.APP_NAME + " v" + ReplayPacketCleaner.APP_VERSION + " will now exit.\n\n" + sWriter.toString(),
+                        message.toString(),
                         "That wasn't supposed to happen...",
                         JOptionPane.DEFAULT_OPTION,
                         JOptionPane.ERROR_MESSAGE,

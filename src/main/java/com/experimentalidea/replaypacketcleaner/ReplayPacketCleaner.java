@@ -39,6 +39,9 @@ public class ReplayPacketCleaner {
 
     public static final String APP_NAME = "Replay Packet Cleaner";
     public static final String APP_VERSION = "0.2.3-alpha-snapshot";
+    public static final String APP_FOLDER_NAME = System.getProperty("os.name").toLowerCase().contains("windows") ? APP_NAME : "." + APP_NAME.replaceAll(" ", "");
+    public static final File APP_ROOT_FOLDER = (System.getProperty("os.name").toLowerCase().contains("windows") && System.getenv("APPDATA") != null) ? new File(System.getenv("APPDATA"), APP_FOLDER_NAME) : new File(System.getProperty("user.home"), APP_FOLDER_NAME);
+    public static final File APP_LOGS_FOLDER = new File(APP_ROOT_FOLDER, "logs");
 
     /// @see com.experimentalidea.replaypacketcleaner.config.Option
     public static final int APP_PROFILE_JSON_VERSION = 1;
@@ -85,15 +88,21 @@ public class ReplayPacketCleaner {
 
         ReplayPacketCleaner instance = new ReplayPacketCleaner();
 
+        if(!ReplayPacketCleaner.APP_ROOT_FOLDER.exists()){
+            ReplayPacketCleaner.APP_ROOT_FOLDER.mkdir();
+        }
+        Log.info("App directory located at " + ReplayPacketCleaner.APP_ROOT_FOLDER.toString());
+
         instance.asyncReads = asyncReplayReads;
         instance.asyncWrites = asyncReplayWrites;
 
         try {
-            instance.tempDirectory = Files.createTempDirectory(instance.getClass().getName()).toFile();
+            instance.tempDirectory = Files.createTempDirectory(instance.getClass().getPackageName()).toFile();
         } catch (IOException e) {
             throw new RuntimeException("Failed to create a temp directory");
         }
         instance.tempDirectory.deleteOnExit();
+        Log.info("Temp directory created at " + instance.tempDirectory.toString());
 
         int threads = Runtime.getRuntime().availableProcessors() - 1;
         if (threads < 1) {
