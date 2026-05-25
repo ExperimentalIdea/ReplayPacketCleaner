@@ -522,12 +522,16 @@ public class ReplayManipulationTask implements Runnable {
             int timeStamp = this.reader.readInt();
             int packetSize = this.reader.readInt();
             int packetID = this.reader.readVarInt();
-            int[] data = this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID));
+            int packetIDVarIntSize = ReplayWriter.sizeOfVarInt(packetID);
+            int[] data = this.reader.readByteArray(packetSize - packetIDVarIntSize);
 
             this.writer.writeInt(timeStamp);
             this.writer.writeInt(packetSize);
             this.writer.writeVarInt(packetID);
             this.writer.writeByteArray(data);
+
+            // Add the total number of bytes the being passed through. - this is used for some basic error checking.
+            this.totalSizeOfLastPacketWritten += 8 + packetIDVarIntSize + data.length;
 
             if (packetID == this.protocol.getConfigurationPacketID(PacketType.Configuration.FINISH_CONFIGURATION)) {
                 // Now at the "play" state.
