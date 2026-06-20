@@ -15,6 +15,7 @@
  * */
 package com.experimentalidea.replaypacketcleaner.gui;
 
+import com.experimentalidea.replaypacketcleaner.Log;
 import com.experimentalidea.replaypacketcleaner.ReplayPacketCleaner;
 import com.experimentalidea.replaypacketcleaner.protocol.*;
 import org.json.JSONArray;
@@ -873,7 +874,7 @@ public class ProtocolGenerationWindow {
                 JSONObject entrySource = entriesNode.getJSONObject(unknownResourceKey);
                 JSONObject entryTarget = new JSONObject();
                 entryTarget.put(TypeMetadata.JSON_NODE_ID, entrySource.getInt("protocol_id"));
-                entryTarget.put(TypeMetadata.JSON_NODE_RESOURCE, entrySource.getString("resource"));
+                entryTarget.put(TypeMetadata.JSON_NODE_RESOURCE, unknownResourceKey);
                 entryTarget.put(TypeMetadata.JSON_NODE_BLOCKSTATES, blockStates.get(i));
 
                 currentNode.put("*" + jsonKeys.get(i).toUpperCase(), entryTarget);
