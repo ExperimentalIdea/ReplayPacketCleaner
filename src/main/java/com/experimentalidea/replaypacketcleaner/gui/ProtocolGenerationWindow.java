@@ -259,22 +259,23 @@ public class ProtocolGenerationWindow {
                                 }
                                 referenceIds.put(type, referenceProtocol.getConfigurationPacketID(type));
                             }
-                        }
-                        if (packetsJSON != null) {
-                            try {
-                                populateJSON(rootProtocolJSON, undefinedProtocolResourcesJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Configuration.values(), log, "configuration", "clientbound");
-                            } catch (RuntimeException e) {
-                                log.append(e.getMessage()).append("\nAssuming the configuration phase is unsupported by this protocol version.\n");
+
+                            if (packetsJSON != null) {
+                                try {
+                                    populateJSON(rootProtocolJSON, undefinedProtocolResourcesJSON, packetsJSON, referenceResources, referenceUnsupportedTypes, PacketType.Configuration.values(), log, "configuration", "clientbound");
+                                } catch (RuntimeException e) {
+                                    log.append(e.getMessage()).append("\nAssuming the configuration phase is unsupported by this protocol version.\n");
+                                }
+                            } else if (hasBurgerPacketInstructions) {
+                                populateProtocolJSONViaBurger(rootProtocolJSON, packetInstructionsRefJSON, packetInstructionsGenJSON, referenceIds, PacketType.Configuration.values(), log, "CONFIGURATION_CLIENTBOUND_");
+                            } else {
+                                log.append("\npackets.json not provided. Generating fields with default id value of -1 for all fields preset in reference.");
+                                populateBlankProtocolJSON(rootProtocolJSON, referenceUnsupportedTypes, PacketType.Configuration.values(), log);
                             }
-                        } else if (hasBurgerPacketInstructions) {
-                            populateProtocolJSONViaBurger(rootProtocolJSON, packetInstructionsRefJSON, packetInstructionsGenJSON, referenceIds, PacketType.Configuration.values(), log, "CONFIGURATION_CLIENTBOUND_");
-                        } else {
-                            log.append("\npackets.json not provided. Generating fields with default id value of -1 for all fields preset in reference.");
-                            populateBlankProtocolJSON(rootProtocolJSON, referenceUnsupportedTypes, PacketType.Configuration.values(), log);
+                            referenceResources.clear();
+                            referenceUnsupportedTypes.clear();
+                            referenceIds.clear();
                         }
-                        referenceResources.clear();
-                        referenceUnsupportedTypes.clear();
-                        referenceIds.clear();
 
                         // packets (login)
                         log.append("========\nClientbound Login Packets:\n");
