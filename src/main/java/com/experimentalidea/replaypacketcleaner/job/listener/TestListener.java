@@ -20,7 +20,7 @@ import com.experimentalidea.replaypacketcleaner.packet.listener.*;
 
 /// Used for testing the reading and writing of all packet type that can be listened on. This listener doesn't take any actions itself.
 public class TestListener implements BlockActionPacketListener, CustomSoundEffectPacketListener, DamageEventPacketListener,
-        EntityAnimationPacketListener, EntityEffectPacketListener, EntityEventPacketListener, EntitySoundEffectPacketListener,
+        EntityAnimationPacketListener, EntityEffectPacketListener, EntityEventPacketListener, EntityMovementPacketListener, EntitySoundEffectPacketListener,
         HurtAnimationPacketListener, LinkEntitiesPacketListener, MoveMinecartAlongTrackPacketListener, ParticlePacketListener,
         PickupItemPacketListener, ProjectilePowerPacketListener, RemoveEntitiesPacketListener, RemoveEntityEffectPacketListener,
         SetEntityMetadataPacketListener, SetEntityVelocityPacketListener, SetEquipmentPacketListener, SetHeadRotationPacketListener,
@@ -60,7 +60,12 @@ public class TestListener implements BlockActionPacketListener, CustomSoundEffec
     }
 
     @Override
-    public void onEntityEvent(EntityEventPacket entityEventPacket) {
+    public void onEntityEventPacket(EntityEventPacket entityEventPacket) {
+
+    }
+
+    @Override
+    public void onEntityMovementPacket(EntityMovementPacket entityMovementPacket) {
 
     }
 

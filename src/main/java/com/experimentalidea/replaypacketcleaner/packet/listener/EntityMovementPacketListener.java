@@ -15,10 +15,11 @@
  * */
 package com.experimentalidea.replaypacketcleaner.packet.listener;
 
-import com.experimentalidea.replaypacketcleaner.packet.EntityEventPacket;
+import com.experimentalidea.replaypacketcleaner.packet.EntityEffectPacket;
+import com.experimentalidea.replaypacketcleaner.packet.EntityMovementPacket;
 
-public interface EntityEventPacketListener extends PacketListener {
+public interface EntityMovementPacketListener extends PacketListener {
 
-    public void onEntityEventPacket(EntityEventPacket entityEventPacket);
+    public void onEntityMovementPacket(EntityMovementPacket entityMovementPacket);
 
 }

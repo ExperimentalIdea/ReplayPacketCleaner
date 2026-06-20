@@ -53,6 +53,7 @@ public class ReplayManipulationTask implements Runnable {
         List<EntityAnimationPacketListener> entityAnimationPacketListenerList = new ArrayList<EntityAnimationPacketListener>(packetListeners.length);
         List<EntityEffectPacketListener> entityEffectPacketListenerList = new ArrayList<EntityEffectPacketListener>(packetListeners.length);
         List<EntityEventPacketListener> entityEventPacketListenerList = new ArrayList<EntityEventPacketListener>(packetListeners.length);
+        List<EntityMovementPacketListener> entityMovementPacketListeners = new ArrayList<EntityMovementPacketListener>(packetListeners.length);
         List<EntitySoundEffectPacketListener> entitySoundEffectPacketListenerList = new ArrayList<EntitySoundEffectPacketListener>(packetListeners.length);
         List<GameEventPacketListener> gameEventPacketListenerList = new ArrayList<GameEventPacketListener>(packetListeners.length);
         List<HurtAnimationPacketListener> hurtAnimationPacketListenerList = new ArrayList<HurtAnimationPacketListener>(packetListeners.length);
@@ -107,6 +108,9 @@ public class ReplayManipulationTask implements Runnable {
             }
             if (listener instanceof EntitySoundEffectPacket) {
                 entitySoundEffectPacketListenerList.add((EntitySoundEffectPacketListener) listener);
+            }
+            if (listener instanceof EntityMovementPacketListener) {
+                entityMovementPacketListeners.add((EntityMovementPacketListener) listener);
             }
             if (listener instanceof GameEventPacketListener) {
                 gameEventPacketListenerList.add((GameEventPacketListener) listener);
@@ -202,6 +206,7 @@ public class ReplayManipulationTask implements Runnable {
         this.entityEffectPacketListeners = entityEffectPacketListenerList.toArray(new EntityEffectPacketListener[0]);
         this.entityEventPacketListeners = entityEventPacketListenerList.toArray(new EntityEventPacketListener[0]);
         this.entitySoundEffectPacketListeners = entitySoundEffectPacketListenerList.toArray(new EntitySoundEffectPacketListener[0]);
+        this.entityMovementPacketListeners = entityMovementPacketListeners.toArray(new EntityMovementPacketListener[0]);
         this.gameEventPacketListeners = gameEventPacketListenerList.toArray(new GameEventPacketListener[0]);
         this.hurtAnimationPacketListeners = hurtAnimationPacketListenerList.toArray(new HurtAnimationPacketListener[0]);
         this.linkEntitiesPacketListeners = linkEntitiesPacketListenerList.toArray(new LinkEntitiesPacketListener[0]);
@@ -249,6 +254,7 @@ public class ReplayManipulationTask implements Runnable {
     private final EntityAnimationPacketListener[] entityAnimationPacketListeners;
     private final EntityEffectPacketListener[] entityEffectPacketListeners;
     private final EntityEventPacketListener[] entityEventPacketListeners;
+    private final EntityMovementPacketListener[] entityMovementPacketListeners;
     private final EntitySoundEffectPacketListener[] entitySoundEffectPacketListeners;
     private final GameEventPacketListener[] gameEventPacketListeners;
     private final HurtAnimationPacketListener[] hurtAnimationPacketListeners;
@@ -364,6 +370,8 @@ public class ReplayManipulationTask implements Runnable {
                 int packetID = this.reader.readVarInt();
                 PacketType.Play packetType = this.protocol.getPlayPacketType(packetID);
 
+                this.totalSizeOfLastPacketWritten = 0;
+
                 switch (packetType) {
 
                     case START_CONFIGURATION -> {
@@ -385,6 +393,8 @@ public class ReplayManipulationTask implements Runnable {
                     case ENTITY_EFFECT -> this.handleEntityEffectPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case ENTITY_EVENT -> this.handleEntityEventPacket(packetIndex, timeStamp, packetSize, packetID);
+
+                    case ENTITY_MOVEMENT -> this.handleEntityMovementPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case ENTITY_SOUND_EFFECT -> this.handleEntitySoundEffectPacket(packetIndex, timeStamp, packetSize, packetID);
 
@@ -493,7 +503,7 @@ public class ReplayManipulationTask implements Runnable {
     private void writePacketHeader(int timeStamp, int packetSize, int packetID) throws IOException {
         this.writer.writeInt(timeStamp);
         this.writer.writeInt(packetSize);
-        this.totalSizeOfLastPacketWritten = 8 + packetSize; // Total number of bytes the full packet should be. - this is used for some basic error checking.
+        this.totalSizeOfLastPacketWritten += 8 + packetSize; // Total number of bytes the full packet should be. - this is used for some basic error checking.
         this.writer.writeVarInt(packetID);
 
     }
@@ -847,7 +857,7 @@ public class ReplayManipulationTask implements Runnable {
 
             // Let listener(s) cancel this packet.
             for (EntityEventPacketListener listener : this.entityEventPacketListeners) {
-                listener.onEntityEvent(entityEventPacket);
+                listener.onEntityEventPacket(entityEventPacket);
             }
 
             // Write out the full packet (if the packet should be written out)
@@ -855,6 +865,28 @@ public class ReplayManipulationTask implements Runnable {
                 this.writePacketHeader(timeStamp, packetSize, packetID);
                 this.writer.writeInt(entityID);
                 this.writer.writeByte(entityStatusByte);
+            }
+        } else {
+            this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));
+        }
+    }
+
+    private void handleEntityMovementPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws IOException {
+        if (this.entityMovementPacketListeners.length > 0) {
+            // Read packet data
+            int entityID = this.reader.readVarInt();
+
+            EntityMovementPacket EntityMovementPacket = new EntityMovementPacket(packetIndex, timeStamp, entityID);
+
+            // Let listener(s) cancel this packet.
+            for (EntityMovementPacketListener listener : this.entityMovementPacketListeners) {
+                listener.onEntityMovementPacket(EntityMovementPacket);
+            }
+
+            // Write out the full packet (if the packet should be written out)
+            if (!EntityMovementPacket.isWriteCanceled()) {
+                this.writePacketHeader(timeStamp, packetSize, packetID);
+                this.writer.writeInt(entityID);
             }
         } else {
             this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));
@@ -1188,9 +1220,9 @@ public class ReplayManipulationTask implements Runnable {
             int length;
             int[] entityIDs;
 
-            // In protocol versions prior to 756 (1.17.1), this packet contains only a single field for removing one entity.
-            // Unlike in 1.17.1 onward, where the first field is a VarInt of the length of a VarInt array of entity ID's to be remove.
-            if (this.protocolVersion > Version.MC_1_17_0) {
+            // In protocol version 755 (1.17.0), this packet contains only a single field for removing one entity.
+            // Unlike in 1.17.1 onward/1.16.4 and before, where the first field is a VarInt of the length of a VarInt array of entity ID's to be remove.
+            if (this.protocolVersion != Version.MC_1_17_0) {
                 length = this.reader.readVarInt();
                 entityIDs = new int[length];
                 for (int i = 0; i < entityIDs.length; i++) {
@@ -1213,7 +1245,7 @@ public class ReplayManipulationTask implements Runnable {
                 entityIDs = removeEntitiesPacket.getEntityIDs();
                 if (entityIDs.length != 0) { // If the array of entities to be remove is zero, there is no point in writing out this packet.
 
-                    if (this.protocolVersion > Version.MC_1_17_0) {
+                    if (this.protocolVersion != Version.MC_1_17_0) {
                         // Determine the new size of this packet in bytes before writing out.
                         int updatedPacketSize = ReplayWriter.sizeOfVarInt(packetID) + ReplayWriter.sizeOfVarInt(entityIDs.length);
                         for (int id : entityIDs) {
@@ -1226,7 +1258,7 @@ public class ReplayManipulationTask implements Runnable {
                             this.writer.writeVarInt(id);
                         }
                     } else {
-                        // In addition to the difference in protocol versions prior to 756 (1.17.1),
+                        // In addition to the difference in protocol versions to 755 (1.17.0),
                         // there may be instances where a listener has added more entries of entities to be removed where only 1 at a time is supported.
                         // In such case, write out a packet for each instance of an entity id on the array.
                         for (int id : entityIDs) {

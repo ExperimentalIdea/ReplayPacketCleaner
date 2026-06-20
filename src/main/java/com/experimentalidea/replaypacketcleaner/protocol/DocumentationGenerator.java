@@ -309,6 +309,9 @@ public class DocumentationGenerator {
                     case COMBAT_DEATH -> {
                         return "Also referred to as \"Death Combat Event\" in versions before 1.19 on the Minecraft wiki.";
                     }
+                    case COMBAT_EVENT -> {
+                        return "Replaced by COMBAT_DEATH, END_COMBAT, & ENTER_COMBAT in newer versions";
+                    }
                     case COMMANDS -> {
                         return "Also referred to as \"Declare Commands\" in versions before 1.19 on the Minecraft wiki.";
                     }
@@ -317,7 +320,7 @@ public class DocumentationGenerator {
                     }
                     case CUSTOM_SOUND_EFFECT -> {
                         return "This packet's functionality was merged into SOUND_EFFECT in the next version." +
-                                "\nlso referred to as \"Named Sound Effect\" in versions before 1.19 on the Minecraft wiki.";
+                                "\nAlso referred to as \"Named Sound Effect\" in versions before 1.19 on the Minecraft wiki.";
                     }
                     case DELETE_MESSAGE -> {
                         return "Also known by the name \"Hide Message\" on the Minecraft wiki for 1.19.1/2 and prior.";
@@ -340,6 +343,9 @@ public class DocumentationGenerator {
                     case ENTITY_EVENT -> {
                         return "Also referred to as \"Entity Status\" in versions before 1.19 on the Minecraft wiki.";
                     }
+                    case ENTITY_MOVEMENT -> {
+                        return "For player entities this packet indicates a given entity hasn't moved this tick.";
+                    }
                     case ENTITY_SOUND_EFFECT -> {
                         return "NOTE: Packet structure changed in protocol 761+ (1.19.3+) and again in protocol 767+ (1.21.0+)";
                     }
@@ -348,6 +354,9 @@ public class DocumentationGenerator {
                     }
                     case FEATURE_FLAGS -> {
                         return "Replaced by Configuration.FEATURE_FLAGS in protocol version 764+ (1.20.2+)";
+                    }
+                    case GAME_EVENT -> {
+                        return "Also referred to as \"Change Game State\" in versions before 1.19 on the Minecraft wiki.";
                     }
                     case LINK_ENTITIES -> {
                         return "Also referred to as \"Attach Entity\" in versions before 1.19 on the Minecraft wiki.";
@@ -382,8 +391,8 @@ public class DocumentationGenerator {
                         return "NOTE: Packet structure changed since protocol 767+ (1.21.0+). Power XYZ fields reduced to single Power field.";
                     }
                     case REMOVE_ENTITIES -> {
-                        return "NOTE: Packet structure changed in protocol 756+ (1.17.1+)." +
-                                "\nAlso referred to as \"Destroy Entities\" in versions 1.17.1 to 1.19 on the Minecraft wiki and \"Destroy Entity\" for 1.17 and prior.";
+                        return "NOTE: Packet structure changed in protocol 755 (1.17) to only remove one entity. Was reverted the very next version." +
+                                "\nAlso referred to as \"Destroy Entities\" in versions before 1.19 on the Minecraft wiki and \"Destroy Entity\" for 1.17 ONLY";
                     }
                     case REMOVE_ENTITY_EFFECT -> {
                         return "For all potion/status effects. Also see PacketType.Play.ENTITY_EFFECT";
@@ -459,6 +468,9 @@ public class DocumentationGenerator {
                     case SET_TAB_LIST_HEADER_AND_FOOTER -> {
                         return "Also referred to as \"Player List Header And Footer\" in versions before 1.19 on the Minecraft wiki.";
                     }
+                    case SET_TITLE_ANIMATION_TIMES -> {
+                        return "Also referred to as \"Set Title Times\" in versions before 1.19 on the Minecraft wiki.";
+                    }
                     case SOUND_EFFECT -> {
                         return "NOTE: Packet structure changed in protocol 761+ (1.19.3+)." +
                                 "\nNOTE: Packet structure changed in protocol 767+ (1.21.0+).";
@@ -479,6 +491,9 @@ public class DocumentationGenerator {
                     case TELEPORT_ENTITY -> {
                         return "Also referred to as \"Entity Teleport\" in versions before 1.19 on the Minecraft wiki." +
                                 "\nNOTE: Packet structure changed since protocol 768+ (1.21.2+). New fields for velocity and yaw/pitch.";
+                    }
+                    case TITLE -> {
+                        return "Replaced by CLEAR_TITLES, SET_ACTION_BAR_TEXT, SET_SUBTITLE_TEXT, SET_TITLE_ANIMATION_TIMES, & SET_TITLE_TEXT.";
                     }
                     case UPDATE_ADVANCEMENTS -> {
                         return "Also referred to as \"Advancements\" in versions before 1.19 on the Minecraft wiki.";
@@ -522,6 +537,13 @@ public class DocumentationGenerator {
                     case UPDATE_TIME -> {
                         return "Also referred to as \"Time Update\" in versions before 1.19 on the Minecraft wiki." +
                                 "\nNOTE: Packet structure changed since protocol 768+ (1.21.2+). New field timeAdvances (timeOfDayIncreasing)";
+                    }
+                    case WINDOW_CONFIRMATION -> {
+                        return "If it hadn't been removed for 1.17+, this would of likely been updated/referred to as \"Screen Confirmation\" or" +
+                                "\n\"Container Confirmation\" in versions 1.19+ on the Minecraft wiki like the other packet types related to player inventory";
+                    }
+                    case WORLD_BORDER -> {
+                        return "Replaced by INITIALIZE_WORLD_BORDER, SET_BORDER_CENTER, SET_BORDER_LERP_SIZE, SET_BORDER_SIZE, SET_BORDER_WARNING_DELAY, & SET_BORDER_WARNING_DISTANCE.";
                     }
                     case WORLD_EVENT -> {
                         return "Also referred to as \"Effect\" in versions before 1.19 on the Minecraft wiki." +

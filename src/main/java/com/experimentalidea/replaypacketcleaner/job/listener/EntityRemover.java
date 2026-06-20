@@ -25,7 +25,7 @@ import java.util.List;
 /// Remove all entities, except players.
 public class EntityRemover implements SpawnEntityPacketListener, SpawnExperienceOrbPacketListener, SpawnLivingEntityPacketListener,
         SpawnPaintingPacketListener,SpawnPlayerPacketListener, RemoveEntitiesPacketListener,
-        DamageEventPacketListener, EntityAnimationPacketListener, EntityEffectPacketListener, EntityEventPacketListener, HurtAnimationPacketListener,
+        DamageEventPacketListener, EntityAnimationPacketListener, EntityEffectPacketListener, EntityEventPacketListener, EntityMovementPacketListener, HurtAnimationPacketListener,
         LinkEntitiesPacketListener, MoveMinecartAlongTrackPacketListener, PickupItemPacketListener, ProjectilePowerPacketListener,
         RemoveEntityEffectPacketListener, SetEntityMetadataPacketListener, SetEntityVelocityPacketListener, SetEquipmentPacketListener,
         SetHeadRotationPacketListener, SetPassengersPacketListener, SynchronizeVehiclePositionPacketListener, TeleportEntityPacketListener,
@@ -125,9 +125,16 @@ public class EntityRemover implements SpawnEntityPacketListener, SpawnExperience
     }
 
     @Override
-    public void onEntityEvent(EntityEventPacket entityEventPacket) {
+    public void onEntityEventPacket(EntityEventPacket entityEventPacket) {
         if (!this.exemptEntities.contains(entityEventPacket.getEntityID())) {
             entityEventPacket.setWriteCanceled(true);
+        }
+    }
+
+    @Override
+    public void onEntityMovementPacket(EntityMovementPacket entityMovementPacket) {
+        if (!this.exemptEntities.contains(entityMovementPacket.getEntityID())) {
+            entityMovementPacket.setWriteCanceled(true);
         }
     }
 
