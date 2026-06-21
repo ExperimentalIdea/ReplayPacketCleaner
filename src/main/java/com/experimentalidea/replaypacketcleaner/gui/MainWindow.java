@@ -151,6 +151,16 @@ public class MainWindow {
         this.logTabUpdateTimer.setRepeats(true);
         this.logTabUpdateTimer.start();
 
+        this.logsDirLabel.setText(ReplayPacketCleaner.APP_LOGS_FOLDER.toString());
+        if (Desktop.isDesktopSupported()) {
+            this.logsDirLabel.setVisible(false);
+            this.openLogsDirButton.addActionListener(new OpenLogsButtionListener());
+            this.currentLogFile.setText("<html>Current Log File:<br>" + Main.getLogFileName());
+        } else { // When not supported, fallback to just displaying the path.
+            this.logsDirLabel.setText(ReplayPacketCleaner.APP_LOGS_FOLDER.toString());
+            this.openLogsDirButton.setVisible(false);
+        }
+
         this.exportButton.addActionListener(new ExportButtonListener(this));
 
         // Option Panel Items
@@ -273,6 +283,9 @@ public class MainWindow {
     private JCheckBox removeEntitiesCheckbox;
     private JCheckBox removeParticlesCheckbox;
     private JCheckBox removeSoundCheckbox;
+    private JButton openLogsDirButton;
+    private JLabel logsDirLabel;
+    private JLabel currentLogFile;
 
 
     // Everything with the menu bar

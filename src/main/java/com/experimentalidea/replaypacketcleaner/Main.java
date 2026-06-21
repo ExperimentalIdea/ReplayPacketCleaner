@@ -248,6 +248,13 @@ public class Main {
         return childDirectory;
     }
 
+    public static String getLogFileName() {
+        if (Main.logFile == null) {
+            return "null";
+        }
+        return Main.logFile.getName();
+    }
+
 
 // System.getProperty("java.io.tmpdir"); // get the temp file directory
 // System.getProperty("user.home"); // Get the user home folder (linux/unix only I think...)
