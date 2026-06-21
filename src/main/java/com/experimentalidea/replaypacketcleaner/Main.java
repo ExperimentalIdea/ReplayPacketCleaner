@@ -243,7 +243,7 @@ public class Main {
         Files.writeString(new File(childDirectory, "Block.txt").toPath(), DocumentationGenerator.generateTypeDocumentation(protocolDirectory, Block.values()));
         Files.writeString(new File(childDirectory, "BlockEntity.txt").toPath(), DocumentationGenerator.generateTypeDocumentation(protocolDirectory, BlockEntity.values()));
         Files.writeString(new File(childDirectory, "EntityType.txt").toPath(), DocumentationGenerator.generateTypeDocumentation(protocolDirectory, EntityType.values()));
-        Files.writeString(new File(childDirectory, "Item.txt").toPath(), DocumentationGenerator.generateTypeDocumentation(protocolDirectory, EntityType.values()));
+        Files.writeString(new File(childDirectory, "Item.txt").toPath(), DocumentationGenerator.generateTypeDocumentation(protocolDirectory, Item.values()));
 
         return childDirectory;
     }
