@@ -24,7 +24,7 @@ public class TestListener implements BlockActionPacketListener, CustomSoundEffec
         HurtAnimationPacketListener, LinkEntitiesPacketListener, MoveMinecartAlongTrackPacketListener, ParticlePacketListener,
         PickupItemPacketListener, ProjectilePowerPacketListener, RemoveEntitiesPacketListener, RemoveEntityEffectPacketListener,
         SetEntityMetadataPacketListener, SetEntityVelocityPacketListener, SetEquipmentPacketListener, SetHeadRotationPacketListener,
-        SetPassengersPacketListener, SoundEffectPacketListener, SpawnEntityPacketListener, SpawnExperienceOrbPacketListener,
+        SetPassengersPacketListener, SoundEffectPacketListener, SpawnEntityPacketListener, SpawnExperienceOrbPacketListener, SpawnWeatherEntityPacketListener,
         SpawnLivingEntityPacketListener, SpawnPaintingPacketListener, SpawnPlayerPacketListener, SynchronizeVehiclePositionPacketListener,
         TeleportEntityPacketListener, UpdateAttributesPacketListener, UpdateEntityPositionAndRotationPacketListener, UpdateEntityPositionPacketListener,
         UpdateEntityRotationPacketListener, UpdateTimePacketListener, WorldEventPacketListener {
@@ -151,6 +151,11 @@ public class TestListener implements BlockActionPacketListener, CustomSoundEffec
 
     @Override
     public void onSpawnExperienceOrbPacket(SpawnExperienceOrbPacket spawnExperienceOrbPacket) {
+
+    }
+
+    @Override
+    public void onSpawnWeatherEntityPacket(SpawnWeatherEntityPacket spawnWeatherEntityPacket) {
 
     }
 

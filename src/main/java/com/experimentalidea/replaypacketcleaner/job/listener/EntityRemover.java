@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /// Remove all entities, except players.
-public class EntityRemover implements SpawnEntityPacketListener, SpawnExperienceOrbPacketListener, SpawnLivingEntityPacketListener,
-        SpawnPaintingPacketListener,SpawnPlayerPacketListener, RemoveEntitiesPacketListener,
+public class EntityRemover implements SpawnEntityPacketListener, SpawnExperienceOrbPacketListener, SpawnWeatherEntityPacketListener,
+        SpawnLivingEntityPacketListener, SpawnPaintingPacketListener, SpawnPlayerPacketListener, RemoveEntitiesPacketListener,
         DamageEventPacketListener, EntityAnimationPacketListener, EntityEffectPacketListener, EntityEventPacketListener, EntityMovementPacketListener, HurtAnimationPacketListener,
         LinkEntitiesPacketListener, MoveMinecartAlongTrackPacketListener, PickupItemPacketListener, ProjectilePowerPacketListener,
         RemoveEntityEffectPacketListener, SetEntityMetadataPacketListener, SetEntityVelocityPacketListener, SetEquipmentPacketListener,
@@ -53,6 +53,12 @@ public class EntityRemover implements SpawnEntityPacketListener, SpawnExperience
     @Override
     public void onSpawnExperienceOrbPacket(SpawnExperienceOrbPacket spawnExperienceOrbPacket) {
         spawnExperienceOrbPacket.setWriteCanceled(true);
+    }
+
+    // Spawn Weather Entity. (Note: this packet type was removed and merged into Spawn Entity(?) in protocol 735+ / MC 1.16+)
+    @Override
+    public void onSpawnWeatherEntityPacket(SpawnWeatherEntityPacket spawnWeatherEntityPacket) {
+        spawnWeatherEntityPacket.setWriteCanceled(true);
     }
 
     // Spawn Living Entity. (Note: this packet type was removed and merged into Spawn Entity in protocol 759+ / MC 1.19+)
@@ -101,7 +107,7 @@ public class EntityRemover implements SpawnEntityPacketListener, SpawnExperience
     }
 
 
-    // If a packet involves an entity that is getting removed, cancel writing out all the associated packets for that entity.
+// If a packet involves an entity that is getting removed, cancel writing out all the associated packets for that entity.
 
     @Override
     public void onDamageEventPacket(DamageEventPacket damageEventPacket) {

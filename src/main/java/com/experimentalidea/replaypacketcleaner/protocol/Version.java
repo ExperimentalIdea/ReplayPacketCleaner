@@ -18,6 +18,15 @@ package com.experimentalidea.replaypacketcleaner.protocol;
 public class Version {
 
 
+    public static final int MC_1_15_0 = 573;
+    public static final int MC_1_15_1 = 575;
+    public static final int MC_1_15_2 = 578;
+    public static final int MC_1_16_0 = 735;
+    public static final int MC_1_16_1 = 736;
+    public static final int MC_1_16_2 = 751;
+    public static final int MC_1_16_3 = 753;
+    public static final int MC_1_16_4 = 754;
+    public static final int MC_1_16_5 = 754;
     public static final int MC_1_17_0 = 755;
     public static final int MC_1_17_1 = 756;
     public static final int MC_1_18_0 = 757;

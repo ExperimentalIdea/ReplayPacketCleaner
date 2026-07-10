@@ -72,6 +72,7 @@ public class ReplayManipulationTask implements Runnable {
         List<SoundEffectPacketListener> soundEffectPacketListenerList = new ArrayList<SoundEffectPacketListener>(packetListeners.length);
         List<SpawnEntityPacketListener> spawnEntityPacketListenerList = new ArrayList<SpawnEntityPacketListener>(packetListeners.length);
         List<SpawnExperienceOrbPacketListener> spawnExperienceOrbPacketListenerList = new ArrayList<SpawnExperienceOrbPacketListener>(packetListeners.length);
+        List<SpawnWeatherEntityPacketListener> spawnWeatherEntityPacketListenerList = new ArrayList<SpawnWeatherEntityPacketListener>(packetListeners.length);
         List<SpawnLivingEntityPacketListener> spawnLivingEntityPacketListenerList = new ArrayList<SpawnLivingEntityPacketListener>(packetListeners.length);
         List<SpawnPaintingPacketListener> spawnPaintingPacketListenerList = new ArrayList<SpawnPaintingPacketListener>(packetListeners.length);
         List<SpawnPlayerPacketListener> spawnPlayerPacketListenerList = new ArrayList<SpawnPlayerPacketListener>(packetListeners.length);
@@ -163,6 +164,9 @@ public class ReplayManipulationTask implements Runnable {
             if (listener instanceof SpawnExperienceOrbPacketListener) {
                 spawnExperienceOrbPacketListenerList.add((SpawnExperienceOrbPacketListener) listener);
             }
+            if (listener instanceof SpawnWeatherEntityPacketListener) {
+                spawnWeatherEntityPacketListenerList.add((SpawnWeatherEntityPacketListener) listener);
+            }
             if (listener instanceof SpawnLivingEntityPacketListener) {
                 spawnLivingEntityPacketListenerList.add((SpawnLivingEntityPacketListener) listener);
             }
@@ -224,6 +228,7 @@ public class ReplayManipulationTask implements Runnable {
         this.soundEffectPacketListeners = soundEffectPacketListenerList.toArray(new SoundEffectPacketListener[0]);
         this.spawnEntityPacketListeners = spawnEntityPacketListenerList.toArray(new SpawnEntityPacketListener[0]);
         this.spawnExperienceOrbPacketListeners = spawnExperienceOrbPacketListenerList.toArray(new SpawnExperienceOrbPacketListener[0]);
+        this.spawnWeatherEntityPacketListeners = spawnWeatherEntityPacketListenerList.toArray(new SpawnWeatherEntityPacketListener[0]);
         this.spawnLivingEntityPacketListeners = spawnLivingEntityPacketListenerList.toArray(new SpawnLivingEntityPacketListener[0]);
         this.spawnPaintingPacketListeners = spawnPaintingPacketListenerList.toArray(new SpawnPaintingPacketListener[0]);
         this.spawnPlayerPacketListeners = spawnPlayerPacketListenerList.toArray(new SpawnPlayerPacketListener[0]);
@@ -273,6 +278,7 @@ public class ReplayManipulationTask implements Runnable {
     private final SoundEffectPacketListener[] soundEffectPacketListeners;
     private final SpawnEntityPacketListener[] spawnEntityPacketListeners;
     private final SpawnExperienceOrbPacketListener[] spawnExperienceOrbPacketListeners;
+    private final SpawnWeatherEntityPacketListener[] spawnWeatherEntityPacketListeners;
     private final SpawnLivingEntityPacketListener[] spawnLivingEntityPacketListeners;
     private final SpawnPaintingPacketListener[] spawnPaintingPacketListeners;
     private final SpawnPlayerPacketListener[] spawnPlayerPacketListeners;
@@ -314,7 +320,10 @@ public class ReplayManipulationTask implements Runnable {
             if (this.protocolVersion > Version.MC_1_20_1) {
                 this.passthroughConfigurationPackets();
             } else {
-                this.passthroughLoginPackets();
+                if(this.protocolVersion > Version.MC_1_15_2) {
+                    // Appears replays start in the Play connection state for 1.15.2 & older? (1.16.0 untested)
+                    this.passthroughLoginPackets();
+                }
             }
 
             int startingReplayTimeStamp = this.reader.readInt();
@@ -431,6 +440,8 @@ public class ReplayManipulationTask implements Runnable {
                     case SPAWN_ENTITY -> this.handleSpawnEntityPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case SPAWN_EXPERIENCE_ORB -> this.handleSpawnExperienceOrbPacket(packetIndex, timeStamp, packetSize, packetID);
+
+                    case SPAWN_WEATHER_ENTITY -> this.handleSpawnWeatherEntityPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case SPAWN_LIVING_ENTITY -> this.handleSpawnLivingEntityPacket(packetIndex, timeStamp, packetSize, packetID);
 
@@ -1633,6 +1644,36 @@ public class ReplayManipulationTask implements Runnable {
                 this.writer.writeDouble(y);
                 this.writer.writeDouble(z);
                 this.writer.writeShort(count);
+            }
+        } else {
+            this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));
+        }
+    }
+
+    private void handleSpawnWeatherEntityPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws IOException {
+        if (this.spawnWeatherEntityPacketListeners.length > 0) {
+            // Read packet data
+            int entityID = this.reader.readVarInt();
+            int typeEnumByte = this.reader.readByte();
+            double x = this.reader.readDouble();
+            double y = this.reader.readDouble();
+            double z = this.reader.readDouble();
+
+            SpawnWeatherEntityPacket spawnWeatherEntityPacket = new SpawnWeatherEntityPacket(packetIndex, timeStamp, entityID, typeEnumByte, x, y, z);
+
+            // Let listener(s) cancel this packet.
+            for (SpawnWeatherEntityPacketListener listener : this.spawnWeatherEntityPacketListeners) {
+                listener.onSpawnWeatherEntityPacket(spawnWeatherEntityPacket);
+            }
+
+            // Write out the full packet (if the packet should be written out)
+            if (!spawnWeatherEntityPacket.isWriteCanceled()) {
+                this.writePacketHeader(timeStamp, packetSize, packetID);
+                this.writer.writeVarInt(entityID);
+                this.writer.writeByte(typeEnumByte);
+                this.writer.writeDouble(x);
+                this.writer.writeDouble(y);
+                this.writer.writeDouble(z);
             }
         } else {
             this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));

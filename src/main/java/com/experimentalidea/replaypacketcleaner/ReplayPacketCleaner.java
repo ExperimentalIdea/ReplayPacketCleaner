@@ -38,7 +38,7 @@ public class ReplayPacketCleaner {
     }
 
     public static final String APP_NAME = "Replay Packet Cleaner";
-    public static final String APP_VERSION = "0.2.4-alpha-snapshot";
+    public static final String APP_VERSION = "0.2.4-alpha-snapshot"; // Update version in pom.xml to match.
     public static final String APP_FOLDER_NAME = System.getProperty("os.name").toLowerCase().contains("windows") ? APP_NAME : "." + APP_NAME.replaceAll(" ", "");
     public static final File APP_ROOT_FOLDER = (System.getProperty("os.name").toLowerCase().contains("windows") && System.getenv("APPDATA") != null) ? new File(System.getenv("APPDATA"), APP_FOLDER_NAME) : new File(System.getProperty("user.home"), APP_FOLDER_NAME);
     public static final File APP_LOGS_FOLDER = new File(APP_ROOT_FOLDER, "logs");
@@ -88,7 +88,7 @@ public class ReplayPacketCleaner {
 
         ReplayPacketCleaner instance = new ReplayPacketCleaner();
 
-        if(!ReplayPacketCleaner.APP_ROOT_FOLDER.exists()){
+        if (!ReplayPacketCleaner.APP_ROOT_FOLDER.exists()) {
             ReplayPacketCleaner.APP_ROOT_FOLDER.mkdir();
         }
         Log.info("App directory located at " + ReplayPacketCleaner.APP_ROOT_FOLDER.toString());

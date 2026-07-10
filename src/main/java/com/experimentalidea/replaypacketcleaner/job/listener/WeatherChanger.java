@@ -15,20 +15,14 @@
  * */
 package com.experimentalidea.replaypacketcleaner.job.listener;
 
-import com.experimentalidea.replaypacketcleaner.packet.RemoveEntitiesPacket;
-import com.experimentalidea.replaypacketcleaner.packet.SpawnEntityPacket;
-import com.experimentalidea.replaypacketcleaner.packet.listener.GameEventPacketListener;
-import com.experimentalidea.replaypacketcleaner.packet.listener.RemoveEntitiesPacketListener;
-import com.experimentalidea.replaypacketcleaner.packet.listener.SpawnEntityPacketListener;
-import com.experimentalidea.replaypacketcleaner.packet.listener.StartOfReplayPacketInserter;
-import com.experimentalidea.replaypacketcleaner.packet.GameEventPacket;
-import com.experimentalidea.replaypacketcleaner.packet.Packet;
+import com.experimentalidea.replaypacketcleaner.packet.*;
+import com.experimentalidea.replaypacketcleaner.packet.listener.*;
 import com.experimentalidea.replaypacketcleaner.protocol.EntityType;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeatherChanger implements GameEventPacketListener, SpawnEntityPacketListener, RemoveEntitiesPacketListener, StartOfReplayPacketInserter {
+public class WeatherChanger implements GameEventPacketListener, SpawnEntityPacketListener, SpawnWeatherEntityPacketListener, RemoveEntitiesPacketListener, StartOfReplayPacketInserter {
 
     /**
      * Creates {@link GameEventPacketListener} / {@link StartOfReplayPacketInserter} that fixes the weather to a set state.
@@ -100,6 +94,14 @@ public class WeatherChanger implements GameEventPacketListener, SpawnEntityPacke
                 this.lightingStrikeEntityIDs.add(spawnEntityPacket.getEntityID());
                 spawnEntityPacket.setWriteCanceled(true);
             }
+        }
+    }
+
+    @Override
+    public void onSpawnWeatherEntityPacket(SpawnWeatherEntityPacket spawnWeatherEntityPacket) {
+        if (this.removeLightingStrikes) {
+            this.lightingStrikeEntityIDs.add(spawnWeatherEntityPacket.getEntityID());
+            spawnWeatherEntityPacket.setWriteCanceled(true);
         }
     }
 
