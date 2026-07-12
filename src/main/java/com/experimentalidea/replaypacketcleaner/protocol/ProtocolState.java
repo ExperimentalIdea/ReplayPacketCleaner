@@ -36,7 +36,7 @@ public enum ProtocolState {
 
     /**
      * The Login connection state.
-     * Replays recorded in protocol version 763 (1.20.1) and older begin in this protocol state.
+     * Replays recorded in protocol version 735 (1.16.0) to 763 (1.20.1) begin in this protocol state.
      * <p>
      * After PacketType.Login.LOGIN_SUCCESS, the protocol switches the state to PLAY.
      * */
@@ -45,6 +45,7 @@ public enum ProtocolState {
     /**
      * The Play connection state.
      * This is the phase where RPC will monitor, alter, and delete packets from a replay.
+     * Replays recorded in protocol version 575 (1.15.2) and older begin in the PLAY state.
      * <p>
      * Replays recorded in protocol versions 764 (1.20.2) and newer can switch the protocol state
      * from PLAY to CONFIGURATION upon hitting PacketType.Play.START_CONFIGURATION.

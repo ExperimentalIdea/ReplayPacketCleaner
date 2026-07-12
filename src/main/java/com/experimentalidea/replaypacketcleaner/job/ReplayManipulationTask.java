@@ -320,7 +320,7 @@ public class ReplayManipulationTask implements Runnable {
             if (this.protocolVersion > Version.MC_1_20_1) {
                 this.passthroughConfigurationPackets();
             } else {
-                if(this.protocolVersion > Version.MC_1_15_2) {
+                if (this.protocolVersion > Version.MC_1_15_2) {
                     // Appears replays start in the Play connection state for 1.15.2 & older? (1.16.0 untested)
                     this.passthroughLoginPackets();
                 }
@@ -610,7 +610,12 @@ public class ReplayManipulationTask implements Runnable {
                             case GameEventPacket.GameEventType.THUNDER_LEVEL_CHANGE -> this.writer.writeByte(8);
                             case GameEventPacket.GameEventType.PLAY_PUFFERFISH_STING_SOUND -> this.writer.writeByte(9);
                             case GameEventPacket.GameEventType.PLAY_ELDER_GUARDIAN_APPEARANCE -> this.writer.writeByte(10);
-                            case GameEventPacket.GameEventType.ENABLE_RESPAWN_SCREEN -> this.writer.writeByte(11);
+                            case GameEventPacket.GameEventType.ENABLE_RESPAWN_SCREEN -> {
+                                if (this.protocolVersion < Version.MC_1_15_0) { // Enable respawn screen is unsupported in protocol versions 498 (1.14.4) and older.
+                                    throw new UnsupportedOperationException("GameEventPacket.GameEventType.ENABLE_RESPAWN_SCREEN is unsupported for this protocol version");
+                                }
+                                this.writer.writeByte(11);
+                            }
                             case GameEventPacket.GameEventType.LIMITED_CRAFTING -> {
                                 if (this.protocolVersion < Version.MC_1_20_2) { // Limited crafting is unsupported in protocol versions 763 (1.20.0/1) and older.
                                     throw new UnsupportedOperationException("GameEventPacket.GameEventType.LIMITED_CRAFTING is unsupported for this protocol version");
@@ -1103,9 +1108,18 @@ public class ReplayManipulationTask implements Runnable {
             if (this.protocolVersion > Version.MC_1_21_3) {
                 alwaysVisible = this.reader.readBoolean();
             }
-            double x = this.reader.readDouble();
-            double y = this.reader.readDouble();
-            double z = this.reader.readDouble();
+            double x;
+            double y;
+            double z;
+            if (this.protocolVersion > Version.MC_1_14_4) { // In protocol 573+ (1.15+) and newer the xyz fields were changed from floats to doubles
+                x = this.reader.readDouble();
+                y = this.reader.readDouble();
+                z = this.reader.readDouble();
+            } else {
+                x = this.reader.readFloat();
+                y = this.reader.readFloat();
+                z = this.reader.readFloat();
+            }
             float offsetX = this.reader.readFloat();
             float offsetY = this.reader.readFloat();
             float offsetZ = this.reader.readFloat();
@@ -1141,9 +1155,15 @@ public class ReplayManipulationTask implements Runnable {
                 if (this.protocolVersion > Version.MC_1_21_3) {
                     this.writer.writeBoolean(alwaysVisible);
                 }
-                this.writer.writeDouble(x);
-                this.writer.writeDouble(y);
-                this.writer.writeDouble(z);
+                if (this.protocolVersion > Version.MC_1_14_4) {
+                    this.writer.writeDouble(x);
+                    this.writer.writeDouble(y);
+                    this.writer.writeDouble(z);
+                } else {
+                    this.writer.writeFloat((float) x);
+                    this.writer.writeFloat((float) y);
+                    this.writer.writeFloat((float) z);
+                }
                 this.writer.writeFloat(offsetX);
                 this.writer.writeFloat(offsetY);
                 this.writer.writeFloat(offsetZ);
@@ -1683,6 +1703,8 @@ public class ReplayManipulationTask implements Runnable {
     /// Note: Spawn Living Entity packet was removed and merged with Spawn Entity packet in protocol version 759+ (1.19+)
     private void handleSpawnLivingEntityPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws IOException {
         if (this.spawnLivingEntityPacketListeners.length > 0) {
+            long startingBytesReadCount = this.reader.bytesRead();
+
             // Read packet data
             int entityID = this.reader.readVarInt();
             long uuidMostSignificantBits = this.reader.readLong();
@@ -1698,10 +1720,15 @@ public class ReplayManipulationTask implements Runnable {
             short velocityX = this.reader.readShort();
             short velocityY = this.reader.readShort();
             short velocityZ = this.reader.readShort();
+            int[] metadataRawBytes = null;
+            if (this.protocolVersion < Version.MC_1_15_0) { // Before version 1.15.0, an entity metadata field is included.
+                int metadataSize = (packetSize - ReplayWriter.sizeOfVarInt(packetID)) - (int) (this.reader.bytesRead() - startingBytesReadCount);
+                metadataRawBytes = this.reader.readByteArray(metadataSize);
+            }
 
             EntityType entityType = this.protocol.getEntityType(entityTypeID);
 
-            SpawnLivingEntityPacket spawnLivingEntityPacket = new SpawnLivingEntityPacket(packetIndex, timeStamp, entityID, new UUID(uuidMostSignificantBits, uuidLeastSignificantBits), entityType, x, y, z, yaw, pitch, headYaw, velocityX, velocityY, velocityZ);
+            SpawnLivingEntityPacket spawnLivingEntityPacket = new SpawnLivingEntityPacket(packetIndex, timeStamp, entityID, new UUID(uuidMostSignificantBits, uuidLeastSignificantBits), entityType, x, y, z, yaw, pitch, headYaw, velocityX, velocityY, velocityZ, metadataRawBytes);
 
             // Let listener(s) cancel this packet.
             for (SpawnLivingEntityPacketListener listener : this.spawnLivingEntityPacketListeners) {
@@ -1724,6 +1751,9 @@ public class ReplayManipulationTask implements Runnable {
                 this.writer.writeShort(velocityX);
                 this.writer.writeShort(velocityY);
                 this.writer.writeShort(velocityZ);
+                if (this.protocolVersion < Version.MC_1_15_0) {
+                    this.writer.writeByteArray(metadataRawBytes);
+                }
             }
         } else {
             this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));
@@ -1772,6 +1802,8 @@ public class ReplayManipulationTask implements Runnable {
     /// Note: Spawn Player packet was removed and merged with Spawn Entity packet in protocol version 764+ (1.20.2+)
     private void handleSpawnPlayerPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws IOException {
         if (this.spawnPlayerPacketListeners.length > 0) {
+            long startingBytesReadCount = this.reader.bytesRead();
+
             // Read packet data
             int entityID = this.reader.readVarInt();
             long uuidMostSignificantBits = this.reader.readLong();
@@ -1781,8 +1813,13 @@ public class ReplayManipulationTask implements Runnable {
             double z = this.reader.readDouble();
             int yaw = this.reader.readByte();
             int pitch = this.reader.readByte();
+            int[] metadataRawBytes = null;
+            if (this.protocolVersion < Version.MC_1_15_0) { // Before version 1.15.0, an entity metadata field is included.
+                int metadataSize = (packetSize - ReplayWriter.sizeOfVarInt(packetID)) - (int) (this.reader.bytesRead() - startingBytesReadCount);
+                metadataRawBytes = this.reader.readByteArray(metadataSize);
+            }
 
-            SpawnPlayerPacket spawnPlayerPacket = new SpawnPlayerPacket(packetIndex, timeStamp, entityID, new UUID(uuidMostSignificantBits, uuidLeastSignificantBits), x, y, z, yaw, pitch);
+            SpawnPlayerPacket spawnPlayerPacket = new SpawnPlayerPacket(packetIndex, timeStamp, entityID, new UUID(uuidMostSignificantBits, uuidLeastSignificantBits), x, y, z, yaw, pitch, metadataRawBytes);
 
             // Let listener(s) cancel this packet.
             for (SpawnPlayerPacketListener listener : this.spawnPlayerPacketListeners) {
@@ -1800,6 +1837,9 @@ public class ReplayManipulationTask implements Runnable {
                 this.writer.writeDouble(z);
                 this.writer.writeByte(yaw);
                 this.writer.writeByte(pitch);
+                if (this.protocolVersion < Version.MC_1_15_0) {
+                    this.writer.writeByteArray(metadataRawBytes);
+                }
             }
         } else {
             this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));

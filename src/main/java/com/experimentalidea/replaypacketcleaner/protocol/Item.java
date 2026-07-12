@@ -36,7 +36,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Boat
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_boat
      */
@@ -45,7 +45,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Button
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_button
      */
@@ -63,7 +63,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Door
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_door
      */
@@ -72,7 +72,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Fence
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_fence
      */
@@ -81,7 +81,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Fence Gate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_fence_gate
      */
@@ -99,7 +99,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Leaves
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_leaves
      */
@@ -108,7 +108,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Log
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_log
      */
@@ -117,7 +117,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Planks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_planks
      */
@@ -126,7 +126,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Pressure Plate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_pressure_plate
      */
@@ -135,7 +135,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Sapling
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_sapling
      */
@@ -153,7 +153,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Sign
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_sign
      */
@@ -162,7 +162,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_slab
      */
@@ -171,7 +171,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_stairs
      */
@@ -180,7 +180,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Trapdoor
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_trapdoor
      */
@@ -189,7 +189,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Acacia Wood
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:acacia_wood
      */
@@ -198,7 +198,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Activator Rail
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:activator_rail
      */
@@ -207,7 +207,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Air
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:air
      */
@@ -225,7 +225,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Allium
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:allium
      */
@@ -270,7 +270,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Andesite
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:andesite
      */
@@ -279,7 +279,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Andesite Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:andesite_slab
      */
@@ -288,7 +288,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Andesite Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:andesite_stairs
      */
@@ -297,7 +297,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Andesite Wall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:andesite_wall
      */
@@ -315,7 +315,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Anvil
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:anvil
      */
@@ -324,7 +324,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Apple
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:apple
      */
@@ -360,7 +360,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Armor Stand
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:armor_stand
      */
@@ -378,7 +378,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Arrow
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:arrow
      */
@@ -423,7 +423,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Azure Bluet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:azure_bluet
      */
@@ -432,7 +432,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Baked Potato
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:baked_potato
      */
@@ -441,7 +441,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bamboo
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bamboo
      */
@@ -612,7 +612,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Barrel
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:barrel
      */
@@ -621,7 +621,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Barrier
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:barrier
      */
@@ -639,7 +639,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bat Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bat_spawn_egg
      */
@@ -648,7 +648,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Beacon
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:beacon
      */
@@ -657,7 +657,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bedrock
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bedrock
      */
@@ -666,7 +666,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Beef
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:beef
      */
@@ -675,7 +675,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Beehive
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 573 - 774 (1.15.0 - 1.21.11)
      * <br>
      * Resource: minecraft:beehive
      */
@@ -684,7 +684,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Beetroot
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:beetroot
      */
@@ -693,7 +693,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Beetroot Seeds
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:beetroot_seeds
      */
@@ -702,7 +702,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Beetroot Soup
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:beetroot_soup
      */
@@ -711,7 +711,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bee Nest
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 573 - 774 (1.15.0 - 1.21.11)
      * <br>
      * Resource: minecraft:bee_nest
      */
@@ -720,7 +720,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bee Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 573 - 774 (1.15.0 - 1.21.11)
      * <br>
      * Resource: minecraft:bee_spawn_egg
      */
@@ -729,7 +729,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bell
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bell
      */
@@ -747,7 +747,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Boat
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_boat
      */
@@ -756,7 +756,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Button
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_button
      */
@@ -774,7 +774,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Door
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_door
      */
@@ -783,7 +783,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Fence
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_fence
      */
@@ -792,7 +792,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Fence Gate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_fence_gate
      */
@@ -810,7 +810,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Leaves
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_leaves
      */
@@ -819,7 +819,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Log
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_log
      */
@@ -828,7 +828,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Planks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_planks
      */
@@ -837,7 +837,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Pressure Plate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_pressure_plate
      */
@@ -846,7 +846,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Sapling
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_sapling
      */
@@ -864,7 +864,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Sign
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_sign
      */
@@ -873,7 +873,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_slab
      */
@@ -882,7 +882,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_stairs
      */
@@ -891,7 +891,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Trapdoor
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_trapdoor
      */
@@ -900,7 +900,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Birch Wood
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:birch_wood
      */
@@ -945,7 +945,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Black Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:black_banner
      */
@@ -954,7 +954,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Black Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:black_bed
      */
@@ -981,7 +981,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Black Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:black_carpet
      */
@@ -990,7 +990,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Black Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:black_concrete
      */
@@ -999,7 +999,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Black Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:black_concrete_powder
      */
@@ -1008,7 +1008,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Black Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:black_dye
      */
@@ -1017,7 +1017,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Black Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:black_glazed_terracotta
      */
@@ -1035,7 +1035,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Black Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:black_shulker_box
      */
@@ -1044,7 +1044,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Black Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:black_stained_glass
      */
@@ -1053,7 +1053,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Black Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:black_stained_glass_pane
      */
@@ -1062,7 +1062,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Black Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:black_terracotta
      */
@@ -1071,7 +1071,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Black Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:black_wool
      */
@@ -1089,7 +1089,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blast Furnace
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blast_furnace
      */
@@ -1098,7 +1098,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blaze Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blaze_powder
      */
@@ -1107,7 +1107,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blaze Rod
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blaze_rod
      */
@@ -1116,7 +1116,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blaze Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blaze_spawn_egg
      */
@@ -1125,7 +1125,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blue Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blue_banner
      */
@@ -1134,7 +1134,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blue Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blue_bed
      */
@@ -1161,7 +1161,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blue Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blue_carpet
      */
@@ -1170,7 +1170,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blue Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blue_concrete
      */
@@ -1179,7 +1179,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blue Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blue_concrete_powder
      */
@@ -1188,7 +1188,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blue Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blue_dye
      */
@@ -1206,7 +1206,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blue Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blue_glazed_terracotta
      */
@@ -1224,7 +1224,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blue Ice
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blue_ice
      */
@@ -1233,7 +1233,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blue Orchid
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blue_orchid
      */
@@ -1242,7 +1242,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blue Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blue_shulker_box
      */
@@ -1251,7 +1251,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blue Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blue_stained_glass
      */
@@ -1260,7 +1260,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blue Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blue_stained_glass_pane
      */
@@ -1269,7 +1269,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blue Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blue_terracotta
      */
@@ -1278,7 +1278,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Blue Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:blue_wool
      */
@@ -1305,7 +1305,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bone
      */
@@ -1314,7 +1314,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bone Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bone_block
      */
@@ -1323,7 +1323,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bone Meal
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bone_meal
      */
@@ -1332,7 +1332,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Book
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:book
      */
@@ -1341,7 +1341,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bookshelf
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bookshelf
      */
@@ -1359,7 +1359,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bow
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bow
      */
@@ -1368,7 +1368,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bowl
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bowl
      */
@@ -1377,7 +1377,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brain Coral
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brain_coral
      */
@@ -1386,7 +1386,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brain Coral Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brain_coral_block
      */
@@ -1395,7 +1395,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brain Coral Fan
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brain_coral_fan
      */
@@ -1404,7 +1404,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bread
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bread
      */
@@ -1440,7 +1440,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brewing Stand
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brewing_stand
      */
@@ -1449,7 +1449,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brick
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brick
      */
@@ -1458,7 +1458,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bricks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bricks
      */
@@ -1467,7 +1467,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brick Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brick_slab
      */
@@ -1476,7 +1476,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brick Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brick_stairs
      */
@@ -1485,7 +1485,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brick Wall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brick_wall
      */
@@ -1494,7 +1494,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brown Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brown_banner
      */
@@ -1503,7 +1503,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brown Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brown_bed
      */
@@ -1530,7 +1530,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brown Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brown_carpet
      */
@@ -1539,7 +1539,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brown Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brown_concrete
      */
@@ -1548,7 +1548,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brown Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brown_concrete_powder
      */
@@ -1557,7 +1557,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brown Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brown_dye
      */
@@ -1575,7 +1575,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brown Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brown_glazed_terracotta
      */
@@ -1593,7 +1593,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brown Mushroom
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brown_mushroom
      */
@@ -1602,7 +1602,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brown Mushroom Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brown_mushroom_block
      */
@@ -1611,7 +1611,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brown Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brown_shulker_box
      */
@@ -1620,7 +1620,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brown Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brown_stained_glass
      */
@@ -1629,7 +1629,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brown Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brown_stained_glass_pane
      */
@@ -1638,7 +1638,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brown Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brown_terracotta
      */
@@ -1647,7 +1647,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Brown Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:brown_wool
      */
@@ -1665,7 +1665,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bubble Coral
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bubble_coral
      */
@@ -1674,7 +1674,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bubble Coral Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bubble_coral_block
      */
@@ -1683,7 +1683,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bubble Coral Fan
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bubble_coral_fan
      */
@@ -1692,7 +1692,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Bucket
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:bucket
      */
@@ -1737,7 +1737,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cactus
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cactus
      */
@@ -1755,7 +1755,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cake
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cake
      */
@@ -1800,7 +1800,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Campfire
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:campfire
      */
@@ -1818,7 +1818,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Carrot
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:carrot
      */
@@ -1827,7 +1827,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Carrot On A Stick
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:carrot_on_a_stick
      */
@@ -1836,7 +1836,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cartography Table
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cartography_table
      */
@@ -1845,7 +1845,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Carved Pumpkin
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:carved_pumpkin
      */
@@ -1854,7 +1854,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cat Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cat_spawn_egg
      */
@@ -1863,7 +1863,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cauldron
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cauldron
      */
@@ -1872,7 +1872,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cave Spider Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cave_spider_spawn_egg
      */
@@ -1881,7 +1881,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chainmail Boots
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chainmail_boots
      */
@@ -1890,7 +1890,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chainmail Chestplate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chainmail_chestplate
      */
@@ -1899,7 +1899,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chainmail Helmet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chainmail_helmet
      */
@@ -1908,7 +1908,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chainmail Leggings
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chainmail_leggings
      */
@@ -1917,7 +1917,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chain Command Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chain_command_block
      */
@@ -1926,7 +1926,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Charcoal
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:charcoal
      */
@@ -2097,7 +2097,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chest
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chest
      */
@@ -2106,7 +2106,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chest Minecart
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chest_minecart
      */
@@ -2115,7 +2115,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chicken
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chicken
      */
@@ -2124,7 +2124,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chicken Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chicken_spawn_egg
      */
@@ -2133,7 +2133,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chipped Anvil
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chipped_anvil
      */
@@ -2187,7 +2187,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chiseled Quartz Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chiseled_quartz_block
      */
@@ -2196,7 +2196,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chiseled Red Sandstone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chiseled_red_sandstone
      */
@@ -2214,7 +2214,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chiseled Sandstone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chiseled_sandstone
      */
@@ -2223,7 +2223,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chiseled Stone Bricks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chiseled_stone_bricks
      */
@@ -2250,7 +2250,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chorus Flower
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chorus_flower
      */
@@ -2259,7 +2259,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chorus Fruit
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chorus_fruit
      */
@@ -2268,7 +2268,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Chorus Plant
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:chorus_plant
      */
@@ -2277,7 +2277,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Clay
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:clay
      */
@@ -2286,7 +2286,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Clay Ball
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:clay_ball
      */
@@ -2295,7 +2295,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Clock
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:clock
      */
@@ -2313,7 +2313,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Coal
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:coal
      */
@@ -2322,7 +2322,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Coal Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:coal_block
      */
@@ -2331,7 +2331,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Coal Ore
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:coal_ore
      */
@@ -2340,7 +2340,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Coarse Dirt
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:coarse_dirt
      */
@@ -2394,7 +2394,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cobblestone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cobblestone
      */
@@ -2403,7 +2403,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cobblestone Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cobblestone_slab
      */
@@ -2412,7 +2412,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cobblestone Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cobblestone_stairs
      */
@@ -2421,7 +2421,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cobblestone Wall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cobblestone_wall
      */
@@ -2430,7 +2430,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cobweb
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cobweb
      */
@@ -2439,7 +2439,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cocoa Beans
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cocoa_beans
      */
@@ -2448,7 +2448,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cod
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cod
      */
@@ -2457,7 +2457,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cod Bucket
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cod_bucket
      */
@@ -2466,7 +2466,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cod Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cod_spawn_egg
      */
@@ -2475,7 +2475,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Command Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:command_block
      */
@@ -2484,7 +2484,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Command Block Minecart
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:command_block_minecart
      */
@@ -2493,7 +2493,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Comparator
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:comparator
      */
@@ -2502,7 +2502,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Compass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:compass
      */
@@ -2511,7 +2511,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Composter
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:composter
      */
@@ -2520,7 +2520,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Conduit
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:conduit
      */
@@ -2529,7 +2529,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cooked Beef
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cooked_beef
      */
@@ -2538,7 +2538,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cooked Chicken
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cooked_chicken
      */
@@ -2547,7 +2547,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cooked Cod
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cooked_cod
      */
@@ -2556,7 +2556,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cooked Mutton
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cooked_mutton
      */
@@ -2565,7 +2565,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cooked Porkchop
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cooked_porkchop
      */
@@ -2574,7 +2574,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cooked Rabbit
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cooked_rabbit
      */
@@ -2583,7 +2583,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cooked Salmon
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cooked_salmon
      */
@@ -2592,7 +2592,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cookie
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cookie
      */
@@ -2844,7 +2844,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cornflower
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cornflower
      */
@@ -2853,7 +2853,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cow Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cow_spawn_egg
      */
@@ -2898,7 +2898,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cracked Stone Bricks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cracked_stone_bricks
      */
@@ -2916,7 +2916,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Crafting Table
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:crafting_table
      */
@@ -2943,7 +2943,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Creeper Banner Pattern
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:creeper_banner_pattern
      */
@@ -2952,7 +2952,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Creeper Head
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:creeper_head
      */
@@ -2961,7 +2961,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Creeper Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:creeper_spawn_egg
      */
@@ -3123,7 +3123,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Crossbow
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:crossbow
      */
@@ -3168,7 +3168,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cut Red Sandstone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cut_red_sandstone
      */
@@ -3177,7 +3177,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cut Red Sandstone Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cut_red_sandstone_slab
      */
@@ -3186,7 +3186,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cut Sandstone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cut_sandstone
      */
@@ -3195,7 +3195,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cut Sandstone Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cut_sandstone_slab
      */
@@ -3204,7 +3204,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cyan Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cyan_banner
      */
@@ -3213,7 +3213,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cyan Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cyan_bed
      */
@@ -3240,7 +3240,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cyan Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cyan_carpet
      */
@@ -3249,7 +3249,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cyan Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cyan_concrete
      */
@@ -3258,7 +3258,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cyan Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cyan_concrete_powder
      */
@@ -3267,7 +3267,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cyan Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cyan_dye
      */
@@ -3276,7 +3276,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cyan Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cyan_glazed_terracotta
      */
@@ -3294,7 +3294,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cyan Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cyan_shulker_box
      */
@@ -3303,7 +3303,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cyan Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cyan_stained_glass
      */
@@ -3312,7 +3312,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cyan Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cyan_stained_glass_pane
      */
@@ -3321,7 +3321,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cyan Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cyan_terracotta
      */
@@ -3330,7 +3330,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Cyan Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:cyan_wool
      */
@@ -3339,7 +3339,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Damaged Anvil
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:damaged_anvil
      */
@@ -3348,7 +3348,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dandelion
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dandelion
      */
@@ -3366,7 +3366,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Boat
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_boat
      */
@@ -3375,7 +3375,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Button
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_button
      */
@@ -3393,7 +3393,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Door
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_door
      */
@@ -3402,7 +3402,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Fence
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_fence
      */
@@ -3411,7 +3411,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Fence Gate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_fence_gate
      */
@@ -3429,7 +3429,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Leaves
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_leaves
      */
@@ -3438,7 +3438,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Log
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_log
      */
@@ -3447,7 +3447,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Planks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_planks
      */
@@ -3456,7 +3456,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Pressure Plate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_pressure_plate
      */
@@ -3465,7 +3465,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Sapling
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_sapling
      */
@@ -3483,7 +3483,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Sign
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_sign
      */
@@ -3492,7 +3492,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_slab
      */
@@ -3501,7 +3501,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_stairs
      */
@@ -3510,7 +3510,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Trapdoor
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_trapdoor
      */
@@ -3519,7 +3519,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Oak Wood
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_oak_wood
      */
@@ -3528,7 +3528,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Prismarine
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_prismarine
      */
@@ -3537,7 +3537,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Prismarine Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_prismarine_slab
      */
@@ -3546,7 +3546,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dark Prismarine Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dark_prismarine_stairs
      */
@@ -3555,7 +3555,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Daylight Detector
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:daylight_detector
      */
@@ -3564,7 +3564,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Brain Coral
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_brain_coral
      */
@@ -3573,7 +3573,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Brain Coral Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_brain_coral_block
      */
@@ -3582,7 +3582,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Brain Coral Fan
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_brain_coral_fan
      */
@@ -3591,7 +3591,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Bubble Coral
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_bubble_coral
      */
@@ -3600,7 +3600,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Bubble Coral Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_bubble_coral_block
      */
@@ -3609,7 +3609,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Bubble Coral Fan
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_bubble_coral_fan
      */
@@ -3618,7 +3618,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Bush
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_bush
      */
@@ -3627,7 +3627,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Fire Coral
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_fire_coral
      */
@@ -3636,7 +3636,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Fire Coral Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_fire_coral_block
      */
@@ -3645,7 +3645,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Fire Coral Fan
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_fire_coral_fan
      */
@@ -3654,7 +3654,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Horn Coral
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_horn_coral
      */
@@ -3663,7 +3663,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Horn Coral Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_horn_coral_block
      */
@@ -3672,7 +3672,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Horn Coral Fan
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_horn_coral_fan
      */
@@ -3681,7 +3681,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Tube Coral
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_tube_coral
      */
@@ -3690,7 +3690,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Tube Coral Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_tube_coral_block
      */
@@ -3699,7 +3699,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dead Tube Coral Fan
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dead_tube_coral_fan
      */
@@ -3708,7 +3708,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Debug Stick
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:debug_stick
      */
@@ -3879,7 +3879,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Detector Rail
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:detector_rail
      */
@@ -3888,7 +3888,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diamond
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diamond
      */
@@ -3897,7 +3897,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diamond Axe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diamond_axe
      */
@@ -3906,7 +3906,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diamond Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diamond_block
      */
@@ -3915,7 +3915,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diamond Boots
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diamond_boots
      */
@@ -3924,7 +3924,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diamond Chestplate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diamond_chestplate
      */
@@ -3933,7 +3933,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diamond Helmet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diamond_helmet
      */
@@ -3942,7 +3942,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diamond Hoe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diamond_hoe
      */
@@ -3951,7 +3951,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diamond Horse Armor
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diamond_horse_armor
      */
@@ -3960,7 +3960,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diamond Leggings
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diamond_leggings
      */
@@ -3978,7 +3978,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diamond Ore
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diamond_ore
      */
@@ -3987,7 +3987,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diamond Pickaxe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diamond_pickaxe
      */
@@ -3996,7 +3996,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diamond Shovel
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diamond_shovel
      */
@@ -4014,7 +4014,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diamond Sword
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diamond_sword
      */
@@ -4023,7 +4023,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diorite
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diorite
      */
@@ -4032,7 +4032,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diorite Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diorite_slab
      */
@@ -4041,7 +4041,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diorite Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diorite_stairs
      */
@@ -4050,7 +4050,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Diorite Wall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:diorite_wall
      */
@@ -4059,7 +4059,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dirt
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dirt
      */
@@ -4068,9 +4068,9 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dirt Path
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
-     * Resources: minecraft:grass_path (578 - 754 (1.15.2 - 1.16.5)), minecraft:dirt_path (755 - 774 (1.17.0 - 1.21.11))
+     * Resources: minecraft:grass_path (498 - 754 (1.14.4 - 1.16.5)), minecraft:dirt_path (755 - 774 (1.17.0 - 1.21.11))
      */
     DIRT_PATH,
 
@@ -4086,7 +4086,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dispenser
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dispenser
      */
@@ -4095,7 +4095,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dolphin Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dolphin_spawn_egg
      */
@@ -4104,7 +4104,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Donkey Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:donkey_spawn_egg
      */
@@ -4113,7 +4113,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dragon Breath
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dragon_breath
      */
@@ -4122,7 +4122,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dragon Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dragon_egg
      */
@@ -4131,7 +4131,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dragon Head
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dragon_head
      */
@@ -4149,7 +4149,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dried Kelp
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dried_kelp
      */
@@ -4158,7 +4158,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dried Kelp Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dried_kelp_block
      */
@@ -4176,7 +4176,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Dropper
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:dropper
      */
@@ -4185,7 +4185,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Drowned Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:drowned_spawn_egg
      */
@@ -4212,7 +4212,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:egg
      */
@@ -4221,7 +4221,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Elder Guardian Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:elder_guardian_spawn_egg
      */
@@ -4230,7 +4230,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Elytra
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:elytra
      */
@@ -4239,7 +4239,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Emerald
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:emerald
      */
@@ -4248,7 +4248,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Emerald Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:emerald_block
      */
@@ -4257,7 +4257,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Emerald Ore
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:emerald_ore
      */
@@ -4266,7 +4266,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Enchanted Book
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:enchanted_book
      */
@@ -4275,7 +4275,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Enchanted Golden Apple
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:enchanted_golden_apple
      */
@@ -4284,7 +4284,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Enchanting Table
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:enchanting_table
      */
@@ -4293,7 +4293,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Enderman Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:enderman_spawn_egg
      */
@@ -4302,7 +4302,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Endermite Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:endermite_spawn_egg
      */
@@ -4311,7 +4311,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Ender Chest
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:ender_chest
      */
@@ -4329,7 +4329,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Ender Eye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:ender_eye
      */
@@ -4338,7 +4338,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Ender Pearl
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:ender_pearl
      */
@@ -4347,7 +4347,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * End Crystal
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:end_crystal
      */
@@ -4356,7 +4356,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * End Portal Frame
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:end_portal_frame
      */
@@ -4365,7 +4365,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * End Rod
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:end_rod
      */
@@ -4374,7 +4374,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * End Stone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:end_stone
      */
@@ -4383,7 +4383,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * End Stone Bricks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:end_stone_bricks
      */
@@ -4392,7 +4392,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * End Stone Brick Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:end_stone_brick_slab
      */
@@ -4401,7 +4401,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * End Stone Brick Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:end_stone_brick_stairs
      */
@@ -4410,7 +4410,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * End Stone Brick Wall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:end_stone_brick_wall
      */
@@ -4419,7 +4419,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Evoker Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:evoker_spawn_egg
      */
@@ -4428,7 +4428,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Experience Bottle
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:experience_bottle
      */
@@ -4590,7 +4590,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Farmland
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:farmland
      */
@@ -4599,7 +4599,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Feather
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:feather
      */
@@ -4608,7 +4608,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Fermented Spider Eye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:fermented_spider_eye
      */
@@ -4617,7 +4617,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Fern
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:fern
      */
@@ -4635,7 +4635,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Filled Map
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:filled_map
      */
@@ -4653,7 +4653,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Firework Rocket
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:firework_rocket
      */
@@ -4662,7 +4662,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Firework Star
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:firework_star
      */
@@ -4671,7 +4671,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Fire Charge
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:fire_charge
      */
@@ -4680,7 +4680,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Fire Coral
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:fire_coral
      */
@@ -4689,7 +4689,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Fire Coral Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:fire_coral_block
      */
@@ -4698,7 +4698,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Fire Coral Fan
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:fire_coral_fan
      */
@@ -4707,7 +4707,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Fishing Rod
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:fishing_rod
      */
@@ -4716,7 +4716,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Fletching Table
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:fletching_table
      */
@@ -4725,7 +4725,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Flint
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:flint
      */
@@ -4734,7 +4734,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Flint And Steel
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:flint_and_steel
      */
@@ -4761,7 +4761,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Flower Banner Pattern
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:flower_banner_pattern
      */
@@ -4770,7 +4770,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Flower Pot
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:flower_pot
      */
@@ -4806,7 +4806,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Fox Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:fox_spawn_egg
      */
@@ -4842,7 +4842,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Furnace
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:furnace
      */
@@ -4851,7 +4851,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Furnace Minecart
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:furnace_minecart
      */
@@ -4860,7 +4860,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Ghast Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:ghast_spawn_egg
      */
@@ -4869,7 +4869,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Ghast Tear
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:ghast_tear
      */
@@ -4887,7 +4887,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:glass
      */
@@ -4896,7 +4896,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Glass Bottle
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:glass_bottle
      */
@@ -4905,7 +4905,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:glass_pane
      */
@@ -4914,7 +4914,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Glistering Melon Slice
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:glistering_melon_slice
      */
@@ -4923,7 +4923,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Globe Banner Pattern
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:globe_banner_pattern
      */
@@ -4932,7 +4932,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Glowstone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:glowstone
      */
@@ -4941,7 +4941,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Glowstone Dust
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:glowstone_dust
      */
@@ -5013,7 +5013,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Golden Apple
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:golden_apple
      */
@@ -5022,7 +5022,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Golden Axe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:golden_axe
      */
@@ -5031,7 +5031,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Golden Boots
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:golden_boots
      */
@@ -5040,7 +5040,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Golden Carrot
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:golden_carrot
      */
@@ -5049,7 +5049,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Golden Chestplate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:golden_chestplate
      */
@@ -5058,7 +5058,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Golden Helmet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:golden_helmet
      */
@@ -5067,7 +5067,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Golden Hoe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:golden_hoe
      */
@@ -5076,7 +5076,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Golden Horse Armor
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:golden_horse_armor
      */
@@ -5085,7 +5085,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Golden Leggings
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:golden_leggings
      */
@@ -5103,7 +5103,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Golden Pickaxe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:golden_pickaxe
      */
@@ -5112,7 +5112,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Golden Shovel
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:golden_shovel
      */
@@ -5130,7 +5130,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Golden Sword
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:golden_sword
      */
@@ -5139,7 +5139,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gold Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gold_block
      */
@@ -5148,7 +5148,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gold Ingot
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gold_ingot
      */
@@ -5157,7 +5157,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gold Nugget
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gold_nugget
      */
@@ -5166,7 +5166,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gold Ore
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gold_ore
      */
@@ -5175,7 +5175,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Granite
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:granite
      */
@@ -5184,7 +5184,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Granite Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:granite_slab
      */
@@ -5193,7 +5193,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Granite Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:granite_stairs
      */
@@ -5202,7 +5202,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Granite Wall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:granite_wall
      */
@@ -5211,7 +5211,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Grass Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:grass_block
      */
@@ -5220,7 +5220,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gravel
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gravel
      */
@@ -5229,7 +5229,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gray Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gray_banner
      */
@@ -5238,7 +5238,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gray Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gray_bed
      */
@@ -5265,7 +5265,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gray Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gray_carpet
      */
@@ -5274,7 +5274,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gray Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gray_concrete
      */
@@ -5283,7 +5283,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gray Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gray_concrete_powder
      */
@@ -5292,7 +5292,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gray Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gray_dye
      */
@@ -5301,7 +5301,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gray Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gray_glazed_terracotta
      */
@@ -5319,7 +5319,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gray Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gray_shulker_box
      */
@@ -5328,7 +5328,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gray Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gray_stained_glass
      */
@@ -5337,7 +5337,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gray Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gray_stained_glass_pane
      */
@@ -5346,7 +5346,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gray Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gray_terracotta
      */
@@ -5355,7 +5355,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gray Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gray_wool
      */
@@ -5364,7 +5364,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Green Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:green_banner
      */
@@ -5373,7 +5373,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Green Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:green_bed
      */
@@ -5400,7 +5400,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Green Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:green_carpet
      */
@@ -5409,7 +5409,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Green Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:green_concrete
      */
@@ -5418,7 +5418,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Green Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:green_concrete_powder
      */
@@ -5427,7 +5427,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Green Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:green_dye
      */
@@ -5436,7 +5436,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Green Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:green_glazed_terracotta
      */
@@ -5454,7 +5454,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Green Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:green_shulker_box
      */
@@ -5463,7 +5463,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Green Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:green_stained_glass
      */
@@ -5472,7 +5472,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Green Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:green_stained_glass_pane
      */
@@ -5481,7 +5481,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Green Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:green_terracotta
      */
@@ -5490,7 +5490,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Green Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:green_wool
      */
@@ -5499,7 +5499,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Grindstone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:grindstone
      */
@@ -5508,7 +5508,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Guardian Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:guardian_spawn_egg
      */
@@ -5517,7 +5517,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Gunpowder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:gunpowder
      */
@@ -5562,7 +5562,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Hay Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:hay_block
      */
@@ -5580,7 +5580,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Heart Of The Sea
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:heart_of_the_sea
      */
@@ -5607,7 +5607,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Heavy Weighted Pressure Plate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:heavy_weighted_pressure_plate
      */
@@ -5625,7 +5625,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Honeycomb
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 573 - 774 (1.15.0 - 1.21.11)
      * <br>
      * Resource: minecraft:honeycomb
      */
@@ -5634,7 +5634,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Honeycomb Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 573 - 774 (1.15.0 - 1.21.11)
      * <br>
      * Resource: minecraft:honeycomb_block
      */
@@ -5643,7 +5643,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Honey Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 573 - 774 (1.15.0 - 1.21.11)
      * <br>
      * Resource: minecraft:honey_block
      */
@@ -5652,7 +5652,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Honey Bottle
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 573 - 774 (1.15.0 - 1.21.11)
      * <br>
      * Resource: minecraft:honey_bottle
      */
@@ -5661,7 +5661,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Hopper
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:hopper
      */
@@ -5670,7 +5670,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Hopper Minecart
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:hopper_minecart
      */
@@ -5679,7 +5679,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Horn Coral
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:horn_coral
      */
@@ -5688,7 +5688,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Horn Coral Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:horn_coral_block
      */
@@ -5697,7 +5697,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Horn Coral Fan
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:horn_coral_fan
      */
@@ -5706,7 +5706,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Horse Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:horse_spawn_egg
      */
@@ -5733,7 +5733,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Husk Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:husk_spawn_egg
      */
@@ -5742,7 +5742,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Ice
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:ice
      */
@@ -5751,7 +5751,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Infested Chiseled Stone Bricks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:infested_chiseled_stone_bricks
      */
@@ -5760,7 +5760,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Infested Cobblestone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:infested_cobblestone
      */
@@ -5769,7 +5769,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Infested Cracked Stone Bricks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:infested_cracked_stone_bricks
      */
@@ -5787,7 +5787,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Infested Mossy Stone Bricks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:infested_mossy_stone_bricks
      */
@@ -5796,7 +5796,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Infested Stone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:infested_stone
      */
@@ -5805,7 +5805,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Infested Stone Bricks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:infested_stone_bricks
      */
@@ -5814,7 +5814,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Ink Sac
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:ink_sac
      */
@@ -5823,7 +5823,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Axe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_axe
      */
@@ -5832,7 +5832,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Bars
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_bars
      */
@@ -5841,7 +5841,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_block
      */
@@ -5850,7 +5850,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Boots
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_boots
      */
@@ -5868,7 +5868,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Chestplate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_chestplate
      */
@@ -5877,7 +5877,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Door
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_door
      */
@@ -5895,7 +5895,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Helmet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_helmet
      */
@@ -5904,7 +5904,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Hoe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_hoe
      */
@@ -5913,7 +5913,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Horse Armor
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_horse_armor
      */
@@ -5922,7 +5922,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Ingot
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_ingot
      */
@@ -5931,7 +5931,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Leggings
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_leggings
      */
@@ -5949,7 +5949,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Nugget
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_nugget
      */
@@ -5958,7 +5958,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Ore
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_ore
      */
@@ -5967,7 +5967,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Pickaxe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_pickaxe
      */
@@ -5976,7 +5976,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Shovel
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_shovel
      */
@@ -5994,7 +5994,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Sword
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_sword
      */
@@ -6003,7 +6003,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Iron Trapdoor
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:iron_trapdoor
      */
@@ -6012,7 +6012,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Item Frame
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:item_frame
      */
@@ -6021,7 +6021,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jack O Lantern
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jack_o_lantern
      */
@@ -6030,7 +6030,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jigsaw
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jigsaw
      */
@@ -6039,7 +6039,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jukebox
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jukebox
      */
@@ -6048,7 +6048,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Boat
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_boat
      */
@@ -6057,7 +6057,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Button
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_button
      */
@@ -6075,7 +6075,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Door
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_door
      */
@@ -6084,7 +6084,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Fence
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_fence
      */
@@ -6093,7 +6093,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Fence Gate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_fence_gate
      */
@@ -6111,7 +6111,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Leaves
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_leaves
      */
@@ -6120,7 +6120,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Log
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_log
      */
@@ -6129,7 +6129,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Planks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_planks
      */
@@ -6138,7 +6138,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Pressure Plate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_pressure_plate
      */
@@ -6147,7 +6147,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Sapling
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_sapling
      */
@@ -6165,7 +6165,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Sign
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_sign
      */
@@ -6174,7 +6174,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_slab
      */
@@ -6183,7 +6183,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_stairs
      */
@@ -6192,7 +6192,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Trapdoor
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_trapdoor
      */
@@ -6201,7 +6201,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Jungle Wood
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:jungle_wood
      */
@@ -6210,7 +6210,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Kelp
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:kelp
      */
@@ -6219,7 +6219,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Knowledge Book
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:knowledge_book
      */
@@ -6228,7 +6228,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Ladder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:ladder
      */
@@ -6237,7 +6237,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lantern
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lantern
      */
@@ -6246,7 +6246,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lapis Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lapis_block
      */
@@ -6255,7 +6255,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lapis Lazuli
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lapis_lazuli
      */
@@ -6264,7 +6264,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lapis Ore
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lapis_ore
      */
@@ -6282,7 +6282,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Large Fern
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:large_fern
      */
@@ -6291,7 +6291,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lava Bucket
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lava_bucket
      */
@@ -6300,7 +6300,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lead
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lead
      */
@@ -6318,7 +6318,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Leather
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:leather
      */
@@ -6327,7 +6327,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Leather Boots
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:leather_boots
      */
@@ -6336,7 +6336,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Leather Chestplate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:leather_chestplate
      */
@@ -6345,7 +6345,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Leather Helmet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:leather_helmet
      */
@@ -6354,7 +6354,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Leather Horse Armor
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:leather_horse_armor
      */
@@ -6363,7 +6363,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Leather Leggings
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:leather_leggings
      */
@@ -6372,7 +6372,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lectern
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lectern
      */
@@ -6381,7 +6381,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lever
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lever
      */
@@ -6408,7 +6408,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Blue Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_blue_banner
      */
@@ -6417,7 +6417,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Blue Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_blue_bed
      */
@@ -6444,7 +6444,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Blue Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_blue_carpet
      */
@@ -6453,7 +6453,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Blue Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_blue_concrete
      */
@@ -6462,7 +6462,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Blue Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_blue_concrete_powder
      */
@@ -6471,7 +6471,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Blue Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_blue_dye
      */
@@ -6480,7 +6480,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Blue Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_blue_glazed_terracotta
      */
@@ -6498,7 +6498,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Blue Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_blue_shulker_box
      */
@@ -6507,7 +6507,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Blue Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_blue_stained_glass
      */
@@ -6516,7 +6516,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Blue Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_blue_stained_glass_pane
      */
@@ -6525,7 +6525,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Blue Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_blue_terracotta
      */
@@ -6534,7 +6534,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Blue Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_blue_wool
      */
@@ -6543,7 +6543,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Gray Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_gray_banner
      */
@@ -6552,7 +6552,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Gray Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_gray_bed
      */
@@ -6579,7 +6579,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Gray Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_gray_carpet
      */
@@ -6588,7 +6588,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Gray Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_gray_concrete
      */
@@ -6597,7 +6597,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Gray Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_gray_concrete_powder
      */
@@ -6606,7 +6606,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Gray Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_gray_dye
      */
@@ -6615,7 +6615,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Gray Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_gray_glazed_terracotta
      */
@@ -6633,7 +6633,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Gray Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_gray_shulker_box
      */
@@ -6642,7 +6642,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Gray Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_gray_stained_glass
      */
@@ -6651,7 +6651,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Gray Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_gray_stained_glass_pane
      */
@@ -6660,7 +6660,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Gray Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_gray_terracotta
      */
@@ -6669,7 +6669,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Gray Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_gray_wool
      */
@@ -6678,7 +6678,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Light Weighted Pressure Plate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:light_weighted_pressure_plate
      */
@@ -6687,7 +6687,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lilac
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lilac
      */
@@ -6696,7 +6696,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lily Of The Valley
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lily_of_the_valley
      */
@@ -6705,7 +6705,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lily Pad
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lily_pad
      */
@@ -6714,7 +6714,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lime Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lime_banner
      */
@@ -6723,7 +6723,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lime Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lime_bed
      */
@@ -6750,7 +6750,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lime Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lime_carpet
      */
@@ -6759,7 +6759,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lime Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lime_concrete
      */
@@ -6768,7 +6768,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lime Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lime_concrete_powder
      */
@@ -6777,7 +6777,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lime Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lime_dye
      */
@@ -6786,7 +6786,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lime Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lime_glazed_terracotta
      */
@@ -6804,7 +6804,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lime Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lime_shulker_box
      */
@@ -6813,7 +6813,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lime Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lime_stained_glass
      */
@@ -6822,7 +6822,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lime Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lime_stained_glass_pane
      */
@@ -6831,7 +6831,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lime Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lime_terracotta
      */
@@ -6840,7 +6840,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lime Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lime_wool
      */
@@ -6849,7 +6849,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Lingering Potion
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:lingering_potion
      */
@@ -6858,7 +6858,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Llama Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:llama_spawn_egg
      */
@@ -6876,7 +6876,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Loom
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:loom
      */
@@ -6894,7 +6894,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magenta Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magenta_banner
      */
@@ -6903,7 +6903,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magenta Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magenta_bed
      */
@@ -6930,7 +6930,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magenta Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magenta_carpet
      */
@@ -6939,7 +6939,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magenta Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magenta_concrete
      */
@@ -6948,7 +6948,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magenta Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magenta_concrete_powder
      */
@@ -6957,7 +6957,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magenta Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magenta_dye
      */
@@ -6966,7 +6966,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magenta Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magenta_glazed_terracotta
      */
@@ -6984,7 +6984,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magenta Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magenta_shulker_box
      */
@@ -6993,7 +6993,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magenta Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magenta_stained_glass
      */
@@ -7002,7 +7002,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magenta Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magenta_stained_glass_pane
      */
@@ -7011,7 +7011,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magenta Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magenta_terracotta
      */
@@ -7020,7 +7020,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magenta Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magenta_wool
      */
@@ -7029,7 +7029,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magma Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magma_block
      */
@@ -7038,7 +7038,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magma Cream
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magma_cream
      */
@@ -7047,7 +7047,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Magma Cube Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:magma_cube_spawn_egg
      */
@@ -7227,7 +7227,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Map
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:map
      */
@@ -7245,7 +7245,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Melon
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:melon
      */
@@ -7254,7 +7254,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Melon Seeds
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:melon_seeds
      */
@@ -7263,7 +7263,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Melon Slice
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:melon_slice
      */
@@ -7272,7 +7272,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Milk Bucket
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:milk_bucket
      */
@@ -7281,7 +7281,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Minecart
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:minecart
      */
@@ -7299,7 +7299,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mojang Banner Pattern
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mojang_banner_pattern
      */
@@ -7308,7 +7308,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mooshroom Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mooshroom_spawn_egg
      */
@@ -7317,7 +7317,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mossy Cobblestone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mossy_cobblestone
      */
@@ -7326,7 +7326,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mossy Cobblestone Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mossy_cobblestone_slab
      */
@@ -7335,7 +7335,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mossy Cobblestone Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mossy_cobblestone_stairs
      */
@@ -7344,7 +7344,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mossy Cobblestone Wall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mossy_cobblestone_wall
      */
@@ -7353,7 +7353,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mossy Stone Bricks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mossy_stone_bricks
      */
@@ -7362,7 +7362,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mossy Stone Brick Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mossy_stone_brick_slab
      */
@@ -7371,7 +7371,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mossy Stone Brick Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mossy_stone_brick_stairs
      */
@@ -7380,7 +7380,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mossy Stone Brick Wall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mossy_stone_brick_wall
      */
@@ -7470,7 +7470,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mule Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mule_spawn_egg
      */
@@ -7479,7 +7479,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mushroom Stem
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mushroom_stem
      */
@@ -7488,7 +7488,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mushroom Stew
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mushroom_stew
      */
@@ -7497,7 +7497,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Music Disc 11
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:music_disc_11
      */
@@ -7506,7 +7506,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Music Disc 13
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:music_disc_13
      */
@@ -7524,7 +7524,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Music Disc Blocks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:music_disc_blocks
      */
@@ -7533,7 +7533,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Music Disc Cat
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:music_disc_cat
      */
@@ -7542,7 +7542,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Music Disc Chirp
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:music_disc_chirp
      */
@@ -7569,7 +7569,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Music Disc Far
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:music_disc_far
      */
@@ -7587,7 +7587,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Music Disc Mall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:music_disc_mall
      */
@@ -7596,7 +7596,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Music Disc Mellohi
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:music_disc_mellohi
      */
@@ -7641,7 +7641,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Music Disc Stal
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:music_disc_stal
      */
@@ -7650,7 +7650,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Music Disc Strad
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:music_disc_strad
      */
@@ -7668,7 +7668,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Music Disc Wait
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:music_disc_wait
      */
@@ -7677,7 +7677,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Music Disc Ward
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:music_disc_ward
      */
@@ -7686,7 +7686,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mutton
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mutton
      */
@@ -7695,7 +7695,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Mycelium
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:mycelium
      */
@@ -7704,7 +7704,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Name Tag
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:name_tag
      */
@@ -7713,7 +7713,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Nautilus Shell
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:nautilus_shell
      */
@@ -7875,7 +7875,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Netherrack
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:netherrack
      */
@@ -7884,7 +7884,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Nether Brick
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:nether_brick
      */
@@ -7893,7 +7893,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Nether Bricks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:nether_bricks
      */
@@ -7902,7 +7902,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Nether Brick Fence
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:nether_brick_fence
      */
@@ -7911,7 +7911,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Nether Brick Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:nether_brick_slab
      */
@@ -7920,7 +7920,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Nether Brick Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:nether_brick_stairs
      */
@@ -7929,7 +7929,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Nether Brick Wall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:nether_brick_wall
      */
@@ -7947,7 +7947,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Nether Quartz Ore
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:nether_quartz_ore
      */
@@ -7965,7 +7965,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Nether Star
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:nether_star
      */
@@ -7974,7 +7974,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Nether Wart
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:nether_wart
      */
@@ -7983,7 +7983,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Nether Wart Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:nether_wart_block
      */
@@ -7992,7 +7992,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Note Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:note_block
      */
@@ -8001,7 +8001,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Boat
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_boat
      */
@@ -8010,7 +8010,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Button
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_button
      */
@@ -8028,7 +8028,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Door
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_door
      */
@@ -8037,7 +8037,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Fence
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_fence
      */
@@ -8046,7 +8046,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Fence Gate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_fence_gate
      */
@@ -8064,7 +8064,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Leaves
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_leaves
      */
@@ -8073,7 +8073,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Log
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_log
      */
@@ -8082,7 +8082,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Planks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_planks
      */
@@ -8091,7 +8091,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Pressure Plate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_pressure_plate
      */
@@ -8100,7 +8100,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Sapling
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_sapling
      */
@@ -8118,7 +8118,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Sign
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_sign
      */
@@ -8127,7 +8127,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_slab
      */
@@ -8136,7 +8136,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_stairs
      */
@@ -8145,7 +8145,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Trapdoor
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_trapdoor
      */
@@ -8154,7 +8154,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oak Wood
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oak_wood
      */
@@ -8163,7 +8163,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Observer
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:observer
      */
@@ -8172,7 +8172,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Obsidian
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:obsidian
      */
@@ -8181,7 +8181,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Ocelot Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:ocelot_spawn_egg
      */
@@ -8226,7 +8226,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Orange Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:orange_banner
      */
@@ -8235,7 +8235,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Orange Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:orange_bed
      */
@@ -8262,7 +8262,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Orange Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:orange_carpet
      */
@@ -8271,7 +8271,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Orange Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:orange_concrete
      */
@@ -8280,7 +8280,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Orange Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:orange_concrete_powder
      */
@@ -8289,7 +8289,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Orange Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:orange_dye
      */
@@ -8298,7 +8298,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Orange Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:orange_glazed_terracotta
      */
@@ -8316,7 +8316,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Orange Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:orange_shulker_box
      */
@@ -8325,7 +8325,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Orange Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:orange_stained_glass
      */
@@ -8334,7 +8334,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Orange Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:orange_stained_glass_pane
      */
@@ -8343,7 +8343,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Orange Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:orange_terracotta
      */
@@ -8352,7 +8352,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Orange Tulip
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:orange_tulip
      */
@@ -8361,7 +8361,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Orange Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:orange_wool
      */
@@ -8370,7 +8370,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Oxeye Daisy
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:oxeye_daisy
      */
@@ -8514,7 +8514,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Packed Ice
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:packed_ice
      */
@@ -8532,7 +8532,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Painting
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:painting
      */
@@ -8730,7 +8730,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Panda Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:panda_spawn_egg
      */
@@ -8739,7 +8739,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Paper
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:paper
      */
@@ -8757,7 +8757,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Parrot Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:parrot_spawn_egg
      */
@@ -8775,7 +8775,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Peony
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:peony
      */
@@ -8784,7 +8784,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Petrified Oak Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:petrified_oak_slab
      */
@@ -8793,7 +8793,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Phantom Membrane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:phantom_membrane
      */
@@ -8802,7 +8802,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Phantom Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:phantom_spawn_egg
      */
@@ -8847,7 +8847,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pig Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pig_spawn_egg
      */
@@ -8856,7 +8856,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pillager Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pillager_spawn_egg
      */
@@ -8865,7 +8865,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pink Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pink_banner
      */
@@ -8874,7 +8874,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pink Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pink_bed
      */
@@ -8901,7 +8901,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pink Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pink_carpet
      */
@@ -8910,7 +8910,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pink Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pink_concrete
      */
@@ -8919,7 +8919,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pink Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pink_concrete_powder
      */
@@ -8928,7 +8928,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pink Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pink_dye
      */
@@ -8937,7 +8937,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pink Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pink_glazed_terracotta
      */
@@ -8964,7 +8964,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pink Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pink_shulker_box
      */
@@ -8973,7 +8973,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pink Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pink_stained_glass
      */
@@ -8982,7 +8982,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pink Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pink_stained_glass_pane
      */
@@ -8991,7 +8991,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pink Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pink_terracotta
      */
@@ -9000,7 +9000,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pink Tulip
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pink_tulip
      */
@@ -9009,7 +9009,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pink Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pink_wool
      */
@@ -9018,7 +9018,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Piston
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:piston
      */
@@ -9045,7 +9045,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Player Head
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:player_head
      */
@@ -9063,7 +9063,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Podzol
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:podzol
      */
@@ -9081,7 +9081,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Poisonous Potato
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:poisonous_potato
      */
@@ -9090,7 +9090,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Polar Bear Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:polar_bear_spawn_egg
      */
@@ -9099,7 +9099,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Polished Andesite
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:polished_andesite
      */
@@ -9108,7 +9108,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Polished Andesite Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:polished_andesite_slab
      */
@@ -9117,7 +9117,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Polished Andesite Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:polished_andesite_stairs
      */
@@ -9261,7 +9261,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Polished Diorite
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:polished_diorite
      */
@@ -9270,7 +9270,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Polished Diorite Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:polished_diorite_slab
      */
@@ -9279,7 +9279,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Polished Diorite Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:polished_diorite_stairs
      */
@@ -9288,7 +9288,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Polished Granite
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:polished_granite
      */
@@ -9297,7 +9297,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Polished Granite Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:polished_granite_slab
      */
@@ -9306,7 +9306,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Polished Granite Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:polished_granite_stairs
      */
@@ -9351,7 +9351,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Popped Chorus Fruit
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:popped_chorus_fruit
      */
@@ -9360,7 +9360,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Poppy
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:poppy
      */
@@ -9369,7 +9369,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Porkchop
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:porkchop
      */
@@ -9378,7 +9378,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Potato
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:potato
      */
@@ -9387,7 +9387,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Potion
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:potion
      */
@@ -9405,7 +9405,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Powered Rail
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:powered_rail
      */
@@ -9414,7 +9414,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Prismarine
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:prismarine
      */
@@ -9423,7 +9423,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Prismarine Bricks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:prismarine_bricks
      */
@@ -9432,7 +9432,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Prismarine Brick Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:prismarine_brick_slab
      */
@@ -9441,7 +9441,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Prismarine Brick Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:prismarine_brick_stairs
      */
@@ -9450,7 +9450,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Prismarine Crystals
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:prismarine_crystals
      */
@@ -9459,7 +9459,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Prismarine Shard
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:prismarine_shard
      */
@@ -9468,7 +9468,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Prismarine Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:prismarine_slab
      */
@@ -9477,7 +9477,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Prismarine Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:prismarine_stairs
      */
@@ -9486,7 +9486,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Prismarine Wall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:prismarine_wall
      */
@@ -9504,7 +9504,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pufferfish
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pufferfish
      */
@@ -9513,7 +9513,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pufferfish Bucket
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pufferfish_bucket
      */
@@ -9522,7 +9522,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pufferfish Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pufferfish_spawn_egg
      */
@@ -9531,7 +9531,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pumpkin
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pumpkin
      */
@@ -9540,7 +9540,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pumpkin Pie
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pumpkin_pie
      */
@@ -9549,7 +9549,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Pumpkin Seeds
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:pumpkin_seeds
      */
@@ -9558,7 +9558,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purple Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purple_banner
      */
@@ -9567,7 +9567,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purple Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purple_bed
      */
@@ -9594,7 +9594,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purple Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purple_carpet
      */
@@ -9603,7 +9603,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purple Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purple_concrete
      */
@@ -9612,7 +9612,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purple Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purple_concrete_powder
      */
@@ -9621,7 +9621,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purple Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purple_dye
      */
@@ -9630,7 +9630,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purple Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purple_glazed_terracotta
      */
@@ -9648,7 +9648,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purple Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purple_shulker_box
      */
@@ -9657,7 +9657,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purple Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purple_stained_glass
      */
@@ -9666,7 +9666,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purple Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purple_stained_glass_pane
      */
@@ -9675,7 +9675,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purple Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purple_terracotta
      */
@@ -9684,7 +9684,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purple Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purple_wool
      */
@@ -9693,7 +9693,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purpur Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purpur_block
      */
@@ -9702,7 +9702,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purpur Pillar
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purpur_pillar
      */
@@ -9711,7 +9711,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purpur Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purpur_slab
      */
@@ -9720,7 +9720,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Purpur Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:purpur_stairs
      */
@@ -9729,7 +9729,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Quartz
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:quartz
      */
@@ -9738,7 +9738,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Quartz Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:quartz_block
      */
@@ -9756,7 +9756,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Quartz Pillar
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:quartz_pillar
      */
@@ -9765,7 +9765,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Quartz Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:quartz_slab
      */
@@ -9774,7 +9774,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Quartz Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:quartz_stairs
      */
@@ -9783,7 +9783,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Rabbit
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:rabbit
      */
@@ -9792,7 +9792,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Rabbit Foot
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:rabbit_foot
      */
@@ -9801,7 +9801,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Rabbit Hide
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:rabbit_hide
      */
@@ -9810,7 +9810,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Rabbit Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:rabbit_spawn_egg
      */
@@ -9819,7 +9819,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Rabbit Stew
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:rabbit_stew
      */
@@ -9828,7 +9828,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Rail
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:rail
      */
@@ -9846,7 +9846,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Ravager Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:ravager_spawn_egg
      */
@@ -9918,7 +9918,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Redstone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:redstone
      */
@@ -9927,7 +9927,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Redstone Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:redstone_block
      */
@@ -9936,7 +9936,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Redstone Lamp
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:redstone_lamp
      */
@@ -9945,7 +9945,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Redstone Ore
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:redstone_ore
      */
@@ -9954,7 +9954,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Redstone Torch
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:redstone_torch
      */
@@ -9963,7 +9963,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_banner
      */
@@ -9972,7 +9972,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_bed
      */
@@ -9999,7 +9999,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_carpet
      */
@@ -10008,7 +10008,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_concrete
      */
@@ -10017,7 +10017,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_concrete_powder
      */
@@ -10026,7 +10026,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_dye
      */
@@ -10035,7 +10035,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_glazed_terracotta
      */
@@ -10053,7 +10053,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Mushroom
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_mushroom
      */
@@ -10062,7 +10062,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Mushroom Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_mushroom_block
      */
@@ -10071,7 +10071,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Nether Bricks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_nether_bricks
      */
@@ -10080,7 +10080,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Nether Brick Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_nether_brick_slab
      */
@@ -10089,7 +10089,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Nether Brick Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_nether_brick_stairs
      */
@@ -10098,7 +10098,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Nether Brick Wall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_nether_brick_wall
      */
@@ -10107,7 +10107,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Sand
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_sand
      */
@@ -10116,7 +10116,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Sandstone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_sandstone
      */
@@ -10125,7 +10125,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Sandstone Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_sandstone_slab
      */
@@ -10134,7 +10134,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Sandstone Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_sandstone_stairs
      */
@@ -10143,7 +10143,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Sandstone Wall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_sandstone_wall
      */
@@ -10152,7 +10152,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_shulker_box
      */
@@ -10161,7 +10161,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_stained_glass
      */
@@ -10170,7 +10170,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_stained_glass_pane
      */
@@ -10179,7 +10179,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_terracotta
      */
@@ -10188,7 +10188,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Tulip
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_tulip
      */
@@ -10197,7 +10197,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Red Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:red_wool
      */
@@ -10215,7 +10215,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Repeater
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:repeater
      */
@@ -10224,7 +10224,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Repeating Command Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:repeating_command_block
      */
@@ -10323,7 +10323,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Rose Bush
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:rose_bush
      */
@@ -10332,7 +10332,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Rotten Flesh
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:rotten_flesh
      */
@@ -10341,7 +10341,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Saddle
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:saddle
      */
@@ -10350,7 +10350,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Salmon
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:salmon
      */
@@ -10359,7 +10359,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Salmon Bucket
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:salmon_bucket
      */
@@ -10368,7 +10368,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Salmon Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:salmon_spawn_egg
      */
@@ -10377,7 +10377,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Sand
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:sand
      */
@@ -10386,7 +10386,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Sandstone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:sandstone
      */
@@ -10395,7 +10395,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Sandstone Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:sandstone_slab
      */
@@ -10404,7 +10404,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Sandstone Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:sandstone_stairs
      */
@@ -10413,7 +10413,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Sandstone Wall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:sandstone_wall
      */
@@ -10422,7 +10422,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Scaffolding
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:scaffolding
      */
@@ -10485,7 +10485,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Seagrass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:seagrass
      */
@@ -10494,7 +10494,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Sea Lantern
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:sea_lantern
      */
@@ -10503,7 +10503,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Sea Pickle
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:sea_pickle
      */
@@ -10539,7 +10539,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Shears
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:shears
      */
@@ -10548,7 +10548,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Sheep Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:sheep_spawn_egg
      */
@@ -10566,7 +10566,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Shield
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:shield
      */
@@ -10584,9 +10584,9 @@ public enum Item implements ProtocolMetadata {
     /**
      * Short Grass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
-     * Resources: minecraft:grass (578 - 764 (1.15.2 - 1.20.2)), minecraft:short_grass (765 - 774 (1.20.3 - 1.21.11))
+     * Resources: minecraft:grass (498 - 764 (1.14.4 - 1.20.2)), minecraft:short_grass (765 - 774 (1.20.3 - 1.21.11))
      */
     SHORT_GRASS,
 
@@ -10602,7 +10602,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:shulker_box
      */
@@ -10611,7 +10611,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Shulker Shell
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:shulker_shell
      */
@@ -10620,7 +10620,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Shulker Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:shulker_spawn_egg
      */
@@ -10638,7 +10638,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Silverfish Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:silverfish_spawn_egg
      */
@@ -10647,7 +10647,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Skeleton Horse Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:skeleton_horse_spawn_egg
      */
@@ -10656,7 +10656,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Skeleton Skull
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:skeleton_skull
      */
@@ -10665,7 +10665,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Skeleton Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:skeleton_spawn_egg
      */
@@ -10674,7 +10674,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Skull Banner Pattern
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:skull_banner_pattern
      */
@@ -10692,7 +10692,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Slime Ball
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:slime_ball
      */
@@ -10701,7 +10701,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Slime Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:slime_block
      */
@@ -10710,7 +10710,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Slime Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:slime_spawn_egg
      */
@@ -10737,7 +10737,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Smithing Table
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:smithing_table
      */
@@ -10746,7 +10746,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Smoker
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:smoker
      */
@@ -10764,7 +10764,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Smooth Quartz
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:smooth_quartz
      */
@@ -10773,7 +10773,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Smooth Quartz Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:smooth_quartz_slab
      */
@@ -10782,7 +10782,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Smooth Quartz Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:smooth_quartz_stairs
      */
@@ -10791,7 +10791,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Smooth Red Sandstone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:smooth_red_sandstone
      */
@@ -10800,7 +10800,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Smooth Red Sandstone Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:smooth_red_sandstone_slab
      */
@@ -10809,7 +10809,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Smooth Red Sandstone Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:smooth_red_sandstone_stairs
      */
@@ -10818,7 +10818,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Smooth Sandstone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:smooth_sandstone
      */
@@ -10827,7 +10827,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Smooth Sandstone Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:smooth_sandstone_slab
      */
@@ -10836,7 +10836,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Smooth Sandstone Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:smooth_sandstone_stairs
      */
@@ -10845,7 +10845,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Smooth Stone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:smooth_stone
      */
@@ -10854,7 +10854,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Smooth Stone Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:smooth_stone_slab
      */
@@ -10899,7 +10899,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Snow
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:snow
      */
@@ -10908,7 +10908,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Snowball
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:snowball
      */
@@ -10917,7 +10917,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Snow Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:snow_block
      */
@@ -10953,7 +10953,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Soul Sand
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:soul_sand
      */
@@ -10980,7 +10980,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spawner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spawner
      */
@@ -10989,7 +10989,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spectral Arrow
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spectral_arrow
      */
@@ -10998,7 +10998,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spider Eye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spider_eye
      */
@@ -11007,7 +11007,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spider Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spider_spawn_egg
      */
@@ -11025,7 +11025,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Splash Potion
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:splash_potion
      */
@@ -11034,7 +11034,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Sponge
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:sponge
      */
@@ -11052,7 +11052,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Boat
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_boat
      */
@@ -11061,7 +11061,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Button
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_button
      */
@@ -11079,7 +11079,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Door
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_door
      */
@@ -11088,7 +11088,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Fence
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_fence
      */
@@ -11097,7 +11097,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Fence Gate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_fence_gate
      */
@@ -11115,7 +11115,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Leaves
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_leaves
      */
@@ -11124,7 +11124,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Log
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_log
      */
@@ -11133,7 +11133,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Planks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_planks
      */
@@ -11142,7 +11142,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Pressure Plate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_pressure_plate
      */
@@ -11151,7 +11151,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Sapling
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_sapling
      */
@@ -11169,7 +11169,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Sign
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_sign
      */
@@ -11178,7 +11178,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_slab
      */
@@ -11187,7 +11187,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_stairs
      */
@@ -11196,7 +11196,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Trapdoor
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_trapdoor
      */
@@ -11205,7 +11205,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Spruce Wood
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:spruce_wood
      */
@@ -11223,7 +11223,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Squid Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:squid_spawn_egg
      */
@@ -11232,7 +11232,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stick
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stick
      */
@@ -11241,7 +11241,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Sticky Piston
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:sticky_piston
      */
@@ -11250,7 +11250,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stone
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stone
      */
@@ -11259,7 +11259,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stonecutter
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stonecutter
      */
@@ -11268,7 +11268,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stone Axe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stone_axe
      */
@@ -11277,7 +11277,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stone Bricks
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stone_bricks
      */
@@ -11286,7 +11286,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stone Brick Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stone_brick_slab
      */
@@ -11295,7 +11295,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stone Brick Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stone_brick_stairs
      */
@@ -11304,7 +11304,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stone Brick Wall
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stone_brick_wall
      */
@@ -11313,7 +11313,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stone Button
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stone_button
      */
@@ -11322,7 +11322,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stone Hoe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stone_hoe
      */
@@ -11331,7 +11331,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stone Pickaxe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stone_pickaxe
      */
@@ -11340,7 +11340,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stone Pressure Plate
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stone_pressure_plate
      */
@@ -11349,7 +11349,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stone Shovel
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stone_shovel
      */
@@ -11358,7 +11358,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stone Slab
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stone_slab
      */
@@ -11376,7 +11376,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stone Stairs
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stone_stairs
      */
@@ -11385,7 +11385,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stone Sword
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stone_sword
      */
@@ -11394,7 +11394,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stray Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stray_spawn_egg
      */
@@ -11412,7 +11412,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * String
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:string
      */
@@ -11421,7 +11421,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stripped Acacia Log
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stripped_acacia_log
      */
@@ -11430,7 +11430,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stripped Acacia Wood
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stripped_acacia_wood
      */
@@ -11448,7 +11448,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stripped Birch Log
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stripped_birch_log
      */
@@ -11457,7 +11457,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stripped Birch Wood
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stripped_birch_wood
      */
@@ -11502,7 +11502,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stripped Dark Oak Log
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stripped_dark_oak_log
      */
@@ -11511,7 +11511,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stripped Dark Oak Wood
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stripped_dark_oak_wood
      */
@@ -11520,7 +11520,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stripped Jungle Log
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stripped_jungle_log
      */
@@ -11529,7 +11529,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stripped Jungle Wood
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stripped_jungle_wood
      */
@@ -11556,7 +11556,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stripped Oak Log
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stripped_oak_log
      */
@@ -11565,7 +11565,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stripped Oak Wood
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stripped_oak_wood
      */
@@ -11592,7 +11592,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stripped Spruce Log
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stripped_spruce_log
      */
@@ -11601,7 +11601,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Stripped Spruce Wood
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:stripped_spruce_wood
      */
@@ -11628,7 +11628,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Structure Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:structure_block
      */
@@ -11637,7 +11637,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Structure Void
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:structure_void
      */
@@ -11646,7 +11646,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Sugar
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:sugar
      */
@@ -11655,7 +11655,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Sugar Cane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:sugar_cane
      */
@@ -11664,7 +11664,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Sunflower
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:sunflower
      */
@@ -11691,7 +11691,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Suspicious Stew
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:suspicious_stew
      */
@@ -11700,7 +11700,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Sweet Berries
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:sweet_berries
      */
@@ -11736,7 +11736,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Tall Grass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:tall_grass
      */
@@ -11754,7 +11754,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:terracotta
      */
@@ -11799,7 +11799,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Tipped Arrow
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:tipped_arrow
      */
@@ -11808,7 +11808,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Tnt
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:tnt
      */
@@ -11817,7 +11817,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Tnt Minecart
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:tnt_minecart
      */
@@ -11826,7 +11826,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Torch
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:torch
      */
@@ -11853,7 +11853,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Totem Of Undying
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:totem_of_undying
      */
@@ -11862,7 +11862,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Trader Llama Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:trader_llama_spawn_egg
      */
@@ -11871,7 +11871,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Trapped Chest
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:trapped_chest
      */
@@ -11898,7 +11898,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Trident
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:trident
      */
@@ -11907,7 +11907,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Tripwire Hook
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:tripwire_hook
      */
@@ -11916,7 +11916,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Tropical Fish
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:tropical_fish
      */
@@ -11925,7 +11925,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Tropical Fish Bucket
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:tropical_fish_bucket
      */
@@ -11934,7 +11934,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Tropical Fish Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:tropical_fish_spawn_egg
      */
@@ -11943,7 +11943,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Tube Coral
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:tube_coral
      */
@@ -11952,7 +11952,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Tube Coral Block
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:tube_coral_block
      */
@@ -11961,7 +11961,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Tube Coral Fan
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:tube_coral_fan
      */
@@ -12042,7 +12042,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Turtle Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:turtle_egg
      */
@@ -12051,7 +12051,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Turtle Helmet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:turtle_helmet
      */
@@ -12060,16 +12060,16 @@ public enum Item implements ProtocolMetadata {
     /**
      * Turtle Scute
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
-     * Resources: minecraft:scute (578 - 765 (1.15.2 - 1.20.4)), minecraft:turtle_scute (766 - 774 (1.20.5 - 1.21.11))
+     * Resources: minecraft:scute (498 - 765 (1.14.4 - 1.20.4)), minecraft:turtle_scute (766 - 774 (1.20.5 - 1.21.11))
      */
     TURTLE_SCUTE,
 
     /**
      * Turtle Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:turtle_spawn_egg
      */
@@ -12114,7 +12114,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Vex Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:vex_spawn_egg
      */
@@ -12123,7 +12123,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Villager Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:villager_spawn_egg
      */
@@ -12132,7 +12132,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Vindicator Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:vindicator_spawn_egg
      */
@@ -12141,7 +12141,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Vine
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:vine
      */
@@ -12150,7 +12150,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Wandering Trader Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:wandering_trader_spawn_egg
      */
@@ -12348,7 +12348,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Water Bucket
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:water_bucket
      */
@@ -13050,7 +13050,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Wet Sponge
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:wet_sponge
      */
@@ -13059,7 +13059,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Wheat
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:wheat
      */
@@ -13068,7 +13068,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Wheat Seeds
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:wheat_seeds
      */
@@ -13077,7 +13077,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * White Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:white_banner
      */
@@ -13086,7 +13086,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * White Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:white_bed
      */
@@ -13113,7 +13113,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * White Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:white_carpet
      */
@@ -13122,7 +13122,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * White Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:white_concrete
      */
@@ -13131,7 +13131,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * White Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:white_concrete_powder
      */
@@ -13140,7 +13140,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * White Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:white_dye
      */
@@ -13149,7 +13149,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * White Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:white_glazed_terracotta
      */
@@ -13167,7 +13167,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * White Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:white_shulker_box
      */
@@ -13176,7 +13176,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * White Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:white_stained_glass
      */
@@ -13185,7 +13185,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * White Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:white_stained_glass_pane
      */
@@ -13194,7 +13194,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * White Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:white_terracotta
      */
@@ -13203,7 +13203,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * White Tulip
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:white_tulip
      */
@@ -13212,7 +13212,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * White Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:white_wool
      */
@@ -13248,7 +13248,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Witch Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:witch_spawn_egg
      */
@@ -13257,7 +13257,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Wither Rose
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:wither_rose
      */
@@ -13266,7 +13266,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Wither Skeleton Skull
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:wither_skeleton_skull
      */
@@ -13275,7 +13275,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Wither Skeleton Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:wither_skeleton_spawn_egg
      */
@@ -13302,7 +13302,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Wolf Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:wolf_spawn_egg
      */
@@ -13311,7 +13311,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Wooden Axe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:wooden_axe
      */
@@ -13320,7 +13320,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Wooden Hoe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:wooden_hoe
      */
@@ -13329,7 +13329,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Wooden Pickaxe
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:wooden_pickaxe
      */
@@ -13338,7 +13338,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Wooden Shovel
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:wooden_shovel
      */
@@ -13356,7 +13356,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Wooden Sword
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:wooden_sword
      */
@@ -13365,7 +13365,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Writable Book
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:writable_book
      */
@@ -13374,7 +13374,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Written Book
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:written_book
      */
@@ -13383,7 +13383,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Yellow Banner
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:yellow_banner
      */
@@ -13392,7 +13392,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Yellow Bed
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:yellow_bed
      */
@@ -13419,7 +13419,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Yellow Carpet
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:yellow_carpet
      */
@@ -13428,7 +13428,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Yellow Concrete
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:yellow_concrete
      */
@@ -13437,7 +13437,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Yellow Concrete Powder
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:yellow_concrete_powder
      */
@@ -13446,7 +13446,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Yellow Dye
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:yellow_dye
      */
@@ -13455,7 +13455,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Yellow Glazed Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:yellow_glazed_terracotta
      */
@@ -13473,7 +13473,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Yellow Shulker Box
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:yellow_shulker_box
      */
@@ -13482,7 +13482,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Yellow Stained Glass
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:yellow_stained_glass
      */
@@ -13491,7 +13491,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Yellow Stained Glass Pane
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:yellow_stained_glass_pane
      */
@@ -13500,7 +13500,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Yellow Terracotta
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:yellow_terracotta
      */
@@ -13509,7 +13509,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Yellow Wool
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:yellow_wool
      */
@@ -13527,7 +13527,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Zombie Head
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:zombie_head
      */
@@ -13536,7 +13536,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Zombie Horse Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:zombie_horse_spawn_egg
      */
@@ -13554,7 +13554,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Zombie Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:zombie_spawn_egg
      */
@@ -13563,7 +13563,7 @@ public enum Item implements ProtocolMetadata {
     /**
      * Zombie Villager Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
      * Resource: minecraft:zombie_villager_spawn_egg
      */
@@ -13572,9 +13572,9 @@ public enum Item implements ProtocolMetadata {
     /**
      * Zombified Piglin Spawn Egg
      * <p>
-     * Supported Protocols: 578 - 774 (1.15.2 - 1.21.11)
+     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
      * <br>
-     * Resources: minecraft:zombie_pigman_spawn_egg (578 (1.15.2)), minecraft:zombified_piglin_spawn_egg (735 - 774 (1.16.0 - 1.21.11))
+     * Resources: minecraft:zombie_pigman_spawn_egg (498 - 578 (1.14.4 - 1.15.2)), minecraft:zombified_piglin_spawn_egg (735 - 774 (1.16.0 - 1.21.11))
      */
     ZOMBIFIED_PIGLIN_SPAWN_EGG;
 

@@ -425,6 +425,9 @@ public class DocumentationGenerator {
                         return "Also referred to as \"Camera\" in versions before 1.19 on the Minecraft wiki." +
                                 "\nPacket used for setting the player to spectate an entity.";
                     }
+                    case SET_CENTER_CHUNK -> {
+                        return "Also referred to as \"Update View Position\" in versions before 1.19 on the Minecraft wiki.";
+                    }
                     case SET_CONTAINER_CONTENT -> {
                         return "Also referred to as \"Window Items\" in versions before 1.19 on the Minecraft wiki.";
                     }
@@ -476,8 +479,15 @@ public class DocumentationGenerator {
                                 "\nNOTE: Packet structure changed in protocol 767+ (1.21.0+).";
                     }
                     case SPAWN_ENTITY -> {
-                        return "NOTE: Packet structure changed in protocol 759+ (1.19.0+)." +
+                        return "Also referred to as \"Spawn Object\" in versions before 1.15 on the Minecraft wiki." +
+                                "\nNOTE: Packet structure changed in protocol 759+ (1.19.0+)." +
                                 "\nNOTE: Packet structure changed in protocol 773+ (1.21.9+).";
+                    }
+                    case SPAWN_WEATHER_ENTITY -> {
+                        return "Also referred to as \"Spawn Global Entity\" in versions before 1.15 on the Minecraft wiki.";
+                    }
+                    case SPAWN_LIVING_ENTITY -> {
+                        return "Also referred to as \"Spawn Mob\" in versions before 1.15 on the Minecraft wiki.";
                     }
                     case START_CONFIGURATION -> {
                         return "Switches the protocol state to Configuration. Unsupported in protocol versions 763 (1.20.0/1) and older.";

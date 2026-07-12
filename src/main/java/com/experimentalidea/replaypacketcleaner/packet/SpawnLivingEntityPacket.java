@@ -24,7 +24,7 @@ import java.util.UUID;
 /// Pack type removed and was merged into Spawn Entity in protocol version 759+ (1.19+)
 public class SpawnLivingEntityPacket extends Packet {
 
-    public SpawnLivingEntityPacket(long packetIndex, int timestamp, int entityID, UUID uuid, EntityType entityType, double x, double y, double z, int pitchByte, int yawByte, int headYawByte, short velocityX, short velocityY, short velocityZ) {
+    public SpawnLivingEntityPacket(long packetIndex, int timestamp, int entityID, UUID uuid, EntityType entityType, double x, double y, double z, int pitchByte, int yawByte, int headYawByte, short velocityX, short velocityY, short velocityZ, int[] metadataRawBytes) {
         super(packetIndex, timestamp, PacketType.Play.SPAWN_LIVING_ENTITY);
         if (uuid == null) {
             throw new IllegalArgumentException("uuid cannot be null");
@@ -45,6 +45,7 @@ public class SpawnLivingEntityPacket extends Packet {
         this.velocityX = velocityX;
         this.velocityY = velocityY;
         this.velocityZ = velocityZ;
+        this.metadataRawBytes = metadataRawBytes;
     }
 
     private final int entityID;
@@ -53,6 +54,7 @@ public class SpawnLivingEntityPacket extends Packet {
     private final double x, y, z;
     private final int pitchByte, yawByte, headYawByte;
     private final short velocityX, velocityY, velocityZ;
+    private final int[] metadataRawBytes;
 
 
     public int getEntityID() {
@@ -101,6 +103,11 @@ public class SpawnLivingEntityPacket extends Packet {
 
     public short getVelocityZ() {
         return this.velocityZ;
+    }
+
+    /// Can be null if unsupported by the current protocol.
+    public int[] getMetadataRawBytes() {
+        return metadataRawBytes;
     }
 
 }

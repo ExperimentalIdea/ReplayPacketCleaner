@@ -24,7 +24,7 @@ import java.util.UUID;
 /// Note: This packet type was removed in protocol version 764+ (1.20.2+)
 public class SpawnPlayerPacket extends Packet {
 
-    public SpawnPlayerPacket(long packetIndex, int timestamp, int entityID, UUID uuid, double x, double y, double z, int yawByte, int pitchByte) {
+    public SpawnPlayerPacket(long packetIndex, int timestamp, int entityID, UUID uuid, double x, double y, double z, int yawByte, int pitchByte, int[] metadataRawBytes) {
         super(packetIndex, timestamp, PacketType.Play.SPAWN_PLAYER);
         if (uuid == null) {
             throw new IllegalArgumentException("uuid cannot be null");
@@ -37,13 +37,14 @@ public class SpawnPlayerPacket extends Packet {
         this.z = z;
         this.yawByte = yawByte;
         this.pitchByte = pitchByte;
-
+        this.metadataRawBytes = metadataRawBytes;
     }
 
     private final int entityID;
     private final UUID uuid;
     private final double x, y, z;
     private final int yawByte, pitchByte;
+    private final int[] metadataRawBytes;
 
 
     public int getEntityID() {
@@ -74,4 +75,8 @@ public class SpawnPlayerPacket extends Packet {
         return this.pitchByte;
     }
 
+    /// Can be null if unsupported by the current protocol.
+    public int[] getMetadataRawBytes() {
+        return metadataRawBytes;
+    }
 }
