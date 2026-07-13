@@ -344,7 +344,8 @@ public class DocumentationGenerator {
                         return "Also referred to as \"Entity Status\" in versions before 1.19 on the Minecraft wiki.";
                     }
                     case ENTITY_MOVEMENT -> {
-                        return "For player entities this packet indicates a given entity hasn't moved this tick.";
+                        return "For player entities this packet indicates a given entity hasn't moved this tick." +
+                                "\nAlso referred to as \"Entity\" in versions before 1.14.4 on the Minecraft wiki.";
                     }
                     case ENTITY_SOUND_EFFECT -> {
                         return "NOTE: Packet structure changed in protocol 761+ (1.19.3+) and again in protocol 767+ (1.21.0+)";
@@ -550,7 +551,8 @@ public class DocumentationGenerator {
                     }
                     case WINDOW_CONFIRMATION -> {
                         return "If it hadn't been removed for 1.17+, this would of likely been updated/referred to as \"Screen Confirmation\" or" +
-                                "\n\"Container Confirmation\" in versions 1.19+ on the Minecraft wiki like the other packet types related to player inventory";
+                                "\n\"Container Confirmation\" in versions 1.19+ on the Minecraft wiki like the other packet types related to player inventory" +
+                                "\nAlso referred to as \"Confirm Transaction\" in versions before 1.14.4 on the Minecraft wiki.";
                     }
                     case WORLD_BORDER -> {
                         return "Replaced by INITIALIZE_WORLD_BORDER, SET_BORDER_CENTER, SET_BORDER_LERP_SIZE, SET_BORDER_SIZE, SET_BORDER_WARNING_DELAY, & SET_BORDER_WARNING_DISTANCE.";
