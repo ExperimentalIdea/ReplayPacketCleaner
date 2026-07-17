@@ -17,20 +17,18 @@ package com.experimentalidea.replaypacketcleaner.packet;
 
 import com.experimentalidea.replaypacketcleaner.protocol.PacketType;
 
-/// A representation of an Update Time Packet.
+/// A representation of an Update Time Packet.  TODO: Consider adding safety checks to prevent null entries for clocks.
 public class UpdateTimePacket extends Packet {
 
 
-    public UpdateTimePacket(long packetIndex, int timestamp, long worldAge, long timeOfDay, boolean timeAdvances) {
+    public UpdateTimePacket(long packetIndex, int timestamp, long worldAge, Clock[] clocks) {
         super(packetIndex, timestamp, PacketType.Play.UPDATE_TIME);
         this.worldAge = worldAge;
-        this.timeOfDay = timeOfDay;
-        this.timeAdvances = timeAdvances;
+        this.clocks = clocks;
     }
 
     private long worldAge;
-    private long timeOfDay;
-    private boolean timeAdvances;
+    private Clock[] clocks;
 
 
     public long getWorldAge() {
@@ -42,22 +40,68 @@ public class UpdateTimePacket extends Packet {
     }
 
 
-    public long getTimeOfDay() {
-        return this.timeOfDay;
+    public Clock[] getClocks() {
+        return this.clocks;
     }
 
-    public void setTimeOfDay(long timeOfDay) {
-        this.timeOfDay = timeOfDay;
+    void setClocks(Clock[] clocks) {
+        this.clocks = clocks;
     }
 
 
-    public boolean doesTimeAdvance() {
-        return this.timeAdvances;
-    }
+    public static class Clock {
 
-    public void setTimeAdvance(boolean timeAdvances) {
-        this.timeAdvances = timeAdvances;
-    }
+        public Clock(int id, long time, float fractionalTime, float advancementRate) {
+            this.id = id;
+            this.time = time;
+            this.fractionalTime = fractionalTime;
+            this.advancementRate = advancementRate;
+        }
 
+        public static final int DEFAULT_CLOCK_ID = -1;
+        public static final float DEFAULT_FRACTIONAL_TIME = 0.0F;
+        public static final float DEFAULT_ADVANCEMENT_RATE = 1.0F;
+
+        private int id;
+        private long time;
+        private float fractionalTime;
+        private float advancementRate;
+
+
+        public int getID() {
+            return this.id;
+        }
+
+        void setID(int id) {
+            this.id = id;
+        }
+
+
+        public long getTime() {
+            return this.time;
+        }
+
+        public void setTime(long time) {
+            this.time = time;
+        }
+
+
+        public float getFractionalTime() {
+            return this.fractionalTime;
+        }
+
+        public void setFractionalTime(float fractionalTime) {
+            this.fractionalTime = fractionalTime;
+        }
+
+
+        public float getTimeAdvancementRate() {
+            return this.advancementRate;
+        }
+
+        public void setTimeAdvancementRate(float advancementRate) {
+            this.advancementRate = advancementRate;
+        }
+    }
 
 }

@@ -547,7 +547,8 @@ public class DocumentationGenerator {
                     }
                     case UPDATE_TIME -> {
                         return "Also referred to as \"Time Update\" in versions before 1.19 on the Minecraft wiki." +
-                                "\nNOTE: Packet structure changed since protocol 768+ (1.21.2+). New field timeAdvances (timeOfDayIncreasing)";
+                                "\nNOTE: Packet structure changed since protocol 768+ (1.21.2+) - New field timeAdvances (timeOfDayIncreasing)." +
+                                "\nNOTE: Packet structure changed in protocol 774+ (26.1+).";
                     }
                     case WINDOW_CONFIRMATION -> {
                         return "If it hadn't been removed for 1.17+, this would of likely been updated/referred to as \"Screen Confirmation\" or" +

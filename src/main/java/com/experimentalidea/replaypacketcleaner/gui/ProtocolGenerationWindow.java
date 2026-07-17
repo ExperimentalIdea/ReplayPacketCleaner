@@ -877,7 +877,7 @@ public class ProtocolGenerationWindow {
                 entryTarget.put(TypeMetadata.JSON_NODE_RESOURCE, unknownResourceKey);
                 entryTarget.put(TypeMetadata.JSON_NODE_BLOCKSTATES, blockStates.get(i));
 
-                currentNode.put("*" + jsonKeys.get(i).toUpperCase(), entryTarget);
+                currentNode.put("*" + jsonKeys.get(i).replaceAll("minecraft:", "").toLowerCase(), entryTarget);
 
 
                 log.append(unknownResourceKey).append(" = ").append(entriesNode.getJSONObject(unknownResourceKey).getInt("protocol_id")).append("\n    blockstates: ").append(Arrays.toString(blockStates.get(i))).append("\n");

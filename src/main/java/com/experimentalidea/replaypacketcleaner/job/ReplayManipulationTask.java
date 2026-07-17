@@ -637,23 +637,54 @@ public class ReplayManipulationTask implements Runnable {
                     case UPDATE_TIME -> {
                         int packetID = this.protocol.getPlayPacketID(PacketType.Play.UPDATE_TIME);
                         int packetSize = ReplayWriter.sizeOfVarInt(packetID) + 16;
-                        if (this.protocolVersion >= Version.MC_1_21_2) {
+
+                        UpdateTimePacket updateTimePacket = (UpdateTimePacket) packet;
+                        UpdateTimePacket.Clock[] clocks = updateTimePacket.getClocks();
+
+                        if (this.protocolVersion >= Version.MC_1_21_2 && this.protocolVersion < Version.MC_26_1_0) {
                             packetSize += 1;
+                        } else if (this.protocolVersion >= Version.MC_26_1_0) {
+                            packetSize = ReplayWriter.sizeOfVarInt(packetID) + 8 + ReplayWriter.sizeOfVarInt(clocks.length);
+                            for (UpdateTimePacket.Clock clock : clocks) {
+                                packetSize += ReplayWriter.sizeOfVarInt(clock.getID()) + ReplayWriter.sizeOfVarLong(clock.getTime()) + 8;
+                            }
                         }
 
                         this.writePacketHeader(timeStamp, packetSize, packetID);
 
-                        this.writer.writeLong(((UpdateTimePacket) packet).getWorldAge());
+                        this.writer.writeLong(updateTimePacket.getWorldAge());
 
-                        long timeOfDay = ((UpdateTimePacket) packet).getTimeOfDay();
-                        if (protocolVersion >= Version.MC_1_21_2) {
-                            this.writer.writeLong(timeOfDay);
-                            this.writer.writeBoolean(((UpdateTimePacket) packet).doesTimeAdvance());
-                        } else {
-                            if (!((UpdateTimePacket) packet).doesTimeAdvance()) {
-                                timeOfDay *= -1;
+                        if (this.protocolVersion >= Version.MC_26_1_0) { // Ensure packet size is recalculated for protocol versions 775+ (26.1+)
+                            packetSize = ReplayWriter.sizeOfVarInt(packetID) + 8 + ReplayWriter.sizeOfVarInt(clocks.length);
+                            for (UpdateTimePacket.Clock clock : clocks) {
+                                packetSize += ReplayWriter.sizeOfVarInt(clock.getID()) + ReplayWriter.sizeOfVarLong(clock.getTime() + 8);
                             }
-                            this.writer.writeLong(timeOfDay);
+                        }
+
+                        this.writePacketHeader(timeStamp, packetSize, packetID);
+
+                        this.writer.writeLong(updateTimePacket.getWorldAge());
+
+                        if (this.protocolVersion >= Version.MC_26_1_0) {
+                            this.writer.writeVarInt(clocks.length);
+                            for (UpdateTimePacket.Clock clock : clocks) {
+                                this.writer.writeVarInt(clock.getID());
+                                this.writer.writeVarLong(clock.getTime());
+                                this.writer.writeFloat(clock.getFractionalTime());
+                                this.writer.writeFloat(clock.getTimeAdvancementRate());
+                            }
+                        } else {
+                            UpdateTimePacket.Clock clock = clocks[0];
+                            long timeOfDay = clock.getTime();
+                            if (protocolVersion >= Version.MC_1_21_2) {
+                                this.writer.writeLong(timeOfDay);
+                                this.writer.writeBoolean(clock.getTimeAdvancementRate() != 0.0F);
+                            } else {
+                                if (clock.getTimeAdvancementRate() == 0.0F) {
+                                    timeOfDay *= -1;
+                                }
+                                this.writer.writeLong(timeOfDay);
+                            }
                         }
                     }
 
@@ -2076,19 +2107,34 @@ public class ReplayManipulationTask implements Runnable {
 
             // Read packet data
             long worldAge = this.reader.readLong();
-            long timeOfDay = this.reader.readLong();
-            boolean timeAdvances = true;
+            UpdateTimePacket.Clock[] clocks;
 
-            // Versions 1.21.2 and onward control whether time advances via a boolean value.
-            if (this.protocolVersion >= Version.MC_1_21_2) {
-                timeAdvances = this.reader.readBoolean();
-            } else { // Versions before 1.21.2 control whether time advances by using a negative timeOfDay value.
-                if (timeOfDay < 0) {
-                    timeOfDay *= -1;
-                    timeAdvances = false;
+            // Versions 26.1 (775) and onwards changed how this packet is structured.
+            if (this.protocolVersion >= Version.MC_26_1_0) {
+                clocks = new UpdateTimePacket.Clock[this.reader.readVarInt()];
+
+                for (int i = 0; i < clocks.length; i++) {
+                    clocks[i] = new UpdateTimePacket.Clock(
+                            this.reader.readVarInt(),
+                            this.reader.readVarLong(),
+                            this.reader.readFloat(),
+                            this.reader.readFloat());
                 }
+            } else {
+                long timeOfDay = this.reader.readLong();
+                float advancementRate = UpdateTimePacket.Clock.DEFAULT_ADVANCEMENT_RATE;
+                // Versions 1.21.2 to 1.21.11 control whether time advances via a boolean value.
+                if (this.protocolVersion >= Version.MC_1_21_2) {
+                    advancementRate = this.reader.readBoolean() ? UpdateTimePacket.Clock.DEFAULT_ADVANCEMENT_RATE : 0.0F;
+                } else { // Versions before 1.21.2 control whether time advances by using a negative timeOfDay value.
+                    if (timeOfDay < 0) {
+                        timeOfDay *= -1;
+                        advancementRate = 0.0F;
+                    }
+                }
+                clocks = new UpdateTimePacket.Clock[]{new UpdateTimePacket.Clock(UpdateTimePacket.Clock.DEFAULT_CLOCK_ID, timeOfDay, UpdateTimePacket.Clock.DEFAULT_FRACTIONAL_TIME, advancementRate)};
             }
-            UpdateTimePacket updateTimePacket = new UpdateTimePacket(packetIndex, timeStamp, worldAge, timeOfDay, timeAdvances);
+            UpdateTimePacket updateTimePacket = new UpdateTimePacket(packetIndex, timeStamp, worldAge, clocks);
 
             // Let listener(s) manipulate this packet.
             for (UpdateTimePacketListener listener : this.updateTimePacketListeners) {
@@ -2097,19 +2143,39 @@ public class ReplayManipulationTask implements Runnable {
 
             // Write out the full packet (if the packet should be written out)
             if (!updateTimePacket.isWriteCanceled()) {
+                clocks = updateTimePacket.getClocks();
+
+                if (this.protocolVersion >= Version.MC_26_1_0) { // Ensure packet size is recalculated for protocol versions 775+ (26.1+)
+                    packetSize = ReplayWriter.sizeOfVarInt(packetID) + 8 + ReplayWriter.sizeOfVarInt(clocks.length);
+                    for (UpdateTimePacket.Clock clock : clocks) {
+                        packetSize += ReplayWriter.sizeOfVarInt(clock.getID()) + ReplayWriter.sizeOfVarLong(clock.getTime()) + 8;
+                    }
+                }
+
                 this.writePacketHeader(timeStamp, packetSize, packetID);
 
                 this.writer.writeLong(updateTimePacket.getWorldAge());
 
-                timeOfDay = updateTimePacket.getTimeOfDay();
-                if (protocolVersion >= Version.MC_1_21_2) {
-                    this.writer.writeLong(timeOfDay);
-                    this.writer.writeBoolean(updateTimePacket.doesTimeAdvance());
-                } else {
-                    if (!updateTimePacket.doesTimeAdvance()) {
-                        timeOfDay *= -1;
+                if (this.protocolVersion >= Version.MC_26_1_0) {
+                    this.writer.writeVarInt(clocks.length);
+                    for (UpdateTimePacket.Clock clock : clocks) {
+                        this.writer.writeVarInt(clock.getID());
+                        this.writer.writeVarLong(clock.getTime());
+                        this.writer.writeFloat(clock.getFractionalTime());
+                        this.writer.writeFloat(clock.getTimeAdvancementRate());
                     }
-                    this.writer.writeLong(timeOfDay);
+                } else {
+                    UpdateTimePacket.Clock clock = clocks[0];
+                    long timeOfDay = clock.getTime();
+                    if (protocolVersion >= Version.MC_1_21_2) {
+                        this.writer.writeLong(timeOfDay);
+                        this.writer.writeBoolean(clock.getTimeAdvancementRate() != 0.0F);
+                    } else {
+                        if (clock.getTimeAdvancementRate() == 0.0F) {
+                            timeOfDay *= -1;
+                        }
+                        this.writer.writeLong(timeOfDay);
+                    }
                 }
             }
         } else {

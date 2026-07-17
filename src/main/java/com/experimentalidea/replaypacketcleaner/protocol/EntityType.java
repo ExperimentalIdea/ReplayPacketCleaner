@@ -36,7 +36,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Acacia Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:acacia_boat
      * <p>
@@ -47,7 +47,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Acacia Chest Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:acacia_chest_boat
      * <p>
@@ -58,7 +58,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Allay
      * <p>
-     * Supported Protocols: 759 - 774 (1.19.0 - 1.21.11)
+     * Supported Protocols: 759 - 776 (1.19.0 - 26.2.0)
      * <br>
      * Resource: minecraft:allay
      */
@@ -67,7 +67,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Area Effect Cloud
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:area_effect_cloud
      */
@@ -76,7 +76,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Armadillo
      * <p>
-     * Supported Protocols: 766 - 774 (1.20.5 - 1.21.11)
+     * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
      * <br>
      * Resource: minecraft:armadillo
      */
@@ -85,7 +85,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Armor Stand
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:armor_stand
      */
@@ -94,7 +94,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Arrow
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:arrow
      */
@@ -103,7 +103,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Axolotl
      * <p>
-     * Supported Protocols: 755 - 774 (1.17.0 - 1.21.11)
+     * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
      * <br>
      * Resource: minecraft:axolotl
      */
@@ -112,7 +112,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Bamboo Chest Raft
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:bamboo_chest_raft
      */
@@ -121,7 +121,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Bamboo Raft
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:bamboo_raft
      */
@@ -130,7 +130,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Bat
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:bat
      */
@@ -139,7 +139,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Bee
      * <p>
-     * Supported Protocols: 573 - 774 (1.15.0 - 1.21.11)
+     * Supported Protocols: 573 - 776 (1.15.0 - 26.2.0)
      * <br>
      * Resource: minecraft:bee
      */
@@ -148,7 +148,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Birch Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:birch_boat
      * <p>
@@ -159,7 +159,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Birch Chest Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:birch_chest_boat
      * <p>
@@ -170,7 +170,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Blaze
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:blaze
      */
@@ -179,7 +179,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Block Display
      * <p>
-     * Supported Protocols: 762 - 774 (1.19.4 - 1.21.11)
+     * Supported Protocols: 762 - 776 (1.19.4 - 26.2.0)
      * <br>
      * Resource: minecraft:block_display
      */
@@ -188,7 +188,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Boat
      * <p>
-     * Supported Protocols: 498 - 767 (1.14.4 - 1.21.1)
+     * Supported Protocols: 477 - 767 (1.14.0 - 1.21.1)
      * <br>
      * Resource: minecraft:boat
      * <p>
@@ -199,7 +199,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Bogged
      * <p>
-     * Supported Protocols: 766 - 774 (1.20.5 - 1.21.11)
+     * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
      * <br>
      * Resource: minecraft:bogged
      */
@@ -208,7 +208,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Breeze
      * <p>
-     * Supported Protocols: 765 - 774 (1.20.3 - 1.21.11)
+     * Supported Protocols: 765 - 776 (1.20.3 - 26.2.0)
      * <br>
      * Resource: minecraft:breeze
      */
@@ -217,7 +217,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Breeze Wind Charge
      * <p>
-     * Supported Protocols: 766 - 774 (1.20.5 - 1.21.11)
+     * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
      * <br>
      * Resource: minecraft:breeze_wind_charge
      */
@@ -226,7 +226,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Camel
      * <p>
-     * Supported Protocols: 761 - 774 (1.19.3 - 1.21.11)
+     * Supported Protocols: 761 - 776 (1.19.3 - 26.2.0)
      * <br>
      * Resource: minecraft:camel
      */
@@ -235,7 +235,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Camel Husk
      * <p>
-     * Supported Protocol: 774 (1.21.11)
+     * Supported Protocols: 774 - 776 (1.21.11 - 26.2.0)
      * <br>
      * Resource: minecraft:camel_husk
      */
@@ -244,7 +244,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Cat
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:cat
      */
@@ -253,7 +253,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Cave Spider
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:cave_spider
      */
@@ -262,7 +262,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Cherry Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:cherry_boat
      * <p>
@@ -273,7 +273,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Cherry Chest Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:cherry_chest_boat
      * <p>
@@ -295,7 +295,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Chest Minecart
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:chest_minecart
      */
@@ -304,7 +304,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Chicken
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:chicken
      */
@@ -313,7 +313,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Cod
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:cod
      */
@@ -322,7 +322,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Command Block Minecart
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:command_block_minecart
      */
@@ -331,7 +331,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Copper Golem
      * <p>
-     * Supported Protocols: 773 - 774 (1.21.9 - 1.21.11)
+     * Supported Protocols: 773 - 776 (1.21.9 - 26.2.0)
      * <br>
      * Resource: minecraft:copper_golem
      */
@@ -340,7 +340,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Cow
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:cow
      */
@@ -349,7 +349,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Creaking
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:creaking
      */
@@ -367,7 +367,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Creeper
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:creeper
      */
@@ -376,7 +376,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Dark Oak Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:dark_oak_boat
      * <p>
@@ -387,7 +387,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Dark Oak Chest Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:dark_oak_chest_boat
      * <p>
@@ -398,7 +398,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Dolphin
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:dolphin
      */
@@ -407,7 +407,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Donkey
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:donkey
      */
@@ -416,7 +416,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Dragon Fireball
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:dragon_fireball
      */
@@ -425,7 +425,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Drowned
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:drowned
      */
@@ -434,7 +434,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Egg
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:egg
      */
@@ -443,7 +443,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Elder Guardian
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:elder_guardian
      */
@@ -452,7 +452,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Enderman
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:enderman
      */
@@ -461,7 +461,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Endermite
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:endermite
      */
@@ -470,7 +470,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Ender Dragon
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:ender_dragon
      */
@@ -479,7 +479,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Ender Pearl
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:ender_pearl
      */
@@ -488,7 +488,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * End Crystal
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:end_crystal
      */
@@ -497,7 +497,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Evoker
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:evoker
      */
@@ -506,7 +506,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Evoker Fangs
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:evoker_fangs
      */
@@ -515,7 +515,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Experience Bottle
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:experience_bottle
      */
@@ -524,7 +524,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Experience Orb
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:experience_orb
      */
@@ -533,7 +533,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Eye Of Ender
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:eye_of_ender
      */
@@ -542,7 +542,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Falling Block
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:falling_block
      */
@@ -551,7 +551,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Fireball
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:fireball
      */
@@ -560,7 +560,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Firework Rocket
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:firework_rocket
      */
@@ -569,7 +569,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Fishing Bobber
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:fishing_bobber
      */
@@ -578,7 +578,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Fox
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:fox
      */
@@ -587,7 +587,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Frog
      * <p>
-     * Supported Protocols: 759 - 774 (1.19.0 - 1.21.11)
+     * Supported Protocols: 759 - 776 (1.19.0 - 26.2.0)
      * <br>
      * Resource: minecraft:frog
      */
@@ -596,7 +596,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Furnace Minecart
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:furnace_minecart
      */
@@ -605,7 +605,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Ghast
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:ghast
      */
@@ -614,7 +614,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Giant
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:giant
      */
@@ -623,7 +623,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Glow Item Frame
      * <p>
-     * Supported Protocols: 755 - 774 (1.17.0 - 1.21.11)
+     * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
      * <br>
      * Resource: minecraft:glow_item_frame
      */
@@ -632,7 +632,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Glow Squid
      * <p>
-     * Supported Protocols: 755 - 774 (1.17.0 - 1.21.11)
+     * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
      * <br>
      * Resource: minecraft:glow_squid
      */
@@ -641,7 +641,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Goat
      * <p>
-     * Supported Protocols: 755 - 774 (1.17.0 - 1.21.11)
+     * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
      * <br>
      * Resource: minecraft:goat
      */
@@ -650,7 +650,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Guardian
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:guardian
      */
@@ -659,7 +659,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Happy Ghast
      * <p>
-     * Supported Protocols: 771 - 774 (1.21.6 - 1.21.11)
+     * Supported Protocols: 771 - 776 (1.21.6 - 26.2.0)
      * <br>
      * Resource: minecraft:happy_ghast
      */
@@ -668,7 +668,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Hoglin
      * <p>
-     * Supported Protocols: 735 - 774 (1.16.0 - 1.21.11)
+     * Supported Protocols: 735 - 776 (1.16.0 - 26.2.0)
      * <br>
      * Resource: minecraft:hoglin
      */
@@ -677,7 +677,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Hopper Minecart
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:hopper_minecart
      */
@@ -686,7 +686,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Horse
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:horse
      */
@@ -695,7 +695,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Husk
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:husk
      */
@@ -704,7 +704,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Illusioner
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:illusioner
      */
@@ -713,7 +713,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Interaction
      * <p>
-     * Supported Protocols: 762 - 774 (1.19.4 - 1.21.11)
+     * Supported Protocols: 762 - 776 (1.19.4 - 26.2.0)
      * <br>
      * Resource: minecraft:interaction
      */
@@ -722,7 +722,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Iron Golem
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:iron_golem
      */
@@ -731,7 +731,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Item
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:item
      */
@@ -740,7 +740,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Item Display
      * <p>
-     * Supported Protocols: 762 - 774 (1.19.4 - 1.21.11)
+     * Supported Protocols: 762 - 776 (1.19.4 - 26.2.0)
      * <br>
      * Resource: minecraft:item_display
      */
@@ -749,7 +749,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Item Frame
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:item_frame
      */
@@ -758,7 +758,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Jungle Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:jungle_boat
      * <p>
@@ -769,7 +769,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Jungle Chest Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:jungle_chest_boat
      * <p>
@@ -780,7 +780,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Leash Knot
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:leash_knot
      */
@@ -789,7 +789,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Lightning Bolt
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:lightning_bolt
      */
@@ -798,7 +798,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Lingering Potion
      * <p>
-     * Supported Protocols: 770 - 774 (1.21.5 - 1.21.11)
+     * Supported Protocols: 770 - 776 (1.21.5 - 26.2.0)
      * <br>
      * Resource: minecraft:lingering_potion
      * <p>
@@ -809,7 +809,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Llama
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:llama
      */
@@ -818,7 +818,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Llama Spit
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:llama_spit
      */
@@ -827,7 +827,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Magma Cube
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:magma_cube
      */
@@ -836,7 +836,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Mangrove Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:mangrove_boat
      * <p>
@@ -847,7 +847,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Mangrove Chest Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:mangrove_chest_boat
      * <p>
@@ -858,7 +858,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Mannequin
      * <p>
-     * Supported Protocols: 773 - 774 (1.21.9 - 1.21.11)
+     * Supported Protocols: 773 - 776 (1.21.9 - 26.2.0)
      * <br>
      * Resource: minecraft:mannequin
      */
@@ -867,7 +867,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Marker
      * <p>
-     * Supported Protocols: 755 - 774 (1.17.0 - 1.21.11)
+     * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
      * <br>
      * Resource: minecraft:marker
      */
@@ -876,7 +876,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Minecart
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:minecart
      */
@@ -885,7 +885,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Mooshroom
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:mooshroom
      */
@@ -894,7 +894,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Mule
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:mule
      */
@@ -903,7 +903,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Nautilus
      * <p>
-     * Supported Protocol: 774 (1.21.11)
+     * Supported Protocols: 774 - 776 (1.21.11 - 26.2.0)
      * <br>
      * Resource: minecraft:nautilus
      */
@@ -912,7 +912,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Oak Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:oak_boat
      * <p>
@@ -923,7 +923,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Oak Chest Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:oak_chest_boat
      * <p>
@@ -934,7 +934,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Ocelot
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:ocelot
      */
@@ -943,7 +943,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Ominous Item Spawner
      * <p>
-     * Supported Protocols: 766 - 774 (1.20.5 - 1.21.11)
+     * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
      * <br>
      * Resource: minecraft:ominous_item_spawner
      */
@@ -952,7 +952,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Painting
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:painting
      */
@@ -961,7 +961,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Pale Oak Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:pale_oak_boat
      * <p>
@@ -972,7 +972,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Pale Oak Chest Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:pale_oak_chest_boat
      * <p>
@@ -983,7 +983,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Panda
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:panda
      */
@@ -992,7 +992,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Parched
      * <p>
-     * Supported Protocol: 774 (1.21.11)
+     * Supported Protocols: 774 - 776 (1.21.11 - 26.2.0)
      * <br>
      * Resource: minecraft:parched
      */
@@ -1001,7 +1001,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Parrot
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:parrot
      */
@@ -1010,7 +1010,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Phantom
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:phantom
      */
@@ -1019,7 +1019,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Pig
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:pig
      */
@@ -1028,7 +1028,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Piglin
      * <p>
-     * Supported Protocols: 735 - 774 (1.16.0 - 1.21.11)
+     * Supported Protocols: 735 - 776 (1.16.0 - 26.2.0)
      * <br>
      * Resource: minecraft:piglin
      */
@@ -1037,7 +1037,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Piglin Brute
      * <p>
-     * Supported Protocols: 751 - 774 (1.16.2 - 1.21.11)
+     * Supported Protocols: 751 - 776 (1.16.2 - 26.2.0)
      * <br>
      * Resource: minecraft:piglin_brute
      */
@@ -1046,7 +1046,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Pillager
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:pillager
      */
@@ -1055,7 +1055,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Player
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:player
      */
@@ -1064,7 +1064,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Polar Bear
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:polar_bear
      */
@@ -1073,7 +1073,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Potion
      * <p>
-     * Supported Protocols: 498 - 769 (1.14.4 - 1.21.4)
+     * Supported Protocols: 477 - 769 (1.14.0 - 1.21.4)
      * <br>
      * Resource: minecraft:potion
      * <p>
@@ -1084,7 +1084,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Pufferfish
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:pufferfish
      */
@@ -1093,7 +1093,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Rabbit
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:rabbit
      */
@@ -1102,7 +1102,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Ravager
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:ravager
      */
@@ -1111,7 +1111,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Salmon
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:salmon
      */
@@ -1120,7 +1120,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Sheep
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:sheep
      */
@@ -1129,7 +1129,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Shulker
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:shulker
      */
@@ -1138,7 +1138,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Shulker Bullet
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:shulker_bullet
      */
@@ -1147,7 +1147,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Silverfish
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:silverfish
      */
@@ -1156,7 +1156,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Skeleton
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:skeleton
      */
@@ -1165,7 +1165,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Skeleton Horse
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:skeleton_horse
      */
@@ -1174,7 +1174,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Slime
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:slime
      */
@@ -1183,7 +1183,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Small Fireball
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:small_fireball
      */
@@ -1192,7 +1192,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Sniffer
      * <p>
-     * Supported Protocols: 762 - 774 (1.19.4 - 1.21.11)
+     * Supported Protocols: 762 - 776 (1.19.4 - 26.2.0)
      * <br>
      * Resource: minecraft:sniffer
      */
@@ -1201,7 +1201,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Snowball
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:snowball
      */
@@ -1210,7 +1210,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Snow Golem
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:snow_golem
      */
@@ -1219,7 +1219,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Spawner Minecart
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:spawner_minecart
      */
@@ -1228,7 +1228,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Spectral Arrow
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:spectral_arrow
      */
@@ -1237,7 +1237,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Spider
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:spider
      */
@@ -1246,7 +1246,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Splash Potion
      * <p>
-     * Supported Protocols: 770 - 774 (1.21.5 - 1.21.11)
+     * Supported Protocols: 770 - 776 (1.21.5 - 26.2.0)
      * <br>
      * Resource: minecraft:splash_potion
      * <p>
@@ -1257,7 +1257,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Spruce Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:spruce_boat
      * <p>
@@ -1268,7 +1268,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Spruce Chest Boat
      * <p>
-     * Supported Protocols: 768 - 774 (1.21.2 - 1.21.11)
+     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
      * <br>
      * Resource: minecraft:spruce_chest_boat
      * <p>
@@ -1279,7 +1279,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Squid
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:squid
      */
@@ -1288,7 +1288,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Stray
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:stray
      */
@@ -1297,16 +1297,25 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Strider
      * <p>
-     * Supported Protocols: 735 - 774 (1.16.0 - 1.21.11)
+     * Supported Protocols: 735 - 776 (1.16.0 - 26.2.0)
      * <br>
      * Resource: minecraft:strider
      */
     STRIDER,
 
     /**
+     * Sulfur Cube
+     * <p>
+     * Supported Protocol: 776 (26.2.0)
+     * <br>
+     * Resource: minecraft:sulfur_cube
+     */
+    SULFUR_CUBE,
+
+    /**
      * Tadpole
      * <p>
-     * Supported Protocols: 759 - 774 (1.19.0 - 1.21.11)
+     * Supported Protocols: 759 - 776 (1.19.0 - 26.2.0)
      * <br>
      * Resource: minecraft:tadpole
      */
@@ -1315,7 +1324,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Text Display
      * <p>
-     * Supported Protocols: 762 - 774 (1.19.4 - 1.21.11)
+     * Supported Protocols: 762 - 776 (1.19.4 - 26.2.0)
      * <br>
      * Resource: minecraft:text_display
      */
@@ -1324,7 +1333,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Tnt
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:tnt
      */
@@ -1333,7 +1342,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Tnt Minecart
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:tnt_minecart
      */
@@ -1342,7 +1351,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Trader Llama
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:trader_llama
      */
@@ -1351,7 +1360,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Trident
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:trident
      */
@@ -1360,7 +1369,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Tropical Fish
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:tropical_fish
      */
@@ -1369,7 +1378,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Turtle
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:turtle
      */
@@ -1378,7 +1387,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Vex
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:vex
      */
@@ -1387,7 +1396,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Villager
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:villager
      */
@@ -1396,7 +1405,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Vindicator
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:vindicator
      */
@@ -1405,7 +1414,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Wandering Trader
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:wandering_trader
      */
@@ -1414,7 +1423,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Warden
      * <p>
-     * Supported Protocols: 759 - 774 (1.19.0 - 1.21.11)
+     * Supported Protocols: 759 - 776 (1.19.0 - 26.2.0)
      * <br>
      * Resource: minecraft:warden
      */
@@ -1423,7 +1432,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Wind Charge
      * <p>
-     * Supported Protocols: 765 - 774 (1.20.3 - 1.21.11)
+     * Supported Protocols: 765 - 776 (1.20.3 - 26.2.0)
      * <br>
      * Resource: minecraft:wind_charge
      */
@@ -1432,7 +1441,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Witch
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:witch
      */
@@ -1441,7 +1450,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Wither
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:wither
      */
@@ -1450,7 +1459,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Wither Skeleton
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:wither_skeleton
      */
@@ -1459,7 +1468,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Wither Skull
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:wither_skull
      */
@@ -1468,7 +1477,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Wolf
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:wolf
      */
@@ -1477,7 +1486,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Zoglin
      * <p>
-     * Supported Protocols: 735 - 774 (1.16.0 - 1.21.11)
+     * Supported Protocols: 735 - 776 (1.16.0 - 26.2.0)
      * <br>
      * Resource: minecraft:zoglin
      */
@@ -1486,7 +1495,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Zombie
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:zombie
      */
@@ -1495,7 +1504,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Zombie Horse
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:zombie_horse
      */
@@ -1504,7 +1513,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Zombie Nautilus
      * <p>
-     * Supported Protocol: 774 (1.21.11)
+     * Supported Protocols: 774 - 776 (1.21.11 - 26.2.0)
      * <br>
      * Resource: minecraft:zombie_nautilus
      */
@@ -1513,7 +1522,7 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Zombie Villager
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
      * Resource: minecraft:zombie_villager
      */
@@ -1522,9 +1531,9 @@ public enum EntityType implements ProtocolMetadata {
     /**
      * Zombified Piglin
      * <p>
-     * Supported Protocols: 498 - 774 (1.14.4 - 1.21.11)
+     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
      * <br>
-     * Resources: minecraft:zombie_pigman (498 - 578 (1.14.4 - 1.15.2)), minecraft:zombified_piglin (735 - 774 (1.16.0 - 1.21.11))
+     * Resources: minecraft:zombie_pigman (477 - 578 (1.14.0 - 1.15.2)), minecraft:zombified_piglin (735 - 776 (1.16.0 - 26.2.0))
      */
     ZOMBIFIED_PIGLIN;
 

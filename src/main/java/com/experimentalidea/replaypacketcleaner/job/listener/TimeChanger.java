@@ -22,25 +22,28 @@ public class TimeChanger implements UpdateTimePacketListener {
 
     /**
      * Creates a {@link UpdateTimePacketListener} that fixes the daylight cycle to a desired time.
-     * @param timeOfDay The time of day in ticks ranging from 0 to 24000. A value outside this range will be rounded to the top or bottom of this range.
+     *
+     * @param time The time of day in ticks ranging from 0 to 24000. A value outside this range will be rounded to the top or bottom of this range.
      */
-    public TimeChanger(long timeOfDay) {
-        if (timeOfDay < 0) {
-            timeOfDay = 0;
+    public TimeChanger(long time) {
+        if (time < 0) {
+            time = 0;
         }
-        if (timeOfDay > 24000) {
-            timeOfDay = 24000;
+        if (time > 24000) {
+            time = 24000;
         }
-        this.timeOfDay = timeOfDay;
+        this.time = time;
     }
 
-    private final long timeOfDay;
+    private final long time;
 
 
     @Override
     public void onUpdateTimePacket(UpdateTimePacket updateTimePacket) {
-        updateTimePacket.setTimeOfDay(this.timeOfDay);
-        updateTimePacket.setTimeAdvance(false);
+        for (UpdateTimePacket.Clock clock : updateTimePacket.getClocks()) {
+            clock.setTime(this.time);
+            clock.setTimeAdvancementRate(0.0F);
+        }
     }
 
 }

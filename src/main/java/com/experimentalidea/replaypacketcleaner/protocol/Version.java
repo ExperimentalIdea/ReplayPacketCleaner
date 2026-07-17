@@ -63,5 +63,11 @@ public class Version {
     public static final int MC_1_21_8 = 772;
     public static final int MC_1_21_9 = 773;
     public static final int MC_1_21_10 = 773;
+    public static final int MC_1_21_11 = 774;
+    public static final int MC_26_1_0 = 775;
+    public static final int MC_26_1_1 = 775;
+    public static final int MC_26_1_2 = 775;
+    public static final int MC_26_2_0 = 776;
+
 
 }

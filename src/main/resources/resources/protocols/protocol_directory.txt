@@ -32,3 +32,5 @@ protocol_771.json
 protocol_772.json
 protocol_773.json
 protocol_774.json
+protocol_775.json
+protocol_776.json
