@@ -16,12 +16,11 @@
 package com.experimentalidea.replaypacketcleaner.protocol;
 
 import com.experimentalidea.replaypacketcleaner.ReplayPacketCleaner;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -57,16 +56,7 @@ public class ProtocolDirectory {
      * @throws IllegalStateException    If more than one protocol enum type is linked to the same id for that category or vise versa.
      */
     public Protocol loadProtocol(InputStream inputStream) throws IOException {
-        Objects.requireNonNull(inputStream, "inputStream cannot be null");
-        StringBuilder builder = new StringBuilder(900000); // 900,000 characters - About 60,000 more than the current largest protocol json file. (as of protocol 773 for 1.21.9/10)
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                builder.append(line);
-            }
-        }
-
-        return this.loadProtocol(builder.toString());
+        return this.loadProtocol(ReplayPacketCleaner.loadString(inputStream, StandardCharsets.UTF_8));
     }
 
     /**
@@ -96,7 +86,7 @@ public class ProtocolDirectory {
     public Protocol loadProtocol(JSONObject jsonObject) {
         Objects.requireNonNull(jsonObject, "jsonObject cannot be null");
 
-        this.ensureCurrentFormat(jsonObject);
+        ProtocolDirectory.ensureCurrentFormat(jsonObject);
 
         Protocol protocol = Protocol.fromJson(jsonObject);
         int protocolVersion = protocol.getProtocolVersion();
@@ -158,12 +148,14 @@ public class ProtocolDirectory {
 
     /**
      * Ensures the provided JSON Object conforms to the currently expected format & layout for protocol mappings and updating it where necessary.
+     * Note: If an exception occurs, the provided json should be considered as being in an undefined state and should be disregarded.
      */
-    public void ensureCurrentFormat(JSONObject jsonObject) {
+    public static void ensureCurrentFormat(JSONObject jsonObject) {
         JSONObject emptyJSON = new JSONObject();
 
-        JSONObject metadataNode = jsonObject.optJSONObject(TypeMetadata.JSON_NODE_METADATA, emptyJSON);
-        int fileFormatVersion = jsonObject.optJSONObject(TypeMetadata.JSON_NODE_METADATA, emptyJSON).optInt(TypeMetadata.JSON_NODE_FILE_FORMAT_VERSION, -1);
+        JSONObject protocolNode = jsonObject.optJSONObject(TypeMetadata.JSON_NODE_PROTOCOL, emptyJSON);
+        JSONObject metadataNode = protocolNode.optJSONObject(TypeMetadata.JSON_NODE_METADATA, emptyJSON);
+        int fileFormatVersion = metadataNode.optInt(TypeMetadata.JSON_NODE_FILE_FORMAT_VERSION, -1);
 
         if (fileFormatVersion == -1 || fileFormatVersion == ReplayPacketCleaner.APP_PROTOCOL_JSON_VERSION) {
             return;
@@ -171,8 +163,8 @@ public class ProtocolDirectory {
 
         switch (fileFormatVersion) {
             case 0: { // Update from version 0 to version 1
-                JSONObject blockNode = jsonObject.optJSONObject(TypeMetadata.JSON_NODE_REGISTRIES, emptyJSON).optJSONObject(TypeMetadata.JSON_NODE_BLOCK, emptyJSON);
-                JSONObject itemNode = jsonObject.optJSONObject(TypeMetadata.JSON_NODE_REGISTRIES, emptyJSON).optJSONObject(TypeMetadata.JSON_NODE_ITEM, emptyJSON);
+                JSONObject blockNode = protocolNode.optJSONObject(TypeMetadata.JSON_NODE_REGISTRIES, emptyJSON).optJSONObject(TypeMetadata.JSON_NODE_BLOCK, emptyJSON);
+                JSONObject itemNode = protocolNode.optJSONObject(TypeMetadata.JSON_NODE_REGISTRIES, emptyJSON).optJSONObject(TypeMetadata.JSON_NODE_ITEM, emptyJSON);
 
                 JSONObject chainBlockNode = blockNode.optJSONObject("chain");
                 if (chainBlockNode != null) {
@@ -187,11 +179,40 @@ public class ProtocolDirectory {
                 }
 
                 metadataNode.put(TypeMetadata.JSON_NODE_FILE_FORMAT_VERSION, 1);
-
-                this.ensureCurrentFormat(jsonObject);
             }
 
-            // case 1: etc...
+            case 1: { // Update from version 1 to version 2
+                JSONObject blockNode = protocolNode.optJSONObject(TypeMetadata.JSON_NODE_REGISTRIES, emptyJSON).optJSONObject(TypeMetadata.JSON_NODE_BLOCK, emptyJSON);
+
+                for (String key : blockNode.keySet()) {
+                    JSONObject typeNode = blockNode.getJSONObject(key);
+
+                    JSONArray blockstates = typeNode.getJSONArray("blockstates"); // TypeMetadata.JSON_NODE_BLOCKSTATES
+                    if (blockstates.isEmpty()) {
+                        continue;
+                    }
+
+                    int blockstateMin = blockstates.getInt(0);
+                    int blockstateMax = blockstateMin + (blockstates.length() - 1);
+
+                    // Verify blockstates list is correctly ordered and not missing any numbers. Start at the second entry (index 1)
+                    for (int i = 1; i < blockstates.length(); i++) {
+                        if (blockstates.getInt(i) != (blockstateMin + i)) {
+                            throw new IllegalStateException("Unexpected number sequence for \"" + key + "\" blockstates list. List must be in order from lowest valve to highest value with no numbers missing in between.");
+                        }
+                    }
+                    typeNode.remove("blockstates"); // TypeMetadata.JSON_NODE_BLOCKSTATES
+
+                    JSONObject newBlockstatesNode = new JSONObject();
+                    newBlockstatesNode.put("min", blockstateMin); // TypeMetadata.JSON_NODE_BLOCKSTATES_MIN
+                    newBlockstatesNode.put("max", blockstateMax); // TypeMetadata.JSON_NODE_BLOCKSTATES_MAX
+                    typeNode.put("blockstates", newBlockstatesNode); // TypeMetadata.JSON_NODE_BLOCKSTATES
+                }
+
+                metadataNode.put(TypeMetadata.JSON_NODE_FILE_FORMAT_VERSION, 2);
+            }
+
+            // case 2: etc...
 
             // default: return;
         }

@@ -15,7 +15,6 @@
  * */
 package com.experimentalidea.replaypacketcleaner.gui;
 
-import com.experimentalidea.replaypacketcleaner.Log;
 import com.experimentalidea.replaypacketcleaner.ReplayPacketCleaner;
 import com.experimentalidea.replaypacketcleaner.protocol.*;
 import org.json.JSONArray;
@@ -27,7 +26,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.nio.file.FileAlreadyExistsException;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.List;
 
@@ -370,8 +369,8 @@ public class ProtocolGenerationWindow {
 
 
                         // At the end. output the file and show the log.
-                        saveJSON(rootProtocolJSON, new File(fileChooser.getSelectedFile(), "protocol_" + protocolVersion + ".json"));
-                        saveJSON(undefinedProtocolResourcesJSON, new File(fileChooser.getSelectedFile(), "protocol_" + protocolVersion + "_unknown_resource_mappings.json"));
+                        ReplayPacketCleaner.saveString(rootProtocolJSON.toString(2), new File(fileChooser.getSelectedFile(), "protocol_" + protocolVersion + ".json"));
+                        ReplayPacketCleaner.saveString(undefinedProtocolResourcesJSON.toString(2), new File(fileChooser.getSelectedFile(), "protocol_" + protocolVersion + "_unknown_resource_mappings.json"));
                         log.append("========\nGenerated protocol file in ").append(System.currentTimeMillis() - startTime).append("ms.\n");
                         generationLogs.setText(log.toString());
 
@@ -426,42 +425,16 @@ public class ProtocolGenerationWindow {
     }
 
     private static JSONObject loadJSON(File file) throws IOException {
-        if (!file.exists()) {
-            throw new FileNotFoundException(file.getName() + " does not exist");
-        }
-        StringBuilder builder = new StringBuilder();
+        String jsonText = ReplayPacketCleaner.loadString(file, StandardCharsets.UTF_8);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                builder.append(line);
-            }
-        } catch (IOException e) {
-            throw new IOException(e);
+        // Burger json output start with and ends with '[' & ']'. Remove these characters.
+        if (jsonText.startsWith("[")) {
+            jsonText = jsonText.substring(1, jsonText.length() - 1);
         }
 
-        // Burger json output start with and ends with '[' & ']'. Remove this characters.
-        char[] firstChar = new char[1];
-        builder.getChars(0, 1, firstChar, 0);
-        if (firstChar[0] == '[') {
-            builder.deleteCharAt(builder.length() - 1);
-            builder.deleteCharAt(0);
-        }
-
-        return new JSONObject(builder.toString());
+        return new JSONObject(jsonText);
     }
 
-    private static void saveJSON(JSONObject jsonObject, File file) throws IOException {
-        if (file.exists()) {
-            throw new FileAlreadyExistsException(file.getName() + " already exist");
-        }
-
-        try (BufferedWriter writter = new BufferedWriter(new FileWriter(file))) {
-            writter.write(jsonObject.toString(2));
-        } catch (IOException e) {
-            throw new IOException(e);
-        }
-    }
 
     /// Below 1.21, data generators don't provide a packets.json.
     /// Just populate all the packet fields that are present within the reference with id's set to -1 for unsupported.
@@ -841,7 +814,22 @@ public class ProtocolGenerationWindow {
 
                 currentNode.put(TypeMetadata.JSON_NODE_ID, entriesNode.getJSONObject(resource).getInt("protocol_id"));
                 currentNode.put(TypeMetadata.JSON_NODE_RESOURCE, resource);
-                currentNode.put(TypeMetadata.JSON_NODE_BLOCKSTATES, new JSONArray(states));
+
+                int blockstateMin = states[0];
+                int blockstateMax = blockstateMin + (states.length - 1);
+
+                // Verify blockstates list is correctly ordered and not missing any numbers. Start at the second entry (index 1)
+                for (int i = 1; i < states.length; i++) {
+                    if (states[i] != (blockstateMin + i)) {
+                        throw new IllegalStateException("Unexpected number sequence for \"" + type.name() + "\" blockstates list. List must be in order from lowest valve to highest value with no numbers missing in between.");
+                    }
+                }
+
+                JSONObject blockstatesNode = new JSONObject();
+                blockstatesNode.put(TypeMetadata.JSON_NODE_BLOCKSTATES_MIN, blockstateMin);
+                blockstatesNode.put(TypeMetadata.JSON_NODE_BLOCKSTATES_MAX, blockstateMax);
+
+                currentNode.put(TypeMetadata.JSON_NODE_BLOCKSTATES, blockstatesNode);
             }
 
             log.append("\n").append(typesNotFound.size()).append(" type(s) total could not be found.\n");

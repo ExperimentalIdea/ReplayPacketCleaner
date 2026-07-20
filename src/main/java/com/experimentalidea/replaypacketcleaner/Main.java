@@ -16,12 +16,12 @@
 package com.experimentalidea.replaypacketcleaner;
 
 import com.experimentalidea.replaypacketcleaner.protocol.*;
+import org.json.JSONObject;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -35,16 +35,19 @@ import java.util.logging.SimpleFormatter;
 public class Main {
 
     /// Show additional options in the GUI. For now, this shows options for to loading custom protocols and running the protocol file generation assistant.
-    private static String FLAG_SHOW_HIDDEN_OPTIONS = "--showHiddenOptions"; // Show the options in the GUI to load custom protocols or run the protocol file generation assistant.
+    private static final String FLAG_SHOW_HIDDEN_OPTIONS = "--showHiddenOptions"; // Show the options in the GUI to load custom protocols or run the protocol file generation assistant.
 
     /// Disables the use of a separate thread for reading in a replay file. Using this flag will likely result in worse performance.
-    private static String FLAG_DISABLE_ASYNC_READS = "--disableAsyncReads";
+    private static final String FLAG_DISABLE_ASYNC_READS = "--disableAsyncReads";
 
     /// Disables the use of a separate thread for writing out a replay file. Using this flag will likely result in worse performance.
-    private static String FLAG_DISABLE_ASYNC_WRITES = "--disableAsyncWrites";
+    private static final String FLAG_DISABLE_ASYNC_WRITES = "--disableAsyncWrites";
 
     /// Write out all protocol enum type documentation to a directory. Intended to aid in development of RPC. Usage --outputTypeDocumentation="/path/to/the directory".
-    private static String FLAG_OUTPUT_TYPE_DOCUMENTATION = "--outputTypeDocumentation";
+    private static final String FLAG_OUTPUT_TYPE_DOCUMENTATION = "--outputTypeDocumentation";
+
+    /// Write out all bulitin protocol json files to a directory. Will update the file format if the internal protocols are using an older version.
+    private static final String FLAG_OUTPUT_BUILTIN_PROTOCOLS = "--outputBuiltinProtocols";
 
     private static File logFile = null;
 
@@ -93,7 +96,9 @@ public class Main {
             boolean disableAsyncReads = false;
             boolean disableAsyncWrites = false;
             boolean outputTypeDocumentation = false;
+            boolean outputBuiltinProtocols = false;
             File outputTypeDocumentationTargetDir = null;
+            File outputBuiltinProtocolsTargetDir = null;
 
             Iterator<String> argsIter = Arrays.stream(args).iterator();
             while (argsIter.hasNext()) {
@@ -112,16 +117,33 @@ public class Main {
                     Log.info("Detected flag: " + Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + "\n  Will attempt to output documentation for updating all protocol enum types.");
                     int index = entry.indexOf('=');
                     if (index == -1) {
-                        Log.info("Error: Missing file path to write out documentation." + "\n  Expected " + Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + "=\"" + File.separator + "path" + File.separator + "to" + File.separator + "dir\"");
+                        Log.warning("Error: Missing file path to write out documentation." + "\n  Expected " + Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + "=\"" + File.separator + "path" + File.separator + "to" + File.separator + "dir\"");
                         outputTypeDocumentation = false;
                     } else {
                         outputTypeDocumentationTargetDir = new File(Main.parseMultiArgValue(entry.substring(index + 1), argsIter));
                         if (!outputTypeDocumentationTargetDir.exists()) {
-                            Log.info(Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + ": Error: File path \"" + outputTypeDocumentationTargetDir.getPath() + "\" does not exist.");
+                            Log.warning(Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + ": Error: File path \"" + outputTypeDocumentationTargetDir.getPath() + "\" does not exist.");
                             outputTypeDocumentation = false;
                         } else if (!outputTypeDocumentationTargetDir.isDirectory()) {
-                            Log.info(Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + ": Error: File path \"" + outputTypeDocumentationTargetDir.getPath() + "\" is not a directory.");
+                            Log.warning(Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + ": Error: File path \"" + outputTypeDocumentationTargetDir.getPath() + "\" is not a directory.");
                             outputTypeDocumentation = false;
+                        }
+                    }
+                } else if (entry.toLowerCase().startsWith(Main.FLAG_OUTPUT_BUILTIN_PROTOCOLS.toLowerCase()) && !outputBuiltinProtocols) {
+                    outputBuiltinProtocols = true;
+                    Log.info("Detected flag: " + Main.FLAG_OUTPUT_BUILTIN_PROTOCOLS + "\n  Will attempt to output all builtin protocol json files.");
+                    int index = entry.indexOf('=');
+                    if (index == -1) {
+                        Log.warning("Error: Missing file path to write out documentation." + "\n  Expected " + Main.FLAG_OUTPUT_BUILTIN_PROTOCOLS + "=\"" + File.separator + "path" + File.separator + "to" + File.separator + "dir\"");
+                        outputBuiltinProtocols = false;
+                    } else {
+                        outputBuiltinProtocolsTargetDir = new File(Main.parseMultiArgValue(entry.substring(index + 1), argsIter));
+                        if (!outputBuiltinProtocolsTargetDir.exists()) {
+                            Log.warning(Main.FLAG_OUTPUT_BUILTIN_PROTOCOLS + ": Error: File path \"" + outputBuiltinProtocolsTargetDir.getPath() + "\" does not exist.");
+                            outputBuiltinProtocols = false;
+                        } else if (!outputBuiltinProtocolsTargetDir.isDirectory()) {
+                            Log.warning(Main.FLAG_OUTPUT_BUILTIN_PROTOCOLS + ": Error: File path \"" + outputBuiltinProtocolsTargetDir.getPath() + "\" is not a directory.");
+                            outputBuiltinProtocols = false;
                         }
                     }
                 }
@@ -140,6 +162,23 @@ public class Main {
             if (outputTypeDocumentation) {
                 File childDirectory = Main.saveTypeDocumentation(instance.getProtocolDirectory(), outputTypeDocumentationTargetDir);
                 Log.info(Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + ": Documentation saved to " + childDirectory.getPath());
+            }
+
+            if (outputBuiltinProtocols) {
+                for (String text : ReplayPacketCleaner.loadString(ReplayPacketCleaner.class.getResourceAsStream("/resources/protocols/protocol_directory.txt"), StandardCharsets.UTF_8).split("\n")) {
+                    if (text.startsWith("#")) {
+                        continue;
+                    }
+                    JSONObject protocolJSON = new JSONObject(ReplayPacketCleaner.loadString(ReplayPacketCleaner.class.getResourceAsStream("/resources/protocols/" + text), StandardCharsets.UTF_8));
+                    ProtocolDirectory.ensureCurrentFormat(protocolJSON);
+                    File target = new File(outputBuiltinProtocolsTargetDir, text);
+                    if (target.exists()) {
+                        Log.warning(Main.FLAG_OUTPUT_BUILTIN_PROTOCOLS + ": Protocol file \"" + text + "\" could not be saved. File already exists.");
+                    } else {
+                        ReplayPacketCleaner.saveString(protocolJSON.toString(2), target);
+                        Log.info(Main.FLAG_OUTPUT_TYPE_DOCUMENTATION + ": Protocol file \"" + text + "\" written out to " + target.getPath());
+                    }
+                }
             }
 
             Log.info("Ready in " + (System.currentTimeMillis() - startTime) + "ms total. Awaiting jobs...");

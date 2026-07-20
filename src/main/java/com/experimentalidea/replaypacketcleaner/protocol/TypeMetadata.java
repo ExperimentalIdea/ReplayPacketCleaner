@@ -59,6 +59,8 @@ public class TypeMetadata<E extends Enum<E> & ProtocolMetadata> {
     public static final String JSON_NODE_ENTITY_TYPE = "entity_type";
     public static final String JSON_NODE_BLOCK = "block";
     public static final String JSON_NODE_BLOCKSTATES = "blockstates";
+    public static final String JSON_NODE_BLOCKSTATES_MIN = "min";
+    public static final String JSON_NODE_BLOCKSTATES_MAX = "max";
     public static final String JSON_NODE_BLOCK_ENTITY = "block_entity";
     public static final String JSON_NODE_ITEM = "item";
 

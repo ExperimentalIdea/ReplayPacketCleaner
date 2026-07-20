@@ -15,7 +15,6 @@
  * */
 package com.experimentalidea.replaypacketcleaner.protocol;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.*;
@@ -66,28 +65,28 @@ public class ProtocolBlockMapper extends ProtocolMapper<Block> {
                     break;
                 }
             }
-            // Skip to the next iteration if this packetType doesn't have a protocol mapping.
+            // Skip to the next iteration if this block doesn't have a protocol mapping.
             if (currentNode == null) {
                 continue;
             }
 
-            JSONArray jsonArray = currentNode.optJSONArray(TypeMetadata.JSON_NODE_BLOCKSTATES, null);
-
-            if (jsonArray == null || jsonArray.isEmpty()) {
+            currentNode = currentNode.optJSONObject(TypeMetadata.JSON_NODE_BLOCKSTATES);
+            if (currentNode == null) {
                 continue;
             }
 
-            for (int i = 0; i < jsonArray.length(); i++) {
-                int value = jsonArray.optInt(i, -1);
+            int blockstateMin = currentNode.optInt(TypeMetadata.JSON_NODE_BLOCKSTATES_MIN, -1);
+            int blockstateMax = currentNode.optInt(TypeMetadata.JSON_NODE_BLOCKSTATES_MAX, -1);
 
-                if (value == -1) {
-                    continue;
-                }
+            if (blockstateMin == -1 || blockstateMax == -1) {
+                continue;
+            }
 
+            for (int value = blockstateMin; value <= blockstateMax; value++) {
                 // Before mapping the blockstate to the block type,
                 // check if the blockstate value would be out of bounds of the blockstate lookup array and expand said array if necessary.
                 if (value >= this.blockstateLookup.length) {
-                    Block[] expandedArray = new Block[value + 1];
+                    Block[] expandedArray = new Block[blockstateMax + 1];
                     System.arraycopy(this.blockstateLookup, 0, expandedArray, 0, this.blockstateLookup.length);
                     // Set default values for the extended portion of the array.
                     for (int expandedArrayIndex = this.blockstateLookup.length; expandedArrayIndex < expandedArray.length; expandedArrayIndex++) {

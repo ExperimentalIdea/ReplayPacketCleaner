@@ -107,7 +107,8 @@ public class Protocol {
         // protocol > packets > <State> > <PacketType> > id : <int> (-1 == unsupported)
         // protocol > registries > <entity_type/block/block_entity/item> > resourceName : <String> (not present for versions older than 1.13)
         // protocol > registries > <entity_type/block/block_entity/item> > id : <int> (-1 == unsupported, if not present also considered unsupported)
-        // protocol > registries > block > states : <int[]> (mapping block states to blocks, not so for the reverse)
+        // protocol > registries > block > blockstates > max : <int> (mapping block states to blocks, not so for the reverse)
+        // protocol > registries > block > blockstates > min : <int> (mapping block states to blocks, not so for the reverse)
 
         Objects.requireNonNull(jsonProtocolMappings, "jsonProtocolMappings cannot be null");
 

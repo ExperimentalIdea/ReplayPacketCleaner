@@ -25,6 +25,8 @@ import com.experimentalidea.replaypacketcleaner.protocol.ProtocolDirectory;
 import javax.swing.*;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.Charset;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.concurrent.*;
@@ -45,7 +47,7 @@ public class ReplayPacketCleaner {
 
     /// @see com.experimentalidea.replaypacketcleaner.config.Option
     public static final int APP_PROFILE_JSON_VERSION = 1;
-    public static final int APP_PROTOCOL_JSON_VERSION = 1;
+    public static final int APP_PROTOCOL_JSON_VERSION = 2;
 
     public static final String DOT_MCPR_EXTENSION = ".mcpr";
     public static final String DOT_JSON_EXTENSION = ".json";
@@ -122,7 +124,7 @@ public class ReplayPacketCleaner {
         Log.info("Loading builtin protocols...");
         long startTime = System.currentTimeMillis();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(this.getClass().getResourceAsStream("/resources/protocols/protocol_directory.txt"))))) {
-            List<Future<?>> taskList = new ArrayList<Future<?>>(32);
+            List<Future<?>> taskList = new ArrayList<Future<?>>(64);
             String line;
             while ((line = reader.readLine()) != null) {
                 if (!line.isBlank() && !line.startsWith("#")) {
@@ -175,6 +177,76 @@ public class ReplayPacketCleaner {
                 // Finally, delete the directory
                 file.delete();
             }
+        }
+    }
+
+    /**
+     * Load all the contents of a file on disk and return the data as a {@link String}.
+     *
+     * @param source  The source file.
+     * @param charset The Charset that will be used. Recommend StandardCharsets.UTF_8.
+     * @return The string of text.
+     * @throws NullPointerException  If source or charset is null.
+     * @throws FileNotFoundException If file does not exist or is a directory.
+     * @throws IOException           If an I/O error occurs.
+     */
+    public static String loadString(File source, Charset charset) throws IOException {
+        Objects.requireNonNull(source, "inputStream cannot be null");
+        Objects.requireNonNull(charset, "charset cannot be null");
+
+        if (!source.exists() || source.isDirectory()) {
+            throw new FileNotFoundException(source.isDirectory() ? "File \"" + source.getPath() + "\" is a directory" : "File \"" + source.getPath() + "\" not found");
+        }
+
+        return ReplayPacketCleaner.loadString(new FileInputStream(source), charset);
+    }
+
+    /**
+     * Load all the contents of an {@link InputStream} and return the data as a {@link String}.
+     *
+     * @param inputStream The InputStream.
+     * @param charset     The Charset that will be used. Recommend StandardCharsets.UTF_8.
+     * @return The string of text.
+     * @throws NullPointerException If inputStream or charset is null.
+     * @throws IOException          If an I/O error occurs.
+     */
+    public static String loadString(InputStream inputStream, Charset charset) throws IOException {
+        Objects.requireNonNull(inputStream, "inputStream cannot be null");
+        Objects.requireNonNull(charset, "charset cannot be null");
+
+        StringBuilder builder = new StringBuilder(inputStream.available() + 128);
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, charset))) {
+            String line = reader.readLine();
+            while (line != null) {
+                builder.append(line);
+                if ((line = reader.readLine()) != null) {
+                    builder.append("\n"); // Preserved new lines in final string.
+                }
+            }
+        }
+        return builder.toString();
+    }
+
+    //duplicates saveJSON() in ProtocolGenerationWindow
+
+    /**
+     * Load all the contents of an {@link InputStream} and return the data as a {@link String}.
+     *
+     * @param string The string of text to be written out.
+     * @param target The target file this text should be written to.
+     * @throws NullPointerException       If string or target is null.
+     * @throws FileAlreadyExistsException If the target already exists.
+     * @throws IOException                If an I/O error occurs.
+     */
+    public static void saveString(String string, File target) throws IOException {
+        Objects.requireNonNull(string, "string cannot be null");
+        Objects.requireNonNull(target, "target cannot be null");
+
+        if (target.exists()) {
+            throw new FileAlreadyExistsException(target.getName() + " already exist");
+        }
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(target))) {
+            writer.write(string);
         }
     }
 
