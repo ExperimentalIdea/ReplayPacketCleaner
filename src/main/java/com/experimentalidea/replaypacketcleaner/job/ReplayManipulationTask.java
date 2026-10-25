@@ -75,6 +75,7 @@ public class ReplayManipulationTask implements Runnable {
         List<SpawnWeatherEntityPacketListener> spawnWeatherEntityPacketListenerList = new ArrayList<SpawnWeatherEntityPacketListener>(packetListeners.length);
         List<SpawnLivingEntityPacketListener> spawnLivingEntityPacketListenerList = new ArrayList<SpawnLivingEntityPacketListener>(packetListeners.length);
         List<SpawnPaintingPacketListener> spawnPaintingPacketListenerList = new ArrayList<SpawnPaintingPacketListener>(packetListeners.length);
+        List<SwingAnimationPacketListener> swingAnimationPacketList = new ArrayList<SwingAnimationPacketListener>(packetListeners.length);
         List<SpawnPlayerPacketListener> spawnPlayerPacketListenerList = new ArrayList<SpawnPlayerPacketListener>(packetListeners.length);
         List<SynchronizeVehiclePositionPacketListener> synchronizeVehiclePositionPacketListenerList = new ArrayList<SynchronizeVehiclePositionPacketListener>(packetListeners.length);
         List<TeleportEntityPacketListener> teleportEntityPacketListenerList = new ArrayList<TeleportEntityPacketListener>(packetListeners.length);
@@ -176,6 +177,9 @@ public class ReplayManipulationTask implements Runnable {
             if (listener instanceof SpawnPlayerPacketListener) {
                 spawnPlayerPacketListenerList.add((SpawnPlayerPacketListener) listener);
             }
+            if (listener instanceof SwingAnimationPacketListener) {
+                swingAnimationPacketList.add((SwingAnimationPacketListener) listener);
+            }
             if (listener instanceof SynchronizeVehiclePositionPacketListener) {
                 synchronizeVehiclePositionPacketListenerList.add((SynchronizeVehiclePositionPacketListener) listener);
             }
@@ -232,6 +236,7 @@ public class ReplayManipulationTask implements Runnable {
         this.spawnLivingEntityPacketListeners = spawnLivingEntityPacketListenerList.toArray(new SpawnLivingEntityPacketListener[0]);
         this.spawnPaintingPacketListeners = spawnPaintingPacketListenerList.toArray(new SpawnPaintingPacketListener[0]);
         this.spawnPlayerPacketListeners = spawnPlayerPacketListenerList.toArray(new SpawnPlayerPacketListener[0]);
+        this.swingAnimationPacketListeners = swingAnimationPacketList.toArray(new SwingAnimationPacketListener[0]);
         this.synchronizeVehiclePositionPacketListeners = synchronizeVehiclePositionPacketListenerList.toArray(new SynchronizeVehiclePositionPacketListener[0]);
         this.teleportEntityPacketListeners = teleportEntityPacketListenerList.toArray(new TeleportEntityPacketListener[0]);
         this.updateAttributesPacketListeners = updateAttributesPacketListenerList.toArray(new UpdateAttributesPacketListener[0]);
@@ -282,6 +287,7 @@ public class ReplayManipulationTask implements Runnable {
     private final SpawnLivingEntityPacketListener[] spawnLivingEntityPacketListeners;
     private final SpawnPaintingPacketListener[] spawnPaintingPacketListeners;
     private final SpawnPlayerPacketListener[] spawnPlayerPacketListeners;
+    private final SwingAnimationPacketListener[] swingAnimationPacketListeners;
     private final SynchronizeVehiclePositionPacketListener[] synchronizeVehiclePositionPacketListeners;
     private final TeleportEntityPacketListener[] teleportEntityPacketListeners;
     private final UpdateAttributesPacketListener[] updateAttributesPacketListeners;
@@ -393,19 +399,23 @@ public class ReplayManipulationTask implements Runnable {
 
                     case BLOCK_ACTION -> this.handleBlockActionPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case CUSTOM_SOUND_EFFECT -> this.handleCustomSoundEffectPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case CUSTOM_SOUND_EFFECT ->
+                            this.handleCustomSoundEffectPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case DAMAGE_EVENT -> this.handleDamageEventPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case ENTITY_ANIMATION -> this.handleEntityAnimationPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case ENTITY_ANIMATION ->
+                            this.handleEntityAnimationPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case ENTITY_EFFECT -> this.handleEntityEffectPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case ENTITY_EVENT -> this.handleEntityEventPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case ENTITY_MOVEMENT -> this.handleEntityMovementPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case ENTITY_MOVEMENT ->
+                            this.handleEntityMovementPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case ENTITY_SOUND_EFFECT -> this.handleEntitySoundEffectPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case ENTITY_SOUND_EFFECT ->
+                            this.handleEntitySoundEffectPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case GAME_EVENT -> this.handleGameEventPacket(packetIndex, timeStamp, packetSize, packetID);
 
@@ -413,25 +423,32 @@ public class ReplayManipulationTask implements Runnable {
 
                     case LINK_ENTITIES -> this.handleLinkEntitiesPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case MOVE_MINECART_ALONG_TRACK -> this.handleMoveMinecartAlongTrackPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case MOVE_MINECART_ALONG_TRACK ->
+                            this.handleMoveMinecartAlongTrackPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case PARTICLE -> this.handleParticlePacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case PICKUP_ITEM -> this.handlePickupItemPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case PROJECTILE_POWER -> this.handleProjectilePowerPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case PROJECTILE_POWER ->
+                            this.handleProjectilePowerPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case REMOVE_ENTITIES -> this.handleRemoveEntitiesPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case REMOVE_ENTITIES ->
+                            this.handleRemoveEntitiesPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case REMOVE_ENTITY_EFFECT -> this.handleRemoveEntityEffectPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case REMOVE_ENTITY_EFFECT ->
+                            this.handleRemoveEntityEffectPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case SET_ENTITY_METADATA -> this.handleSetEntityMetadataPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case SET_ENTITY_METADATA ->
+                            this.handleSetEntityMetadataPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case SET_ENTITY_VELOCITY -> this.handleSetEntityVelocityPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case SET_ENTITY_VELOCITY ->
+                            this.handleSetEntityVelocityPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case SET_EQUIPMENT -> this.handleSetEquipmentPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case SET_HEAD_ROTATION -> this.handleSetHeadRotationPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case SET_HEAD_ROTATION ->
+                            this.handleSetHeadRotationPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case SET_PASSENGERS -> this.handleSetPassengersPacket(packetIndex, timeStamp, packetSize, packetID);
 
@@ -439,33 +456,46 @@ public class ReplayManipulationTask implements Runnable {
 
                     case SPAWN_ENTITY -> this.handleSpawnEntityPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case SPAWN_EXPERIENCE_ORB -> this.handleSpawnExperienceOrbPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case SPAWN_EXPERIENCE_ORB ->
+                            this.handleSpawnExperienceOrbPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case SPAWN_WEATHER_ENTITY -> this.handleSpawnWeatherEntityPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case SPAWN_WEATHER_ENTITY ->
+                            this.handleSpawnWeatherEntityPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case SPAWN_LIVING_ENTITY -> this.handleSpawnLivingEntityPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case SPAWN_LIVING_ENTITY ->
+                            this.handleSpawnLivingEntityPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case SPAWN_PAINTING -> this.handleSpawnPaintingPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case SPAWN_PLAYER -> this.handleSpawnPlayerPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case SYNCHRONIZE_VEHICLE_POSITION -> this.handleSynchronizeVehiclePositionPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case SWING_ANIMATION ->
+                            this.handleSwingAnimationPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case TELEPORT_ENTITY -> this.handleTeleportEntityPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case SYNCHRONIZE_VEHICLE_POSITION ->
+                            this.handleSynchronizeVehiclePositionPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case UPDATE_ATTRIBUTES -> this.handleUpdateAttributesPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case TELEPORT_ENTITY ->
+                            this.handleTeleportEntityPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case UPDATE_ENTITY_POSITION -> this.handleUpdateEntityPositionPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case UPDATE_ATTRIBUTES ->
+                            this.handleUpdateAttributesPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case UPDATE_ENTITY_POSITION_AND_ROTATION -> this.handleUpdateEntityPositionAndRotationPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case UPDATE_ENTITY_POSITION ->
+                            this.handleUpdateEntityPositionPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    case UPDATE_ENTITY_ROTATION -> this.handleUpdateEntityRotationPacket(packetIndex, timeStamp, packetSize, packetID);
+                    case UPDATE_ENTITY_POSITION_AND_ROTATION ->
+                            this.handleUpdateEntityPositionAndRotationPacket(packetIndex, timeStamp, packetSize, packetID);
+
+                    case UPDATE_ENTITY_ROTATION ->
+                            this.handleUpdateEntityRotationPacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case UPDATE_TIME -> this.handleUpdateTimePacket(packetIndex, timeStamp, packetSize, packetID);
 
                     case WORLD_EVENT -> this.handleWorldEventPacket(packetIndex, timeStamp, packetSize, packetID);
 
-                    default -> this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray((int) (packetSize - (reader.bytesRead() - startingBytesRead))));
+                    default ->
+                            this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray((int) (packetSize - (reader.bytesRead() - startingBytesRead))));
 
                 }
 
@@ -609,7 +639,8 @@ public class ReplayManipulationTask implements Runnable {
                             case GameEventPacket.GameEventType.RAIN_LEVEL_CHANGE -> this.writer.writeByte(7);
                             case GameEventPacket.GameEventType.THUNDER_LEVEL_CHANGE -> this.writer.writeByte(8);
                             case GameEventPacket.GameEventType.PLAY_PUFFERFISH_STING_SOUND -> this.writer.writeByte(9);
-                            case GameEventPacket.GameEventType.PLAY_ELDER_GUARDIAN_APPEARANCE -> this.writer.writeByte(10);
+                            case GameEventPacket.GameEventType.PLAY_ELDER_GUARDIAN_APPEARANCE ->
+                                    this.writer.writeByte(10);
                             case GameEventPacket.GameEventType.ENABLE_RESPAWN_SCREEN -> {
                                 if (this.protocolVersion < Version.MC_1_15_0) { // Enable respawn screen is unsupported in protocol versions 498 (1.14.4) and older.
                                     throw new UnsupportedOperationException("GameEventPacket.GameEventType.ENABLE_RESPAWN_SCREEN is unsupported for this protocol version");
@@ -806,14 +837,22 @@ public class ReplayManipulationTask implements Runnable {
             int animationByte = this.reader.readByte();
 
             EntityAnimationPacket.AnimationType animationType = EntityAnimationPacket.AnimationType.UNDEFINED;
-            switch (animationByte) {
-                case 0 -> animationType = EntityAnimationPacket.AnimationType.SWING_MAIN_HAND;
-                case 1 ->
-                        animationType = EntityAnimationPacket.AnimationType.TAKE_DAMAGE; // Note: This type was removed in 1.20.2+ (protocol 764+). Going forward the value of 1 is unused.
-                case 2 -> animationType = EntityAnimationPacket.AnimationType.LEAVE_BED;
-                case 3 -> animationType = EntityAnimationPacket.AnimationType.SWING_OFF_HAND;
-                case 4 -> animationType = EntityAnimationPacket.AnimationType.CRITICAL_EFFECT;
-                case 5 -> animationType = EntityAnimationPacket.AnimationType.MAGIC_CRITICAL_EFFECT;
+            if (this.protocolVersion >= Version.MC_26_3_0) {
+                switch (animationByte) {
+                    case 0 -> animationType = EntityAnimationPacket.AnimationType.WAKE_UP_LEAVE_BED;
+                    case 1 -> animationType = EntityAnimationPacket.AnimationType.CRITICAL_EFFECT;
+                    case 2 -> animationType = EntityAnimationPacket.AnimationType.MAGIC_CRITICAL_EFFECT;
+                }
+            } else {
+                switch (animationByte) {
+                    case 0 -> animationType = EntityAnimationPacket.AnimationType.SWING_MAIN_HAND;
+                    case 1 ->
+                            animationType = EntityAnimationPacket.AnimationType.TAKE_DAMAGE; // Note: This type was removed in 1.20.2+ (protocol 764+). This value remains unused until 26.3+ (protocol 777+)
+                    case 2 -> animationType = EntityAnimationPacket.AnimationType.WAKE_UP_LEAVE_BED;
+                    case 3 -> animationType = EntityAnimationPacket.AnimationType.SWING_OFF_HAND;
+                    case 4 -> animationType = EntityAnimationPacket.AnimationType.CRITICAL_EFFECT;
+                    case 5 -> animationType = EntityAnimationPacket.AnimationType.MAGIC_CRITICAL_EFFECT;
+                }
             }
 
             EntityAnimationPacket entityAnimationPacket = new EntityAnimationPacket(packetIndex, timeStamp, entityID, animationType);
@@ -1018,7 +1057,8 @@ public class ReplayManipulationTask implements Runnable {
                             case GameEventPacket.GameEventType.RAIN_LEVEL_CHANGE -> this.writer.writeByte(7);
                             case GameEventPacket.GameEventType.THUNDER_LEVEL_CHANGE -> this.writer.writeByte(8);
                             case GameEventPacket.GameEventType.PLAY_PUFFERFISH_STING_SOUND -> this.writer.writeByte(9);
-                            case GameEventPacket.GameEventType.PLAY_ELDER_GUARDIAN_APPEARANCE -> this.writer.writeByte(10);
+                            case GameEventPacket.GameEventType.PLAY_ELDER_GUARDIAN_APPEARANCE ->
+                                    this.writer.writeByte(10);
                             case GameEventPacket.GameEventType.ENABLE_RESPAWN_SCREEN -> this.writer.writeByte(11);
                             case GameEventPacket.GameEventType.LIMITED_CRAFTING -> this.writer.writeByte(12);
                             case GameEventPacket.GameEventType.START_WAIT_FOR_LEVEL_CHUNKS -> this.writer.writeByte(13);
@@ -1121,6 +1161,30 @@ public class ReplayManipulationTask implements Runnable {
         if (this.particlePacketListeners.length > 0) {
             // Read packet data
             long startingBytesRead = this.reader.bytesRead() - ReplayWriter.sizeOfVarInt(packetID);
+
+            // TODO: Particle packet has completely changed in structure for 26.3+ (protocol 777+).
+            // Particle data is no longer at the end of the packet, but after the first field Particle ID.
+            // The data varies depending on the type of particle, which means RPC has to know which particle is in use to parse the remaining of the packet.
+            // This will require expanded protocol mappings which will be time consuming to add.
+            // For now, since this packet is only ever removed at most, just do the bare minium to get RPC working from a user's standpoint.
+            // TODO: Implement properly at some point.
+            if (this.protocolVersion >= Version.MC_26_3_0) {
+
+                int[] rawBytes = this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID));
+                ParticlePacket particlePacket = new ParticlePacket(packetIndex, timeStamp, false, false, 0, 0, 0, 0, 0, 0, 0, 0, 0, new int[0]);
+
+                // Let listener(s) cancel this packet.
+                for (ParticlePacketListener listener : this.particlePacketListeners) {
+                    listener.onParticlePacket(particlePacket);
+                }
+
+                // Write out the full packet (if the packet should be written out)
+                if (!particlePacket.isWriteCanceled()) {
+                    this.writePacketFull(timeStamp, packetSize, packetID, rawBytes);
+                }
+                return;
+            }
+
 
             // Particle ID field is at the start of the packet for protocol versions 766 (1.20.5/6) and older.
             // In protocol version 767+ (1.21.0+) this field is the 2nd to last field in this packet.
@@ -1877,6 +1941,42 @@ public class ReplayManipulationTask implements Runnable {
         }
     }
 
+    private void handleSwingAnimationPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws IOException {
+        if (this.swingAnimationPacketListeners.length > 0) {
+            long startingBytesReadCount = this.reader.bytesRead();
+
+            // Read packet data
+            int entityID = this.reader.readVarInt();
+            int hand = this.reader.readVarInt();
+            SwingAnimationPacket.Hand handEnum = hand == 0 ? SwingAnimationPacket.Hand.MAIN_HAND : SwingAnimationPacket.Hand.OFF_HAND;
+            int animationType = this.reader.readVarInt();
+            SwingAnimationPacket.AnimationType animationTypeEnum = SwingAnimationPacket.AnimationType.UNDEFINED;
+            switch (animationType) {
+                case 0 -> animationTypeEnum = SwingAnimationPacket.AnimationType.NONE;
+                case 1 -> animationTypeEnum = SwingAnimationPacket.AnimationType.WHACK;
+                case 2 -> animationTypeEnum = SwingAnimationPacket.AnimationType.STAB;
+            }
+            int duration = this.reader.readVarInt();
+
+            SwingAnimationPacket swingAnimationPacket = new SwingAnimationPacket(packetIndex, timeStamp, entityID, handEnum, animationTypeEnum, duration);
+
+            // Let listener(s) cancel this packet.
+            for (SwingAnimationPacketListener listener : this.swingAnimationPacketListeners) {
+                listener.onSwingAnimationPacketListener(swingAnimationPacket);
+            }
+
+            // Write out the full packet (if the packet should be written out)
+            if (!swingAnimationPacket.isWriteCanceled()) {
+                this.writer.writeVarInt(entityID);
+                this.writer.writeVarInt(hand);
+                this.writer.writeVarInt(animationType);
+                this.writer.writeVarInt(duration);
+            }
+        } else {
+            this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));
+        }
+    }
+
     private void handleSynchronizeVehiclePositionPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws IOException {
         if (this.synchronizeVehiclePositionPacketListeners.length > 0) {
             // Read packet data
@@ -1921,6 +2021,28 @@ public class ReplayManipulationTask implements Runnable {
 
     private void handleTeleportEntityPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws IOException {
         if (this.teleportEntityPacketListeners.length > 0) {
+            // TODO: Implement for protocol 777+ (26.3+). Packet structure has changed.
+            // Since this packet is only ever deleted base on entity id, just do the bare minium to get 26.3 working.
+            if (this.protocolVersion >= Version.MC_26_3_0) {
+                int entityID = this.reader.readVarInt();
+                int[] rawBytes = this.reader.readByteArray((packetSize - ReplayWriter.sizeOfVarInt(packetID)) - ReplayWriter.sizeOfVarInt(entityID));
+
+                TeleportEntityPacket teleportEntityPacket = new TeleportEntityPacket(packetIndex, timeStamp, entityID, 0, 0, 0, true, 0, 0, 0, 0, 0, false);
+
+                // Let listener(s) cancel this packet.
+                for (TeleportEntityPacketListener listener : this.teleportEntityPacketListeners) {
+                    listener.onTeleportEntityPacket(teleportEntityPacket);
+                }
+
+                // Write out the full packet (if the packet should be written out)
+                if (!teleportEntityPacket.isWriteCanceled()) {
+                    this.writePacketHeader(timeStamp, packetSize, packetID);
+                    this.writer.writeVarInt(entityID);
+                    this.writer.writeByteArray(rawBytes);
+                }
+                return;
+            }
+
             // Read packet data
             int entityID = this.reader.readVarInt();
             double x = this.reader.readDouble();
@@ -2009,6 +2131,28 @@ public class ReplayManipulationTask implements Runnable {
     private void handleUpdateEntityPositionPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws
             IOException {
         if (this.updateEntityPositionPacketListeners.length > 0) {
+            // TODO: Implement for protocol 777+ (26.3+). Packet structure has changed.
+            // Since this packet is only ever deleted base on entity id, just do the bare minium to get 26.3 working.
+            if (this.protocolVersion >= Version.MC_26_3_0) {
+                int entityID = this.reader.readVarInt();
+                int[] rawBytes = this.reader.readByteArray((packetSize - ReplayWriter.sizeOfVarInt(packetID)) - ReplayWriter.sizeOfVarInt(entityID));
+
+                UpdateEntityPositionPacket updateEntityPositionPacket = new UpdateEntityPositionPacket(packetIndex, timeStamp, entityID, (short) 0, (short) 0, (short) 0, false);
+
+                // Let listener(s) cancel this packet.
+                for (UpdateEntityPositionPacketListener listener : this.updateEntityPositionPacketListeners) {
+                    listener.onUpdateEntityPositionPacket(updateEntityPositionPacket);
+                }
+
+                // Write out the full packet (if the packet should be written out)
+                if (!updateEntityPositionPacket.isWriteCanceled()) {
+                    this.writePacketHeader(timeStamp, packetSize, packetID);
+                    this.writer.writeVarInt(entityID);
+                    this.writer.writeByteArray(rawBytes);
+                }
+                return;
+            }
+
             // Read packet data
             int entityID = this.reader.readVarInt();
             short deltaX = this.reader.readShort();
@@ -2040,6 +2184,28 @@ public class ReplayManipulationTask implements Runnable {
     private void handleUpdateEntityPositionAndRotationPacket(long packetIndex, int timeStamp, int packetSize, int packetID) throws
             IOException {
         if (this.updateEntityPositionAndRotationPacketListeners.length > 0) {
+            // TODO: Implement for protocol 777+ (26.3+). Packet structure has changed.
+            // Since this packet is only ever deleted base on entity id, just do the bare minium to get 26.3 working.
+            if (this.protocolVersion >= Version.MC_26_3_0) {
+                int entityID = this.reader.readVarInt();
+                int[] rawBytes = this.reader.readByteArray((packetSize - ReplayWriter.sizeOfVarInt(packetID)) - ReplayWriter.sizeOfVarInt(entityID));
+
+                UpdateEntityPositionAndRotationPacket updateEntityPositionAndRotationPacket = new UpdateEntityPositionAndRotationPacket(packetIndex, timeStamp, entityID, (short) 0, (short) 0, (short) 0, 0, 0, false);
+
+                // Let listener(s) cancel this packet.
+                for (UpdateEntityPositionAndRotationPacketListener listener : this.updateEntityPositionAndRotationPacketListeners) {
+                    listener.onUpdateEntityPositionAndRotationPacket(updateEntityPositionAndRotationPacket);
+                }
+
+                // Write out the full packet (if the packet should be written out)
+                if (!updateEntityPositionAndRotationPacket.isWriteCanceled()) {
+                    this.writePacketHeader(timeStamp, packetSize, packetID);
+                    this.writer.writeVarInt(entityID);
+                    this.writer.writeByteArray(rawBytes);
+                }
+                return;
+            }
+
             // Read packet data
             int entityID = this.reader.readVarInt();
             short deltaX = this.reader.readShort();
@@ -2077,9 +2243,18 @@ public class ReplayManipulationTask implements Runnable {
         if (this.updateEntityRotationPacketListeners.length > 0) {
             // Read packet data
             int entityID = this.reader.readVarInt();
-            int yawByte = this.reader.readByte();
-            int pitchByte = this.reader.readByte();
-            boolean onGround = this.reader.readBoolean();
+            int yawByte;
+            int pitchByte;
+            boolean onGround;
+            if (protocolVersion > Version.MC_26_2_0) { // Versions 26.3 (777) and onwards switch around the fields in this packet.
+                onGround = this.reader.readBoolean();
+                yawByte = this.reader.readByte();
+                pitchByte = this.reader.readByte();
+            } else {
+                yawByte = this.reader.readByte();
+                pitchByte = this.reader.readByte();
+                onGround = this.reader.readBoolean();
+            }
 
             UpdateEntityRotationPacket updateEntityRotationPacket = new UpdateEntityRotationPacket(packetIndex, timeStamp, entityID, yawByte, pitchByte, onGround);
 
@@ -2092,9 +2267,15 @@ public class ReplayManipulationTask implements Runnable {
             if (!updateEntityRotationPacket.isWriteCanceled()) {
                 this.writePacketHeader(timeStamp, packetSize, packetID);
                 this.writer.writeVarInt(entityID);
-                this.writer.writeByte(yawByte);
-                this.writer.writeByte(pitchByte);
-                this.writer.writeBoolean(onGround);
+                if (protocolVersion > Version.MC_26_2_0) {
+                    this.writer.writeBoolean(onGround);
+                    this.writer.writeByte(yawByte);
+                    this.writer.writeByte(pitchByte);
+                } else {
+                    this.writer.writeByte(yawByte);
+                    this.writer.writeByte(pitchByte);
+                    this.writer.writeBoolean(onGround);
+                }
             }
         } else {
             this.writePacketFull(timeStamp, packetSize, packetID, this.reader.readByteArray(packetSize - ReplayWriter.sizeOfVarInt(packetID)));

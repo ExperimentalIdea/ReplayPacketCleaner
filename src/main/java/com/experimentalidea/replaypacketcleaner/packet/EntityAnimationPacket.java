@@ -42,13 +42,15 @@ public class EntityAnimationPacket extends Packet {
 
         UNDEFINED,
 
+        /// NOTE: This type was removed in 26.3+ (protocol 777+). See {@link  com.experimentalidea.replaypacketcleaner.packet.listener.SwingAnimationPacket} packet for 26.3+.
         SWING_MAIN_HAND,
 
         /// NOTE: This type was removed in 1.20.2+ (protocol 764+)
         TAKE_DAMAGE,
 
-        LEAVE_BED,
+        WAKE_UP_LEAVE_BED,
 
+        /// NOTE: This type was removed in 26.3+ (protocol 777+). See {@link  com.experimentalidea.replaypacketcleaner.packet.listener.SwingAnimationPacket} packet for 26.3+.
         SWING_OFF_HAND,
 
         CRITICAL_EFFECT,

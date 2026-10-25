@@ -64,16 +64,16 @@ public interface PacketType {
         /**
          * Add Resource Pack
          * <p>
-         * Supported Protocols: 764 - 776 (1.20.2 - 26.2.0)
+         * Supported Protocols: 764 - 777 (1.20.2 - 26.3.0)
          * <br>
-         * Resource: minecraft:resource_pack_push (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:resource_pack_push (767 - 777 (1.21.0 - 26.3.0))
          */
         ADD_RESOURCE_PACK,
 
         /**
          * Clear Dialog
          * <p>
-         * Supported Protocols: 771 - 776 (1.21.6 - 26.2.0)
+         * Supported Protocols: 771 - 777 (1.21.6 - 26.3.0)
          * <br>
          * Resource: minecraft:clear_dialog
          */
@@ -82,34 +82,34 @@ public interface PacketType {
         /**
          * Clientbound Keep Alive
          * <p>
-         * Supported Protocols: 764 - 776 (1.20.2 - 26.2.0)
+         * Supported Protocols: 764 - 777 (1.20.2 - 26.3.0)
          * <br>
-         * Resource: minecraft:keep_alive (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:keep_alive (767 - 777 (1.21.0 - 26.3.0))
          */
         CLIENTBOUND_KEEP_ALIVE,
 
         /**
          * Clientbound Known Packs
          * <p>
-         * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
+         * Supported Protocols: 766 - 777 (1.20.5 - 26.3.0)
          * <br>
-         * Resource: minecraft:select_known_packs (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:select_known_packs (767 - 777 (1.21.0 - 26.3.0))
          */
         CLIENTBOUND_KNOWN_PACKS,
 
         /**
          * Clientbound Plugin Message
          * <p>
-         * Supported Protocols: 764 - 776 (1.20.2 - 26.2.0)
+         * Supported Protocols: 764 - 777 (1.20.2 - 26.3.0)
          * <br>
-         * Resource: minecraft:custom_payload (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:custom_payload (767 - 777 (1.21.0 - 26.3.0))
          */
         CLIENTBOUND_PLUGIN_MESSAGE,
 
         /**
          * Code Of Conduct
          * <p>
-         * Supported Protocols: 773 - 776 (1.21.9 - 26.2.0)
+         * Supported Protocols: 773 - 777 (1.21.9 - 26.3.0)
          * <br>
          * Resource: minecraft:code_of_conduct
          */
@@ -118,16 +118,16 @@ public interface PacketType {
         /**
          * Cookie Request
          * <p>
-         * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
+         * Supported Protocols: 766 - 777 (1.20.5 - 26.3.0)
          * <br>
-         * Resource: minecraft:cookie_request (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:cookie_request (767 - 777 (1.21.0 - 26.3.0))
          */
         COOKIE_REQUEST,
 
         /**
          * Custom Report Details
          * <p>
-         * Supported Protocols: 767 - 776 (1.21.0 - 26.2.0)
+         * Supported Protocols: 767 - 777 (1.21.0 - 26.3.0)
          * <br>
          * Resource: minecraft:custom_report_details
          */
@@ -136,27 +136,27 @@ public interface PacketType {
         /**
          * Disconnect
          * <p>
-         * Supported Protocols: 764 - 776 (1.20.2 - 26.2.0)
+         * Supported Protocols: 764 - 777 (1.20.2 - 26.3.0)
          * <br>
-         * Resource: minecraft:disconnect (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:disconnect (767 - 777 (1.21.0 - 26.3.0))
          */
         DISCONNECT,
 
         /**
          * Feature Flags
          * <p>
-         * Supported Protocols: 764 - 776 (1.20.2 - 26.2.0)
+         * Supported Protocols: 764 - 777 (1.20.2 - 26.3.0)
          * <br>
-         * Resource: minecraft:update_enabled_features (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:update_enabled_features (767 - 777 (1.21.0 - 26.3.0))
          */
         FEATURE_FLAGS,
 
         /**
          * Finish Configuration
          * <p>
-         * Supported Protocols: 764 - 776 (1.20.2 - 26.2.0)
+         * Supported Protocols: 764 - 777 (1.20.2 - 26.3.0)
          * <br>
-         * Resource: minecraft:finish_configuration (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:finish_configuration (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Switches the protocol state to PLAY in protocol versions 764 (1.20.2) and later.
          * For protocol versions 763 (1.20.1) and earlier, see PacketType.Login.LOGIN_SUCCESS.
@@ -166,43 +166,52 @@ public interface PacketType {
         /**
          * Ping
          * <p>
-         * Supported Protocols: 764 - 776 (1.20.2 - 26.2.0)
+         * Supported Protocols: 764 - 777 (1.20.2 - 26.3.0)
          * <br>
-         * Resource: minecraft:ping (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:ping (767 - 777 (1.21.0 - 26.3.0))
          */
         PING,
 
         /**
+         * Post Effects
+         * <p>
+         * Supported Protocol: 777 (26.3.0)
+         * <br>
+         * Resource: minecraft:post_effects
+         */
+        POST_EFFECTS,
+
+        /**
          * Registry Data
          * <p>
-         * Supported Protocols: 764 - 776 (1.20.2 - 26.2.0)
+         * Supported Protocols: 764 - 777 (1.20.2 - 26.3.0)
          * <br>
-         * Resource: minecraft:registry_data (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:registry_data (767 - 777 (1.21.0 - 26.3.0))
          */
         REGISTRY_DATA,
 
         /**
          * Remove Resource Pack
          * <p>
-         * Supported Protocols: 765 - 776 (1.20.3 - 26.2.0)
+         * Supported Protocols: 765 - 777 (1.20.3 - 26.3.0)
          * <br>
-         * Resource: minecraft:resource_pack_pop (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:resource_pack_pop (767 - 777 (1.21.0 - 26.3.0))
          */
         REMOVE_RESOURCE_PACK,
 
         /**
          * Reset Chat
          * <p>
-         * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
+         * Supported Protocols: 766 - 777 (1.20.5 - 26.3.0)
          * <br>
-         * Resource: minecraft:reset_chat (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:reset_chat (767 - 777 (1.21.0 - 26.3.0))
          */
         RESET_CHAT,
 
         /**
          * Server Links
          * <p>
-         * Supported Protocols: 767 - 776 (1.21.0 - 26.2.0)
+         * Supported Protocols: 767 - 777 (1.21.0 - 26.3.0)
          * <br>
          * Resource: minecraft:server_links
          */
@@ -211,7 +220,7 @@ public interface PacketType {
         /**
          * Show Dialog
          * <p>
-         * Supported Protocols: 771 - 776 (1.21.6 - 26.2.0)
+         * Supported Protocols: 771 - 777 (1.21.6 - 26.3.0)
          * <br>
          * Resource: minecraft:show_dialog
          */
@@ -220,27 +229,27 @@ public interface PacketType {
         /**
          * Store Cookie
          * <p>
-         * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
+         * Supported Protocols: 766 - 777 (1.20.5 - 26.3.0)
          * <br>
-         * Resource: minecraft:store_cookie (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:store_cookie (767 - 777 (1.21.0 - 26.3.0))
          */
         STORE_COOKIE,
 
         /**
          * Transfer
          * <p>
-         * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
+         * Supported Protocols: 766 - 777 (1.20.5 - 26.3.0)
          * <br>
-         * Resource: minecraft:transfer (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:transfer (767 - 777 (1.21.0 - 26.3.0))
          */
         TRANSFER,
 
         /**
          * Update Tags
          * <p>
-         * Supported Protocols: 764 - 776 (1.20.2 - 26.2.0)
+         * Supported Protocols: 764 - 777 (1.20.2 - 26.3.0)
          * <br>
-         * Resource: minecraft:update_tags (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:update_tags (767 - 777 (1.21.0 - 26.3.0))
          */
         UPDATE_TAGS;
 
@@ -285,45 +294,45 @@ public interface PacketType {
         /**
          * Cookie Request
          * <p>
-         * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
+         * Supported Protocols: 766 - 777 (1.20.5 - 26.3.0)
          * <br>
-         * Resource: minecraft:cookie_request (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:cookie_request (767 - 777 (1.21.0 - 26.3.0))
          */
         COOKIE_REQUEST,
 
         /**
          * Disconnect
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:login_disconnect (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:login_disconnect (767 - 777 (1.21.0 - 26.3.0))
          */
         DISCONNECT,
 
         /**
          * Encryption Request
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:hello (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:hello (767 - 777 (1.21.0 - 26.3.0))
          */
         ENCRYPTION_REQUEST,
 
         /**
          * Login Plugin Request
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:custom_query (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:custom_query (767 - 777 (1.21.0 - 26.3.0))
          */
         LOGIN_PLUGIN_REQUEST,
 
         /**
          * Login Success
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resources: minecraft:game_profile (767 (1.21.0 - 1.21.1)), minecraft:login_finished (768 - 776 (1.21.2 - 26.2.0))
+         * Resources: minecraft:game_profile (767 (1.21.0 - 1.21.1)), minecraft:login_finished (768 - 777 (1.21.2 - 26.3.0))
          * <p>
          * Switches the protocol state to PLAY in protocol versions 763 (1.20.1) and earlier.
          * For protocol versions 764+ (1.20.2), see PacketType.Configuration.FINISH_CONFIGURATION.
@@ -333,9 +342,9 @@ public interface PacketType {
         /**
          * Set Compression
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:login_compression (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:login_compression (767 - 777 (1.21.0 - 26.3.0))
          */
         SET_COMPRESSION;
 
@@ -382,9 +391,9 @@ public interface PacketType {
         /**
          * Acknowledge Block Change
          * <p>
-         * Supported Protocols: 759 - 776 (1.19.0 - 26.2.0)
+         * Supported Protocols: 759 - 777 (1.19.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:block_changed_ack (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:block_changed_ack (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Likely exists as a replacement for ACKNOWLEDGE_PLAYER_DIGGING, although the packet structure is completely different.
          */
@@ -402,20 +411,29 @@ public interface PacketType {
         /**
          * Add Resource Pack
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:resource_pack_push (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:resource_pack_push (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Resource Pack Send" in versions before 1.19 on the Minecraft wiki.
          */
         ADD_RESOURCE_PACK,
 
         /**
+         * Add Transient Block
+         * <p>
+         * Supported Protocol: 777 (26.3.0)
+         * <br>
+         * Resource: minecraft:add_transient_block
+         */
+        ADD_TRANSIENT_BLOCK,
+
+        /**
          * Award Statistics
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:award_stats (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:award_stats (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Statistics" in versions before 1.19 on the Minecraft wiki.
          */
@@ -424,9 +442,9 @@ public interface PacketType {
         /**
          * Block Action
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:block_event (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:block_event (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * NOTE: Packet structure changed from 1.13.x to 1.14.x.
          * The position field is encoded as XYZ in 1.13.x and older, while it is encoded as XZY in 1.14.x+
@@ -436,18 +454,18 @@ public interface PacketType {
         /**
          * Block Entity Data
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:block_entity_data (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:block_entity_data (767 - 777 (1.21.0 - 26.3.0))
          */
         BLOCK_ENTITY_DATA,
 
         /**
          * Block Update
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:block_update (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:block_update (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Block Change" in versions before 1.19 on the Minecraft wiki.
          */
@@ -456,9 +474,9 @@ public interface PacketType {
         /**
          * Boss Bar
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:boss_event (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:boss_event (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * TODO: note for implementing packet: The Enum fields Action, Color, & TypeOfDivision appear to be the same for all protocol versions. (when quickly comparing 1.12 to 1.21.8)
          */
@@ -467,18 +485,18 @@ public interface PacketType {
         /**
          * Bundle Delimiter
          * <p>
-         * Supported Protocols: 762 - 776 (1.19.4 - 26.2.0)
+         * Supported Protocols: 762 - 777 (1.19.4 - 26.3.0)
          * <br>
-         * Resource: minecraft:bundle_delimiter (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:bundle_delimiter (767 - 777 (1.21.0 - 26.3.0))
          */
         BUNDLE_DELIMITER,
 
         /**
          * Change Difficulty
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:change_difficulty (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:change_difficulty (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Server Difficulty" in versions before 1.19 on the Minecraft wiki.
          */
@@ -501,36 +519,36 @@ public interface PacketType {
         /**
          * Chat Suggestions
          * <p>
-         * Supported Protocols: 760 - 776 (1.19.1 - 26.2.0)
+         * Supported Protocols: 760 - 777 (1.19.1 - 26.3.0)
          * <br>
-         * Resource: minecraft:custom_chat_completions (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:custom_chat_completions (767 - 777 (1.21.0 - 26.3.0))
          */
         CHAT_SUGGESTIONS,
 
         /**
          * Chunk Batch Finished
          * <p>
-         * Supported Protocols: 764 - 776 (1.20.2 - 26.2.0)
+         * Supported Protocols: 764 - 777 (1.20.2 - 26.3.0)
          * <br>
-         * Resource: minecraft:chunk_batch_finished (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:chunk_batch_finished (767 - 777 (1.21.0 - 26.3.0))
          */
         CHUNK_BATCH_FINISHED,
 
         /**
          * Chunk Batch Start
          * <p>
-         * Supported Protocols: 764 - 776 (1.20.2 - 26.2.0)
+         * Supported Protocols: 764 - 777 (1.20.2 - 26.3.0)
          * <br>
-         * Resource: minecraft:chunk_batch_start (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:chunk_batch_start (767 - 777 (1.21.0 - 26.3.0))
          */
         CHUNK_BATCH_START,
 
         /**
          * Chunk Biomes
          * <p>
-         * Supported Protocols: 762 - 776 (1.19.4 - 26.2.0)
+         * Supported Protocols: 762 - 777 (1.19.4 - 26.3.0)
          * <br>
-         * Resource: minecraft:chunks_biomes (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:chunks_biomes (767 - 777 (1.21.0 - 26.3.0))
          */
         CHUNK_BIOMES,
 
@@ -546,9 +564,9 @@ public interface PacketType {
         /**
          * Chunk Data And Update Light
          * <p>
-         * Supported Protocols: 757 - 776 (1.18.0 - 26.2.0)
+         * Supported Protocols: 757 - 777 (1.18.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:level_chunk_with_light (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:level_chunk_with_light (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * For older versions, see CHUNK_DATA instead.
          */
@@ -557,7 +575,7 @@ public interface PacketType {
         /**
          * Clear Dialog
          * <p>
-         * Supported Protocols: 771 - 776 (1.21.6 - 26.2.0)
+         * Supported Protocols: 771 - 777 (1.21.6 - 26.3.0)
          * <br>
          * Resource: minecraft:clear_dialog
          */
@@ -566,36 +584,36 @@ public interface PacketType {
         /**
          * Clear Titles
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:clear_titles (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:clear_titles (767 - 777 (1.21.0 - 26.3.0))
          */
         CLEAR_TITLES,
 
         /**
          * Clientbound Keep Alive
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:keep_alive (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:keep_alive (767 - 777 (1.21.0 - 26.3.0))
          */
         CLIENTBOUND_KEEP_ALIVE,
 
         /**
          * Clientbound Plugin Message
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:custom_payload (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:custom_payload (767 - 777 (1.21.0 - 26.3.0))
          */
         CLIENTBOUND_PLUGIN_MESSAGE,
 
         /**
          * Close Container
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:container_close (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:container_close (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Close Window (clientbound)" in versions before 1.19 on the Minecraft wiki.
          */
@@ -604,9 +622,9 @@ public interface PacketType {
         /**
          * Combat Death
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:player_combat_kill (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:player_combat_kill (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Death Combat Event" in versions before 1.19 on the Minecraft wiki.
          */
@@ -624,9 +642,9 @@ public interface PacketType {
         /**
          * Commands
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:commands (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:commands (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Declare Commands" in versions before 1.19 on the Minecraft wiki.
          */
@@ -635,9 +653,9 @@ public interface PacketType {
         /**
          * Command Suggestions Response
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:command_suggestions (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:command_suggestions (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Tab-Complete (clientbound)" in versions before 1.19 on the Minecraft wiki.
          */
@@ -646,16 +664,16 @@ public interface PacketType {
         /**
          * Cookie Request
          * <p>
-         * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
+         * Supported Protocols: 766 - 777 (1.20.5 - 26.3.0)
          * <br>
-         * Resource: minecraft:cookie_request (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:cookie_request (767 - 777 (1.21.0 - 26.3.0))
          */
         COOKIE_REQUEST,
 
         /**
          * Custom Report Details
          * <p>
-         * Supported Protocols: 767 - 776 (1.21.0 - 26.2.0)
+         * Supported Protocols: 767 - 777 (1.21.0 - 26.3.0)
          * <br>
          * Resource: minecraft:custom_report_details
          */
@@ -674,16 +692,16 @@ public interface PacketType {
         /**
          * Damage Event
          * <p>
-         * Supported Protocols: 762 - 776 (1.19.4 - 26.2.0)
+         * Supported Protocols: 762 - 777 (1.19.4 - 26.3.0)
          * <br>
-         * Resource: minecraft:damage_event (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:damage_event (767 - 777 (1.21.0 - 26.3.0))
          */
         DAMAGE_EVENT,
 
         /**
          * Debug Block Value
          * <p>
-         * Supported Protocols: 773 - 776 (1.21.9 - 26.2.0)
+         * Supported Protocols: 773 - 777 (1.21.9 - 26.3.0)
          * <br>
          * Resource: minecraft:debug/block_value
          */
@@ -692,7 +710,7 @@ public interface PacketType {
         /**
          * Debug Chunk Value
          * <p>
-         * Supported Protocols: 773 - 776 (1.21.9 - 26.2.0)
+         * Supported Protocols: 773 - 777 (1.21.9 - 26.3.0)
          * <br>
          * Resource: minecraft:debug/chunk_value
          */
@@ -701,7 +719,7 @@ public interface PacketType {
         /**
          * Debug Entity Value
          * <p>
-         * Supported Protocols: 773 - 776 (1.21.9 - 26.2.0)
+         * Supported Protocols: 773 - 777 (1.21.9 - 26.3.0)
          * <br>
          * Resource: minecraft:debug/entity_value
          */
@@ -710,7 +728,7 @@ public interface PacketType {
         /**
          * Debug Event
          * <p>
-         * Supported Protocols: 773 - 776 (1.21.9 - 26.2.0)
+         * Supported Protocols: 773 - 777 (1.21.9 - 26.3.0)
          * <br>
          * Resource: minecraft:debug/event
          */
@@ -719,18 +737,18 @@ public interface PacketType {
         /**
          * Debug Sample
          * <p>
-         * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
+         * Supported Protocols: 766 - 777 (1.20.5 - 26.3.0)
          * <br>
-         * Resource: minecraft:debug_sample (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:debug_sample (767 - 777 (1.21.0 - 26.3.0))
          */
         DEBUG_SAMPLE,
 
         /**
          * Delete Message
          * <p>
-         * Supported Protocols: 760 - 776 (1.19.1 - 26.2.0)
+         * Supported Protocols: 760 - 777 (1.19.1 - 26.3.0)
          * <br>
-         * Resource: minecraft:delete_chat (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:delete_chat (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also known by the name "Hide Message" on the Minecraft wiki for 1.19.1/2 and prior.
          */
@@ -739,27 +757,27 @@ public interface PacketType {
         /**
          * Disconnect
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:disconnect (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:disconnect (767 - 777 (1.21.0 - 26.3.0))
          */
         DISCONNECT,
 
         /**
          * Disguised Chat Message
          * <p>
-         * Supported Protocols: 761 - 776 (1.19.3 - 26.2.0)
+         * Supported Protocols: 761 - 777 (1.19.3 - 26.3.0)
          * <br>
-         * Resource: minecraft:disguised_chat (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:disguised_chat (767 - 777 (1.21.0 - 26.3.0))
          */
         DISGUISED_CHAT_MESSAGE,
 
         /**
          * Display Objective
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_display_objective (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_display_objective (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Related to the scoreboard.
          * Also referred to as "Display Scoreboard" in versions before 1.19 on the Minecraft wiki.
@@ -769,9 +787,9 @@ public interface PacketType {
         /**
          * End Combat
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:player_combat_end (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:player_combat_end (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "End Combat Event" in versions before 1.19 on the Minecraft wiki.
          */
@@ -780,9 +798,9 @@ public interface PacketType {
         /**
          * Enter Combat
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:player_combat_enter (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:player_combat_enter (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Enter Combat Event" in versions before 1.19 on the Minecraft wiki.
          */
@@ -791,18 +809,18 @@ public interface PacketType {
         /**
          * Entity Animation
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:animate (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:animate (767 - 777 (1.21.0 - 26.3.0))
          */
         ENTITY_ANIMATION,
 
         /**
          * Entity Effect
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:update_mob_effect (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:update_mob_effect (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * For all potion/status effects.
          * Seems this is only for the client (player) to display effect durations, removing it has no effect on potion particles.
@@ -813,9 +831,9 @@ public interface PacketType {
         /**
          * Entity Event
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:entity_event (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:entity_event (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Entity Status" in versions before 1.19 on the Minecraft wiki.
          */
@@ -834,9 +852,9 @@ public interface PacketType {
         /**
          * Entity Sound Effect
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:sound_entity (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:sound_entity (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * NOTE: Packet structure changed in protocol 761+ (1.19.3+) and again in protocol 767+ (1.21.0+)
          */
@@ -845,9 +863,9 @@ public interface PacketType {
         /**
          * Explosion
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:explode (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:explode (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * NOTE: Packet structure changed in protocol 773+ (1.21.9+).
          */
@@ -865,9 +883,9 @@ public interface PacketType {
         /**
          * Game Event
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:game_event (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:game_event (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Change Game State" in versions before 1.19 on the Minecraft wiki.
          */
@@ -876,7 +894,7 @@ public interface PacketType {
         /**
          * Game Rule Values
          * <p>
-         * Supported Protocols: 775 - 776 (26.1.0 - 26.2.0)
+         * Supported Protocols: 775 - 777 (26.1.0 - 26.3.0)
          * <br>
          * Resource: minecraft:game_rule_values
          */
@@ -885,7 +903,7 @@ public interface PacketType {
         /**
          * Game Test Highlight Pos
          * <p>
-         * Supported Protocols: 773 - 776 (1.21.9 - 26.2.0)
+         * Supported Protocols: 773 - 777 (1.21.9 - 26.3.0)
          * <br>
          * Resource: minecraft:game_test_highlight_pos
          */
@@ -894,27 +912,27 @@ public interface PacketType {
         /**
          * Hurt Animation
          * <p>
-         * Supported Protocols: 762 - 776 (1.19.4 - 26.2.0)
+         * Supported Protocols: 762 - 777 (1.19.4 - 26.3.0)
          * <br>
-         * Resource: minecraft:hurt_animation (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:hurt_animation (767 - 777 (1.21.0 - 26.3.0))
          */
         HURT_ANIMATION,
 
         /**
          * Initialize World Border
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:initialize_border (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:initialize_border (767 - 777 (1.21.0 - 26.3.0))
          */
         INITIALIZE_WORLD_BORDER,
 
         /**
          * Link Entities
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_entity_link (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_entity_link (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Attach Entity" in versions before 1.19 on the Minecraft wiki.
          */
@@ -923,9 +941,9 @@ public interface PacketType {
         /**
          * Login
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:login (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:login (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Join Game" in versions before 1.19 on the Minecraft wiki.
          */
@@ -934,9 +952,9 @@ public interface PacketType {
         /**
          * Look At
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:player_look_at (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:player_look_at (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Face" in versions before 1.19 on the Minecraft wiki.
          */
@@ -945,7 +963,7 @@ public interface PacketType {
         /**
          * Low Disk Space Warning
          * <p>
-         * Supported Protocols: 775 - 776 (26.1.0 - 26.2.0)
+         * Supported Protocols: 775 - 777 (26.1.0 - 26.3.0)
          * <br>
          * Resource: minecraft:low_disk_space_warning
          */
@@ -954,18 +972,18 @@ public interface PacketType {
         /**
          * Map Data
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:map_item_data (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:map_item_data (767 - 777 (1.21.0 - 26.3.0))
          */
         MAP_DATA,
 
         /**
          * Merchant Offers
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:merchant_offers (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:merchant_offers (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Trade List" in versions before 1.19 on the Minecraft wiki.
          */
@@ -981,7 +999,7 @@ public interface PacketType {
         /**
          * Move Minecart Along Track
          * <p>
-         * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
+         * Supported Protocols: 768 - 777 (1.21.2 - 26.3.0)
          * <br>
          * Resource: minecraft:move_minecart_along_track
          */
@@ -990,36 +1008,36 @@ public interface PacketType {
         /**
          * Move Vehicle
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:move_vehicle (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:move_vehicle (767 - 777 (1.21.0 - 26.3.0))
          */
         MOVE_VEHICLE,
 
         /**
          * Open Book
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:open_book (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:open_book (767 - 777 (1.21.0 - 26.3.0))
          */
         OPEN_BOOK,
 
         /**
          * Open Horse Screen
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resources: minecraft:horse_screen_open (767 - 773 (1.21.0 - 1.21.10)), minecraft:mount_screen_open (774 - 776 (1.21.11 - 26.2.0))
+         * Resources: minecraft:horse_screen_open (767 - 773 (1.21.0 - 1.21.10)), minecraft:mount_screen_open (774 - 777 (1.21.11 - 26.3.0))
          */
         OPEN_HORSE_SCREEN,
 
         /**
          * Open Screen
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:open_screen (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:open_screen (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Open Window" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1028,18 +1046,18 @@ public interface PacketType {
         /**
          * Open Sign Editor
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:open_sign_editor (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:open_sign_editor (767 - 777 (1.21.0 - 26.3.0))
          */
         OPEN_SIGN_EDITOR,
 
         /**
          * Particle
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:level_particles (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:level_particles (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * NOTE: Packet structure changed since protocol 769+ (1.21.4+). New field alwaysVisible.
          * NOTE: Packet structure changed since protocol 767+ (1.21.0+). Particle ID field moved to the end just before the Data field
@@ -1049,9 +1067,9 @@ public interface PacketType {
         /**
          * Pickup Item
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:take_item_entity (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:take_item_entity (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Collect Item" in versions before 1.19 on the Minecraft wiki.
          * This packet is purely for the animation of an item being picked up by an entity.
@@ -1061,63 +1079,63 @@ public interface PacketType {
         /**
          * Ping
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:ping (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:ping (767 - 777 (1.21.0 - 26.3.0))
          */
         PING,
 
         /**
          * Ping Response
          * <p>
-         * Supported Protocols: 764 - 776 (1.20.2 - 26.2.0)
+         * Supported Protocols: 764 - 777 (1.20.2 - 26.3.0)
          * <br>
-         * Resource: minecraft:pong_response (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:pong_response (767 - 777 (1.21.0 - 26.3.0))
          */
         PING_RESPONSE,
 
         /**
          * Place Ghost Recipe
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:place_ghost_recipe (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:place_ghost_recipe (767 - 777 (1.21.0 - 26.3.0))
          */
         PLACE_GHOST_RECIPE,
 
         /**
          * Player Abilities
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:player_abilities (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:player_abilities (767 - 777 (1.21.0 - 26.3.0))
          */
         PLAYER_ABILITIES,
 
         /**
          * Player Chat Message
          * <p>
-         * Supported Protocols: 759 - 776 (1.19.0 - 26.2.0)
+         * Supported Protocols: 759 - 777 (1.19.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:player_chat (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:player_chat (767 - 777 (1.21.0 - 26.3.0))
          */
         PLAYER_CHAT_MESSAGE,
 
         /**
          * Player Info Remove
          * <p>
-         * Supported Protocols: 761 - 776 (1.19.3 - 26.2.0)
+         * Supported Protocols: 761 - 777 (1.19.3 - 26.3.0)
          * <br>
-         * Resource: minecraft:player_info_remove (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:player_info_remove (767 - 777 (1.21.0 - 26.3.0))
          */
         PLAYER_INFO_REMOVE,
 
         /**
          * Player Info Update
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:player_info_update (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:player_info_update (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also known by the name "Player Info" on the Minecraft wiki for 1.19.1/2 and prior.
          */
@@ -1126,7 +1144,7 @@ public interface PacketType {
         /**
          * Player Rotation
          * <p>
-         * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
+         * Supported Protocols: 768 - 777 (1.21.2 - 26.3.0)
          * <br>
          * Resource: minecraft:player_rotation
          * <p>
@@ -1135,11 +1153,20 @@ public interface PacketType {
         PLAYER_ROTATION,
 
         /**
+         * Post Effects
+         * <p>
+         * Supported Protocol: 777 (26.3.0)
+         * <br>
+         * Resource: minecraft:post_effects
+         */
+        POST_EFFECTS,
+
+        /**
          * Projectile Power
          * <p>
-         * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
+         * Supported Protocols: 766 - 777 (1.20.5 - 26.3.0)
          * <br>
-         * Resource: minecraft:projectile_power (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:projectile_power (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * NOTE: Packet structure changed since protocol 767+ (1.21.0+). Power XYZ fields reduced to single Power field.
          */
@@ -1148,7 +1175,7 @@ public interface PacketType {
         /**
          * Recipe Book Add
          * <p>
-         * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
+         * Supported Protocols: 768 - 777 (1.21.2 - 26.3.0)
          * <br>
          * Resource: minecraft:recipe_book_add
          */
@@ -1157,7 +1184,7 @@ public interface PacketType {
         /**
          * Recipe Book Remove
          * <p>
-         * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
+         * Supported Protocols: 768 - 777 (1.21.2 - 26.3.0)
          * <br>
          * Resource: minecraft:recipe_book_remove
          */
@@ -1166,7 +1193,7 @@ public interface PacketType {
         /**
          * Recipe Book Settings
          * <p>
-         * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
+         * Supported Protocols: 768 - 777 (1.21.2 - 26.3.0)
          * <br>
          * Resource: minecraft:recipe_book_settings
          */
@@ -1175,9 +1202,9 @@ public interface PacketType {
         /**
          * Remove Entities
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:remove_entities (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:remove_entities (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * NOTE: Packet structure changed in protocol 755 (1.17) to only remove one entity. Was reverted the very next version.
          * Also referred to as "Destroy Entities" in versions before 1.19 on the Minecraft wiki and "Destroy Entity" for 1.17 ONLY
@@ -1187,9 +1214,9 @@ public interface PacketType {
         /**
          * Remove Entity Effect
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:remove_mob_effect (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:remove_mob_effect (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * For all potion/status effects. Also see PacketType.Play.ENTITY_EFFECT
          */
@@ -1198,27 +1225,27 @@ public interface PacketType {
         /**
          * Remove Resource Pack
          * <p>
-         * Supported Protocols: 765 - 776 (1.20.3 - 26.2.0)
+         * Supported Protocols: 765 - 777 (1.20.3 - 26.3.0)
          * <br>
-         * Resource: minecraft:resource_pack_pop (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:resource_pack_pop (767 - 777 (1.21.0 - 26.3.0))
          */
         REMOVE_RESOURCE_PACK,
 
         /**
          * Reset Score
          * <p>
-         * Supported Protocols: 765 - 776 (1.20.3 - 26.2.0)
+         * Supported Protocols: 765 - 777 (1.20.3 - 26.3.0)
          * <br>
-         * Resource: minecraft:reset_score (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:reset_score (767 - 777 (1.21.0 - 26.3.0))
          */
         RESET_SCORE,
 
         /**
          * Respawn
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:respawn (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:respawn (767 - 777 (1.21.0 - 26.3.0))
          */
         RESPAWN,
 
@@ -1232,18 +1259,18 @@ public interface PacketType {
         /**
          * Select Advancements Tab
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:select_advancements_tab (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:select_advancements_tab (767 - 777 (1.21.0 - 26.3.0))
          */
         SELECT_ADVANCEMENTS_TAB,
 
         /**
          * Server Data
          * <p>
-         * Supported Protocols: 759 - 776 (1.19.0 - 26.2.0)
+         * Supported Protocols: 759 - 777 (1.19.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:server_data (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:server_data (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Used for server MOTD & Icon.
          */
@@ -1252,7 +1279,7 @@ public interface PacketType {
         /**
          * Server Links
          * <p>
-         * Supported Protocols: 767 - 776 (1.21.0 - 26.2.0)
+         * Supported Protocols: 767 - 777 (1.21.0 - 26.3.0)
          * <br>
          * Resource: minecraft:server_links
          */
@@ -1261,9 +1288,9 @@ public interface PacketType {
         /**
          * Set Action Bar Text
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_action_bar_text (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_action_bar_text (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Action Bar" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1272,9 +1299,9 @@ public interface PacketType {
         /**
          * Set Block Destroy Stage
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:block_destruction (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:block_destruction (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Block Break Animation" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1283,9 +1310,9 @@ public interface PacketType {
         /**
          * Set Border Center
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_border_center (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_border_center (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "World Border Center" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1294,9 +1321,9 @@ public interface PacketType {
         /**
          * Set Border Lerp Size
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_border_lerp_size (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_border_lerp_size (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "World Border Lerp Size" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1305,9 +1332,9 @@ public interface PacketType {
         /**
          * Set Border Size
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_border_size (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_border_size (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "World Border Size" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1316,9 +1343,9 @@ public interface PacketType {
         /**
          * Set Border Warning Delay
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_border_warning_delay (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_border_warning_delay (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "World Border Warning Delay" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1327,9 +1354,9 @@ public interface PacketType {
         /**
          * Set Border Warning Distance
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_border_warning_distance (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_border_warning_distance (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "World Border Warning Reach" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1338,9 +1365,9 @@ public interface PacketType {
         /**
          * Set Camera
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_camera (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_camera (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Camera" in versions before 1.19 on the Minecraft wiki.
          * Packet used for setting the player to spectate an entity.
@@ -1350,9 +1377,9 @@ public interface PacketType {
         /**
          * Set Center Chunk
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_chunk_cache_center (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_chunk_cache_center (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Update View Position" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1361,9 +1388,9 @@ public interface PacketType {
         /**
          * Set Container Content
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:container_set_content (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:container_set_content (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Window Items" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1372,9 +1399,9 @@ public interface PacketType {
         /**
          * Set Container Property
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:container_set_data (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:container_set_data (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Window Property" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1383,9 +1410,9 @@ public interface PacketType {
         /**
          * Set Container Slot
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:container_set_slot (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:container_set_slot (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Set Slot" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1394,16 +1421,16 @@ public interface PacketType {
         /**
          * Set Cooldown
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:cooldown (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:cooldown (767 - 777 (1.21.0 - 26.3.0))
          */
         SET_COOLDOWN,
 
         /**
          * Set Cursor Item
          * <p>
-         * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
+         * Supported Protocols: 768 - 777 (1.21.2 - 26.3.0)
          * <br>
          * Resource: minecraft:set_cursor_item
          */
@@ -1412,9 +1439,9 @@ public interface PacketType {
         /**
          * Set Default Spawn Position
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_default_spawn_position (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_default_spawn_position (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Spawn Position" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1430,9 +1457,9 @@ public interface PacketType {
         /**
          * Set Entity Metadata
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_entity_data (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_entity_data (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Entity Metadata" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1441,9 +1468,9 @@ public interface PacketType {
         /**
          * Set Entity Velocity
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_entity_motion (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_entity_motion (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Entity Velocity" in versions before 1.19 on the Minecraft wiki.NOTE: Packet structure changed in protocol 773+ (1.21.9+).
          */
@@ -1452,9 +1479,9 @@ public interface PacketType {
         /**
          * Set Equipment
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_equipment (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_equipment (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Entity Equipment" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1463,18 +1490,18 @@ public interface PacketType {
         /**
          * Set Experience
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_experience (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_experience (767 - 777 (1.21.0 - 26.3.0))
          */
         SET_EXPERIENCE,
 
         /**
          * Set Head Rotation
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:rotate_head (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:rotate_head (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Entity Head Look" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1483,9 +1510,9 @@ public interface PacketType {
         /**
          * Set Health
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_health (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_health (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Update Health" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1494,9 +1521,9 @@ public interface PacketType {
         /**
          * Set Held Item
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resources: minecraft:set_carried_item (767 (1.21.0 - 1.21.1)), minecraft:set_held_slot (768 - 776 (1.21.2 - 26.2.0))
+         * Resources: minecraft:set_carried_item (767 (1.21.0 - 1.21.1)), minecraft:set_held_slot (768 - 777 (1.21.2 - 26.3.0))
          * <p>
          * Also referred to as "Held Item Change (clientbound)" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1505,16 +1532,16 @@ public interface PacketType {
         /**
          * Set Passengers
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_passengers (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_passengers (767 - 777 (1.21.0 - 26.3.0))
          */
         SET_PASSENGERS,
 
         /**
          * Set Player Inventory Slot
          * <p>
-         * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
+         * Supported Protocols: 768 - 777 (1.21.2 - 26.3.0)
          * <br>
          * Resource: minecraft:set_player_inventory
          */
@@ -1523,9 +1550,9 @@ public interface PacketType {
         /**
          * Set Render Distance
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_chunk_cache_radius (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_chunk_cache_radius (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Update View Distance" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1534,9 +1561,9 @@ public interface PacketType {
         /**
          * Set Simulation Distance
          * <p>
-         * Supported Protocols: 757 - 776 (1.18.0 - 26.2.0)
+         * Supported Protocols: 757 - 777 (1.18.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_simulation_distance (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_simulation_distance (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Update Simulation Distance" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1545,9 +1572,9 @@ public interface PacketType {
         /**
          * Set Subtitle Text
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_subtitle_text (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_subtitle_text (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Set Title SubTitle" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1556,9 +1583,9 @@ public interface PacketType {
         /**
          * Set Tab List Header And Footer
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:tab_list (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:tab_list (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Player List Header And Footer" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1567,18 +1594,18 @@ public interface PacketType {
         /**
          * Set Ticking State
          * <p>
-         * Supported Protocols: 765 - 776 (1.20.3 - 26.2.0)
+         * Supported Protocols: 765 - 777 (1.20.3 - 26.3.0)
          * <br>
-         * Resource: minecraft:ticking_state (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:ticking_state (767 - 777 (1.21.0 - 26.3.0))
          */
         SET_TICKING_STATE,
 
         /**
          * Set Title Animation Times
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_titles_animation (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_titles_animation (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Set Title Times" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1587,16 +1614,16 @@ public interface PacketType {
         /**
          * Set Title Text
          * <p>
-         * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+         * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_title_text (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_title_text (767 - 777 (1.21.0 - 26.3.0))
          */
         SET_TITLE_TEXT,
 
         /**
          * Show Dialog
          * <p>
-         * Supported Protocols: 771 - 776 (1.21.6 - 26.2.0)
+         * Supported Protocols: 771 - 777 (1.21.6 - 26.3.0)
          * <br>
          * Resource: minecraft:show_dialog
          */
@@ -1605,9 +1632,9 @@ public interface PacketType {
         /**
          * Sound Effect
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:sound (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:sound (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * NOTE: Packet structure changed in protocol 761+ (1.19.3+).
          * NOTE: Packet structure changed in protocol 767+ (1.21.0+).
@@ -1617,9 +1644,9 @@ public interface PacketType {
         /**
          * Spawn Entity
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:add_entity (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:add_entity (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Spawn Object" in versions before 1.15 on the Minecraft wiki.
          * NOTE: Packet structure changed in protocol 759+ (1.19.0+).
@@ -1671,9 +1698,9 @@ public interface PacketType {
         /**
          * Start Configuration
          * <p>
-         * Supported Protocols: 764 - 776 (1.20.2 - 26.2.0)
+         * Supported Protocols: 764 - 777 (1.20.2 - 26.3.0)
          * <br>
-         * Resource: minecraft:start_configuration (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:start_configuration (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Switches the protocol state to Configuration. Unsupported in protocol versions 763 (1.20.0/1) and older.
          */
@@ -1682,36 +1709,45 @@ public interface PacketType {
         /**
          * Step Tick
          * <p>
-         * Supported Protocols: 765 - 776 (1.20.3 - 26.2.0)
+         * Supported Protocols: 765 - 777 (1.20.3 - 26.3.0)
          * <br>
-         * Resource: minecraft:ticking_step (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:ticking_step (767 - 777 (1.21.0 - 26.3.0))
          */
         STEP_TICK,
 
         /**
          * Stop Sound
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:stop_sound (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:stop_sound (767 - 777 (1.21.0 - 26.3.0))
          */
         STOP_SOUND,
 
         /**
          * Store Cookie
          * <p>
-         * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
+         * Supported Protocols: 766 - 777 (1.20.5 - 26.3.0)
          * <br>
-         * Resource: minecraft:store_cookie (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:store_cookie (767 - 777 (1.21.0 - 26.3.0))
          */
         STORE_COOKIE,
 
         /**
+         * Swing Animation
+         * <p>
+         * Supported Protocol: 777 (26.3.0)
+         * <br>
+         * Resource: minecraft:swing_animation
+         */
+        SWING_ANIMATION,
+
+        /**
          * Synchronize Player Position
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:player_position (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:player_position (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Player Position And Look (clientbound)" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1720,7 +1756,7 @@ public interface PacketType {
         /**
          * Synchronize Vehicle Position
          * <p>
-         * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
+         * Supported Protocols: 768 - 777 (1.21.2 - 26.3.0)
          * <br>
          * Resource: minecraft:teleport_entity
          */
@@ -1729,18 +1765,18 @@ public interface PacketType {
         /**
          * System Chat Message
          * <p>
-         * Supported Protocols: 759 - 776 (1.19.0 - 26.2.0)
+         * Supported Protocols: 759 - 777 (1.19.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:system_chat (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:system_chat (767 - 777 (1.21.0 - 26.3.0))
          */
         SYSTEM_CHAT_MESSAGE,
 
         /**
          * Tag Query Response
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:tag_query (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:tag_query (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "NBT Query Response" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1749,9 +1785,9 @@ public interface PacketType {
         /**
          * Teleport Entity
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resources: minecraft:teleport_entity (767 (1.21.0 - 1.21.1)), minecraft:entity_position_sync (768 - 776 (1.21.2 - 26.2.0))
+         * Resources: minecraft:teleport_entity (767 (1.21.0 - 1.21.1)), minecraft:entity_position_sync (768 - 777 (1.21.2 - 26.3.0))
          * <p>
          * Also referred to as "Entity Teleport" in versions before 1.19 on the Minecraft wiki.
          * NOTE: Packet structure changed since protocol 768+ (1.21.2+). New fields for velocity and yaw/pitch.
@@ -1761,7 +1797,7 @@ public interface PacketType {
         /**
          * Test Instance Block Status
          * <p>
-         * Supported Protocols: 770 - 776 (1.21.5 - 26.2.0)
+         * Supported Protocols: 770 - 777 (1.21.5 - 26.3.0)
          * <br>
          * Resource: minecraft:test_instance_block_status
          */
@@ -1779,27 +1815,27 @@ public interface PacketType {
         /**
          * Transfer
          * <p>
-         * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
+         * Supported Protocols: 766 - 777 (1.20.5 - 26.3.0)
          * <br>
-         * Resource: minecraft:transfer (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:transfer (767 - 777 (1.21.0 - 26.3.0))
          */
         TRANSFER,
 
         /**
          * Unload Chunk
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:forget_level_chunk (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:forget_level_chunk (767 - 777 (1.21.0 - 26.3.0))
          */
         UNLOAD_CHUNK,
 
         /**
          * Update Advancements
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:update_advancements (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:update_advancements (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Advancements" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1808,9 +1844,9 @@ public interface PacketType {
         /**
          * Update Attributes
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:update_attributes (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:update_attributes (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Entity Properties" in versions before 1.19 on the Minecraft wiki.
          * NOTE: A data field changed in 766+ (1.20.5).
@@ -1820,9 +1856,9 @@ public interface PacketType {
         /**
          * Update Entity Position
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:move_entity_pos (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:move_entity_pos (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Entity Position" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1831,9 +1867,9 @@ public interface PacketType {
         /**
          * Update Entity Position And Rotation
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:move_entity_pos_rot (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:move_entity_pos_rot (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Entity Position and Rotation" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1842,9 +1878,9 @@ public interface PacketType {
         /**
          * Update Entity Rotation
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:move_entity_rot (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:move_entity_rot (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Entity Rotation" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1853,18 +1889,18 @@ public interface PacketType {
         /**
          * Update Light
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:light_update (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:light_update (767 - 777 (1.21.0 - 26.3.0))
          */
         UPDATE_LIGHT,
 
         /**
          * Update Objectives
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_objective (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_objective (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Related to the scoreboard.
          * Also referred to as "Scoreboard Objective" in versions before 1.19 on the Minecraft wiki.
@@ -1874,9 +1910,9 @@ public interface PacketType {
         /**
          * Update Recipes
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:update_recipes (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:update_recipes (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Declare Recipes" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1896,9 +1932,9 @@ public interface PacketType {
         /**
          * Update Score
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_score (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_score (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Related to the scoreboard.
          */
@@ -1907,9 +1943,9 @@ public interface PacketType {
         /**
          * Update Section Blocks
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:section_blocks_update (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:section_blocks_update (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Multi Block Change" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1918,9 +1954,9 @@ public interface PacketType {
         /**
          * Update Tags
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:update_tags (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:update_tags (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Tags" in versions before 1.19 on the Minecraft wiki.
          */
@@ -1929,9 +1965,9 @@ public interface PacketType {
         /**
          * Update Teams
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_player_team (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_player_team (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Related to the scoreboard.
          * Also referred to as "Teams" in versions before 1.19 on the Minecraft wiki.
@@ -1941,9 +1977,9 @@ public interface PacketType {
         /**
          * Update Time
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:set_time (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:set_time (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Time Update" in versions before 1.19 on the Minecraft wiki.
          * NOTE: Packet structure changed since protocol 768+ (1.21.2+) - New field timeAdvances (timeOfDayIncreasing).
@@ -1954,7 +1990,7 @@ public interface PacketType {
         /**
          * Waypoint
          * <p>
-         * Supported Protocols: 771 - 776 (1.21.6 - 26.2.0)
+         * Supported Protocols: 771 - 777 (1.21.6 - 26.3.0)
          * <br>
          * Resource: minecraft:waypoint
          */
@@ -1983,9 +2019,9 @@ public interface PacketType {
         /**
          * World Event
          * <p>
-         * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+         * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
          * <br>
-         * Resource: minecraft:level_event (767 - 776 (1.21.0 - 26.2.0))
+         * Resource: minecraft:level_event (767 - 777 (1.21.0 - 26.3.0))
          * <p>
          * Also referred to as "Effect" in versions before 1.19 on the Minecraft wiki.
          * NOTE: Packet structure changed from 1.13.x to 1.14.x.

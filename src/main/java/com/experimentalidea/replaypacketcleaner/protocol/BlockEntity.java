@@ -36,7 +36,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Banner
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:banner
      */
@@ -45,7 +45,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Barrel
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:barrel
      */
@@ -54,7 +54,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Beacon
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:beacon
      */
@@ -72,7 +72,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Beehive
      * <p>
-     * Supported Protocols: 573 - 776 (1.15.0 - 26.2.0)
+     * Supported Protocols: 573 - 777 (1.15.0 - 26.3.0)
      * <br>
      * Resource: minecraft:beehive
      */
@@ -81,7 +81,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Bell
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:bell
      */
@@ -90,7 +90,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Blast Furnace
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:blast_furnace
      */
@@ -99,7 +99,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Brewing Stand
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:brewing_stand
      */
@@ -108,16 +108,16 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Brushable Block
      * <p>
-     * Supported Protocols: 762 - 776 (1.19.4 - 26.2.0)
+     * Supported Protocols: 762 - 777 (1.19.4 - 26.3.0)
      * <br>
-     * Resources: minecraft:suspicious_sand (762 (1.19.4)), minecraft:brushable_block (763 - 776 (1.20.0 - 26.2.0))
+     * Resources: minecraft:suspicious_sand (762 (1.19.4)), minecraft:brushable_block (763 - 777 (1.20.0 - 26.3.0))
      */
     BRUSHABLE_BLOCK,
 
     /**
      * Calibrated Sculk Sensor
      * <p>
-     * Supported Protocols: 763 - 776 (1.20.0 - 26.2.0)
+     * Supported Protocols: 763 - 777 (1.20.0 - 26.3.0)
      * <br>
      * Resource: minecraft:calibrated_sculk_sensor
      */
@@ -126,7 +126,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Campfire
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:campfire
      */
@@ -135,7 +135,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Chest
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:chest
      */
@@ -144,7 +144,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Chiseled Bookshelf
      * <p>
-     * Supported Protocols: 761 - 776 (1.19.3 - 26.2.0)
+     * Supported Protocols: 761 - 777 (1.19.3 - 26.3.0)
      * <br>
      * Resource: minecraft:chiseled_bookshelf
      */
@@ -153,7 +153,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Command Block
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:command_block
      */
@@ -162,7 +162,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Comparator
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:comparator
      */
@@ -171,7 +171,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Conduit
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:conduit
      */
@@ -180,7 +180,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Copper Golem Statue
      * <p>
-     * Supported Protocols: 773 - 776 (1.21.9 - 26.2.0)
+     * Supported Protocols: 773 - 777 (1.21.9 - 26.3.0)
      * <br>
      * Resource: minecraft:copper_golem_statue
      */
@@ -189,7 +189,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Crafter
      * <p>
-     * Supported Protocols: 765 - 776 (1.20.3 - 26.2.0)
+     * Supported Protocols: 765 - 777 (1.20.3 - 26.3.0)
      * <br>
      * Resource: minecraft:crafter
      */
@@ -198,7 +198,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Creaking Heart
      * <p>
-     * Supported Protocols: 768 - 776 (1.21.2 - 26.2.0)
+     * Supported Protocols: 768 - 777 (1.21.2 - 26.3.0)
      * <br>
      * Resource: minecraft:creaking_heart
      */
@@ -207,7 +207,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Daylight Detector
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:daylight_detector
      */
@@ -216,7 +216,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Decorated Pot
      * <p>
-     * Supported Protocols: 762 - 776 (1.19.4 - 26.2.0)
+     * Supported Protocols: 762 - 777 (1.19.4 - 26.3.0)
      * <br>
      * Resource: minecraft:decorated_pot
      */
@@ -225,7 +225,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Dispenser
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:dispenser
      */
@@ -234,7 +234,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Dropper
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:dropper
      */
@@ -243,7 +243,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Enchanting Table
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:enchanting_table
      */
@@ -252,7 +252,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Ender Chest
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:ender_chest
      */
@@ -261,7 +261,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * End Gateway
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:end_gateway
      */
@@ -270,7 +270,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * End Portal
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:end_portal
      */
@@ -279,7 +279,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Furnace
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:furnace
      */
@@ -288,7 +288,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Hanging Sign
      * <p>
-     * Supported Protocols: 761 - 776 (1.19.3 - 26.2.0)
+     * Supported Protocols: 761 - 777 (1.19.3 - 26.3.0)
      * <br>
      * Resource: minecraft:hanging_sign
      */
@@ -297,7 +297,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Hopper
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:hopper
      */
@@ -306,7 +306,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Jigsaw
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:jigsaw
      */
@@ -315,7 +315,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Jukebox
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:jukebox
      */
@@ -324,7 +324,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Lectern
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:lectern
      */
@@ -333,7 +333,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Mob Spawner
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:mob_spawner
      */
@@ -342,7 +342,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Piston
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:piston
      */
@@ -351,7 +351,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Potent Sulfur
      * <p>
-     * Supported Protocol: 776 (26.2.0)
+     * Supported Protocols: 776 - 777 (26.2.0 - 26.3.0)
      * <br>
      * Resource: minecraft:potent_sulfur
      */
@@ -360,7 +360,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Sculk Catalyst
      * <p>
-     * Supported Protocols: 759 - 776 (1.19.0 - 26.2.0)
+     * Supported Protocols: 759 - 777 (1.19.0 - 26.3.0)
      * <br>
      * Resource: minecraft:sculk_catalyst
      */
@@ -369,7 +369,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Sculk Sensor
      * <p>
-     * Supported Protocols: 755 - 776 (1.17.0 - 26.2.0)
+     * Supported Protocols: 755 - 777 (1.17.0 - 26.3.0)
      * <br>
      * Resource: minecraft:sculk_sensor
      */
@@ -378,7 +378,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Sculk Shrieker
      * <p>
-     * Supported Protocols: 759 - 776 (1.19.0 - 26.2.0)
+     * Supported Protocols: 759 - 777 (1.19.0 - 26.3.0)
      * <br>
      * Resource: minecraft:sculk_shrieker
      */
@@ -387,7 +387,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Shelf
      * <p>
-     * Supported Protocols: 773 - 776 (1.21.9 - 26.2.0)
+     * Supported Protocols: 773 - 777 (1.21.9 - 26.3.0)
      * <br>
      * Resource: minecraft:shelf
      */
@@ -396,7 +396,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Shulker Box
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:shulker_box
      */
@@ -405,7 +405,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Sign
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:sign
      */
@@ -414,7 +414,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Skull
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:skull
      */
@@ -423,7 +423,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Smoker
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:smoker
      */
@@ -432,7 +432,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Structure Block
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:structure_block
      */
@@ -441,7 +441,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Test Block
      * <p>
-     * Supported Protocols: 770 - 776 (1.21.5 - 26.2.0)
+     * Supported Protocols: 770 - 777 (1.21.5 - 26.3.0)
      * <br>
      * Resource: minecraft:test_block
      */
@@ -450,7 +450,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Test Instance Block
      * <p>
-     * Supported Protocols: 770 - 776 (1.21.5 - 26.2.0)
+     * Supported Protocols: 770 - 777 (1.21.5 - 26.3.0)
      * <br>
      * Resource: minecraft:test_instance_block
      */
@@ -459,7 +459,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Trapped Chest
      * <p>
-     * Supported Protocols: 477 - 776 (1.14.0 - 26.2.0)
+     * Supported Protocols: 477 - 777 (1.14.0 - 26.3.0)
      * <br>
      * Resource: minecraft:trapped_chest
      */
@@ -468,7 +468,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Trial Spawner
      * <p>
-     * Supported Protocols: 765 - 776 (1.20.3 - 26.2.0)
+     * Supported Protocols: 765 - 777 (1.20.3 - 26.3.0)
      * <br>
      * Resource: minecraft:trial_spawner
      */
@@ -477,7 +477,7 @@ public enum BlockEntity implements ProtocolMetadata {
     /**
      * Vault
      * <p>
-     * Supported Protocols: 766 - 776 (1.20.5 - 26.2.0)
+     * Supported Protocols: 766 - 777 (1.20.5 - 26.3.0)
      * <br>
      * Resource: minecraft:vault
      */
