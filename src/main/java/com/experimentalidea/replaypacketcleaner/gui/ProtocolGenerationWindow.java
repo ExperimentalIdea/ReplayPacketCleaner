@@ -863,12 +863,28 @@ public class ProtocolGenerationWindow {
                 JSONObject entryTarget = new JSONObject();
                 entryTarget.put(TypeMetadata.JSON_NODE_ID, entrySource.getInt("protocol_id"));
                 entryTarget.put(TypeMetadata.JSON_NODE_RESOURCE, unknownResourceKey);
-                entryTarget.put(TypeMetadata.JSON_NODE_BLOCKSTATES, blockStates.get(i));
+
+                // Blockstates
+                int[] states = blockStates.get(i);
+                int blockstateMin = states[0];
+                int blockstateMax = blockstateMin + (states.length - 1);
+
+                // Verify blockstates list is correctly ordered and not missing any numbers. Start at the second entry (index 1)
+                for (int is = 1; is < states.length; is++) {
+                    if (states[is] != (blockstateMin + is)) {
+                        throw new IllegalStateException("Unexpected number sequence for \"" + unknownResourceKey + "\" blockstates list. List must be in order from lowest valve to highest value with no numbers missing in between.");
+                    }
+                }
+
+                JSONObject blockstatesNode = new JSONObject();
+                blockstatesNode.put(TypeMetadata.JSON_NODE_BLOCKSTATES_MIN, blockstateMin);
+                blockstatesNode.put(TypeMetadata.JSON_NODE_BLOCKSTATES_MAX, blockstateMax);
 
                 currentNode.put("*" + jsonKeys.get(i).replaceAll("minecraft:", "").toLowerCase(), entryTarget);
+                entryTarget.put(TypeMetadata.JSON_NODE_BLOCKSTATES, blockstatesNode);
 
 
-                log.append(unknownResourceKey).append(" = ").append(entriesNode.getJSONObject(unknownResourceKey).getInt("protocol_id")).append("\n    blockstates: ").append(Arrays.toString(blockStates.get(i))).append("\n");
+                log.append(unknownResourceKey).append(" = ").append(entriesNode.getJSONObject(unknownResourceKey).getInt("protocol_id")).append("\n    blockstates: ").append(blockstateMin).append(" - ").append(blockstateMax).append("\n");
             }
             if (!jsonKeys.isEmpty()) {
                 log.append("\nSuggest adding these types to their respective enum?\n");
